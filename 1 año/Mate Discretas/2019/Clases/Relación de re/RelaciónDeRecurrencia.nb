@@ -1,0 +1,278 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9126,        268]
+NotebookOptionsPosition[      8506,        243]
+NotebookOutlinePosition[      8885,        259]
+CellTagsIndexPosition[      8842,        256]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Ejemplo", " ", "1"}], ",", " ", 
+    RowBox[{"de", " ", "interes"}]}], "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"b", "[", "0", "]"}], "=", "300000"}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"b", "[", "n_", "]"}], ":=", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", "1.05", ")"}], "n"], "\[Times]", 
+     RowBox[{"b", "[", "0", "]"}]}]}], "\[IndentingNewLine]", 
+   RowBox[{"N", "[", 
+    RowBox[{"b", "[", "24", "]"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.6973327016772118`*^9, 3.697332744973688*^9}, {
+  3.780396390045497*^9, 3.780396392001376*^9}, {3.7803964368926744`*^9, 
+  3.780396456663327*^9}, {3.780405847478396*^9, 3.780405847881173*^9}}],
+
+Cell[BoxData["967529.9831141104`"], "Output",
+ CellChangeTimes->{
+  3.6973327472698193`*^9, {3.780247723618538*^9, 3.780247735606804*^9}, {
+   3.7803963861936846`*^9, 3.780396392924815*^9}, {3.780396438386788*^9, 
+   3.780396461380623*^9}, 3.7804058490974703`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Ejemplo", " ", "2"}], ",", " ", 
+    RowBox[{
+    "generar", " ", "valores", " ", "de", " ", "una", " ", "relaci\[OAcute]n",
+      " ", "de", " ", "recurrencia"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"RecurrenceTable", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"a", "[", "n", "]"}], "\[Equal]", 
+        RowBox[{
+         RowBox[{"a", "[", 
+          RowBox[{"n", "-", "1"}], "]"}], "+", 
+         RowBox[{"a", "[", 
+          RowBox[{"n", "-", "2"}], "]"}]}]}], ",", 
+       RowBox[{
+        RowBox[{"a", "[", "0", "]"}], "\[Equal]", "1"}], ",", 
+       RowBox[{
+        RowBox[{"a", "[", "1", "]"}], "\[Equal]", "1"}]}], "}"}], ",", "a", 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "2", ",", "30"}], "}"}]}], "]"}], "\n", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", 
+     RowBox[{"-", "2"}], ",", 
+     RowBox[{"-", "19"}], ",", 
+     RowBox[{"-", "32"}], ",", 
+     RowBox[{"-", "7"}], ",", "82", ",", "185", ",", "124", ",", 
+     RowBox[{"-", "307"}], ",", 
+     RowBox[{"-", "986"}], ",", 
+     RowBox[{"-", "1051"}], ",", "856", ",", "4865", ",", "7162", ",", 
+     RowBox[{"-", "271"}], ",", 
+     RowBox[{"-", "22028"}], ",", 
+     RowBox[{"-", "43243"}], ",", 
+     RowBox[{"-", "20402"}], ",", "88925", ",", "239056", ",", "211337", ",", 
+     RowBox[{"-", "294494"}], ",", 
+     RowBox[{"-", "1222999"}], ",", 
+     RowBox[{"-", "1562516"}], ",", "543965", ",", "5775478", ",", "9919061", 
+     ",", "2511688", ",", 
+     RowBox[{"-", "24733807"}]}], "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.6973327491409264`*^9, 3.6973328159577484`*^9}, {
+  3.7804062927554965`*^9, 3.7804063039310703`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "2", ",", "3", ",", "5", ",", "8", ",", "13", ",", "21", ",", "34", ",", 
+   "55", ",", "89", ",", "144", ",", "233", ",", "377", ",", "610", ",", 
+   "987", ",", "1597", ",", "2584", ",", "4181", ",", "6765", ",", "10946", 
+   ",", "17711", ",", "28657", ",", "46368", ",", "75025", ",", "121393", ",",
+    "196418", ",", "317811", ",", "514229", ",", "832040", ",", "1346269"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.780406308429493*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"5", ",", 
+   RowBox[{"-", "2"}], ",", 
+   RowBox[{"-", "19"}], ",", 
+   RowBox[{"-", "32"}], ",", 
+   RowBox[{"-", "7"}], ",", "82", ",", "185", ",", "124", ",", 
+   RowBox[{"-", "307"}], ",", 
+   RowBox[{"-", "986"}], ",", 
+   RowBox[{"-", "1051"}], ",", "856", ",", "4865", ",", "7162", ",", 
+   RowBox[{"-", "271"}], ",", 
+   RowBox[{"-", "22028"}], ",", 
+   RowBox[{"-", "43243"}], ",", 
+   RowBox[{"-", "20402"}], ",", "88925", ",", "239056", ",", "211337", ",", 
+   RowBox[{"-", "294494"}], ",", 
+   RowBox[{"-", "1222999"}], ",", 
+   RowBox[{"-", "1562516"}], ",", "543965", ",", "5775478", ",", "9919061", 
+   ",", "2511688", ",", 
+   RowBox[{"-", "24733807"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.7804063084375105`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Ejemplo", " ", "3"}], ",", " ", 
+    RowBox[{
+    "regiones", " ", "generadas", " ", "por", " ", "una", " ", "recta"}]}], 
+   "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", "[", "1", "]"}], "=", "2"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"a", "[", "n_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"a", "[", 
+      RowBox[{"n", "-", "1"}], "]"}], "+", "n"}]}], "\[IndentingNewLine]", 
+   RowBox[{"a", "[", "7", "]"}], "\n", "29"}]}]], "Input",
+ CellChangeTimes->{{3.697332829884545*^9, 3.697332834591814*^9}, {
+  3.6973328810514717`*^9, 3.697332886085759*^9}, {3.697332943567047*^9, 
+  3.6973329645052447`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Ejemplo", " ", "4"}], ",", " ", 
+    RowBox[{
+    "encontrar", " ", "la", " ", "f\[OAcute]rmula", " ", "expl\[IAcute]cita", 
+     " ", "de", " ", "una", " ", "lista", " ", "de", " ", "valores"}]}], 
+   "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"FindSequenceFunction", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "2", ",", "7", ",", "14", ",", "23"}], "}"}], 
+     ",", "n"}], "]"}], "\n", 
+   RowBox[{
+    RowBox[{"-", "2"}], "+", 
+    SuperscriptBox["n", "2"]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Ejemplo", " ", "5"}], ",", " ", 
+     RowBox[{
+     "graficar", " ", "una", " ", "lista", " ", "de", " ", "valores", " ", 
+      "generada", " ", "por", " ", "una", " ", "f\[OAcute]rmula", " ", "de", 
+      " ", "recurrencia"}]}], "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"c", "[", "1", "]"}], "=", 
+     RowBox[{"-", "1"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"c", "[", "n_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"c", "[", 
+      RowBox[{"n", "-", "1"}], "]"}], "+", 
+     RowBox[{"2", "n"}], "-", "1"}]}], "\[IndentingNewLine]", 
+   RowBox[{"DiscretePlot", "[", 
+    RowBox[{
+     RowBox[{"c", "[", "n", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", "25"}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"n", ",", 
+        RowBox[{"c", "[", "n", "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"n", ",", "1", ",", "25"}], "}"}]}], "]"}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Ejemplo", " ", "6"}], ",", " ", 
+     RowBox[{
+     "encotrar", " ", "la", " ", "f\[OAcute]rmula", " ", "expl\[IAcute]cita", 
+      " ", "a", " ", "partir", " ", "de", " ", "la", " ", "recursiva"}]}], 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"RSolve", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"h", "[", "n", "]"}], "\[Equal]", 
+        RowBox[{
+         RowBox[{"2", "\[Times]", 
+          RowBox[{"h", "[", 
+           RowBox[{"n", "-", "1"}], "]"}]}], "+", "1"}]}], ",", 
+       RowBox[{
+        RowBox[{"h", "[", "1", "]"}], "\[Equal]", "1"}]}], "}"}], ",", 
+     RowBox[{"h", "[", "n", "]"}], ",", "n"}], "]"}], "\n", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"h", "[", "n", "]"}], "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "1"}], "+", 
+       SuperscriptBox["2", "n"]}]}], "}"}], "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.6973329879465857`*^9, 3.697333239558977*^9}}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.6973329797391157`*^9}]
+},
+WindowSize->{1280, 637},
+WindowMargins->{{Automatic, 115}, {-26, Automatic}},
+Magnification:>2. Inherited,
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 819, 22, 257, "Input"],
+Cell[1402, 46, 264, 4, 61, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1703, 55, 1765, 46, 257, "Input"],
+Cell[3471, 103, 485, 9, 140, "Output"],
+Cell[3959, 114, 773, 19, 140, "Output"]
+}, Open  ]],
+Cell[4747, 136, 800, 20, 335, "Input"],
+Cell[5550, 158, 2860, 80, 140, "Input"],
+Cell[8413, 240, 89, 1, 140, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

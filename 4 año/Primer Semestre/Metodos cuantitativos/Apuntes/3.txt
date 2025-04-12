@@ -1,0 +1,41 @@
+Repaso
+
+Arbol
+Más facil con SumaProducto
+
+***: debe sumar cien en las columnas
+A Posteriori: debe sumar cien en las  filas 
+
+rama con información: siempre va un evento 
+	se utiliza los valores A Posteriori
+
+Pronosticos
+columna del periodo(x)
+no es necesario hacer el análisis de datos
+R^2 mayor a 0.8
+	si no es así no es una buena regresión
+
+hold
+valores iniciales siempre
+At= igual al primer valor de Y
+Tt=0
+cuando no me dan valores
+	a= 
+	b=  a y b se puede colocar cualquier valor y luego conocer los valores con Solver
+
+
+Inventario
+cuando agregar el costo de compra al costo total: Se agrega cuando hay diferencias es los precios unitarios. Ya sea por descuento por cantidad, diferentes proveedores o diferencias en el método de transporte
+
+	⁃	Si se hacen los calculos dos veces, ya que las probabilidades varian, ejemplo: buenanota tenia probabilidades diferentes al patear el penal
+
+D= si va den el valor diario, lo multiplico por 350
+sube un **% = 1**%
+
+Costo de almacenar = Ch
+Inventario optimo EQQ = Q 
+CT = costo total
+
+Calcular Z = NORMSINV(Porcentaje)
+
+SS = Z * Desviación

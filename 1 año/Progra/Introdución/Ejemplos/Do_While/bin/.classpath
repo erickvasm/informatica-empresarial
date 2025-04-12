@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="Do_While/src/|EjemploIf/src/|EjCont/src/|EjemMet/src/|SentenciSwitch/src/|EjIfAnidado/src/|EjemploWhile/src/|ForSentencia/src/|OperacionSuma/src/|operadores/src/" kind="src" path=""/>
+	<classpathentry kind="src" path="Do_While/src"/>
+	<classpathentry kind="src" path="EjCont/src"/>
+	<classpathentry kind="src" path="EjemMet/src"/>
+	<classpathentry kind="src" path="EjemploIf/src"/>
+	<classpathentry kind="src" path="EjemploWhile/src"/>
+	<classpathentry kind="src" path="EjIfAnidado/src"/>
+	<classpathentry kind="src" path="ForSentencia/src"/>
+	<classpathentry kind="src" path="SentenciSwitch/src"/>
+	<classpathentry kind="output" path="Do_While/bin"/>
+</classpath>

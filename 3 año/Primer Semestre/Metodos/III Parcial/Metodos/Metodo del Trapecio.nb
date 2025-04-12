@@ -1,0 +1,154 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5423,        146]
+NotebookOptionsPosition[      4814,        126]
+NotebookOutlinePosition[      5217,        142]
+CellTagsIndexPosition[      5174,        139]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Trapecio", "[", 
+     RowBox[{"a_", ",", "b_", ",", "n_", ",", "F_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"h", "=", "0"}], ",", "aproximacion", ","}], " ", "}"}], 
+      "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{"Calculo", " ", "del", " ", "valor", " ", "de", " ", "h"}], 
+       "*)"}], "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"h", "=", 
+        FractionBox[
+         RowBox[{"b", "-", "a"}], "1"]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"aproximacion", "=", 
+        RowBox[{"N", "[", 
+         RowBox[{
+          FractionBox[
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"F", "[", "a", "]"}], "+", 
+              RowBox[{"F", "[", "b", "]"}]}], ")"}], "\[Times]", "h"}], "2"], 
+          ",", "10"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<El valor real de la integral es: \>\"", ",", 
+         RowBox[{"NIntegrate", "[", 
+          RowBox[{
+           RowBox[{"F", "[", "x", "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "0", ",", "2"}], "}"}]}], "]"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<LA APROXIMACI\[CapitalOAcute]N ES: \>\"", ",", "aproximacion"}], 
+        "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**", "**", "**", "**", "**", "**", "**", "**"}], 
+   "********)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"a", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b", "=", "2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"F", "[", "x_", "]"}], ":=", 
+    SuperscriptBox["\[ExponentialE]", 
+     SuperscriptBox["x", "2"]]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Trapecio", "[", 
+   RowBox[{"a", ",", "b", ",", "F"}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.739824209216654*^9, 3.7398242417449656`*^9}, {
+  3.7398242784251633`*^9, 3.7398242793625374`*^9}, {3.739824607834161*^9, 
+  3.7398247430177307`*^9}, {3.7398249581066113`*^9, 3.739825046107052*^9}, {
+  3.7398251340049286`*^9, 3.7398251342747107`*^9}, {3.739825169238629*^9, 
+  3.739825191007105*^9}, {3.7398253213988905`*^9, 3.73982534291041*^9}, {
+  3.7398254721170144`*^9, 3.7398255223337297`*^9}, {3.7712457946937056`*^9, 
+  3.771245873588989*^9}, {3.7712459380405874`*^9, 3.77124594988107*^9}, {
+  3.7712459847105484`*^9, 3.771246019210249*^9}, {3.7712460793505783`*^9, 
+  3.7712461086124353`*^9}, {3.771246162099784*^9, 3.7712462139562016`*^9}, {
+  3.7712463751328635`*^9, 3.771246477319621*^9}, {3.7712465473503304`*^9, 
+  3.7712466229175696`*^9}, {3.7712467776610947`*^9, 3.771246790512742*^9}, {
+  3.8363076356625996`*^9, 3.8363076793201895`*^9}},
+ CellLabel->"In[81]:=",ExpressionUUID->"d65e5248-4c3e-4e57-9efb-adfd233fb5ce"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El valor real de la integral es: \"\>", "\[InvisibleSpace]", 
+   "16.452627765507252`"}],
+  SequenceForm["El valor real de la integral es: ", 16.452627765507252`],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.771246588428028*^9, 3.7712466152876873`*^9}, 
+   3.77124665088297*^9, {3.8363076604951477`*^9, 3.8363076809287786`*^9}},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[81]:=",ExpressionUUID->"13fccfd5-d9bd-4bf8-bdcf-723f8f1c6436"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"LA APROXIMACI\[CapitalOAcute]N ES: \"\>", "\[InvisibleSpace]", 
+   "55.5981500331442390781`10."}],
+  SequenceForm[
+  "LA APROXIMACI\[CapitalOAcute]N ES: ", 55.5981500331442390781`10.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.771246588428028*^9, 3.7712466152876873`*^9}, 
+   3.77124665088297*^9, {3.8363076604951477`*^9, 3.8363076809317784`*^9}},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[81]:=",ExpressionUUID->"b1a2e6a1-773d-4201-8577-e70661e5a636"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{783, 571},
+WindowMargins->{{65, Automatic}, {Automatic, 14}},
+FrontEndVersion->"12.2 para Microsoft Windows (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"fbca749b-2945-4ed2-9e72-11712f5e3e68"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 3153, 73, 413, "Input",ExpressionUUID->"d65e5248-4c3e-4e57-9efb-adfd233fb5ce"],
+Cell[CellGroupData[{
+Cell[3758, 99, 502, 10, 21, "Print",ExpressionUUID->"13fccfd5-d9bd-4bf8-bdcf-723f8f1c6436"],
+Cell[4263, 111, 523, 11, 23, "Print",ExpressionUUID->"b1a2e6a1-773d-4201-8577-e70661e5a636"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,203 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6101,        195]
+NotebookOptionsPosition[      5202,        159]
+NotebookOutlinePosition[      5581,        175]
+CellTagsIndexPosition[      5538,        172]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Sumarnaturales", "[", "n_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"x", "=", "0"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", " ", 
+         RowBox[{"i", "\[LessEqual]", "n"}], ",", 
+         RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"x", "=", 
+           RowBox[{"x", "+", "i"}]}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"Return", "[", "x", "]"}], ";"}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{
+     "\"\<La suma de los primeros \>\"", ",", "n", ",", " ", 
+      "\"\< n\[UAcute]meros naturales, corresponde a: \>\"", ",", "x"}], 
+     "]"}], ";"}], "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"Ojo", ",", " ", 
+    RowBox[{
+    "lo", " ", "usual", " ", "para", " ", "dar", " ", "la", " ", "saldida", 
+     " ", "ser\[IAcute]a", " ", "con", " ", "Print"}], ",", " ", 
+    RowBox[{
+    "pero", " ", "la", " ", "funci\[OAcute]n", " ", "Timing", " ", "devuelve",
+      " ", 
+     RowBox[{"(", 
+      RowBox[{"tiempo", ",", 
+       RowBox[{
+       "valor", " ", "obtenido", " ", "por", " ", "la", " ", "rutina"}]}], 
+      ")"}], " ", "entonces", " ", "mejor", " ", "damos", " ", "la", " ", 
+     "salida", " ", "con", " ", "un", " ", "Return"}]}], "*)"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.808598154994281*^9, 3.8085983738096795`*^9}, {
+  3.808598608597764*^9, 3.808598630471387*^9}, {3.808598661414901*^9, 
+  3.808598774754784*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sumarnaturales", "[", "100000", "]"}]], "Input",
+ CellChangeTimes->{{3.808598359190338*^9, 3.8085983615095863`*^9}, {
+  3.8085987047470083`*^9, 3.8085987050488358`*^9}}],
+
+Cell[BoxData["5000050000"], "Output",
+ CellChangeTimes->{
+  3.808598637916421*^9, {3.8085986908988895`*^9, 3.80859870654941*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"Timing", "[", 
+   RowBox[{"Sumarnaturales", "[", "100000000", "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.8085985776467667`*^9, 3.8085985901757607`*^9}, {
+  3.8085986455907364`*^9, 3.808598646153174*^9}, {3.8085986933955183`*^9, 
+  3.8085986960834866`*^9}, {3.8085987991284666`*^9, 3.8085987994465866`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"150.90625`", ",", "5000000050000000"}], "}"}]], "Output",
+ CellChangeTimes->{3.808598696815321*^9, 3.808598959058672*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"Timing", "[", 
+   RowBox[{"Sumarnaturales", "[", "10000", "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.8085989897597694`*^9, 3.808598996590523*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.015625`", ",", "50005000"}], "}"}]], "Output",
+ CellChangeTimes->{3.8085989984433155`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Otra", " ", "manera", " ", "de", " ", "encontrar", " ", "la", " ", "suma",
+     " ", "de", " ", "n", " ", "n\[UAcute]meros", " ", "naturales"}], 
+   "*)"}]}]], "Input",
+ CellChangeTimes->{{3.808599367011952*^9, 3.8085993962388673`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Sumanatur2", "[", "n_", "]"}], ":=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"n", "\[GreaterSlantEqual]", "0"}], ",", 
+     RowBox[{"Return", "[", 
+      FractionBox[
+       RowBox[{"n", 
+        RowBox[{"(", 
+         RowBox[{"n", "+", "1"}], ")"}]}], "2"], "]"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.808599019611106*^9, 3.8085990308032084`*^9}, {
+   3.8085991505043354`*^9, 3.8085992200904675`*^9}, 3.8085992508623037`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"Sumanatur2", "[", "100", "]"}]}]], "Input",
+ CellChangeTimes->{{3.808599264944126*^9, 3.808599270676116*^9}}],
+
+Cell[BoxData["5050"], "Output",
+ CellChangeTimes->{3.808599270914485*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"Timing", "[", 
+   RowBox[{"Sumanatur2", "[", "100000000", "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.808599410215275*^9, 3.808599437985304*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.`", ",", "5000000050000000"}], "}"}]], "Output",
+ CellChangeTimes->{{3.808599422178565*^9, 3.8085994384877768`*^9}}]
+}, Open  ]]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"11.0 para Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1798, 45, 440, "Input"],
+Cell[CellGroupData[{
+Cell[2381, 69, 193, 3, 45, "Input"],
+Cell[2577, 74, 129, 2, 45, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2743, 81, 369, 6, 97, "Input"],
+Cell[3115, 89, 161, 3, 45, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3313, 97, 232, 4, 126, "Input"],
+Cell[3548, 103, 132, 3, 45, "Output"]
+}, Open  ]],
+Cell[3695, 109, 316, 7, 75, "Input"],
+Cell[4014, 118, 499, 14, 92, "Input"],
+Cell[CellGroupData[{
+Cell[4538, 136, 167, 3, 75, "Input"],
+Cell[4708, 141, 73, 1, 45, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4818, 147, 207, 4, 97, "Input"],
+Cell[5028, 153, 158, 3, 78, "Output"]
+}, Open  ]]
+}
+]
+*)
+

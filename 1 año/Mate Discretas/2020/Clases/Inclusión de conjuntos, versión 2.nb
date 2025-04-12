@@ -1,0 +1,147 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4726,        139]
+NotebookOptionsPosition[      4267,        119]
+NotebookOutlinePosition[      4645,        135]
+CellTagsIndexPosition[      4602,        132]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Inclusion", "[", 
+    RowBox[{"A_", ",", "B_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Inc", "=", 
+        RowBox[{"{", "}"}]}], ",", "i"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"i", "=", "1"}], ",", 
+        RowBox[{"i", "\[LessEqual]", " ", 
+         RowBox[{"Length", "[", "A", "]"}]}], ",", 
+        RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"MemberQ", "[", 
+             RowBox[{"B", ",", 
+              RowBox[{"A", "[", 
+               RowBox[{"[", "i", "]"}], "]"}]}], "]"}], "\[Equal]", "True"}], 
+           ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Inc", "=", 
+             RowBox[{"Append", "[", 
+              RowBox[{"Inc", ",", 
+               RowBox[{"A", "[", 
+                RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}], ";"}]}], 
+          "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}],
+       ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"A", "\[Equal]", "Inc"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Print", "[", 
+          RowBox[{
+          "\"\<El conjunto A=\>\"", ",", " ", "A", ",", " ", 
+           "\"\<, es subconjunto del conjunto B=\>\"", ",", "B"}], "]"}], 
+         ";"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{
+         "\"\<El conjunto A=\>\"", ",", " ", "A", ",", " ", 
+          "\"\<, no es un subconjunto del conjunto B=\>\"", ",", "B"}], 
+         "]"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.8063647805696545`*^9, 3.806364792126122*^9}, {
+   3.8063655316086917`*^9, 3.8063656153692846`*^9}, {3.806365649019295*^9, 
+   3.8063657934273086`*^9}, {3.806365943817751*^9, 3.8063659969509544`*^9}, 
+   3.8063664083379245`*^9, {3.806366505452104*^9, 3.806366673983629*^9}, {
+   3.8063667728324685`*^9, 3.8063668170093184`*^9}, {3.8063668977686195`*^9, 
+   3.8063668991012454`*^9}, {3.806408069109543*^9, 3.806408069336445*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"A", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "3"}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.806365800459637*^9, 3.8063658098492384`*^9}, {
+  3.8063664363697815`*^9, 3.806366436783536*^9}, {3.806366693846964*^9, 
+  3.8063666955362234`*^9}, {3.806366924424124*^9, 3.8063669374639206`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"B", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "5"}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.8063658126883073`*^9, 3.8063658193713827`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Inclusion", "[", 
+  RowBox[{"A", ",", "B"}], "]"}]], "Input",
+ CellChangeTimes->{{3.8063658236409492`*^9, 3.8063658294811*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El conjunto A=\"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "3"}], "}"}], 
+   "\[InvisibleSpace]", "\<\", no es un subconjunto del conjunto B=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "5"}], "}"}]}],
+  SequenceForm[
+  "El conjunto A=", {1, 3}, ", no es un subconjunto del conjunto B=", {1, 2, 
+   5}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8063660103014956`*^9, {3.806366428130275*^9, 3.806366440459159*^9}, {
+   3.806366662112694*^9, 3.806366699781649*^9}, {3.8063669175609035`*^9, 
+   3.806366940809103*^9}, 3.8064083259052134`*^9}]
+}, Open  ]]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>2. Inherited,
+FrontEndVersion->"11.0 para Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2317, 55, 722, "Input"],
+Cell[2878, 77, 334, 7, 61, "Input"],
+Cell[3215, 86, 196, 5, 61, "Input"],
+Cell[CellGroupData[{
+Cell[3436, 95, 151, 3, 61, "Input"],
+Cell[3590, 100, 661, 16, 44, "Print"]
+}, Open  ]]
+}
+]
+*)
+

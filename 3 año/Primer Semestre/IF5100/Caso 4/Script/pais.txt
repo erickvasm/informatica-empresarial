@@ -1,0 +1,86 @@
+CREATE TABLE public.bitacoras_pais_junio2021 PARTITION OF public."BitacoraPais"
+FOR VALUES FROM ('2021-06-01') TO ('2021-06-30');
+
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarPais() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraPais" VALUES (NULL,NULL,CURRENT_USER,tipo_accion,
+											NOW(),NEW."id_pais",NEW."nombre");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraPais_IA AFTER INSERT ON public."pais" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarPais();
+
+-- INSERT
+INSERT INTO "pais" VALUES (16,'Mexico');
+SELECT * FROM "BitacoraPais";
+
+
+				--- [ELIMINAR]
+
+-- [FUNCTION]
+	CREATE OR REPLACE FUNCTION EliminarPais() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraPais" VALUES (NULL,NULL,CURRENT_USER,tipo_accion,
+											NOW(),OLD."id_pais",OLD."nombre");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraPais_DB BEFORE DELETE ON public."pais"
+FOR EACH ROW EXECUTE PROCEDURE EliminarPais();
+
+-- Eliminar
+DELETE FROM "pais" WHERE "id_pais"=1
+SELECT * FROM "BitacoraPais";
+
+
+				--- [ACTUALIZAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarPais() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraPais" VALUES (OLD."id_pais",OLD."nombre",CURRENT_USER,tipo_accion,
+											NOW(),NEW."id_pais",NEW."nombre");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraPais_UB BEFORE UPDATE ON public."pais"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarPais();
+
+-- Actualizar
+UPDATE "pais" SET "nombre" = 'Venezuela' WHERE "id_pais"=1;
+SELECT * FROM "BitacoraPais";

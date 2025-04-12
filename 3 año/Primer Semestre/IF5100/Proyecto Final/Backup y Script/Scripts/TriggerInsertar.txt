@@ -1,0 +1,427 @@
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarTelefono() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoratelefonos" VALUES (NULL,NULL,NEW."id_telefono",NEW."descripcion",CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoratelefonos_IA AFTER INSERT ON public."telefonos" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarTelefono();
+
+-- INSERT
+INSERT INTO "telefonos" VALUES (1,'fijo');
+SELECT * FROM "bitacoratelefonos";
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarProvincia() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoraprovincias" VALUES (NULL,NULL,NEW."id_provincia",NEW."nombre",CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoraprovincia_IA AFTER INSERT ON public."provincias" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarProvincia();
+
+-- INSERT
+INSERT INTO "provincias" VALUES (1,'Guanacaste');
+SELECT * FROM "bitacoraprovincias";
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarPaises() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "bitacorapaises" VALUES (NULL,NULL,NEW."id_pais",NEW."nombre",CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacorapaises_IA AFTER INSERT ON public."paises" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarPaises();
+
+-- INSERT
+INSERT INTO "paises" VALUES (1,'Costa Rica');
+SELECT * FROM "bitacorapaises";
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarDistrito() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoradistritos" VALUES (NULL,NULL,NEW."id_distrito",NEW."nombre",CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoradistrito_IA AFTER INSERT ON public."distritos" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarDistrito();
+
+-- INSERT
+INSERT INTO "distritos" VALUES (1,'distrito1');
+SELECT * FROM "bitacoradistritos";
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarCanton() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoracantones" VALUES (NULL,NULL,NEW."id_canton",NEW."nombre",CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoracantones_IA AFTER INSERT ON public."cantones" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarCanton();
+
+-- INSERT
+INSERT INTO "cantones" VALUES (1,'Tilaran');
+SELECT * FROM "bitacoracantones";
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarBarrios() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "bitacorabarrios" VALUES (NULL,NULL,NEW."id_barrio",NEW."nombre",CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacorabarrios_IA AFTER INSERT ON public."barrios" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarBarrios();
+
+-- INSERT
+INSERT INTO "barrios" VALUES (1,'Ciudadela');
+SELECT * FROM "bitacorabarrios";
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarEmail() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoraemails" VALUES (NULL,NULL,NEW."id_emails",NEW."descripcion",CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoraemails_IA AFTER INSERT ON public."emails" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarEmail();
+
+-- INSERT
+INSERT INTO "emails" VALUES (1,'Gmail');
+SELECT * FROM "bitacoraemails";
+
+//////////////////////////////////////////////////////////////////////////
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarGradoDificultad() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoragrado_dificultades" VALUES (NULL,NULL,NEW."id_grado_dificultad",NEW."dificultad",CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoragrado_dificultades_IA AFTER INSERT ON public."grado_dificultades" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarGradoDificultad();
+
+-- INSERT
+INSERT INTO "grado_dificultades" VALUES (1,'facil');
+SELECT * FROM "bitacoragrado_dificultades";
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarDireccion() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoradirecciones" VALUES (NULL,NULL,NULL,NULL,NULL,NULL,NEW."id_direccion",NEW."id_pais",
+												  NEW."id_provincia",NEW."id_canton",NEW."id_distrito",NEW."id_barrio",CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoradirecciones_IA AFTER INSERT ON public."direcciones" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarDireccion();
+
+-- INSERT
+INSERT INTO "direcciones" VALUES (1,1,1,1,1,1);
+SELECT * FROM "bitacoradirecciones";
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarPersona() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "bitacorapersonas" VALUES (NULL,NULL,NULL,NULL,NULL,NULL,NULL,NEW."cedula",NEW."nombre",NEW."genero",
+											   NEW."fecha_nacimiento",NEW."id_telefono",NEW."id_email",NEW."id_direccion",
+											   CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacorapersonas_IA AFTER INSERT ON public."personas" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarPersona();
+
+-- INSERT
+INSERT INTO "personas" VALUES ('504340211','Moises',1,'2000-08-21',1,1,1);
+SELECT * FROM "bitacorapersonas";
+
+///////////////////////////////////////////////////////////////////////////
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarPractica() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "bitacorapracticas" VALUES (NULL,NULL,NULL,NULL,NULL,NEW."id_practica",NEW."codigo_practica",NEW."titulo",
+												NEW."id_grado_dificultad",NEW."profesor_aplico",CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacorapracticas_IA AFTER INSERT ON public."practicas" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarPractica();
+
+-- INSERT
+INSERT INTO "practicas" VALUES (1,1,'BD',1,'Jose');
+SELECT * FROM "bitacorapracticas";
+
+//////////////////////////////////////////////////////////////////////////
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarProfesor() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoraprofesores" VALUES (NULL,NULL,NULL,NULL,NEW."id_profesor",NEW."cedula",NEW."id_practica",
+												NEW."fecha_diseno_practica",CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoraprofesores_IA AFTER INSERT ON public."profesores" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarProfesor();
+
+-- INSERT
+INSERT INTO "profesores" VALUES (1,'504340211',1,'2021-07-10');
+SELECT * FROM "bitacoraprofesores";
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarPersonaReferencia() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "bitacorapersonas_referencias" VALUES (NULL,NULL,NULL,NEW."id_persona_referencia",NEW."cedula",NEW."parentesco",
+												CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacorapersonas_referencia_IA AFTER INSERT ON public."personas_referencias" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarPersonaReferencia();
+
+-- INSERT
+INSERT INTO "personas_referencias" VALUES (1,'504340211','hermano');
+SELECT * FROM "bitacorapersonas_referencias";
+
+//////////////////////////////////////////////////////////////////////////////
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarControlesEscritos() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoracontroles_escritos" VALUES (NULL,NULL,NULL,NULL,NULL,NEW."id_control_escrito",NEW."numero_control",
+												NEW."numero_preguntas",NEW."fecharealizacion",NEW."nota",CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoracontroles_escritos_IA AFTER INSERT ON public."controles_escritos" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarControlesEscritos();
+
+-- INSERT
+INSERT INTO "controles_escritos" VALUES (1,1,1,'2021-01-01',100);
+SELECT * FROM "bitacoracontroles_escritos";
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarAlumnos() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoraalumnos" VALUES (NULL,NULL,NULL,NULL,NULL,NULL,NULL,NEW."id_alumno",NEW."numero_matricula",
+												NEW."numero_grupo",NEW."cedula",NEW."id_persona_referencia",
+											  NEW."id_control_escrito",NEW."id_practica",CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoraalumnos_IA AFTER INSERT ON public."alumnos" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarAlumnos();
+
+-- INSERT
+INSERT INTO "alumnos" VALUES (1,1,1,'504340211',1,1,1);
+SELECT * FROM "bitacoraalumnos";

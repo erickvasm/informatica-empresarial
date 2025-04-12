@@ -1,0 +1,226 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7843,        218]
+NotebookOptionsPosition[      6713,        191]
+NotebookOutlinePosition[      7137,        207]
+CellTagsIndexPosition[      7094,        204]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Simpson", "[", 
+    RowBox[{"F_", ",", "A_", ",", "B_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"a", "=", "A"}], ",", 
+       RowBox[{"b", "=", "B"}], ",", 
+       RowBox[{"h", "=", "0"}], ",", 
+       RowBox[{"resultado", "=", "0"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"h", "=", 
+       FractionBox[
+        RowBox[{"b", "-", "a"}], "2"]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"resultado", "=", 
+       RowBox[{
+        FractionBox["h", "3"], "*", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"F", "[", "a", "]"}], "+", 
+          RowBox[{"4", "*", 
+           RowBox[{"F", "[", 
+            RowBox[{"a", "+", "h"}], "]"}]}], "+", 
+          RowBox[{"F", "[", "b", "]"}]}], ")"}]}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<El resultado con el metodo es: \>\"", ",", 
+        RowBox[{"N", "[", "resultado", "]"}]}], "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Fx", "[", "x_", "]"}], "=", 
+   RowBox[{
+    SubsuperscriptBox["\[Integral]", "0", "4"], 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", "x", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"2", "x"}], "]"}]}], "\[Minus]", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"x", "\[Minus]", "2"}], ")"}], "2"]}], ")"}], 
+     RowBox[{"\[DifferentialD]", "x"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"a", "=", "4"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Simpson", "[", 
+   RowBox[{"Fx", ",", "a", ",", "b"}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBmIQHaNVvd5g4WvHS31NYPrF/NbNIFrn7objIJovUkvL
+BUgzRWppg+hLXaxR1lPeOKoaVkaD6Eu6cnGpQFrFRiAXRC9mXzEPRP/bsx1M
+Zy0puA+i26s6wfTu9jSGNCC9JnslmDZmCtcE0c1s9fogusDSzB5EH/vd6gCi
+fRRW+oNoNbfNAWDxu1HdIHpV/eoeEP3rpOomEO13shJMf7tsfRhEz0r8A6ZL
+Tpy8CaJjmr0eguj6H6KvQfSCuigwfWJLwDcQzbRQ4zuITj7AyJ4OpHfdUuEF
+0Wse3RUB0bP8U8RBNADYoZx1
+  "],
+ CellLabel->
+  "In[153]:=",ExpressionUUID->"ada829f2-6424-4fa0-abf0-77b656143915"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado con el metodo es: \"\>", "\[InvisibleSpace]", 
+   "7.794601454976449`"}],
+  SequenceForm["El resultado con el metodo es: ", 7.794601454976449],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7083888390640535`*^9, {3.7083889294192214`*^9, 3.7083889330764303`*^9}, 
+   3.8358125745629997`*^9, 3.8358987310062857`*^9, 3.8358991268137703`*^9, 
+   3.835899647642028*^9, 3.835899911543253*^9, 3.8358999513047314`*^9, 
+   3.8359002867427006`*^9, 3.835900421896554*^9, 3.8359005512535152`*^9, 
+   3.835901031367957*^9, 3.8359013338204775`*^9, 3.83590147420415*^9, 
+   3.8359017093945885`*^9, 3.835901789813799*^9, 3.835901883632655*^9, 
+   3.8359021604336514`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[153]:=",ExpressionUUID->"3d5d4a50-abf4-4d06-bc4a-4a765bf76fc6"]
+}, Open  ]],
+
+Cell["\<\
+-----------------------------------------------------------------------------
+b= inicio de integral     -----   a = fin de integral
+S(a,(a+b)/2)  \
+\>", "Text",
+ CellChangeTimes->{{3.835899359103653*^9, 3.8358994196336884`*^9}, {
+   3.8359003806820374`*^9, 3.8359004005152235`*^9}, {3.8359007603988605`*^9, 
+   3.8359007752078*^9}, 3.8359009028481674`*^9, {3.835900983465988*^9, 
+   3.835900993779748*^9}, {3.8363095374378405`*^9, 
+   3.8363095429461155`*^9}},ExpressionUUID->"82c640fb-b943-4304-8b10-\
+912bbf35ff9b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"a1", "=", "4"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b2", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<S(\>\"", ",", "a1", ",", "\"\<,\>\"", ",", 
+   RowBox[{"N", "[", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"a1", "+", "b2"}], ")"}], "/", "2"}], "]"}], ",", "\"\<)\>\""}],
+   "]"}]}], "Input",
+ CellChangeTimes->{{3.835900477585433*^9, 3.835900511740579*^9}, {
+  3.835900637321909*^9, 3.8359007454827957`*^9}, {3.835900839249843*^9, 
+  3.835900868204751*^9}, {3.835901037389337*^9, 3.835901040052021*^9}, {
+  3.8359021414174943`*^9, 3.835902141620919*^9}},
+ CellLabel->
+  "In[149]:=",ExpressionUUID->"9cf6a4b0-ad51-4274-8490-f9dbcf97f2e5"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"S(\"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "2.`", 
+   "\[InvisibleSpace]", "\<\")\"\>"}],
+  SequenceForm["S(", 4, ",", 2., ")"],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.835900677427436*^9, 3.835900747508808*^9}, {
+   3.835900853826642*^9, 3.8359008698818603`*^9}, 3.83590104831046*^9, 
+   3.8359021544614367`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[149]:=",ExpressionUUID->"132fd974-901a-4b1d-b8ca-31bf5f0e7a0c"]
+}, Open  ]],
+
+Cell["\<\
+
+S((a+b)/2,b)\
+\>", "Text",
+ CellChangeTimes->{{3.8359009138054743`*^9, 3.835900918327264*^9}, 
+   3.835901044350608*^9, 
+   3.835902149777586*^9},ExpressionUUID->"41dab6f3-0eaa-4430-9aa2-\
+6f568dae296f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<S(\>\"", ",", 
+   RowBox[{"N", "[", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"a1", "+", "b2"}], ")"}], "/", "2"}], "]"}], ",", "\"\<,\>\"", 
+   ",", "b2", ",", "\"\<)\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.8359009345097713`*^9, 3.835900955103798*^9}},
+ CellLabel->
+  "In[152]:=",ExpressionUUID->"8dda5977-1d3e-402a-8de7-39027cc9ee57"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"S(\"\>", "\[InvisibleSpace]", "2.`", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\")\"\>"}],
+  SequenceForm["S(", 2., ",", 0, ")"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8359009569638147`*^9, 3.8359010501201344`*^9, 
+  3.8359021562865868`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[152]:=",ExpressionUUID->"d9970c3e-b990-425a-9883-af806c5aa9fc"]
+}, Open  ]]
+},
+WindowSize->{574.8, 582.},
+WindowMargins->{{Automatic, 13.200000000000045`}, {-27, Automatic}},
+FrontEndVersion->"12.2 para Microsoft Windows (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"20bf6295-e162-4344-8c69-7611464a24e2"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 2294, 63, 331, "Input",ExpressionUUID->"ada829f2-6424-4fa0-abf0-77b656143915"],
+Cell[2877, 87, 843, 16, 21, "Print",ExpressionUUID->"3d5d4a50-abf4-4d06-bc4a-4a765bf76fc6"]
+}, Open  ]],
+Cell[3735, 106, 527, 10, 81, "Text",ExpressionUUID->"82c640fb-b943-4304-8b10-912bbf35ff9b"],
+Cell[CellGroupData[{
+Cell[4287, 120, 735, 17, 83, "Input",ExpressionUUID->"9cf6a4b0-ad51-4274-8490-f9dbcf97f2e5"],
+Cell[5025, 139, 543, 12, 21, "Print",ExpressionUUID->"132fd974-901a-4b1d-b8ca-31bf5f0e7a0c"]
+}, Open  ]],
+Cell[5583, 154, 214, 7, 58, "Text",ExpressionUUID->"41dab6f3-0eaa-4430-9aa2-6f568dae296f"],
+Cell[CellGroupData[{
+Cell[5822, 165, 401, 10, 44, "Input",ExpressionUUID->"8dda5977-1d3e-402a-8de7-39027cc9ee57"],
+Cell[6226, 177, 471, 11, 21, "Print",ExpressionUUID->"d9970c3e-b990-425a-9883-af806c5aa9fc"]
+}, Open  ]]
+}
+]
+*)
+

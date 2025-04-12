@@ -1,0 +1,61 @@
+Simulación
+
+Ejercicio 1) La Portatil S.A
+Pasos
+	1.	Extrar datos (Analisis)
+	1.	Datos (costos, etc)
+	2.	Rango y probabilidada
+	2.	Se llena la cantidad de pruebas (simulaciones)
+	1.	Colocamos los tres primeros numeros, nos colocamos en la  primera selda 
+	2.	Inicio - Rellenar - Series - Columnas - Lineal - Incremento 1
+	3.	Para calcular la columna de los costos
+	1.	Datos - Analisis de datos - Generar numeros aleatorios 
+	2.	Numero de variables: cantidad de columnas a simular - Distribución: Discreta - Rango de entrada y probabilidades: Rango y probabilidad - Rango de salida: 
+	4.	Siguiente columna (costos de las partes)
+	1.	Datos - Generacion de numeros aleatorios
+	2.	Datos - Analisis de datos - Generar numeros aleatorios Numero de variables: cantidad de columnas a simular - Distribución: Uniforme: X y Y   Rango de salida:
+	5.	 Siguiente columna (demanda)
+	1.	Datos - Analisis de datos - Generar numeros aleatorios
+	2.	Numero de variables: cantidad de columnas a simular - Distribución: Normal: Media y Desviación Estandar - Rango de entrada y probabilidades: Rango y probabilidad - Rango de salida: 
+	6.	Realizar el resumen: se realiza con los datos de la utilidad
+
+
+Problema 1) Una empresa
+Mismos pasos pero...
+	1.	Definir Demanda y Probabilidad
+	2.	Colocar columnas: Simulacion, Demanda y Operaciones
+	1.	funcion de redondear en las operaciones
+	3.	Crear una clase
+	1.	numero mas pequeño hasta el mas grande de la columna operaciones
+	4.	Crear histograma
+	1.	Datos - Analisis de datos - Histograma - Rango de entrada: operaciones - Rango de clase: clase - Rotulos - Rango de salida: - Crear grafico
+	
+
+Problema 4) Dado
+Mismos pasos...
+	1.	Nada mas que  en este caso, en la generacion de  numeros aleatorios, en el numero de varibales van hacer 2, representado las columna dado 1 y dado 2 para hacerlo mas rapido. NOTA: distribución discreta
+
+
+Problema 5) Profesor
+Mismos pasos...
+	1.	En este caso en distribución noramal por que tiene un dato de media y desviación estandar.  
+
+
+Problema 1) Dado
+	⁃	La probabilidad se divide entre 7 por que:
+         1, 1, 1, 1, 1, 2 = 7 
+	⁃	Entonces seria 1/7 y la cara 6 es = 2/7
+
+
+Problema 3) Camión
+Hay que tomar en cuenta en las formulas la cantidad de camiones actuales y si compro 1 más.
+
+	⁃	Calcular columna de situación actual: costo actual + (si son 2 o 3 camiones entonces...) numero de camiones - 1 * costo de alquiler (Si no ...) 0
+	⁃	Se le resta 1 por que  la empresa ya tiene 1 camion
+	⁃	Calcular 1 camion adicional:  
+
+
+Problema 4) Bombillas
+Calcular promedio, desviacion,  etc. 
+Distribución discreta
+En este caso, en el histograma se realiza el % acumulado	

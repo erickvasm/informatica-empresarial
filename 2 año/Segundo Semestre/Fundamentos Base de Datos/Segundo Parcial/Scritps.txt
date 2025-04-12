@@ -1,0 +1,36 @@
+-- CREAR UNA BASE DE DATOS
+CREATE DATABASE prueba;
+
+-- USAR LA BASE DE DATOS
+USE prueba;
+
+-- CREAR LAS TABLAS
+
+CREATE TABLE IF NOT EXISTS clientes
+(
+    id_cliente INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Clave principal',
+    nombre1 VARCHAR(30),
+    nombre2 VARCHAR(30),
+    apellido1 VARCHAR(30),
+    apellido2 VARCHAR(30)
+);
+
+INSERT INTO clientes(nombre1, nombre2, apellido1, apellido2) values('Daniel','Alfredo','Soto','Soto');
+SELECT * FROM clientes;
+
+CREATE TABLE IF NOT EXISTS ventas
+(
+    id_factura INT AUTO_INCREMENT COMMENT 'Clave principal',
+    id_cliente INT NOT NULL,
+    cantidad   INT DEFAULT 0,
+    PRIMARY KEY(id_factura),
+    INDEX (id_cliente),
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
+);
+
+INSERT INTO ventas(id_cliente, cantidad) VALUES ('1', 500);
+SELECT * FROM ventas;
+
+
+-- ELIMINAR TODA LA BASE DATOS
+DROP DATABASE prueba;

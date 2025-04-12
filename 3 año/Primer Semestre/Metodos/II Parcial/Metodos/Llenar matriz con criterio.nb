@@ -1,0 +1,159 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5266,        151]
+NotebookOptionsPosition[      4769,        130]
+NotebookOutlinePosition[      5148,        146]
+CellTagsIndexPosition[      5105,        143]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"LlenarMatriz", "[", 
+     RowBox[{"m_", ",", "n_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x", "=", "m"}], ",", 
+        RowBox[{"y", "=", "n"}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{
+        "Necesitamos", " ", "crea", " ", "una", " ", "matriz", " ", 
+         "\"\<vac\[IAcute]a\>\"", " ", "de", " ", "ceros"}], ",", " ", 
+        RowBox[{
+        "en", " ", "la", " ", "cual", " ", "se", " ", "va", " ", "a", " ", 
+         "almacenar", " ", "lo", " ", "que", " ", "queremos"}]}], "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"T", "=", 
+        RowBox[{"ConstantArray", "[", 
+         RowBox[{"0", ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "y"}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", " ", 
+         RowBox[{"i", "\[LessEqual]", "x"}], ",", 
+         RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"For", "[", 
+           RowBox[{
+            RowBox[{"j", "=", "1"}], ",", 
+            RowBox[{"j", "\[LessEqual]", "y"}], ",", 
+            RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"i", "\[Equal]", "j"}], ",", 
+               RowBox[{
+                RowBox[{"T", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"i", ",", "j"}], "]"}], "]"}], "=", 
+                RowBox[{"2", "*", "i"}]}], ",", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{"i", "<", "j"}], ",", 
+                  RowBox[{
+                   RowBox[{"T", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"i", ",", "j"}], "]"}], "]"}], "=", 
+                   RowBox[{"i", "+", "j", "-", "2"}]}]}], "]"}], ";"}]}], 
+              "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"MatrixForm", "[", "T", "]"}], "]"}], ";"}]}], 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.80817793409546*^9, 3.8081779782743526`*^9}, {
+  3.8081780090926514`*^9, 3.808178028522938*^9}, {3.8081781011537004`*^9, 
+  3.8081782394655724`*^9}, {3.8081782796464367`*^9, 3.8081783253545065`*^9}, {
+  3.808178380506472*^9, 3.8081784328081274`*^9}, {3.830982972985525*^9, 
+  3.830983118167999*^9}, {3.8309890153143854`*^9, 3.8309890159299135`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"LlenarMatriz", "[", 
+  RowBox[{"4", ",", "5"}], "]"}]], "Input",
+ CellChangeTimes->{{3.808178333913395*^9, 3.8081783460616517`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"2", "1", "2", "3", "4"},
+     {"0", "4", "3", "4", "5"},
+     {"0", "0", "6", "5", "6"},
+     {"0", "0", "0", "8", "7"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{3.8081783467482595`*^9, 3.8081784003717527`*^9, 
+  3.808178437031603*^9, 3.8309831229096994`*^9, 3.8309890338750505`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.775848617504851*^9, 3.775848620974876*^9}}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.7758486231326265`*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7758486248376684`*^9, 3.775848653581213*^9}}]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"11.0 para Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2908, 68, 685, "Input"],
+Cell[CellGroupData[{
+Cell[3491, 92, 156, 3, 45, "Input"],
+Cell[3650, 97, 819, 21, 103, "Print"]
+}, Open  ]],
+Cell[4484, 121, 92, 1, 45, "Input"],
+Cell[4579, 124, 89, 1, 75, "Input"],
+Cell[4671, 127, 94, 1, 45, "Input"]
+}
+]
+*)
+

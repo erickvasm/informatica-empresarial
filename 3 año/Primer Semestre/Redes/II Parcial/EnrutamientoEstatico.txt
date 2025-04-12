@@ -1,0 +1,45 @@
+ENRUTAMIENTO ESTATICO
+
+El primer router lo apagamos.
+Colocamos el HWICR-2T en el puerto y encendemos. 
+Para el router que que vaya conectados a dos Raouters, hay que colocarle los dos puertos HWICR-2T.
+Hacemos este proceso con los demas Raoters
+Para las conexiones de los Routers elegimos el cable rojo con el reloj (Serial 0/1/0)
+Asignar las direcciones IPs para las conexiones
+
+
+CONFIGURAR ROUTERS (para conexion con swtich o pc)
+Entramos en CI y colocamos n
+enable
+configure terminal
+interface fastEthernet 0/0
+ip addres 192.168.1.#(1) 255.255.255.0
+no shutdown
+
+CONFIGURAR EL PUERTO SERIAL (para conexion con routers)
+exit
+interface serial 0/1/0
+ip address 162.16.0.#(1) 255.255.0.0
+no shutdown
+exit
+exit
+
+PARA EL ROUTER QUE VA CONECTADO A LOS DOS RAOUTERS
+Hacer la misma configuració para cada conexion (routers o pc)
+Hacer lo mismo para cada Router
+
+CONFIGURAR PCs
+En la primera PC confiuramos la direccion IP
+Mascara por defecto 
+Default Gatway: el que se configuro en el fastEthernet
+Hacer lo mismo para cada PC
+
+CONEXION DE ENRUTAMIENTO ESTATICO
+Vamos al Router 0 
+enable
+configure terminal
+ip route <red que desea conocer> 192.168.#(2).0 255.255.255.0 <desde el punto que lo va concer> 162.16.0.#(2)
+ip route <red que desea conocer> 192.17.0.0 255.255.0.0 <desde el punto que lo va concer> 162.16.0.#(2)
+ip route <red que desea conocer> 192.168.3.0 255.255.0.0 <desde el punto que lo va concer> 162.16.0.#(2)
+exit
+Hacer lo mismo para cada Router

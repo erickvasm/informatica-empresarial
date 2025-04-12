@@ -1,0 +1,271 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8933,        263]
+NotebookOptionsPosition[      8246,        234]
+NotebookOutlinePosition[      8596,        249]
+CellTagsIndexPosition[      8553,        246]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Ejercicio", " ", "1.3"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"diferencia", "[", 
+     RowBox[{"A_", ",", "B_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"lista1", "=", "A"}], ",", 
+        RowBox[{"lista2", "=", "B"}], ",", 
+        RowBox[{"resultado", "=", 
+         RowBox[{"{", "}"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"boolean", "=", "False"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"p", "=", 
+        RowBox[{"Length", "[", "lista1", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"n", "=", 
+        RowBox[{"Length", "[", "lista2", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"e", "=", "1"}], ",", 
+          RowBox[{"e", "<", "p"}], ",", 
+          RowBox[{"e", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"boolean", "=", "False"}], ";", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"For", " ", "[", 
+             RowBox[{
+              RowBox[{"j", "=", "1"}], ",", 
+              RowBox[{"j", "<", "n"}], ",", 
+              RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"If", " ", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"lista1", "[", 
+                  RowBox[{"[", "e", "]"}], "]"}], "==", 
+                 RowBox[{"lista2", "[", 
+                  RowBox[{"[", "j", "]"}], "]"}]}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"boolean", "=", "True"}], ";"}]}], 
+               "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+             "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+            RowBox[{"If", " ", "[", 
+             RowBox[{
+              RowBox[{"boolean", "\[Equal]", "False"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"resultado", "=", 
+                RowBox[{"Append", "[", 
+                 RowBox[{"resultado", ",", 
+                  RowBox[{"lista1", "[", 
+                   RowBox[{"[", "e", "]"}], "]"}]}], "]"}]}], ";"}]}], 
+             "\[IndentingNewLine]", "]"}]}]}]}], "\[IndentingNewLine]", " ", 
+         "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", "resultado", "]"}]}]}]}], "\[IndentingNewLine]",
+      "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"diferencia", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "3", ",", "7", ",", "9", ",", "10"}], 
+       "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "6", ",", "10", ",", "15"}], "}"}]}], 
+     "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.780947273934512*^9, 3.7809473007875643`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"3", ",", "7", ",", "9"}], "}"}]], "Print",
+ CellChangeTimes->{3.7809473034275084`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Ejercicio", " ", "1.9"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"evaluarLista", "[", 
+     RowBox[{"lista_", ",", "numero_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"resultado", "=", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{"i", "=", "1"}], ",", "x", ",", 
+        RowBox[{"m", "=", "0"}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"m", "=", 
+        RowBox[{"Length", "[", "lista", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"While", "[", " ", 
+        RowBox[{
+         RowBox[{"i", "\[LessEqual]", "m"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"x", "=", 
+           RowBox[{"Mod", "[", 
+            RowBox[{
+             RowBox[{"lista", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], ",", "numero"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"x", "\[Equal]", "0"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"resultado", "=", 
+              RowBox[{"Append", "[", 
+               RowBox[{"resultado", ",", 
+                RowBox[{"lista", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}], ";"}]}], 
+           "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"i", "++"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<Los elementos de \>\"", ",", "lista", ",", 
+         "\"\< divisibles por \>\"", ",", "numero", ",", " ", 
+         "\"\< son: \>\"", ",", "resultado"}], "]"}], ";"}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";", 
+   RowBox[{"evaluarLista", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2", ",", "3", ",", "6"}], "}"}], ",", "3"}], 
+    "]"}]}]}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Los elementos de \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3", ",", "6"}], "}"}], 
+   "\[InvisibleSpace]", "\<\" divisibles por \"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\" son: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "6"}], "}"}]}],
+  SequenceForm[
+  "Los elementos de ", {1, 2, 3, 6}, " divisibles por ", 3, " son: ", {3, 6}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7809473192050114`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Ejercicio", " ", "2.1"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"factorizar", "[", "n_", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"divisor", "=", "2"}], ",", 
+         RowBox[{"num", "=", "n"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Print", "[", 
+         RowBox[{
+         "\"\<Los factores del  n\[UAcute]mero \>\"", ",", "n", ",", 
+          "\"\< son:\>\""}], "]"}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"While", "[", 
+         RowBox[{
+          RowBox[{"num", "\[NotEqual]", "1"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Mod", "[", 
+               RowBox[{"num", ",", "divisor"}], "]"}], "\[Equal]", "0"}], ",", 
+             RowBox[{
+              RowBox[{"Print", "[", "divisor", "]"}], ";", 
+              RowBox[{"num", "=", 
+               RowBox[{"num", "/", "divisor"}]}]}], ",", 
+             RowBox[{"divisor", "++"}]}], "]"}], ";"}]}], 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}], ";"}]}], "\t", 
+      "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"factorizar", "[", "42", "]"}], ";"}]}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Los factores del  n\[UAcute]mero \"\>", "\[InvisibleSpace]", 
+   "42", "\[InvisibleSpace]", "\<\" son:\"\>"}],
+  SequenceForm["Los factores del  n\[UAcute]mero ", 42, " son:"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.780947342729493*^9}],
+
+Cell[BoxData["2"], "Print",
+ CellChangeTimes->{3.780947342729493*^9}],
+
+Cell[BoxData["3"], "Print",
+ CellChangeTimes->{3.7809473427451043`*^9}],
+
+Cell[BoxData["7"], "Print",
+ CellChangeTimes->{3.7809473427451043`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1520, 805},
+WindowMargins->{{511, Automatic}, {Automatic, 278}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 2939, 72, 430, "Input"],
+Cell[3522, 96, 126, 3, 22, "Print"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3685, 104, 1993, 51, 278, "Input"],
+Cell[5681, 157, 535, 12, 22, "Print"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6253, 174, 1423, 37, 202, "Input"],
+Cell[CellGroupData[{
+Cell[7701, 215, 297, 6, 22, "Print"],
+Cell[8001, 223, 69, 1, 22, "Print"],
+Cell[8073, 226, 71, 1, 22, "Print"],
+Cell[8147, 229, 71, 1, 22, "Print"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,45 @@
+------------------
+--EXTENCION
+-------------------
+CREATE EXTENSION dblink;
+
+----------------------
+--DE CONTROL A TRIBUNAL 
+-----------------------
+Select * from dblink(
+ 'dbname=tribunal port=5432 host=192.168.56.141 user=postgres password=linux',
+ 'select cedula,codelec,sexo,fechacaduc,junta,nombre,1apellido,2apellido from personas')
+as (cedula varchar,codelec varchar,sexo varchar,fechacaduc date,junta varchar,nombre varchar,"1apellido" varchar, "2apellido" varchar); 
+
+------[<<VISTA Profesores&Dblink(Personas)>>]		
+CREATE VIEW "DatosProfesoresCompletos"
+AS
+	SELECT * FROM dblink('dbname=ControlDeEvaluaciones port=5432 host=192.168.56.140 user=postgres password=linux',
+		'SELECT * FROM profesores') 
+			AS a (	
+					id_profesor integer,
+				  	cedula varchar(9),
+				  	fecha_diseno_practica date
+				 )
+				 
+			INNER JOIN 
+			
+				(
+					SELECT 
+					cedula AS cedula_tribunal,
+					codelec,
+					sexo,
+					fechacaduc,
+					junta,
+					nombre,
+					"1apellido",
+					"2apellido"
+					FROM personas
+				)
+							
+			AS b ON b.cedula_tribunal=a.cedula;
+			
+
+
+----[<<<<<<<<<SELECT A LA VISTA>>>>>>>>>]
+SELECT * FROM "DatosProfesoresCompletos";

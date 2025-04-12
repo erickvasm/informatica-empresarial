@@ -1,0 +1,9 @@
+Aplicaciones del modelo de programación lineal (Solver)
+
+	•	Al lado derecho no puedo tener variables solo constantes por eso se debe igualar 
+
+Pasos
+	1.	Variables
+	2.	Objetivo
+	3.	Restricciones y no negatividada
+	4.	Solver

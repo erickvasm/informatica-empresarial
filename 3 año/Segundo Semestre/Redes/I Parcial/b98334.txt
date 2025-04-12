@@ -1,0 +1,168 @@
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 9 bytes de datos:
+Respuesta desde 31.13.67.35: bytes=100 tiempo=112ms TTL=52
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 1, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 112ms, M ximo = 112ms, Media = 112ms
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 200 bytes de datos:
+Respuesta desde 31.13.67.35: bytes=200 tiempo=101ms TTL=52
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 1, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 101ms, M ximo = 101ms, Media = 101ms
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 300 bytes de datos:
+Respuesta desde 31.13.67.35: bytes=300 tiempo=108ms TTL=52
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 1, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 108ms, M ximo = 108ms, Media = 108ms
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 400 bytes de datos:
+Respuesta desde 31.13.67.35: bytes=400 tiempo=101ms TTL=52
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 1, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 101ms, M ximo = 101ms, Media = 101ms
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 500 bytes de datos:
+Respuesta desde 31.13.67.35: bytes=500 tiempo=104ms TTL=52
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 1, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 104ms, M ximo = 104ms, Media = 104ms
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 600 bytes de datos:
+Respuesta desde 31.13.67.35: bytes=600 tiempo=131ms TTL=52
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 1, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 131ms, M ximo = 131ms, Media = 131ms
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 700 bytes de datos:
+Respuesta desde 31.13.67.35: bytes=700 tiempo=104ms TTL=52
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 1, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 104ms, M ximo = 104ms, Media = 104ms
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 800 bytes de datos:
+Respuesta desde 31.13.67.35: bytes=800 tiempo=92ms TTL=52
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 1, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 92ms, M ximo = 92ms, Media = 92ms
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 900 bytes de datos:
+Respuesta desde 31.13.67.35: bytes=900 tiempo=125ms TTL=52
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 1, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 125ms, M ximo = 125ms, Media = 125ms
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 1000 bytes de datos:
+Respuesta desde 31.13.67.35: bytes=1000 tiempo=113ms TTL=52
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 1, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 113ms, M ximo = 113ms, Media = 113ms
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 1100 bytes de datos:
+Respuesta desde 31.13.67.35: bytes=1100 tiempo=133ms TTL=52
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 1, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 133ms, M ximo = 133ms, Media = 133ms
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 1200 bytes de datos:
+Respuesta desde 31.13.67.35: bytes=1200 tiempo=105ms TTL=52
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 1, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 105ms, M ximo = 105ms, Media = 105ms
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 1300 bytes de datos:
+Respuesta desde 31.13.67.35: bytes=1300 tiempo=103ms TTL=52
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 1, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 103ms, M ximo = 103ms, Media = 103ms
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 1400 bytes de datos:
+Respuesta desde 31.13.67.35: bytes=1400 tiempo=111ms TTL=52
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 1, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 111ms, M ximo = 111ms, Media = 111ms
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 1500 bytes de datos:
+Tiempo de espera agotado para esta solicitud.
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 0, perdidos = 1
+    (100% perdidos),
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 1600 bytes de datos:
+Tiempo de espera agotado para esta solicitud.
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 0, perdidos = 1
+    (100% perdidos),
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 1700 bytes de datos:
+Tiempo de espera agotado para esta solicitud.
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 0, perdidos = 1
+    (100% perdidos),
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 1800 bytes de datos:
+Tiempo de espera agotado para esta solicitud.
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 0, perdidos = 1
+    (100% perdidos),
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 1900 bytes de datos:
+Tiempo de espera agotado para esta solicitud.
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 0, perdidos = 1
+    (100% perdidos),
+
+Haciendo ping a star-mini.c10r.facebook.com [31.13.67.35] con 2000 bytes de datos:
+Tiempo de espera agotado para esta solicitud.
+
+Estad¡sticas de ping para 31.13.67.35:
+    Paquetes: enviados = 1, recibidos = 0, perdidos = 1
+    (100% perdidos),

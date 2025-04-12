@@ -1,0 +1,16 @@
+Trucos Excel
+
+Datos, relleno de datos
+	•	para facilitar el llenado en la tabla final 
+
+Vista, fijar 
+	•	Para fijar las columnas de las variables
+
+shift y flechas para seleccionar en excel
+shift ctrl flecha abajo llega abajo
+
+F2 
+Editar celda 
+
+F4
+Dejar fija celda 

@@ -1,0 +1,2295 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     90116,       2287]
+NotebookOptionsPosition[     81394,       2122]
+NotebookOutlinePosition[     81841,       2139]
+CellTagsIndexPosition[     81798,       2136]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["F\[OAcute]rmula 2 Puntos ", "Title",
+ CellChangeTimes->{{3.7398529850857706`*^9, 3.7398529970339537`*^9}, {
+   3.8362413564790983`*^9, 3.836241360851488*^9}, 
+   3.836241694256424*^9},ExpressionUUID->"14648663-201a-4ca3-93ff-\
+7d2012da3919"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"FormulaDosPuntos", "[", 
+      RowBox[{"F_", ",", "A_", ",", "B_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"a", "=", "A"}], ",", 
+         RowBox[{"b", "=", "B"}], ",", 
+         RowBox[{"h", "=", "0"}], ",", 
+         RowBox[{"Aproximacion", "=", "0"}], ",", 
+         RowBox[{"errorReal", "=", "0"}], ",", "derivada", ",", 
+         "errorPractico", ",", "segundaDerivada", ",", "errorTeorico"}], 
+        "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"h", "=", 
+         RowBox[{"b", "-", "a"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Aproximacion", "=", 
+         FractionBox[
+          RowBox[{"\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"F", "[", "b", "]"}], "-", 
+            RowBox[{"F", "[", "a", "]"}]}]}], "h"]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"derivada", "=", " ", 
+         RowBox[{
+          RowBox[{"F", "'"}], "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"errorReal", "=", 
+         RowBox[{
+          RowBox[{"F", "'"}], "[", "a", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"errorPractico", "=", 
+         RowBox[{"Abs", "[", 
+          RowBox[{"errorReal", "-", "Aproximacion"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{
+         "\"\<El resultado de la aproximaci\[OAcute]n del metodo es: \>\"", 
+          ",", 
+          RowBox[{"N", "[", "Aproximacion", "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{
+         "\"\<El resultado del error real con el metodo es: \>\"", ",", 
+          RowBox[{"N", "[", "errorReal", "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{"\"\<El resultado del error pr\[AAcute]ctico es: \>\"", ",", 
+          RowBox[{"N", "[", "errorPractico", "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"segundaDerivada", "=", " ", 
+         RowBox[{
+          RowBox[{"F", "''"}], "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"primero", "=", " ", 
+         RowBox[{
+          RowBox[{"F", "''"}], "[", "a", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"segundo", "=", 
+         RowBox[{
+          RowBox[{"F", "''"}], "[", "b", "]"}]}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"primero", ">", "segundo"}], ",", "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"errorTeorico", "=", 
+            RowBox[{
+             FractionBox[
+              SuperscriptBox["h", "2"], "2"], "*", "primero"}]}], ";", 
+           "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"Print", "[", 
+            RowBox[{"\"\<El error teorico es: \>\"", ",", " ", 
+             RowBox[{"N", "[", "errorTeorico", "]"}]}], "]"}]}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"errorTeorico", "=", 
+            RowBox[{
+             FractionBox[
+              SuperscriptBox["h", "2"], "2"], "*", "segundo"}]}], ";", 
+           "\[IndentingNewLine]", "\[IndentingNewLine]", " ", 
+           RowBox[{"Print", "[", 
+            RowBox[{"\"\<El error teorico es: \>\"", ",", " ", 
+             RowBox[{"N", "[", "errorTeorico", "]"}]}], "]"}]}]}], 
+         "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Fx", "[", "x_", "]"}], "=", 
+     RowBox[{"Log", "[", "x", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"FormulaDosPuntos", "[", 
+     RowBox[{"Fx", ",", "0.01", ",", "1.8"}], "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.739852979653804*^9, 3.739852980057274*^9}, {
+  3.836240545051998*^9, 3.8362405538950653`*^9}, {3.8362407033121934`*^9, 
+  3.8362407039035006`*^9}},ExpressionUUID->"e009d2d3-0aa3-4ee7-92ad-\
+6415d79f7821"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado de la aproximaci\[OAcute]n del metodo es: \"\>", 
+   "\[InvisibleSpace]", "2.901093212787827`"}],
+  SequenceForm[
+  "El resultado de la aproximaci\[OAcute]n del metodo es: ", 
+   2.901093212787827],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7398529649950953`*^9, 3.836240555645047*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[1]:=",ExpressionUUID->"ee346acd-c522-476e-835e-bed6fb083ac2"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado del error real con el metodo es: \"\>", 
+   "\[InvisibleSpace]", "100.`"}],
+  SequenceForm["El resultado del error real con el metodo es: ", 100.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7398529649950953`*^9, 3.836240555651052*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[1]:=",ExpressionUUID->"07df7b05-4e61-4de6-a98a-1fb2e81403ea"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado del error pr\[AAcute]ctico es: \"\>", 
+   "\[InvisibleSpace]", "97.09890678721217`"}],
+  SequenceForm[
+  "El resultado del error pr\[AAcute]ctico es: ", 97.09890678721217],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7398529649950953`*^9, 3.836240555654086*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[1]:=",ExpressionUUID->"7c9ee988-bd05-4459-8eb5-95de80340a03"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El error teorico es: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "0.49445987654320983`"}]}],
+  SequenceForm["El error teorico es: ", -0.49445987654320983`],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7398529649950953`*^9, 3.8362405557089944`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[1]:=",ExpressionUUID->"df56a2cd-3010-4373-8cd4-3835a3019dc6"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["F\[OAcute]rmula 2 puntos con h y x0 \t", "Title",
+ CellChangeTimes->{{3.8362406458043747`*^9, 3.836240691171268*^9}, 
+   3.836240755697836*^9, 3.836242609507913*^9, 
+   3.8362482063584137`*^9},ExpressionUUID->"a4a01186-e0c2-4c80-b5cb-\
+292e75203f26"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"DerDosPunt", "[", 
+    RowBox[{"f_", ",", "h_", ",", "x0_"}], "]"}], ":=", " ", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+    "\"\<El valor de la derivada en el punto x = \>\"", ",", "x0", ",", 
+     "\"\<, es: \>\"", ",", 
+     FractionBox[
+      RowBox[{
+       RowBox[{"f", "[", 
+        RowBox[{"x0", "+", "h"}], "]"}], "-", 
+       RowBox[{"f", "[", "x0", "]"}]}], "h"]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", "x_", "]"}], ":=", 
+   RowBox[{"Log", "[", "x", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"DerDosPunt", "[", 
+  RowBox[{"f", ",", "0.01", ",", "1.8"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8362407151601315`*^9, 3.8362407275354524`*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"db7885e4-9bcd-4cad-bdf8-38d6cbbea487"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El valor de la derivada en el punto x = \"\>", 
+   "\[InvisibleSpace]", "1.8`", "\[InvisibleSpace]", "\<\", es: \"\>", 
+   "\[InvisibleSpace]", "0.5540180375615322`"}],
+  SequenceForm[
+  "El valor de la derivada en el punto x = ", 1.8, ", es: ", 
+   0.5540180375615322],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.836240741903859*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[4]:=",ExpressionUUID->"1c106454-4956-46ab-b4f7-1a34220adfb5"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+
+F\[OAcute]rmulas  sin funci\[OAcute]n pero con conjunto de puntos\
+\>", "Title",
+ CellChangeTimes->{{3.8362422168797865`*^9, 3.8362422462987843`*^9}, {
+  3.836244899465909*^9, 
+  3.836244900548809*^9}},ExpressionUUID->"d137a5b5-3555-4988-8b47-\
+a017f0557458"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"VariasDer", "[", 
+     RowBox[{"A_", ",", "B_", ",", "x0_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "h", ",", "Trespuntosadelante", ",", "Cincopuntosadelante", ",", 
+        "Trespuntoscentrada", ",", " ", "Dospuntos", " ", ",", " ", 
+        "CincopuntosAtras", ",", " ", "TrespuntosDerivada"}], "}"}], ",", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"h", "=", 
+        RowBox[{
+         RowBox[{"A", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "-", 
+         RowBox[{"A", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Dospuntos", " ", "=", " ", 
+        FractionBox[
+         RowBox[{
+          RowBox[{"B", "[", 
+           RowBox[{"[", 
+            RowBox[{"x0", "+", "h"}], "]"}], "]"}], "-", 
+          RowBox[{"B", "[", 
+           RowBox[{"[", "x0", "]"}], "]"}]}], "h"]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Trespuntosadelante", "=", 
+        RowBox[{
+         FractionBox["1", 
+          RowBox[{"2", "h"}]], "*", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"-", "3"}], 
+            RowBox[{"B", "[", 
+             RowBox[{"[", "x0", "]"}], "]"}]}], "+", 
+           RowBox[{"4", 
+            RowBox[{"B", "[", 
+             RowBox[{"[", 
+              RowBox[{"x0", "+", "1"}], "]"}], "]"}]}], "-", 
+           RowBox[{"B", "[", 
+            RowBox[{"[", 
+             RowBox[{"x0", "+", "2"}], "]"}], "]"}]}], ")"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Trespuntoscentrada", "=", 
+        RowBox[{
+         FractionBox["1", 
+          RowBox[{"2", "h"}]], "*", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"B", "[", 
+            RowBox[{"[", 
+             RowBox[{"x0", "+", "1"}], "]"}], "]"}], "-", 
+           RowBox[{"B", "[", 
+            RowBox[{"[", 
+             RowBox[{"x0", "-", "1"}], "]"}], "]"}]}], ")"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"TrespuntosDerivada", " ", "=", " ", 
+        RowBox[{
+         FractionBox[
+          RowBox[{"\[IndentingNewLine]", "1"}], 
+          SuperscriptBox["h", "2"]], "*", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"B", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "-", "h", "-", 
+           RowBox[{"2", "*", 
+            RowBox[{"B", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], "+", 
+           RowBox[{"B", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"Tener", " ", "cuidado", " ", "con", " ", "cinco"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"Cincopuntosadelante", "=", 
+        RowBox[{
+         FractionBox["1", 
+          RowBox[{"12", "h"}]], "*", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"-", "25"}], 
+            RowBox[{"B", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], "+", 
+           RowBox[{"48", 
+            RowBox[{"B", "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}], "-", 
+           RowBox[{"36", 
+            RowBox[{"B", "[", 
+             RowBox[{"[", "3", "]"}], "]"}]}], "+", 
+           RowBox[{"16", 
+            RowBox[{"B", "[", 
+             RowBox[{"[", "4", "]"}], "]"}]}], "-", 
+           RowBox[{"3", 
+            RowBox[{"B", "[", 
+             RowBox[{"[", "5", "]"}], "]"}]}]}], ")"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"CincopuntosAtras", " ", "=", " ", 
+        RowBox[{
+         FractionBox[
+          RowBox[{"\[IndentingNewLine]", "1"}], 
+          RowBox[{"12", "*", "h"}]], "*", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"B", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "-", 
+             RowBox[{"2", "*", "h"}]}], ")"}], "-", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"8", "*", 
+              RowBox[{"B", "[", 
+               RowBox[{"[", "1", "]"}], "]"}]}], "-", "h"}], ")"}], "+", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"8", "*", 
+              RowBox[{"B", "[", 
+               RowBox[{"[", "2", "]"}], "]"}]}], "-", 
+             RowBox[{"B", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}], ")"}]}]}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"A", "[", 
+         RowBox[{"[", 
+          RowBox[{"cambia", " ", "segun", " ", "la", " ", "necesidad"}], 
+          "]"}], "]"}], "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<La derivada en x = \>\"", ",", 
+         RowBox[{"A", "[", 
+          RowBox[{"[", "x0", "]"}], "]"}], ",", 
+         "\"\<, utilizando la f\[OAcute]rmulas: \>\""}], "]"}], ";", "  ", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", " ", 
+        RowBox[{"\"\<dos puntos corresponde a \>\"", ",", 
+         RowBox[{"N", "[", "Dospuntos", "]"}]}], "]"}], ";", "\n", "\t", 
+       RowBox[{"Print", "[", " ", 
+        RowBox[{"\"\<tres puntos hacia adelante corresponde a \>\"", ",", 
+         RowBox[{"N", "[", "Trespuntosadelante", "]"}]}], "]"}], ";", "\n", 
+       "\t", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<tres puntos hacia centrada corresponde a \>\"", " ", ",", 
+         RowBox[{"N", "[", "Trespuntoscentrada", "]"}]}], "]"}], " ", ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<tres puntos con segunda derivada corresponde a \>\"", " ", ",", 
+         RowBox[{"N", "[", "TrespuntosDerivada", "]"}]}], "]"}], " ", ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<cinco puntos hacia adelante \>\"", ",", 
+         RowBox[{"N", "[", "Cincopuntosadelante", "]"}]}], "]"}], " ", ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<cinco puntos hacia atras \>\"", ",", 
+         RowBox[{"N", "[", "CincopuntosAtras", "]"}]}], "]"}], " ", ";"}]}], 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"A", " ", "es", " ", "x", " ", "y", " ", "B", " ", "es", " ", "f", 
+     RowBox[{"(", "x", ")"}]}], ",", " ", 
+    RowBox[{
+    "o", " ", "sea", " ", "preimagenes", " ", "e", " ", "imagenes"}]}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"A", "=", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "5", ",", "8", ",", "11", ",", "13"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"B", "=", 
+    RowBox[{"{", 
+     RowBox[{"225", ",", "383", ",", "623", ",", "742", ",", "993"}], "}"}]}],
+    ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "x0", " ", "es", " ", "la", " ", "posicion", " ", "del", " ", "valor", 
+     " ", "en", " ", "el", " ", "conjunto", " ", "de", " ", "puntos"}], ",", 
+    " ", 
+    RowBox[{"cambiara", " ", "segun", " ", "la", " ", "formula"}]}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"VariasDer", "[", 
+  RowBox[{"A", ",", "B", ",", "1"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8362420382039356`*^9, 3.8362420492818356`*^9}, {
+   3.836242100576098*^9, 3.836242127190959*^9}, {3.83624283121417*^9, 
+   3.8362428698674936`*^9}, {3.8362429425659246`*^9, 3.8362430244194393`*^9}, 
+   3.8362430895147552`*^9, {3.8362434866969686`*^9, 3.836243500526081*^9}, {
+   3.836243559358103*^9, 3.836243573874689*^9}, {3.8362436209971585`*^9, 
+   3.8362436324832067`*^9}, {3.8362437358617115`*^9, 
+   3.8362437609597044`*^9}, {3.8362438092397575`*^9, 3.836243850782981*^9}, 
+   3.8362439110258255`*^9, {3.8362444816503644`*^9, 3.8362445126977797`*^9}, {
+   3.8362445982928925`*^9, 3.8362448493578324`*^9}, {3.836244906656949*^9, 
+   3.8362449522901125`*^9}, {3.8362449892153854`*^9, 3.836245046871622*^9}, {
+   3.8362451229073057`*^9, 3.83624517983471*^9}, {3.836311315959834*^9, 
+   3.836311494089215*^9}, {3.8363115967302012`*^9, 3.8363116131814485`*^9}, {
+   3.836311643417156*^9, 3.8363116437295804`*^9}, {3.8363117665590224`*^9, 
+   3.8363117895550213`*^9}, {3.836311836510093*^9, 3.8363118677648764`*^9}, {
+   3.8363119372036123`*^9, 3.8363120143324003`*^9}, {3.836312047596877*^9, 
+   3.8363121332839622`*^9}, {3.836317642716903*^9, 3.836317643247718*^9}, {
+   3.836317881977373*^9, 3.836318022165965*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"e5e3cc48-ac4d-410b-9a7f-bb0a27a94d2c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"La derivada en x = \"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\", utilizando la f\[OAcute]rmulas: \"\>"}],
+  SequenceForm["La derivada en x = ", 2, ", utilizando la f\[OAcute]rmulas: "],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8362422833580875`*^9, 3.8362429890544024`*^9, 3.8362430263097258`*^9, 
+   3.836243091810662*^9, 3.8362437990136185`*^9, 3.836243844868063*^9, 
+   3.836243934079338*^9, 3.8362447653602495`*^9, 3.836244809301057*^9, 
+   3.836244953525457*^9, {3.836245022262853*^9, 3.8362450504640946`*^9}, {
+   3.8362451618337975`*^9, 3.8362451825504*^9}, {3.8363113225026107`*^9, 
+   3.8363114894028625`*^9}, {3.8363115984609957`*^9, 3.836311615079439*^9}, {
+   3.8363120775366945`*^9, 3.8363121358481054`*^9}, {3.8363180047648935`*^9, 
+   3.8363180239208107`*^9}},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[9]:=",ExpressionUUID->"983d97b6-b8d3-420c-9b68-be412f084fa5"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"dos puntos corresponde a \"\>", "\[InvisibleSpace]", 
+   "172.33333333333334`"}],
+  SequenceForm["dos puntos corresponde a ", 172.33333333333334`],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8362422833580875`*^9, 3.8362429890544024`*^9, 3.8362430263097258`*^9, 
+   3.836243091810662*^9, 3.8362437990136185`*^9, 3.836243844868063*^9, 
+   3.836243934079338*^9, 3.8362447653602495`*^9, 3.836244809301057*^9, 
+   3.836244953525457*^9, {3.836245022262853*^9, 3.8362450504640946`*^9}, {
+   3.8362451618337975`*^9, 3.8362451825504*^9}, {3.8363113225026107`*^9, 
+   3.8363114894028625`*^9}, {3.8363115984609957`*^9, 3.836311615079439*^9}, {
+   3.8363120775366945`*^9, 3.8363121358481054`*^9}, {3.8363180047648935`*^9, 
+   3.836318023925076*^9}},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[9]:=",ExpressionUUID->"00328dc6-ff99-442d-82aa-69745afef0a2"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"tres puntos hacia adelante corresponde a \"\>", 
+   "\[InvisibleSpace]", "39.`"}],
+  SequenceForm["tres puntos hacia adelante corresponde a ", 39.],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8362422833580875`*^9, 3.8362429890544024`*^9, 3.8362430263097258`*^9, 
+   3.836243091810662*^9, 3.8362437990136185`*^9, 3.836243844868063*^9, 
+   3.836243934079338*^9, 3.8362447653602495`*^9, 3.836244809301057*^9, 
+   3.836244953525457*^9, {3.836245022262853*^9, 3.8362450504640946`*^9}, {
+   3.8362451618337975`*^9, 3.8362451825504*^9}, {3.8363113225026107`*^9, 
+   3.8363114894028625`*^9}, {3.8363115984609957`*^9, 3.836311615079439*^9}, {
+   3.8363120775366945`*^9, 3.8363121358481054`*^9}, {3.8363180047648935`*^9, 
+   3.8363180239300327`*^9}},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[9]:=",ExpressionUUID->"35e8dd77-88c7-4d30-8f0d-a28f72b0ab2f"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"tres puntos hacia centrada corresponde a \"\>", 
+   "\[InvisibleSpace]", "0.16666666666666666`", " ", 
+   RowBox[{"(", 
+    RowBox[{"383.`", "\[VeryThinSpace]", "-", 
+     RowBox[{"1.`", " ", "List"}]}], ")"}]}],
+  SequenceForm[
+  "tres puntos hacia centrada corresponde a ", 
+   0.16666666666666666` (383. - 1. List)],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8362422833580875`*^9, 3.8362429890544024`*^9, 3.8362430263097258`*^9, 
+   3.836243091810662*^9, 3.8362437990136185`*^9, 3.836243844868063*^9, 
+   3.836243934079338*^9, 3.8362447653602495`*^9, 3.836244809301057*^9, 
+   3.836244953525457*^9, {3.836245022262853*^9, 3.8362450504640946`*^9}, {
+   3.8362451618337975`*^9, 3.8362451825504*^9}, {3.8363113225026107`*^9, 
+   3.8363114894028625`*^9}, {3.8363115984609957`*^9, 3.836311615079439*^9}, {
+   3.8363120775366945`*^9, 3.8363121358481054`*^9}, {3.8363180047648935`*^9, 
+   3.8363180239370565`*^9}},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[9]:=",ExpressionUUID->"bd0fa5f6-ddcd-4e5e-830e-78d6b00f7927"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"tres puntos con segunda derivada corresponde a \"\>", 
+   "\[InvisibleSpace]", "17.22222222222222`"}],
+  SequenceForm[
+  "tres puntos con segunda derivada corresponde a ", 17.22222222222222],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8362422833580875`*^9, 3.8362429890544024`*^9, 3.8362430263097258`*^9, 
+   3.836243091810662*^9, 3.8362437990136185`*^9, 3.836243844868063*^9, 
+   3.836243934079338*^9, 3.8362447653602495`*^9, 3.836244809301057*^9, 
+   3.836244953525457*^9, {3.836245022262853*^9, 3.8362450504640946`*^9}, {
+   3.8362451618337975`*^9, 3.8362451825504*^9}, {3.8363113225026107`*^9, 
+   3.8363114894028625`*^9}, {3.8363115984609957`*^9, 3.836311615079439*^9}, {
+   3.8363120775366945`*^9, 3.8363121358481054`*^9}, {3.8363180047648935`*^9, 
+   3.83631802394154*^9}},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[9]:=",ExpressionUUID->"9333228b-434a-4822-8ce8-b3adf61c5475"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"cinco puntos hacia adelante \"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "21.555555555555557`"}]}],
+  SequenceForm["cinco puntos hacia adelante ", -21.555555555555557`],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8362422833580875`*^9, 3.8362429890544024`*^9, 3.8362430263097258`*^9, 
+   3.836243091810662*^9, 3.8362437990136185`*^9, 3.836243844868063*^9, 
+   3.836243934079338*^9, 3.8362447653602495`*^9, 3.836244809301057*^9, 
+   3.836244953525457*^9, {3.836245022262853*^9, 3.8362450504640946`*^9}, {
+   3.8362451618337975`*^9, 3.8362451825504*^9}, {3.8363113225026107`*^9, 
+   3.8363114894028625`*^9}, {3.8363115984609957`*^9, 3.836311615079439*^9}, {
+   3.8363120775366945`*^9, 3.8363121358481054`*^9}, {3.8363180047648935`*^9, 
+   3.836318023947643*^9}},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[9]:=",ExpressionUUID->"852d72dc-c9e8-471a-8c53-0ea598c0c507"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"cinco puntos hacia atras \"\>", "\[InvisibleSpace]", 
+   "23.97222222222222`"}],
+  SequenceForm["cinco puntos hacia atras ", 23.97222222222222],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8362422833580875`*^9, 3.8362429890544024`*^9, 3.8362430263097258`*^9, 
+   3.836243091810662*^9, 3.8362437990136185`*^9, 3.836243844868063*^9, 
+   3.836243934079338*^9, 3.8362447653602495`*^9, 3.836244809301057*^9, 
+   3.836244953525457*^9, {3.836245022262853*^9, 3.8362450504640946`*^9}, {
+   3.8362451618337975`*^9, 3.8362451825504*^9}, {3.8363113225026107`*^9, 
+   3.8363114894028625`*^9}, {3.8363115984609957`*^9, 3.836311615079439*^9}, {
+   3.8363120775366945`*^9, 3.8363121358481054`*^9}, {3.8363180047648935`*^9, 
+   3.836318023949712*^9}},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[9]:=",ExpressionUUID->"20dfbc82-5644-4911-9b23-51717e70a0f5"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData["\n"], "Input",
+ CellChangeTimes->{
+  3.836244765290244*^9},ExpressionUUID->"9fe53116-839c-466b-923f-\
+148154def36f"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{{3.739852972631955*^9, 3.7398529730288596`*^9}, 
+   3.836242227032525*^9},ExpressionUUID->"6dfa8b66-1dc1-41c9-8934-\
+f536876962fb"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["F\[OAcute]rmula 3 puntos (adelante)", "Title",
+ CellChangeTimes->{{3.7398530055192833`*^9, 3.739853012609707*^9}, {
+  3.8362466368421497`*^9, 3.8362466393013377`*^9}, {3.836246673875277*^9, 
+  3.8362466771198177`*^9}},ExpressionUUID->"53318a8c-c0d1-402c-972a-\
+e16c369d158d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"FormulaDosPuntos", "[", 
+      RowBox[{"F_", ",", "A_", ",", "B_", ",", "C_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"a", "=", "A"}], ",", 
+         RowBox[{"b", "=", "B"}], ",", 
+         RowBox[{"c", "=", "C"}], ",", 
+         RowBox[{"h", "=", "0"}], ",", 
+         RowBox[{"Aproximacion", "=", "0"}], ",", 
+         RowBox[{"errorReal", "=", "0"}], ",", "derivada", ",", 
+         "errorPractico", ",", "segundaDerivada", ",", "errorTeorico"}], 
+        "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"h", "=", 
+         RowBox[{"b", "-", "a"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Aproximacion", "=", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"\[IndentingNewLine]", "1"}], 
+           RowBox[{"2", "*", "h"}]], "*", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "3"}], "*", 
+             RowBox[{"F", "[", "a", "]"}]}], "+", 
+            RowBox[{"4", "*", 
+             RowBox[{"F", "[", "b", "]"}]}], "-", 
+            RowBox[{"F", "[", "c", "]"}]}], ")"}]}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"derivada", "=", " ", 
+         RowBox[{
+          RowBox[{"F", "'"}], "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"errorReal", "=", 
+         RowBox[{
+          RowBox[{"F", "'"}], "[", "a", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"errorPractico", "=", 
+         RowBox[{"Abs", "[", 
+          RowBox[{"errorReal", "-", "Aproximacion"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{
+         "\"\<El resultado de la aproximaci\[OAcute]n del metodo es: \>\"", 
+          ",", 
+          RowBox[{"N", "[", "Aproximacion", "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{
+         "\"\<El resultado del error real con el metodo es: \>\"", ",", 
+          RowBox[{"N", "[", "errorReal", "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{"\"\<El resultado del error pr\[AAcute]ctico es: \>\"", ",", 
+          RowBox[{"N", "[", "errorPractico", "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"primero", "=", " ", 
+         RowBox[{
+          RowBox[{"F", "'''"}], "[", "a", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"segundo", "=", 
+         RowBox[{
+          RowBox[{"F", "'''"}], "[", "c", "]"}]}], ";", "\[IndentingNewLine]",
+         "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"primero", ">", "segundo"}], ",", "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"errorTeorico", "=", 
+            RowBox[{"Abs", "[", 
+             RowBox[{
+              FractionBox[
+               SuperscriptBox["h", "2"], "3"], "*", "primero"}], "]"}]}], ";",
+            "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"Print", "[", 
+            RowBox[{"\"\<El error teorico es: \>\"", ",", " ", 
+             RowBox[{"N", "[", "errorTeorico", "]"}]}], "]"}]}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"errorTeorico", "=", 
+            RowBox[{"Abs", "[", 
+             RowBox[{
+              FractionBox[
+               SuperscriptBox["h", "2"], "3"], "*", "segundo"}], "]"}]}], ";",
+            "\[IndentingNewLine]", "\[IndentingNewLine]", " ", 
+           RowBox[{"Print", "[", 
+            RowBox[{"\"\<El error te\[OAcute]rico es: \>\"", ",", " ", 
+             RowBox[{"N", "[", "errorTeorico", "]"}]}], "]"}]}]}], 
+         "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Fx", "[", "x_", "]"}], "=", 
+     RowBox[{"x", "*", 
+      RowBox[{"Log", "[", "x", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"FormulaDosPuntos", "[", 
+     RowBox[{"Fx", ",", "1.5", ",", "1.6", ",", "1.7"}], "]"}], 
+    ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.73985301465366*^9, 3.739853021798108*^9}, {
+  3.7398530752385626`*^9, 3.7398531542120914`*^9}, {3.739853208036275*^9, 
+  3.7398532627251277`*^9}, {3.739853301123993*^9, 3.7398533045867414`*^9}, {
+  3.7398538019060965`*^9, 3.739853804149551*^9}, {3.739853868827577*^9, 
+  3.7398538691382394`*^9}, {3.7398539036239023`*^9, 3.7398539727173796`*^9}, {
+  3.739855821891576*^9, 
+  3.739855843765267*^9}},ExpressionUUID->"e7d9316f-7fe6-4b28-b658-\
+5de8d7c3a212"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado de la aproximaci\[OAcute]n del metodo es: \"\>", 
+   "\[InvisibleSpace]", "1.4068110694013929`"}],
+  SequenceForm[
+  "El resultado de la aproximaci\[OAcute]n del metodo es: ", 
+   1.4068110694013929`],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.739853307494678*^9, 3.7398538705201235`*^9, 3.739853907828455*^9, {
+   3.739853952273778*^9, 3.7398539735974817`*^9}, {3.7398558394555407`*^9, 
+   3.739855848678366*^9}},ExpressionUUID->"be6f257c-697b-418f-b544-\
+1e29352a995a"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado del error real con el metodo es: \"\>", 
+   "\[InvisibleSpace]", "1.4054651081081644`"}],
+  SequenceForm[
+  "El resultado del error real con el metodo es: ", 1.4054651081081644`],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.739853307494678*^9, 3.7398538705201235`*^9, 3.739853907828455*^9, {
+   3.739853952273778*^9, 3.7398539735974817`*^9}, {3.7398558394555407`*^9, 
+   3.739855848681259*^9}},ExpressionUUID->"82056a7a-1c7b-4e6f-98ac-\
+917b4800406f"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado del error pr\[AAcute]ctico es: \"\>", 
+   "\[InvisibleSpace]", "0.0013459612932285037`"}],
+  SequenceForm[
+  "El resultado del error pr\[AAcute]ctico es: ", 0.0013459612932285037`],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.739853307494678*^9, 3.7398538705201235`*^9, 3.739853907828455*^9, {
+   3.739853952273778*^9, 3.7398539735974817`*^9}, {3.7398558394555407`*^9, 
+   3.7398558486832657`*^9}},ExpressionUUID->"deb516fb-bfab-4159-a5cc-\
+6ba217110b4c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El error te\[OAcute]rico es: \"\>", "\[InvisibleSpace]", 
+   "0.0011534025374855847`"}],
+  SequenceForm["El error te\[OAcute]rico es: ", 0.0011534025374855847`],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.739853307494678*^9, 3.7398538705201235`*^9, 3.739853907828455*^9, {
+   3.739853952273778*^9, 3.7398539735974817`*^9}, {3.7398558394555407`*^9, 
+   3.7398558486862745`*^9}},ExpressionUUID->"f65ce749-853d-4698-9fac-\
+3b11d4f33445"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["F\[OAcute]rmula 3 puntos (adelante) con h y x0", "Title",
+ CellChangeTimes->{{3.836242594811427*^9, 3.8362426180130024`*^9}, {
+  3.836246802865342*^9, 
+  3.836246805963744*^9}},ExpressionUUID->"ee4a8a25-7200-4ba8-b087-\
+f7e20596ec65"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"SegundoAlgoritmoDeDerivacion", " ", "[", 
+    RowBox[{"F_", ",", "x0_", ",", "h_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"PrimeraDerivada", ",", " ", "a", ",", "b"}], " ", "}"}], ",", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"a", "=", 
+       RowBox[{"x0", "+", "h"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"b", "=", " ", 
+       RowBox[{"x0", "+", " ", 
+        RowBox[{"2", "*", "h"}]}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PrimeraDerivada", " ", "=", " ", 
+       RowBox[{
+        FractionBox["1", 
+         RowBox[{"2", "h"}]], 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"-", "3"}], 
+           RowBox[{"F", "[", "x0", "]"}]}], "+", 
+          RowBox[{"4", 
+           RowBox[{"F", "[", "a", "]"}]}], "-", 
+          RowBox[{"F", "[", "b", "]"}]}], ")"}]}]}], ";", " ", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{
+       "\"\<La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el \
+punto \>\"", ",", "x0", ",", "\"\< es: \>\"", " ", ",", 
+        RowBox[{"PrimeraDerivada", "//", "N"}]}], "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"x0", "=", "1.8"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h", "=", "0.1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"F", "[", "x_", "]"}], ":=", 
+   RowBox[{"Log", "[", "x", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SegundoAlgoritmoDeDerivacion", "[", 
+   RowBox[{"F", ",", "x0", ",", "h"}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.836242656500594*^9, 3.8362426571849756`*^9}},
+ CellLabel->"In[36]:=",ExpressionUUID->"ef8b98d2-4794-4ef5-ab30-35ee4b87e1af"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el \
+punto \"\>", "\[InvisibleSpace]", "1.8`", 
+   "\[InvisibleSpace]", "\<\" es: \"\>", "\[InvisibleSpace]", 
+   "0.5545418471163838`"}],
+  SequenceForm[
+  "La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el punto ", 1.8,
+    " es: ", 0.5545418471163838],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.836242658934936*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[36]:=",ExpressionUUID->"ed247a10-ea64-4763-8b1e-89d379d2619e"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+
+F\[OAcute]rmula 3 puntos centralizada\
+\>", "Title",
+ CellChangeTimes->{{3.7398543037882395`*^9, 
+  3.739854328260538*^9}},ExpressionUUID->"8a8fa253-1c20-4fc6-ae13-\
+46f040120e65"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"FormulaDosPuntos", "[", 
+      RowBox[{"F_", ",", "A_", ",", "B_", ",", "C_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"a", "=", "A"}], ",", 
+         RowBox[{"b", "=", "B"}], ",", 
+         RowBox[{"c", "=", "C"}], ",", 
+         RowBox[{"h", "=", "0"}], ",", 
+         RowBox[{"Aproximacion", "=", "0"}], ",", 
+         RowBox[{"errorReal", "=", "0"}], ",", "derivada", ",", 
+         "errorPractico", ",", "segundaDerivada", ",", "errorTeorico"}], 
+        "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"h", "=", 
+         RowBox[{"b", "-", "a"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Aproximacion", "=", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"\[IndentingNewLine]", "1"}], 
+           RowBox[{"2", "*", "h"}]], "*", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"F", "[", "b", "]"}], "-", 
+            RowBox[{"F", "[", 
+             RowBox[{"a", "-", "h"}], "]"}]}], ")"}]}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"derivada", "=", " ", 
+         RowBox[{
+          RowBox[{"F", "'"}], "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"errorReal", "=", 
+         RowBox[{
+          RowBox[{"F", "'"}], "[", "a", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"errorPractico", "=", 
+         RowBox[{"Abs", "[", 
+          RowBox[{"errorReal", "-", "Aproximacion"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{
+         "\"\<El resultado de la aproximaci\[OAcute]n del metodo es: \>\"", 
+          ",", 
+          RowBox[{"N", "[", "Aproximacion", "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{
+         "\"\<El resultado del error real con el metodo es: \>\"", ",", 
+          RowBox[{"N", "[", "errorReal", "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{"\"\<El resultado del error pr\[AAcute]ctico es: \>\"", ",", 
+          RowBox[{"N", "[", "errorPractico", "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"primero", "=", " ", 
+         RowBox[{
+          RowBox[{"F", "'''"}], "[", "a", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"segundo", "=", 
+         RowBox[{
+          RowBox[{"F", "'''"}], "[", "c", "]"}]}], ";", "\[IndentingNewLine]",
+         "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"primero", ">", "segundo"}], ",", "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"errorTeorico", "=", 
+            RowBox[{"Abs", "[", 
+             RowBox[{
+              FractionBox[
+               SuperscriptBox["h", "2"], "6"], "*", "primero"}], "]"}]}], ";",
+            "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"Print", "[", 
+            RowBox[{"\"\<El error teorico es: \>\"", ",", " ", 
+             RowBox[{"N", "[", "errorTeorico", "]"}]}], "]"}]}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"errorTeorico", "=", 
+            RowBox[{"Abs", "[", 
+             RowBox[{
+              FractionBox[
+               SuperscriptBox["h", "2"], "6"], "*", "segundo"}], "]"}]}], ";",
+            "\[IndentingNewLine]", "\[IndentingNewLine]", " ", 
+           RowBox[{"Print", "[", 
+            RowBox[{"\"\<El error te\[OAcute]rico es: \>\"", ",", " ", 
+             RowBox[{"N", "[", "errorTeorico", "]"}]}], "]"}]}]}], 
+         "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Fx", "[", "x_", "]"}], "=", 
+     RowBox[{"x", "*", 
+      RowBox[{"Log", "[", "x", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"FormulaDosPuntos", "[", 
+     RowBox[{"Fx", ",", "1.5", ",", "1.6", ",", "1.7"}], "]"}], 
+    ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.7398543307417765`*^9, 3.7398543418169823`*^9}, {
+   3.739854647406526*^9, 3.7398546821644773`*^9}, {3.739854723501357*^9, 
+   3.739854729989074*^9}, 
+   3.73985586085093*^9},ExpressionUUID->"bb8ffe18-0d57-43d2-99e3-\
+202853507ea8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado de la aproximaci\[OAcute]n del metodo es: \"\>", 
+   "\[InvisibleSpace]", "1.4047233776173942`"}],
+  SequenceForm[
+  "El resultado de la aproximaci\[OAcute]n del metodo es: ", 
+   1.4047233776173942`],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7398547331955385`*^9, 
+  3.7398558623899546`*^9},ExpressionUUID->"a8b777e9-fe42-4bb1-952a-\
+d85c65116a4c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado del error real con el metodo es: \"\>", 
+   "\[InvisibleSpace]", "1.4054651081081644`"}],
+  SequenceForm[
+  "El resultado del error real con el metodo es: ", 1.4054651081081644`],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7398547331955385`*^9, 
+  3.7398558623930144`*^9},ExpressionUUID->"b59530ae-d6ab-4fb2-907b-\
+6cae2a541013"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado del error pr\[AAcute]ctico es: \"\>", 
+   "\[InvisibleSpace]", "0.0007417304907701983`"}],
+  SequenceForm[
+  "El resultado del error pr\[AAcute]ctico es: ", 0.0007417304907701983],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7398547331955385`*^9, 
+  3.739855862395971*^9},ExpressionUUID->"5b59be38-3dbc-4b98-9c5a-\
+c9b37050c188"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El error te\[OAcute]rico es: \"\>", "\[InvisibleSpace]", 
+   "0.0005767012687427923`"}],
+  SequenceForm["El error te\[OAcute]rico es: ", 0.0005767012687427923],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7398547331955385`*^9, 
+  3.7398558623999844`*^9},ExpressionUUID->"fac80001-56f9-42ef-873f-\
+ad200576879e"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["F\[OAcute]rmula 3 puntos centralizada con h y x0", "Title",
+ CellChangeTimes->{{3.8362439780735965`*^9, 
+  3.8362440023729525`*^9}},ExpressionUUID->"3224597c-6229-4ccc-a46f-\
+a3bd64507d69"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"TercerAlgoritmoDeDerivacion", " ", "[", 
+     RowBox[{"F_", ",", "x0_", ",", "h_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "PrimeraDerivada", " ", "}"}], ",", "\[IndentingNewLine]", 
+      " ", 
+      RowBox[{"(*", 
+       RowBox[{"3", " ", "Puntos"}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"PrimeraDerivada", " ", "=", " ", 
+        RowBox[{
+         FractionBox["1", 
+          RowBox[{"2", "*", "h"}]], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"F", "[", 
+            RowBox[{"x0", "+", "h"}], "]"}], "-", 
+           RowBox[{"F", "[", 
+            RowBox[{"x0", "-", "h"}], "]"}]}], ")"}]}]}], ";", " ", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el \
+punto \>\"", ",", "x0", " ", ",", "\"\< es: \>\"", " ", ",", 
+         RowBox[{"PrimeraDerivada", "//", "N"}]}], "]"}], ";"}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"x0", "=", "1.8"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h", "=", "0.1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"F", "[", "x_", "]"}], ":=", 
+   RowBox[{"Log", "[", "x", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"TercerAlgoritmoDeDerivacion", "[", 
+   RowBox[{"F", ",", "x0", ",", "h"}], "]"}], ";"}]}], "Input",
+ CellLabel->"In[96]:=",ExpressionUUID->"c434929a-d9a1-45b0-9b2e-726d55a4b95c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el \
+punto \"\>", "\[InvisibleSpace]", "1.8`", 
+   "\[InvisibleSpace]", "\<\" es: \"\>", "\[InvisibleSpace]", 
+   "0.5561281755511222`"}],
+  SequenceForm[
+  "La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el punto ", 1.8,
+    " es: ", 0.5561281755511222],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8362440208464966`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[96]:=",ExpressionUUID->"1b2e87b3-5660-4fb7-bff1-035ab0e24175"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+
+F\[OAcute]rmula 3 puntos con segunda derivada\
+\>", "Title",
+ CellChangeTimes->{{3.739854850834818*^9, 3.7398548944276996`*^9}, {
+  3.8362466910281734`*^9, 
+  3.8362467158753824`*^9}},ExpressionUUID->"5c6f2a45-f7f6-4d1d-9f85-\
+04366665f72e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"FormulaDosPuntos", "[", 
+      RowBox[{"F_", ",", "A_", ",", "B_", ",", "C_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"a", "=", "A"}], ",", 
+         RowBox[{"b", "=", "B"}], ",", 
+         RowBox[{"c", "=", "C"}], ",", 
+         RowBox[{"h", "=", "0"}], ",", 
+         RowBox[{"Aproximacion", "=", "0"}], ",", 
+         RowBox[{"errorReal", "=", "0"}], ",", "derivada", ",", 
+         "errorPractico", ",", "segundaDerivada", ",", "errorTeorico"}], 
+        "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"h", "=", 
+         RowBox[{"b", "-", "a"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Aproximacion", "=", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"\[IndentingNewLine]", "1"}], 
+           SuperscriptBox["h", "2"]], "*", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"F", "[", 
+             RowBox[{"a", "-", "h"}], "]"}], "-", 
+            RowBox[{"2", "*", 
+             RowBox[{"F", "[", "a", "]"}]}], "+", 
+            RowBox[{"F", "[", "b", "]"}]}], ")"}]}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"derivada", "=", " ", 
+         RowBox[{
+          RowBox[{"F", "''"}], "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"errorReal", "=", 
+         RowBox[{
+          RowBox[{"F", "''"}], "[", "a", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"errorPractico", "=", 
+         RowBox[{"Abs", "[", 
+          RowBox[{"errorReal", "-", "Aproximacion"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{
+         "\"\<El resultado de la aproximaci\[OAcute]n del metodo es: \>\"", 
+          ",", 
+          RowBox[{"N", "[", "Aproximacion", "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{
+         "\"\<El resultado del error real con el metodo es: \>\"", ",", 
+          RowBox[{"N", "[", "errorReal", "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{"\"\<El resultado del error pr\[AAcute]ctico es: \>\"", ",", 
+          RowBox[{"N", "[", "errorPractico", "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"primero", "=", " ", 
+         RowBox[{
+          RowBox[{"F", "''''"}], "[", "a", "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"segundo", "=", 
+         RowBox[{
+          RowBox[{"F", "''''"}], "[", "c", "]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"primero", ">", "segundo"}], ",", "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"errorTeorico", "=", 
+            RowBox[{"Abs", "[", 
+             RowBox[{
+              FractionBox[
+               SuperscriptBox["h", "2"], "12"], "*", "primero"}], "]"}]}], 
+           ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"Print", "[", 
+            RowBox[{"\"\<El error teorico es: \>\"", ",", " ", 
+             RowBox[{"N", "[", "errorTeorico", "]"}]}], "]"}]}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"errorTeorico", "=", 
+            RowBox[{"Abs", "[", 
+             RowBox[{
+              FractionBox[
+               SuperscriptBox["h", "2"], "12"], "*", "segundo"}], "]"}]}], 
+           ";", "\[IndentingNewLine]", "\[IndentingNewLine]", " ", 
+           RowBox[{"Print", "[", 
+            RowBox[{"\"\<El error te\[OAcute]rico es: \>\"", ",", " ", 
+             RowBox[{"N", "[", "errorTeorico", "]"}]}], "]"}]}]}], 
+         "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Fx", "[", "x_", "]"}], "=", 
+     RowBox[{
+      RowBox[{"3", "x", "*", 
+       SuperscriptBox["\[ExponentialE]", "x"]}], "-", 
+      RowBox[{"Cos", "[", "x", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"FormulaDosPuntos", "[", 
+    RowBox[{"Fx", ",", "1.30", ",", "1.31", ",", "1.32"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.7398548966612988`*^9, {3.739855081381399*^9, 3.739855160219761*^9}, {
+   3.739855191350914*^9, 3.739855224581978*^9}, {3.7398552651203794`*^9, 
+   3.7398552770564785`*^9}, {3.739855328288375*^9, 3.73985538613335*^9}, {
+   3.739855869831441*^9, 
+   3.7398558736145315`*^9}},ExpressionUUID->"6d3e0943-7cb1-4f92-9c23-\
+198a67fcc709"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado de la aproximaci\[OAcute]n del metodo es: \"\>", 
+   "\[InvisibleSpace]", "36.59401979298587`"}],
+  SequenceForm[
+  "El resultado de la aproximaci\[OAcute]n del metodo es: ", 
+   36.59401979298587],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7398552794908185`*^9, 3.739855389306919*^9, 
+  3.7398558744794054`*^9},ExpressionUUID->"580bf989-2785-4ce2-b8dd-\
+e9f557e9123d"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado del error real con el metodo es: \"\>", 
+   "\[InvisibleSpace]", "36.593535838055104`"}],
+  SequenceForm[
+  "El resultado del error real con el metodo es: ", 36.593535838055104`],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7398552794908185`*^9, 3.739855389306919*^9, 
+  3.7398558744823985`*^9},ExpressionUUID->"7f572620-619d-4c82-a1a9-\
+62a6e60606f5"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado del error pr\[AAcute]ctico es: \"\>", 
+   "\[InvisibleSpace]", "0.0004839549307646962`"}],
+  SequenceForm[
+  "El resultado del error pr\[AAcute]ctico es: ", 0.0004839549307646962],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7398552794908185`*^9, 3.739855389306919*^9, 
+  3.739855874485406*^9},ExpressionUUID->"ec940a48-ffc1-46a7-a8da-\
+a25da212c599"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El error te\[OAcute]rico es: \"\>", "\[InvisibleSpace]", 
+   "0.0004958069144119258`"}],
+  SequenceForm["El error te\[OAcute]rico es: ", 0.0004958069144119258],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7398552794908185`*^9, 3.739855389306919*^9, 
+  3.739855874488414*^9},ExpressionUUID->"59f7bbba-96ec-4815-9879-\
+69ce3b4c6e5f"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["F\[OAcute]rmula 3 puntos con segunda derivada con h y x0", "Title",
+ CellChangeTimes->{{3.8362440644474773`*^9, 
+  3.8362440679296417`*^9}},ExpressionUUID->"2487b480-56f4-4d25-83cb-\
+a7a50f9408be"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"CuartoAlgoritmoDeDerivacion", " ", "[", 
+     RowBox[{"F_", ",", "x0_", ",", "h_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "SegundaDerivada", " ", "}"}], ",", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"SegundaDerivada", " ", "=", " ", 
+        RowBox[{
+         FractionBox["1", 
+          SuperscriptBox["h", "2"]], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"F", "[", 
+            RowBox[{"x0", "-", "h"}], "]"}], "-", 
+           RowBox[{"2", 
+            RowBox[{"F", "[", "x0", "]"}]}], "+", 
+           RowBox[{"F", "[", 
+            RowBox[{"x0", "+", "h"}], "]"}]}], ")"}]}]}], ";", " ", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el \
+punto \>\"", ",", "x0", " ", ",", "\"\< es: \>\"", " ", ",", 
+         RowBox[{"SegundaDerivada", "//", "N"}]}], "]"}], ";"}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"x0", "=", "1.8"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h", "=", "0.1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"F", "[", "x_", "]"}], ":=", 
+   RowBox[{"Log", "[", "x", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CuartoAlgoritmoDeDerivacion", "[", 
+   RowBox[{"F", ",", "x0", ",", "h"}], "]"}], ";"}]}], "Input",
+ CellLabel->
+  "In[101]:=",ExpressionUUID->"ad89d530-8987-430b-8f91-7ba2c4c5d105"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el \
+punto \"\>", "\[InvisibleSpace]", "1.8`", 
+   "\[InvisibleSpace]", "\<\" es: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "0.309119256967294`"}]}],
+  SequenceForm[
+  "La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el punto ", 1.8,
+    " es: ", -0.309119256967294],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.836244095019584*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[101]:=",ExpressionUUID->"d1d5b170-bdef-4141-ba8f-1ecff0dae4de"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["F\[OAcute]rmula 3 puntos hacia atr\[AAcute]s con h y x0", "Title",
+ CellChangeTimes->{{3.8362467756340294`*^9, 3.8362467858605947`*^9}, 
+   3.836246823257508*^9},ExpressionUUID->"75170976-f01e-4eaf-99c4-\
+5dcc561fc1e6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"CuartoAlgoritmoDeDerivacion", " ", "[", 
+     RowBox[{"F_", ",", "x0_", ",", "h_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "SegundaDerivada", " ", "}"}], ",", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"SegundaDerivada", " ", "=", " ", 
+        RowBox[{
+         FractionBox["1", 
+          RowBox[{"2", "h"}]], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"F", "[", 
+            RowBox[{"x0", "-", 
+             RowBox[{"2", "h"}]}], "]"}], "-", 
+           RowBox[{"4", 
+            RowBox[{"F", "[", 
+             RowBox[{"x0", "-", "h"}], "]"}]}], "+", 
+           RowBox[{"3", 
+            RowBox[{"F", "[", "x0", "]"}]}]}], ")"}]}]}], ";", " ", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el \
+punto \>\"", ",", "x0", " ", ",", "\"\< es: \>\"", " ", ",", 
+         RowBox[{"SegundaDerivada", "//", "N"}]}], "]"}], ";"}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"x0", "=", "1.8"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h", "=", "0.1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"F", "[", "x_", "]"}], ":=", 
+   RowBox[{"Log", "[", "x", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CuartoAlgoritmoDeDerivacion", "[", 
+   RowBox[{"F", ",", "x0", ",", "h"}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.836246893798609*^9, 3.836246925993788*^9}},
+ CellLabel->
+  "In[144]:=",ExpressionUUID->"922d4be2-d14d-479e-ba99-8a7cb48e9543"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el \
+punto \"\>", "\[InvisibleSpace]", "1.8`", 
+   "\[InvisibleSpace]", "\<\" es: \"\>", "\[InvisibleSpace]", 
+   "0.5542530985170568`"}],
+  SequenceForm[
+  "La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el punto ", 1.8,
+    " es: ", 0.5542530985170568],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8362469450514317`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[144]:=",ExpressionUUID->"98958dba-6a35-46c2-b546-1bf6d0089190"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Formula 3 puntos hacia atr\[AAcute]s ", "Title",
+ CellChangeTimes->{{3.8362470358647327`*^9, 
+  3.836247046690035*^9}},ExpressionUUID->"d7800bef-01a5-4a6f-b51b-\
+19acdab331b8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"FormulaDosPuntos", "[", 
+     RowBox[{"F_", ",", "A_", ",", "B_", ",", "C_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"a", "=", "A"}], ",", 
+        RowBox[{"b", "=", "B"}], ",", 
+        RowBox[{"c", "=", "C"}], ",", 
+        RowBox[{"h", "=", "0"}], ",", 
+        RowBox[{"Aproximacion", "=", "0"}], ",", 
+        RowBox[{"errorReal", "=", "0"}], ",", "derivada", ",", 
+        "errorPractico", ",", "segundaDerivada", ",", "errorTeorico"}], "}"}],
+       ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"h", "=", 
+        RowBox[{"b", "-", "a"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Aproximacion", "=", 
+        RowBox[{
+         FractionBox["1", 
+          RowBox[{"2", "h"}]], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"F", "[", 
+            RowBox[{"a", "-", 
+             RowBox[{"2", "h"}]}], "]"}], "-", 
+           RowBox[{"4", 
+            RowBox[{"F", "[", 
+             RowBox[{"b", "-", "h"}], "]"}]}], "+", 
+           RowBox[{"3", 
+            RowBox[{"F", "[", "c", "]"}]}]}], ")"}]}]}], ";", " ", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"derivada", "=", " ", 
+        RowBox[{
+         RowBox[{"F", "'"}], "[", "b", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"errorReal", "=", 
+        RowBox[{
+         RowBox[{"F", "'"}], "[", "a", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"errorPractico", "=", 
+        RowBox[{"Abs", "[", 
+         RowBox[{"errorReal", "-", "Aproximacion"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<El resultado de la aproximaci\[OAcute]n del metodo es: \>\"", 
+         ",", 
+         RowBox[{"N", "[", "Aproximacion", "]"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<El resultado del error real con el metodo es: \>\"", ",", 
+         RowBox[{"N", "[", "errorReal", "]"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<El resultado del error pr\[AAcute]ctico es: \>\"", ",", 
+         RowBox[{"N", "[", "errorPractico", "]"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"primero", "=", " ", 
+        RowBox[{
+         RowBox[{"F", "'''"}], "[", "a", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"segundo", "=", 
+        RowBox[{
+         RowBox[{"F", "'''"}], "[", "c", "]"}]}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"primero", ">", "segundo"}], ",", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"errorTeorico", "=", 
+           RowBox[{"Abs", "[", 
+            RowBox[{
+             FractionBox[
+              SuperscriptBox["h", "2"], "3"], "*", "primero"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"Print", "[", 
+           RowBox[{"\"\<El error teorico es: \>\"", ",", " ", 
+            RowBox[{"N", "[", "errorTeorico", "]"}]}], "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"errorTeorico", "=", 
+           RowBox[{"Abs", "[", 
+            RowBox[{
+             FractionBox[
+              SuperscriptBox["h", "2"], "3"], "*", "segundo"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", "\[IndentingNewLine]", " ", 
+          RowBox[{"Print", "[", 
+           RowBox[{"\"\<El error te\[OAcute]rico es: \>\"", ",", " ", 
+            RowBox[{"N", "[", "errorTeorico", "]"}]}], "]"}]}]}], 
+        "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}],
+    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Fx", "[", "x_", "]"}], "=", 
+   RowBox[{
+    RowBox[{"3", "x", "*", 
+     SuperscriptBox["\[ExponentialE]", "x"]}], "-", 
+    RowBox[{"Cos", "[", "x", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"FormulaDosPuntos", "[", 
+  RowBox[{"Fx", ",", "1.30", ",", "1.31", ",", "1.32"}], "]"}]}], "Input",
+ CellChangeTimes->{
+  3.8362470685555134`*^9, {3.8362471437720776`*^9, 3.8362471513809276`*^9}, {
+   3.8363185685885587`*^9, 3.836318613976903*^9}, {3.83631878836858*^9, 
+   3.836318788957039*^9}, {3.8363188212131643`*^9, 3.836318821801129*^9}},
+ CellLabel->"In[22]:=",ExpressionUUID->"4f3d5320-a484-4ff6-9d11-86261964b31a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado de la aproximaci\[OAcute]n del metodo es: \"\>", 
+   "\[InvisibleSpace]", "54.03341215470792`"}],
+  SequenceForm[
+  "El resultado de la aproximaci\[OAcute]n del metodo es: ", 
+   54.03341215470792],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.836247085519431*^9, 3.8362471537209787`*^9, 3.8363186245003157`*^9, {
+   3.836318824415959*^9, 3.836318827415148*^9}},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[22]:=",ExpressionUUID->"058ff414-3ea7-40d9-8d65-8d7d89ee0430"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado del error real con el metodo es: \"\>", 
+   "\[InvisibleSpace]", "26.28170519198998`"}],
+  SequenceForm[
+  "El resultado del error real con el metodo es: ", 26.28170519198998],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.836247085519431*^9, 3.8362471537209787`*^9, 3.8363186245003157`*^9, {
+   3.836318824415959*^9, 3.836318827418078*^9}},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[22]:=",ExpressionUUID->"6ec2190a-c9b4-4593-ba78-819dff901de8"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado del error pr\[AAcute]ctico es: \"\>", 
+   "\[InvisibleSpace]", "27.75170696271794`"}],
+  SequenceForm[
+  "El resultado del error pr\[AAcute]ctico es: ", 27.75170696271794],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.836247085519431*^9, 3.8362471537209787`*^9, 3.8363186245003157`*^9, {
+   3.836318824415959*^9, 3.8363188274229264`*^9}},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[22]:=",ExpressionUUID->"72dd117f-fa40-4dfe-99ad-f8acf3dc7079"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El error te\[OAcute]rico es: \"\>", "\[InvisibleSpace]", 
+   "0.0015848675316394198`"}],
+  SequenceForm["El error te\[OAcute]rico es: ", 0.0015848675316394198`],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.836247085519431*^9, 3.8362471537209787`*^9, 3.8363186245003157`*^9, {
+   3.836318824415959*^9, 3.8363188274259787`*^9}},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[22]:=",ExpressionUUID->"d4f1d6c4-b61e-4ee5-99c5-1a833dd640de"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+
+F\[OAcute]rmula 5 puntos hacia adelante\
+\>", "Title",
+ CellChangeTimes->{{3.7398554394571304`*^9, 
+  3.7398554626372275`*^9}},ExpressionUUID->"35efdb9a-a5b9-45b9-b81a-\
+1eb438efba37"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"FormulaDosPuntos", "[", 
+      RowBox[{"F_", ",", "A_", ",", "B_", ",", "C_", ",", "D_", ",", "E_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"a", "=", "A"}], ",", 
+         RowBox[{"b", "=", "B"}], ",", 
+         RowBox[{"c", "=", "C"}], ",", 
+         RowBox[{"d", "=", "D"}], ",", 
+         RowBox[{"e", "=", "E"}], ",", 
+         RowBox[{"h", "=", "0"}], ",", 
+         RowBox[{"Aproximacion", "=", "0"}], ",", 
+         RowBox[{"errorReal", "=", "0"}], ",", "derivada", ",", 
+         "errorPractico", ",", "segundaDerivada", ",", "errorTeorico"}], 
+        "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"h", "=", 
+         RowBox[{"b", "-", "a"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Aproximacion", "=", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"\[IndentingNewLine]", "1"}], 
+           RowBox[{"12", "*", "h"}]], "*", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "25"}], "*", 
+             RowBox[{"F", "[", "a", "]"}]}], "+", 
+            RowBox[{"48", "*", 
+             RowBox[{"F", "[", "b", "]"}]}], "-", 
+            RowBox[{"36", "*", 
+             RowBox[{"F", "[", "c", "]"}]}], "+", 
+            RowBox[{"16", "*", 
+             RowBox[{"F", "[", "d", "]"}]}], "-", 
+            RowBox[{"3", "*", 
+             RowBox[{"F", "[", "e", "]"}]}]}], ")"}]}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"derivada", "=", " ", 
+         RowBox[{
+          RowBox[{"F", "'"}], "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"errorReal", "=", 
+         RowBox[{
+          RowBox[{"F", "'"}], "[", "a", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"errorPractico", "=", 
+         RowBox[{"Abs", "[", 
+          RowBox[{"errorReal", "-", "Aproximacion"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{
+         "\"\<El resultado de la aproximaci\[OAcute]n del metodo es: \>\"", 
+          ",", 
+          RowBox[{"N", "[", "Aproximacion", "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{
+         "\"\<El resultado del error real con el metodo es: \>\"", ",", 
+          RowBox[{"N", "[", "errorReal", "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{"\"\<El resultado del error pr\[AAcute]ctico es: \>\"", ",", 
+          RowBox[{"N", "[", "errorPractico", "]"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"primero", "=", " ", 
+         RowBox[{
+          RowBox[{"F", "'''''"}], "[", "a", "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"segundo", "=", 
+         RowBox[{
+          RowBox[{"F", "'''''"}], "[", "c", "]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"primero", ">", "segundo"}], ",", "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"errorTeorico", "=", 
+            RowBox[{"Abs", "[", 
+             RowBox[{
+              FractionBox[
+               SuperscriptBox["h", "4"], "5"], "*", "primero"}], "]"}]}], ";",
+            "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"Print", "[", 
+            RowBox[{"\"\<El error teorico es: \>\"", ",", " ", 
+             RowBox[{"N", "[", "errorTeorico", "]"}]}], "]"}]}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"errorTeorico", "=", 
+            RowBox[{"Abs", "[", 
+             RowBox[{
+              FractionBox[
+               SuperscriptBox["h", "4"], "5"], "*", "segundo"}], "]"}]}], ";",
+            "\[IndentingNewLine]", "\[IndentingNewLine]", " ", 
+           RowBox[{"Print", "[", 
+            RowBox[{"\"\<El error te\[OAcute]rico es: \>\"", ",", " ", 
+             RowBox[{"N", "[", "errorTeorico", "]"}]}], "]"}]}]}], 
+         "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Fx", "[", "x_", "]"}], "=", 
+     RowBox[{
+      RowBox[{"3", "x", "*", 
+       SuperscriptBox["\[ExponentialE]", "x"]}], "-", 
+      RowBox[{"Cos", "[", "x", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"FormulaDosPuntos", "[", 
+    RowBox[{
+    "Fx", ",", "1.30", ",", "1.31", ",", "1.32", ",", "1.33", ",", "1.34"}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.7398554656534405`*^9, 3.7398554660574327`*^9}, {
+   3.7398554983625107`*^9, 3.7398555706300135`*^9}, {3.739855600864197*^9, 
+   3.739855750512896*^9}, 3.73985580067813*^9, {3.7398558914562244`*^9, 
+   3.739855915960765*^9}, {3.739855963951891*^9, 
+   3.7398559976032753`*^9}},ExpressionUUID->"2c43436d-4b3b-4536-87f2-\
+6b4a0997100a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado de la aproximaci\[OAcute]n del metodo es: \"\>", 
+   "\[InvisibleSpace]", "26.28170504864777`"}],
+  SequenceForm[
+  "El resultado de la aproximaci\[OAcute]n del metodo es: ", 
+   26.28170504864777],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.73985600650663*^9},ExpressionUUID->"ed211606-2b73-48d6-a0fa-627bbcf4ff37"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado del error real con el metodo es: \"\>", 
+   "\[InvisibleSpace]", "26.28170519198998`"}],
+  SequenceForm[
+  "El resultado del error real con el metodo es: ", 26.28170519198998],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7398560065076323`*^9},ExpressionUUID->"a1053b40-1aa1-4723-9d9e-\
+c0a0a490621d"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado del error pr\[AAcute]ctico es: \"\>", 
+   "\[InvisibleSpace]", "1.4334220921341512`*^-7"}],
+  SequenceForm[
+  "El resultado del error pr\[AAcute]ctico es: ", 1.4334220921341512`*^-7],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7398560065089116`*^9},ExpressionUUID->"1617527a-b444-4ccf-9172-\
+d498bf4720be"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El error te\[OAcute]rico es: \"\>", "\[InvisibleSpace]", 
+   "1.43887968825969`*^-7"}],
+  SequenceForm["El error te\[OAcute]rico es: ", 1.43887968825969*^-7],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7398560065122337`*^9},ExpressionUUID->"67727ec5-d5f7-4761-8946-\
+69bafe2cf545"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["F\[OAcute]rmula 5 puntos hacia adelante con h y x0", "Title",
+ CellChangeTimes->{{3.8362441203700867`*^9, 
+  3.8362441241930003`*^9}},ExpressionUUID->"125c57ef-4d25-4842-8a4e-\
+4d0deb5edf5c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"SextoAlgoritmoDeDerivacion", " ", "[", 
+     RowBox[{"F_", ",", "x0_", ",", "h_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "PrimeraDerivada", " ", "}"}], ",", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"PrimeraDerivada", " ", "=", " ", 
+        RowBox[{
+         FractionBox["1", 
+          RowBox[{"12", "*", "h"}]], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"-", "25"}], 
+            RowBox[{"F", "[", "x0", "]"}]}], "+", 
+           RowBox[{"48", 
+            RowBox[{"F", "[", 
+             RowBox[{"x0", "+", "h"}], "]"}]}], "-", 
+           RowBox[{"36", 
+            RowBox[{"F", "[", 
+             RowBox[{"x0", "+", 
+              RowBox[{"2", "h"}]}], "]"}]}], "+", 
+           RowBox[{"16", 
+            RowBox[{"F", "[", 
+             RowBox[{"x0", "+", 
+              RowBox[{"3", "h"}]}], "]"}]}], "-", 
+           RowBox[{"3", 
+            RowBox[{"F", "[", 
+             RowBox[{"x0", "+", 
+              RowBox[{"4", "h"}]}], "]"}]}]}], ")"}]}]}], ";", " ", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el \
+punto \>\"", ",", "x0", " ", ",", "\"\< es: \>\"", " ", ",", 
+         RowBox[{"PrimeraDerivada", "//", "N"}]}], "]"}], ";"}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"x0", "=", "1.8"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h", "=", "0.1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"F", "[", "x_", "]"}], ":=", 
+   RowBox[{"Log", "[", "x", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SextoAlgoritmoDeDerivacion", "[", 
+   RowBox[{"F", ",", "x0", ",", "h"}], "]"}], ";"}]}], "Input",
+ CellLabel->
+  "In[106]:=",ExpressionUUID->"87d3ca28-59b0-4015-a8ce-ad46458a12eb"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el \
+punto \"\>", "\[InvisibleSpace]", "1.8`", 
+   "\[InvisibleSpace]", "\<\" es: \"\>", "\[InvisibleSpace]", 
+   "0.5555390401176414`"}],
+  SequenceForm[
+  "La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el punto ", 1.8,
+    " es: ", 0.5555390401176414],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.836244164939643*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[106]:=",ExpressionUUID->"53c525f6-1eec-462e-acaf-533f356ff63e"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+
+F\[OAcute]rmula de 5 puntos hacia atr\[AAcute]s\
+\>", "Title",
+ CellChangeTimes->{{3.7398560261528864`*^9, 3.7398560598515744`*^9}, 
+   3.8362442991328506`*^9},ExpressionUUID->"944de18c-06bc-4db8-9c45-\
+5a6260ef5e59"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.7398560618404217`*^9},ExpressionUUID->"4c499770-aaeb-4d91-8721-\
+46a2669c6ec0"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"FormulaDosPuntos", "[", 
+    RowBox[{"F_", ",", "A_", ",", "B_", ",", "C_", ",", "D_", ",", "E_"}], 
+    "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"a", "=", "A"}], ",", 
+       RowBox[{"b", "=", "B"}], ",", 
+       RowBox[{"c", "=", "C"}], ",", 
+       RowBox[{"d", "=", "D"}], ",", 
+       RowBox[{"e", "=", "E"}], ",", 
+       RowBox[{"h", "=", "0"}], ",", 
+       RowBox[{"Aproximacion", "=", "0"}], ",", 
+       RowBox[{"errorReal", "=", "0"}], ",", "derivada", ",", "errorPractico",
+        ",", "segundaDerivada", ",", "errorTeorico"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"h", "=", 
+       RowBox[{"b", "-", "a"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Aproximacion", "=", 
+       RowBox[{
+        FractionBox[
+         RowBox[{"\[IndentingNewLine]", "1"}], 
+         RowBox[{"12", "*", "h"}]], "*", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"F", "[", 
+           RowBox[{"a", "-", 
+            RowBox[{"2", "*", "h"}]}], "]"}], "-", 
+          RowBox[{"8", "*", 
+           RowBox[{"F", "[", 
+            RowBox[{"a", "-", "h"}], "]"}]}], "+", 
+          RowBox[{"8", "*", 
+           RowBox[{"F", "[", "b", "]"}]}], "-", 
+          RowBox[{"F", "[", "c", "]"}]}], ")"}]}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"derivada", "=", " ", 
+       RowBox[{
+        RowBox[{"F", "'"}], "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"errorReal", "=", 
+       RowBox[{
+        RowBox[{"F", "'"}], "[", "a", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"errorPractico", "=", 
+       RowBox[{"Abs", "[", 
+        RowBox[{"errorReal", "-", "Aproximacion"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{
+       "\"\<El resultado de la aproximaci\[OAcute]n del metodo es: \>\"", ",", 
+        RowBox[{"N", "[", "Aproximacion", "]"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<El resultado del error real con el metodo es: \>\"", ",", 
+        RowBox[{"N", "[", "errorReal", "]"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<El resultado del error pr\[AAcute]ctico es: \>\"", ",", 
+        RowBox[{"N", "[", "errorPractico", "]"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"primero", "=", " ", 
+       RowBox[{
+        RowBox[{"F", "'''''"}], "[", "a", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"segundo", "=", 
+       RowBox[{
+        RowBox[{"F", "'''''"}], "[", "c", "]"}]}], ";", "\[IndentingNewLine]",
+       "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"primero", ">", "segundo"}], ",", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"errorTeorico", "=", 
+          RowBox[{"Abs", "[", 
+           RowBox[{
+            FractionBox[
+             SuperscriptBox["h", "4"], "30"], "*", "primero"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", 
+          RowBox[{"\"\<El error teorico es: \>\"", ",", " ", 
+           RowBox[{"N", "[", "errorTeorico", "]"}]}], "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"errorTeorico", "=", 
+          RowBox[{"Abs", "[", 
+           RowBox[{
+            FractionBox[
+             SuperscriptBox["h", "4"], "30"], "*", "segundo"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", " ", 
+         RowBox[{"Print", "[", 
+          RowBox[{"\"\<El error te\[OAcute]rico es: \>\"", ",", " ", 
+           RowBox[{"N", "[", "errorTeorico", "]"}]}], "]"}]}]}], 
+       "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Fx", "[", "x_", "]"}], "=", 
+   RowBox[{
+    RowBox[{"3", "x", "*", 
+     SuperscriptBox["\[ExponentialE]", "x"]}], "-", 
+    RowBox[{"Cos", "[", "x", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"FormulaDosPuntos", "[", 
+  RowBox[{
+  "Fx", ",", "1.30", ",", "1.31", ",", "1.32", ",", "1.33", ",", "1.34"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.7398561057445326`*^9, 
+  3.739856211125972*^9}},ExpressionUUID->"6e2919ca-5e05-4961-92a8-\
+2cf784298e4b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado de la aproximaci\[OAcute]n del metodo es: \"\>", 
+   "\[InvisibleSpace]", "26.28170516855174`"}],
+  SequenceForm[
+  "El resultado de la aproximaci\[OAcute]n del metodo es: ", 
+   26.28170516855174],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7398562148936844`*^9},ExpressionUUID->"058710af-3215-4505-94d7-\
+4f4c17d9af9f"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado del error real con el metodo es: \"\>", 
+   "\[InvisibleSpace]", "26.28170519198998`"}],
+  SequenceForm[
+  "El resultado del error real con el metodo es: ", 26.28170519198998],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.739856214895688*^9},ExpressionUUID->"4543744f-4d50-4f65-b78c-\
+104ac485ab3f"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El resultado del error pr\[AAcute]ctico es: \"\>", 
+   "\[InvisibleSpace]", "2.343823979344961`*^-8"}],
+  SequenceForm[
+  "El resultado del error pr\[AAcute]ctico es: ", 2.343823979344961*^-8],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7398562148979034`*^9},ExpressionUUID->"604eb408-9128-48ed-9a05-\
+aa9d4c9224d7"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El error te\[OAcute]rico es: \"\>", "\[InvisibleSpace]", 
+   "2.3981328137661495`*^-8"}],
+  SequenceForm["El error te\[OAcute]rico es: ", 2.3981328137661495`*^-8],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7398562149019146`*^9},ExpressionUUID->"c84384d7-5cb9-446a-8a17-\
+d6b554fca9ef"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["F\[OAcute]rmula de 5 puntos hacia atr\[AAcute]s con h y x0", "Title",
+ CellChangeTimes->{{3.836244329310213*^9, 
+  3.83624434007859*^9}},ExpressionUUID->"95bde3b8-2052-4db9-887a-\
+b836efdd7be9"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"QuintoAlgoritmoDeDerivacion", " ", "[", 
+     RowBox[{"F_", ",", "x0_", ",", "h_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "PrimeraDerivada", " ", "}"}], ",", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"PrimeraDerivada", " ", "=", " ", 
+        RowBox[{
+         FractionBox["1", 
+          RowBox[{"12", "*", "h"}]], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"F", "[", 
+            RowBox[{"x0", "-", 
+             RowBox[{"2", "h"}]}], "]"}], "-", 
+           RowBox[{"8", 
+            RowBox[{"F", "[", 
+             RowBox[{"x0", "-", "h"}], "]"}]}], "+", 
+           RowBox[{"8", 
+            RowBox[{"F", "[", 
+             RowBox[{"x0", "+", "h"}], "]"}]}], "-", 
+           RowBox[{"F", "[", 
+            RowBox[{"x0", "+", 
+             RowBox[{"2", "h"}]}], "]"}]}], ")"}]}]}], ";", " ", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el \
+punto \>\"", ",", "x0", " ", ",", "\"\< es: \>\"", " ", ",", 
+         RowBox[{"PrimeraDerivada", "//", "N"}]}], "]"}], ";"}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"x0", "=", "1.8"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h", "=", "0.1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"F", "[", "x_", "]"}], ":=", 
+   RowBox[{"Log", "[", "x", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"QuintoAlgoritmoDeDerivacion", "[", 
+   RowBox[{"F", ",", "x0", ",", "h"}], "]"}], ";"}]}], "Input",
+ CellLabel->
+  "In[111]:=",ExpressionUUID->"8f8a85af-54af-4427-90a8-9023cfee0ce3"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el \
+punto \"\>", "\[InvisibleSpace]", "1.8`", 
+   "\[InvisibleSpace]", "\<\" es: \"\>", "\[InvisibleSpace]", 
+   "0.5555512746396547`"}],
+  SequenceForm[
+  "La aproximaci\[OAcute]n de la funci\[OAcute]n evualuada en el punto ", 1.8,
+    " es: ", 0.5555512746396547],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.836244351793622*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[111]:=",ExpressionUUID->"8d7c0f3a-bd2e-4a5f-b93d-c837b590e355"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1141.2, 610.1999999999999},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1. Inherited,
+FrontEndVersion->"12.2 para Microsoft Windows (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"5610d625-5403-4f9c-b572-f13c584447f0"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 247, 4, 97, "Title",ExpressionUUID->"14648663-201a-4ca3-93ff-7d2012da3919"],
+Cell[CellGroupData[{
+Cell[852, 30, 4207, 98, 872, "Input",ExpressionUUID->"e009d2d3-0aa3-4ee7-92ad-6415d79f7821"],
+Cell[CellGroupData[{
+Cell[5084, 132, 472, 11, 21, "Print",ExpressionUUID->"ee346acd-c522-476e-835e-bed6fb083ac2"],
+Cell[5559, 145, 421, 9, 21, "Print",ExpressionUUID->"07df7b05-4e61-4de6-a98a-1fb2e81403ea"],
+Cell[5983, 156, 446, 10, 21, "Print",ExpressionUUID->"7c9ee988-bd05-4459-8eb5-95de80340a03"],
+Cell[6432, 168, 420, 9, 21, "Print",ExpressionUUID->"df56a2cd-3010-4373-8cd4-3835a3019dc6"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6913, 184, 256, 4, 97, "Title",ExpressionUUID->"a4a01186-e0c2-4c80-b5cb-292e75203f26"],
+Cell[CellGroupData[{
+Cell[7194, 192, 833, 22, 120, "Input",ExpressionUUID->"db7885e4-9bcd-4cad-bdf8-38d6cbbea487"],
+Cell[8030, 216, 507, 12, 21, "Print",ExpressionUUID->"1c106454-4956-46ab-b4f7-1a34220adfb5"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8586, 234, 270, 7, 158, "Title",ExpressionUUID->"d137a5b5-3555-4988-8b47-a017f0557458"],
+Cell[CellGroupData[{
+Cell[8881, 245, 8542, 208, 865, "Input",ExpressionUUID->"e5e3cc48-ac4d-410b-9a7f-bb0a27a94d2c"],
+Cell[CellGroupData[{
+Cell[17448, 457, 972, 17, 21, "Print",ExpressionUUID->"983d97b6-b8d3-420c-9b68-be412f084fa5"],
+Cell[18423, 476, 913, 17, 21, "Print",ExpressionUUID->"00328dc6-ff99-442d-82aa-69745afef0a2"],
+Cell[19339, 495, 916, 17, 21, "Print",ExpressionUUID->"35e8dd77-88c7-4d30-8f0d-a28f72b0ab2f"],
+Cell[20258, 514, 1087, 22, 21, "Print",ExpressionUUID->"bd0fa5f6-ddcd-4e5e-830e-78d6b00f7927"],
+Cell[21348, 538, 956, 18, 21, "Print",ExpressionUUID->"9333228b-434a-4822-8ce8-b3adf61c5475"],
+Cell[22307, 558, 935, 17, 21, "Print",ExpressionUUID->"852d72dc-c9e8-471a-8c53-0ea598c0c507"],
+Cell[23245, 577, 910, 17, 21, "Print",ExpressionUUID->"20dfbc82-5644-4911-9b23-51717e70a0f5"]
+}, Open  ]]
+}, Open  ]],
+Cell[24182, 598, 130, 3, 49, "Input",ExpressionUUID->"9fe53116-839c-466b-923f-148154def36f"],
+Cell[24315, 603, 196, 3, 49, "Input",ExpressionUUID->"6dfa8b66-1dc1-41c9-8934-f536876962fb"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24548, 611, 281, 4, 97, "Title",ExpressionUUID->"53318a8c-c0d1-402c-972a-e16c369d158d"],
+Cell[CellGroupData[{
+Cell[24854, 619, 4821, 112, 945, "Input",ExpressionUUID->"e7d9316f-7fe6-4b28-b658-5de8d7c3a212"],
+Cell[CellGroupData[{
+Cell[29700, 735, 545, 12, 21, "Print",ExpressionUUID->"be6f257c-697b-418f-b544-1e29352a995a"],
+Cell[30248, 749, 523, 11, 21, "Print",ExpressionUUID->"82056a7a-1c7b-4e6f-98ac-917b4800406f"],
+Cell[30774, 762, 527, 11, 21, "Print",ExpressionUUID->"deb516fb-bfab-4159-a5cc-6ba217110b4c"],
+Cell[31304, 775, 494, 10, 21, "Print",ExpressionUUID->"f65ce749-853d-4698-9fac-3b11d4f33445"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31859, 792, 240, 4, 97, "Title",ExpressionUUID->"ee4a8a25-7200-4ba8-b087-f7e20596ec65"],
+Cell[CellGroupData[{
+Cell[32124, 800, 1924, 48, 371, "Input",ExpressionUUID->"ef8b98d2-4794-4ef5-ab30-35ee4b87e1af"],
+Cell[34051, 850, 564, 13, 21, "Print",ExpressionUUID->"ed247a10-ea64-4763-8b1e-89d379d2619e"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34664, 869, 191, 6, 158, "Title",ExpressionUUID->"8a8fa253-1c20-4fc6-ae13-46f040120e65"],
+Cell[CellGroupData[{
+Cell[34880, 879, 4486, 106, 945, "Input",ExpressionUUID->"bb8ffe18-0d57-43d2-99e3-202853507ea8"],
+Cell[CellGroupData[{
+Cell[39391, 989, 421, 10, 21, "Print",ExpressionUUID->"a8b777e9-fe42-4bb1-952a-d85c65116a4c"],
+Cell[39815, 1001, 399, 9, 21, "Print",ExpressionUUID->"b59530ae-d6ab-4fb2-907b-6cae2a541013"],
+Cell[40217, 1012, 398, 9, 21, "Print",ExpressionUUID->"5b59be38-3dbc-4b98-9c5a-c9b37050c188"],
+Cell[40618, 1023, 367, 8, 21, "Print",ExpressionUUID->"fac80001-56f9-42ef-873f-ad200576879e"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41046, 1038, 195, 3, 97, "Title",ExpressionUUID->"3224597c-6229-4ccc-a46f-a3bd64507d69"],
+Cell[CellGroupData[{
+Cell[41266, 1045, 1628, 41, 331, "Input",ExpressionUUID->"c434929a-d9a1-45b0-9b2e-726d55a4b95c"],
+Cell[42897, 1088, 566, 13, 21, "Print",ExpressionUUID->"1b2e87b3-5660-4fb7-bff1-035ab0e24175"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43512, 1107, 252, 7, 158, "Title",ExpressionUUID->"5c6f2a45-f7f6-4d1d-9f85-04366665f72e"],
+Cell[CellGroupData[{
+Cell[43789, 1118, 4714, 111, 926, "Input",ExpressionUUID->"6d3e0943-7cb1-4f92-9c23-198a67fcc709"],
+Cell[CellGroupData[{
+Cell[48528, 1233, 440, 10, 21, "Print",ExpressionUUID->"580bf989-2785-4ce2-b8dd-e9f557e9123d"],
+Cell[48971, 1245, 421, 9, 21, "Print",ExpressionUUID->"7f572620-619d-4c82-a1a9-62a6e60606f5"],
+Cell[49395, 1256, 420, 9, 21, "Print",ExpressionUUID->"ec940a48-ffc1-46a7-a8da-a25da212c599"],
+Cell[49818, 1267, 387, 8, 21, "Print",ExpressionUUID->"59f7bbba-96ec-4815-9879-69ce3b4c6e5f"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[50266, 1282, 203, 3, 97, "Title",ExpressionUUID->"2487b480-56f4-4d25-83cb-a7a50f9408be"],
+Cell[CellGroupData[{
+Cell[50494, 1289, 1660, 42, 351, "Input",ExpressionUUID->"ad89d530-8987-430b-8f91-7ba2c4c5d105"],
+Cell[52157, 1333, 579, 13, 21, "Print",ExpressionUUID->"d1d5b170-bdef-4141-ba8f-1ecff0dae4de"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[52785, 1352, 225, 3, 97, "Title",ExpressionUUID->"75170976-f01e-4eaf-99c4-5dcc561fc1e6"],
+Cell[CellGroupData[{
+Cell[53035, 1359, 1778, 45, 352, "Input",ExpressionUUID->"922d4be2-d14d-479e-ba99-8a7cb48e9543"],
+Cell[54816, 1406, 567, 13, 21, "Print",ExpressionUUID->"98958dba-6a35-46c2-b546-1bf6d0089190"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[55432, 1425, 182, 3, 97, "Title",ExpressionUUID->"d7800bef-01a5-4a6f-b51b-19acdab331b8"],
+Cell[CellGroupData[{
+Cell[55639, 1432, 4520, 107, 859, "Input",ExpressionUUID->"4f3d5320-a484-4ff6-9d11-86261964b31a"],
+Cell[CellGroupData[{
+Cell[60184, 1543, 550, 13, 21, "Print",ExpressionUUID->"058ff414-3ea7-40d9-8d65-8d7d89ee0430"],
+Cell[60737, 1558, 528, 12, 21, "Print",ExpressionUUID->"6ec2190a-c9b4-4593-ba78-819dff901de8"],
+Cell[61268, 1572, 526, 12, 21, "Print",ExpressionUUID->"72dd117f-fa40-4dfe-99ad-f8acf3dc7079"],
+Cell[61797, 1586, 502, 11, 21, "Print",ExpressionUUID->"d4f1d6c4-b61e-4ee5-99c5-1a833dd640de"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[62360, 1604, 195, 6, 158, "Title",ExpressionUUID->"35efdb9a-a5b9-45b9-b81a-1eb438efba37"],
+Cell[CellGroupData[{
+Cell[62580, 1614, 5158, 121, 984, "Input",ExpressionUUID->"2c43436d-4b3b-4536-87f2-6b4a0997100a"],
+Cell[CellGroupData[{
+Cell[67763, 1739, 389, 9, 21, "Print",ExpressionUUID->"ed211606-2b73-48d6-a0fa-627bbcf4ff37"],
+Cell[68155, 1750, 372, 9, 21, "Print",ExpressionUUID->"a1053b40-1aa1-4723-9d9e-c0a0a490621d"],
+Cell[68530, 1761, 379, 9, 23, "Print",ExpressionUUID->"1617527a-b444-4ccf-9172-d498bf4720be"],
+Cell[68912, 1772, 341, 8, 23, "Print",ExpressionUUID->"67727ec5-d5f7-4761-8946-69bafe2cf545"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[69314, 1787, 197, 3, 97, "Title",ExpressionUUID->"125c57ef-4d25-4842-8a4e-4d0deb5edf5c"],
+Cell[CellGroupData[{
+Cell[69536, 1794, 2081, 54, 370, "Input",ExpressionUUID->"87d3ca28-59b0-4015-a8ce-ad46458a12eb"],
+Cell[71620, 1850, 565, 13, 21, "Print",ExpressionUUID->"53c525f6-1eec-462e-acaf-533f356ff63e"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[72234, 1869, 228, 6, 158, "Title",ExpressionUUID->"944de18c-06bc-4db8-9c45-5a6260ef5e59"],
+Cell[72465, 1877, 149, 3, 49, "Input",ExpressionUUID->"4c499770-aaeb-4d91-8721-46a2669c6ec0"],
+Cell[CellGroupData[{
+Cell[72639, 1884, 4514, 111, 925, "Input",ExpressionUUID->"6e2919ca-5e05-4961-92a8-2cf784298e4b"],
+Cell[CellGroupData[{
+Cell[77178, 1999, 394, 10, 21, "Print",ExpressionUUID->"058710af-3215-4505-94d7-4f4c17d9af9f"],
+Cell[77575, 2011, 370, 9, 21, "Print",ExpressionUUID->"4543744f-4d50-4f65-b78c-104ac485ab3f"],
+Cell[77948, 2022, 376, 9, 23, "Print",ExpressionUUID->"604eb408-9128-48ed-9a05-aa9d4c9224d7"],
+Cell[78327, 2033, 346, 8, 23, "Print",ExpressionUUID->"c84384d7-5cb9-446a-8a17-d6b554fca9ef"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[78734, 2048, 200, 3, 97, "Title",ExpressionUUID->"95bde3b8-2052-4db9-887a-b836efdd7be9"],
+Cell[CellGroupData[{
+Cell[78959, 2055, 1839, 48, 331, "Input",ExpressionUUID->"8f8a85af-54af-4427-90a8-9023cfee0ce3"],
+Cell[80801, 2105, 565, 13, 21, "Print",ExpressionUUID->"8d7c0f3a-bd2e-4a5f-b93d-c837b590e355"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

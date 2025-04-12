@@ -1,0 +1,118 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3060,        108]
+NotebookOptionsPosition[      2672,         90]
+NotebookOutlinePosition[      3019,        105]
+CellTagsIndexPosition[      2976,        102]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"FindLinearRecurrence", "[", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "4", ",", 
+     RowBox[{"-", "16"}], ",", 
+     RowBox[{"-", "192"}], ",", 
+     RowBox[{"-", "1280"}], ",", 
+     RowBox[{"-", "7168"}]}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7809502539159536`*^9, 3.7809502544208508`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"8", ",", 
+   RowBox[{"-", "16"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.7809502561669054`*^9, 3.780950398483575*^9, 
+  3.810311494572831*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+    "Lo", " ", "anterior", " ", "se", " ", "interpreta", " ", "como", " ", 
+     "a_", 
+     RowBox[{"{", "n", "}"}]}], "=", 
+    RowBox[{
+     RowBox[{"8", "a_", 
+      RowBox[{"{", 
+       RowBox[{"n", "-", "1"}], "}"}]}], "-", 
+     RowBox[{"16", "a_", 
+      RowBox[{"{", 
+       RowBox[{"n", "-", "2"}], "}"}]}]}]}], ",", " ", 
+   RowBox[{
+    RowBox[{"con", " ", "a_", 
+     RowBox[{"{", "0", "}"}]}], "=", "3"}], ",", 
+   RowBox[{
+    RowBox[{"a_", 
+     RowBox[{"{", "1", "}"}]}], "=", "4"}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.780950265403806*^9, 3.7809502936556916`*^9}, {
+  3.780950346360243*^9, 3.780950395152033*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"RecurrenceTable", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"a", "[", "n", "]"}], "\[Equal]", 
+       RowBox[{
+        RowBox[{"8", 
+         RowBox[{"a", "[", 
+          RowBox[{"n", "-", "1"}], "]"}]}], "-", 
+        RowBox[{"16", 
+         RowBox[{"a", "[", 
+          RowBox[{"n", "-", "2"}], "]"}]}]}]}], ",", 
+      RowBox[{
+       RowBox[{"a", "[", "0", "]"}], "\[Equal]", "3"}], ",", 
+      RowBox[{
+       RowBox[{"a", "[", "1", "]"}], "\[Equal]", "4"}]}], "}"}], ",", "a", 
+    ",", 
+    RowBox[{"{", 
+     RowBox[{"n", ",", "0", ",", "100"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.780950420006751*^9, 3.780950447099205*^9}, {
+   3.8103113834845953`*^9, 3.8103113839293404`*^9}, 3.810311737013175*^9}]
+},
+WindowSize->{1350, 685},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.0 para Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 361, 9, 66, "Input"],
+Cell[944, 33, 184, 5, 30, "Output"]
+}, Open  ]],
+Cell[1143, 41, 703, 22, 30, "Input"],
+Cell[1849, 65, 819, 23, 66, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

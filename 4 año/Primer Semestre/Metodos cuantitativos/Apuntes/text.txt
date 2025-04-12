@@ -1,0 +1,50 @@
+Clase 4
+
+Python para Data Science
+
+https://jupyter.org/install
+https://www.geeksforgeeks.org/how-to-install-python-pandas-on-windows-and-linux/
+https://www.geeksforgeeks.org/how-to-install-seaborn-on-windows/
+https://www.geeksforgeeks.org/how-to-install-seaborn-on-windows/
+
+Librerias
+	1.	numpy as np
+	2.	scipy as sp
+	3.	pandas as pd
+	4.	matplotlib as mpl
+	5.	seaborn as sns
+
+Importar un archivo
+variable = pd.read_csv("nombreArchivo.csv")
+	- Letra b crea nueva linea 
+
+variable
+variable.head(numeroFilas)
+variable.tail(numeroFila)
+variable.atypes 
+variable["nombreColumna"].dtype
+variable.shape 
+variable.max()
+variable.min()
+variable.mean()
+variable.median()
+variable.mode()
+variable.std()
+variable.sample(numeroDeMuestra)
+	- Shift enter para ejecutar
+
+variable2 = variable.groupby("nombreColumna")
+variable2.mean()
+variable _sub = variable[variable["nombreColumna" > monto ]]
+variable3 = variable[["nombreColumna"]]
+variable3
+variable3 = variable[numeroFilas]
+variable3 = variable.loc[numeroFila:numeroFila, ["nombreColumna", "nombreColumna"]]
+variable3	
+
+Método iloc
+variableOrdenada = variable .sort_values( by="nombreColumna")
+
+
+Gráficos
+%

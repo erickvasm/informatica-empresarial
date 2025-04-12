@@ -1,0 +1,27 @@
+header{
+	
+	width: 100%;
+	heigth: 50px;
+	background: #DD6255;
+	color: white;
+	padding-top:0;
+}
+head label{
+	
+	pandding: 10px;
+	fond-size: 20px;
+}
+.containerTwo{
+	
+	width: 60%;
+	height:80%;
+}
+.buscar{
+	
+	display: flex;
+}
+.form{
+	
+	display: flex;
+	padding-left: 400px;
+}

@@ -1,0 +1,419 @@
+---1 [ACTUALIZAR]
+-- BITACORA ALUMNOS
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarAlumnos() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoraalumnos" VALUES (OLD."id_alumno",OLD."numero_matricula",OLD."numero_grupo",OLD."cedula",
+											  OLD."id_persona_referencia",OLD."id_control_escrito",OLD."id_practica",
+											  NEW."id_alumno",NEW."numero_matricula",NEW."numero_grupo",NEW."cedula",
+											  NEW."id_persona_referencia",NEW."id_control_escrito",NEW."id_practica",
+											  CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraAlumnos_UB AFTER UPDATE ON public."alumnos"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarAlumnos();
+-- Actualizar
+UPDATE "alumnos" SET "cedula" = '506660666' WHERE "id_alumno"=1;
+SELECT * FROM "bitacoraalumnos";
+
+
+---2 [ACTUALIZAR]
+-- BITACORA BARRIOS
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarBarrios() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacorabarrios" VALUES (OLD."id_barrio",OLD."nombre",
+											  NEW."id_barrio",NEW."nombre",
+											  CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraBarrios_UB AFTER UPDATE ON public."barrios"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarBarrios();
+-- Actualizar
+UPDATE "barrios" SET "nombre" = 'Villas' WHERE "id_barrio"=1;
+SELECT * FROM "bitacorabarrios";
+
+
+---3 [ACTUALIZAR]
+-- BITACORA CANTONES
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarCantones() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoracantones" VALUES (OLD."id_canton",OLD."nombre",
+											  NEW."id_canton",NEW."nombre",
+											  CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraCantones_UB AFTER UPDATE ON public."cantones"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarCantones();
+-- Actualizar
+UPDATE "cantones" SET "nombre" = 'Nicoya' WHERE "id_canton"=1;
+SELECT * FROM "bitacoracantones";
+
+
+---4 [ACTUALIZAR]
+-- BITACORA CONTROLES ESCRITOS
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarControlesEscritos() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoracontroles_escritos" VALUES (OLD."id_control_escrito",OLD."numero_control",
+														 OLD."numero_preguntas",OLD."fecharealizacion",
+														 OLD."nota",
+														 NEW."id_control_escrito",NEW."numero_control",
+														 NEW."numero_preguntas",NEW."fecharealizacion",
+														 NEW."nota",
+														 CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraCcontroles_Escritos_UB AFTER UPDATE ON public."controles_escritos"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarControlesEscritos();
+-- Actualizar
+UPDATE "controles_escritos" SET "fecharealizacion" = '2021-07-20' WHERE "id_control_escrito"=1;
+SELECT * FROM "bitacoracontroles_escritos";
+
+
+---5 [ACTUALIZAR]
+-- BITACORA DIRECCIONES
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarDirecciones() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoradirecciones" VALUES (OLD."id_direccion",OLD."id_pais",
+														 OLD."id_provincia",OLD."id_canton",
+														 OLD."id_distrito",OLD."id_barrio",
+														 NEW."id_direccion",NEW."id_pais",
+														 NEW."id_provincia",NEW."id_canton",
+														 NEW."id_distrito",NEW."id_barrio",
+														 CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraDirecciones_UB AFTER UPDATE ON public."direcciones"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarDirecciones();
+-- Actualizar
+UPDATE "direcciones" SET "id_pais" = '1' WHERE "id_direccion"=1;
+SELECT * FROM "bitacoradirecciones";
+
+
+---6 [ACTUALIZAR]
+-- BITACORA DISTRITOS
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarDistritos() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoradistritos" VALUES (OLD."id_distrito", OLD."nombre",
+									   			NEW."id_distrito", NEW."nombre",
+									  			CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraDistritos_UB AFTER UPDATE ON public."distritos"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarDistritos();
+-- Actualizar
+UPDATE "distritos" SET "nombre" = 'Mogote' WHERE "id_distrito"=1;
+SELECT * FROM "bitacoradistritos";
+
+
+---7 [ACTUALIZAR]
+-- BITACORA EMAILS
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarEmails() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoraemails" VALUES (OLD."id_emails", OLD."descripcion",
+											 NEW."id_emails", NEW."descripcion",
+											 CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraEmails_UB AFTER UPDATE ON public."emails"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarEmails();
+-- Actualizar
+UPDATE "emails" SET "descripcion" = 'Nuevo' WHERE "id_emails"=1;
+SELECT * FROM "bitacoraemails";
+
+
+---8 [ACTUALIZAR]
+-- BITACORA GRADO DE DIFICULTAD
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarGradoDificultades() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoragrado_dificultades" VALUES (OLD."id_grado_dificultad",OLD."dificultad",
+									   NEW."id_grado_dificultad",NEW."dificultad",
+									   CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraGradoDificultades_UB AFTER UPDATE ON public."grado_dificultades"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarGradoDificultades();
+-- Actualizar
+UPDATE "grado_dificultades" SET "dificultad" = 'medio' WHERE "id_grado_dificultad"=1;
+SELECT * FROM "bitacoragrado_dificultades";
+
+
+---9 [ACTUALIZAR]
+-- BITACORA PAISES
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarPaises() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacorapaises" VALUES (OLD."id_pais", OLD."nombre",
+									   NEW."id_pais", NEW."nombre",
+									   CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraPaises_UB AFTER UPDATE ON public."paises"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarPaises();
+-- Actualizar
+UPDATE "paises" SET "nombre" = 'Venezuela' WHERE "id_pais"=1;
+SELECT * FROM "bitacorapaises";
+
+
+---10 [ACTUALIZAR]
+-- BITACORA PERSONAS
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarPersonas() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacorapersonas" VALUES (OLD."cedula",OLD."nombre",OLD."genero",OLD."fecha_nacimiento",
+											   OLD."id_telefono",OLD."id_email",OLD."id_direccion",
+											   NEW."cedula",NEW."nombre",NEW."genero",NEW."fecha_nacimiento",
+											   NEW."id_telefono",NEW."id_email",NEW."id_direccion",
+									   CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraPersonas_UB AFTER UPDATE ON public."personas"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarPersonas();
+-- Actualizar
+UPDATE "personas" SET "fecha_nacimiento" = '2005-10-10' WHERE "cedula"= '504340211';
+SELECT * FROM "bitacorapersonas";
+
+
+---11 [ACTUALIZAR]
+-- BITACORA PERSONAS REFERENCIAS
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarPersonasReferencias() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacorapersonas_referencias" VALUES (OLD."id_persona_referencia",OLD."cedula",OLD."parentesco",
+									   NEW."id_persona_referencia",NEW."cedula",NEW."parentesco",
+									   CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraPersonasReferencias_UB AFTER UPDATE ON public."personas_referencias"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarPersonasReferencias();
+-- Actualizar
+UPDATE "personas_referencias" SET "parentesco" = 'Padre' WHERE "id_persona_referencia"= 1;
+SELECT * FROM "bitacorapersonas_referencias";
+
+
+---12 [ACTUALIZAR]
+-- BITACORA PRACTICAS
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarPracticas() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacorapracticas" VALUES (OLD."id_practica",OLD."codigo_practica",OLD."titulo",
+												OLD."id_grado_dificultad",OLD."profesor_aplico",
+												NEW."id_practica",NEW."codigo_practica",NEW."titulo",
+												NEW."id_grado_dificultad",NEW."profesor_aplico",
+									   CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraPracticas_UB AFTER UPDATE ON public."practicas"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarPracticas();
+-- Actualizar
+UPDATE "practicas" SET "profesor_aplico" = 'Ruben' WHERE "id_practica"= 1;
+SELECT * FROM "bitacorapracticas";
+
+
+---13 [ACTUALIZAR]
+-- BITACORA PROFESORES
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarProfesores() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoraprofesores" VALUES (OLD."id_profesor",OLD."cedula",
+												 OLD."id_practica",OLD."fecha_diseno_practica",
+												 NEW."id_profesor",NEW."cedula",
+												 NEW."id_practica",NEW."fecha_diseno_practica",
+									   CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraProfesores_UB AFTER UPDATE ON public."profesores"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarProfesores();
+-- Actualizar
+UPDATE "profesores" SET "cedula" = '505550555' WHERE "id_profesor"= 1;
+SELECT * FROM "bitacoraprofesores";
+
+
+---14 [ACTUALIZAR]
+-- BITACORA PROVINCIAS
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarProvincias() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoraprovincias" VALUES (OLD."id_provincia",OLD."nombre",
+												 NEW."id_provincia",NEW."nombre",
+												 CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraProvincias_UB AFTER UPDATE ON public."provincias"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarProvincias();
+-- Actualizar
+UPDATE "provincias" SET "nombre" = 'Alajuela' WHERE "id_provincia"= 1;
+SELECT * FROM "bitacoraprovincias";
+
+
+---15 [ACTUALIZAR]
+-- BITACORA TELEFONO
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarTelefonos() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoratelefonos" VALUES (OLD."id_telefono",OLD."descripcion",
+									   NEW."id_telefono",NEW."descripcion",
+									   CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraTelefonos_UB AFTER UPDATE ON public."telefonos"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarTelefonos();
+-- Actualizar
+UPDATE "telefonos" SET "descripcion" = 'Postpago' WHERE "id_telefono"= 1;
+SELECT * FROM "bitacoratelefonos";

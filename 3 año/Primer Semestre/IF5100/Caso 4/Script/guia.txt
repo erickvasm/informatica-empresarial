@@ -1,0 +1,88 @@
+CREATE TABLE public.bitacoras_guias_junio2021 PARTITION OF public."BitacoraGuias"
+FOR VALUES FROM ('2021-06-01') TO ('2021-06-30');
+
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarGuia() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraGuias" VALUES (NULL,NULL,NULL,CURRENT_USER,tipo_accion,
+											NOW(),NEW."id_guia",NEW."cedula_fk",NEW."fecha_ingreso");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraGuias_IA 
+AFTER INSERT 
+ON public."guias"
+FOR EACH ROW 
+EXECUTE PROCEDURE InsertarGuia();
+
+-- INSERT
+INSERT INTO "guias" VALUES (20,2,NOW());
+SELECT * FROM "BitacoraGuias";
+
+
+				--- [ELIMINAR]
+
+-- [FUNCTION]
+	CREATE OR REPLACE FUNCTION EliminarGuia() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraGuias" VALUES (NULL,NULL,NULL,CURRENT_USER,tipo_accion,NOW(),OLD."id_guia",OLD."cedula_fk",OLD."fecha_ingreso");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraGuias BEFORE DELETE ON public."guias"
+FOR EACH ROW EXECUTE PROCEDURE EliminarGuia();
+
+-- Eliminar
+DELETE FROM "guias" WHERE "id_guia"=1
+SELECT * FROM "BitacoraGuias";
+
+
+				--- [ACTUALIZAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarGuia() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraGuias" VALUES (OLD."id_guia",OLD."cedula_fk",OLD."fecha_ingreso",
+											CURRENT_USER,tipo_accion,NOW(),NEW."id_guia",NEW."cedula_fk",NEW."fecha_ingreso");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraGuias_UB BEFORE UPDATE ON public."guias"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarGuia();
+
+-- Actualizar
+UPDATE "guias" SET "fecha_ingreso" = '2021-06-30' WHERE "id_guia"=1;
+SELECT * FROM "BitacoraGuias";

@@ -1,0 +1,60 @@
+Modélo de Espera y Teoría de Colas
+
+
+Condiciones 
+	⁃	En este tema son preguntas cortas en el examen
+	⁃	Mismas unidades en llegada y salida = horas/minutos
+	⁃	Variables importantes = λ, μ , s
+
+	⁃	M/M/1 --> TASA DE LLEGADA < TASA DE SALIDA 
+	•	ρ < 1
+
+
+Formulas generales
+	•	Tasa de llegada λ = número medio de clientes  que acceden al sistema por unidad de tiempo.
+	•	Tiempo medio entre llegadas 1/λ 
+	•	Tasa de servicio μ = número medio de clientes que son atendidos por unidad de  tiempo.
+	•	Tiempo medio de servicio 1/μ = este es el que se utiliza
+
+Significados
+	•	s = numero de servidores
+	•	ρ : λ/μ*s = utilización del sistema
+	•	L = valor esperado del número de clientes en el sistema
+	•	Lq = valor esperado del número de clientes en cola
+	•	W = tiempo medio de espera en el sistema 
+	•	Wq = tiempo medio de espera en la cola 
+	•	pn = probabilidad de que n clientes estén en el sistema (espera)
+	•	c= número medio de clientes en servicio.
+
+Estas formulas ya la calcula el Q Excel
+	•	P0 = probabilidad que este vacio
+	•	L
+	•	Lq 
+	•	W
+	•	Wq
+
+Modelos
+	1.	M/M/1 --> un servidor
+	2.	M/M/s --> dos o mas servidores
+	1.	Hay que buscar el valor mínimo, por lo que hay que buscar el s obtimo. 
+	3.	M/M/k --> servidor lleno
+	1.	Para calcular los P0, Pn y λef
+	1.	Se usa la formula que esta en el Excel "Teoria de Colas" 
+	⁃	Tiempo de espera que se perdera λef
+
+Costos 
+	•	CsS = coste de servicio
+	•	Cs = coste por unidad de tiempo y servidor
+	•	Cμμ 
+	•	Cμ = coste por unidad de tiempo y unidad de tasas de servicio
+
+	•	CIL(s) = costo de espera
+	•	CI = espera por unidad de tiempo (inactividad o perdida)
+	•	L(s) = valor esperado del numero de clientes
+	•	CwW(μ)
+	•	Cw = costo de espera por unidad de tiempo y cliente 
+	•	W(μ) = vaor esperado del tiempo medio de espera
+
+	•	CT = CI*L + Cs*s
+
+NOTA. Se utiliza una tabla para calcular cada coste segun la cantidad de servidores o la cantidad de k. 

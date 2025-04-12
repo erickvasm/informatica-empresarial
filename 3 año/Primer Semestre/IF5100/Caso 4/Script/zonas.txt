@@ -1,0 +1,90 @@
+CREATE TABLE public.bitacoras_zonas_junio2021 PARTITION OF public."BitacoraItinerario_Zonas"
+FOR VALUES FROM ('2021-06-01') TO ('2021-06-30');
+
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarItinerario_Zonas() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraItinerario_Zonas" VALUES (NULL,NULL,NULL,CURRENT_USER,tipo_accion,
+											NOW(),NEW."codigo_itinerario_fk",NEW."id_zonas_fk",
+											NEW."id_itinerario_zonas");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraItinerarioZonas_IA AFTER INSERT ON public."itinerario_zonas" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarItinerario_Zonas();
+
+-- INSERT
+INSERT INTO "itinerario_zonas" VALUES (16,1,1);
+SELECT * FROM "BitacoraItinerario_Zonas";
+
+
+				--- [ELIMINAR]
+
+-- [FUNCTION]
+	CREATE OR REPLACE FUNCTION EliminarItinerario_Zonas() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraItinerario_Zonas" VALUES (NULL,NULL,NULL,CURRENT_USER,tipo_accion,
+											NOW(),NEW."codigo_itinerario_fk",NEW."id_zonas_fk",
+											NEW."id_itinerario_zonas");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraItinerario_Zonas_DB BEFORE DELETE ON public."itinerario_zonas"
+FOR EACH ROW EXECUTE PROCEDURE EliminarItinerario_Zonas();
+
+-- Eliminar
+DELETE FROM "itinerario_zonas" WHERE "id_zonas_fk"=1
+SELECT * FROM "BitacoraItinerario_Zonas";
+
+
+				--- [ACTUALIZAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarItinerario_Zonas() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraItinerario_Zonas" VALUES (OLD."id_itinerario_zonas",OLD."id_zonas_fk",OLD."codigo_itinerario_fk",
+													   CURRENT_USER,tipo_accion,
+											NOW(),NEW."codigo_itinerario_fk",NEW."id_zonas_fk",
+											NEW."id_itinerario_zonas");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraItinerarioGuia_UB BEFORE UPDATE ON public."itinerario_zonas"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarItinerario_Zonas();
+
+-- Actualizar
+UPDATE "itinerario_zonas" SET "id_zonas_fk" = 1 WHERE "id_itinerario_zonas"=1;
+SELECT * FROM "BitacoraItinerario_Zonas";

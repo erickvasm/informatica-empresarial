@@ -1,0 +1,111 @@
+VLANT
+
+Configurar IPs en todas las PCs con subneteo 
+
+
+CONFIGURAR VLAN EN SWITCH CAPA 2
+ena
+conf t
+vlan 10
+vlan 20
+vlan 30
+...
+exit
+do show ip int br -- PARA VERIFICAR
+
+
+CONFIGURAR LOS PUERTOS DE LOS VLANT EN SWITCH
+int f0/1
+switchport mode access
+switchport acc vlan 10 
+exit
+Hacer los cuatro pasos anteriores para cada vlant
+
+CONFIGURAR LA INTERFAZ ENLACE TRONCAL EN SWITCH
+interface g0/0
+sw mode trunk
+sw trunk allowed vlan 10,20,30
+end
+show vlan -- PARA VERIFICAR
+show interfaces trunk -- PARA VERIFICAR
+
+
+EN ROUTER LEVANTAR LA INTERFAZ
+ena
+conf t
+interface g0/0
+no shut
+
+
+CREAR SUBREDES EN ROUTER
+interface g0/0.10
+interface g0/0.20
+interface g0/0.30
+
+-- ROUTER ON STICK
+int g0/0.10
+ip add
+encapsulation dot1Q 10
+ip address 192.168.10.1 255.255.255.0
+exit
+
+int g/0/0.20
+ip add
+encapsulation dot1Q 20
+ip address 192.168.20.1 255.255.255.0
+exit
+
+int g/0/0.30
+ip add
+encapsulation dot1Q 30
+ip address 192.168.30.1 255.255.255.0
+exit
+
+show ip int brief -- PARA VERIFICAR
+
+
+----------------------------------------
+INTEVLAN ROUTING CON SWITCH DE CAPA 3
+----------------------------------------
+
+Configurar IPs con subneteo
+
+EN SWITCH
+ena
+conf t
+vlan 40
+vlan 50
+...
+exit
+
+EN SWITCH CAPA 2
+conf t
+int f0/1
+switchport mode access
+switchport acc vlan 40 
+exit
+Hacer los cuatro pasos anteriores para cada vlant
+
+CONFIGURAR EL PUERTO TRUNK EN SWITCH CAPA 2
+interface g0/0
+sw mode trunk
+
+EN SWITCH CAPA 3
+conf t
+int f0/1
+switchport trunk encapsulation dot1Q 40
+switchport mode trunk
+exit
+
+int vlant 40
+ip address 192.168.10.193 255.255.255.224
+exit
+Hacer lo vismo para la otra vlant
+
+ip routing
+exit 
+
+-----
+LA INTETRFAZ QUE VA AL ROUTER SE COLOCA no sw
+-----
+

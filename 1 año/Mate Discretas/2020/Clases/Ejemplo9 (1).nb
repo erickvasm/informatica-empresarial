@@ -1,0 +1,284 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11372,        276]
+NotebookOptionsPosition[     10753,        251]
+NotebookOutlinePosition[     11132,        267]
+CellTagsIndexPosition[     11089,        264]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"<<", "FiniteAutomata`"}]], "Input",
+ CellChangeTimes->{{3.8149183607190895`*^9, 3.8149183688641357`*^9}, {
+   3.8149184276823177`*^9, 3.8149184674545407`*^9}, 3.8149185258409853`*^9, {
+   3.814919106802932*^9, 3.8149191321051207`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "SetDelayed","write",
+   "\"Tag \\!\\(\\*RowBox[{\\\"Alphabet\\\"}]\\) in \
+\\!\\(\\*RowBox[{\\\"Alphabet\\\", \\\"[\\\", \\\"x_Automaton\\\", \
+\\\"]\\\"}]\\) is Protected.\"",2,1,1,27480227100438723919,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.814918370196083*^9, 3.8149184681611657`*^9, {3.814918526810395*^9, 
+   3.814918550841097*^9}, 3.8149191431403623`*^9, 3.815007367182083*^9, 
+   3.8151580466172953`*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "SetDelayed","write",
+   "\"Tag \\!\\(\\*RowBox[{\\\"Language\\\"}]\\) in \
+\\!\\(\\*RowBox[{\\\"Language\\\", \\\"[\\\", RowBox[{RowBox[{\\\"auto\\\", \
+\\\":\\\", \\\"\\\\\\\"- Automaton -\\\\\\\"\\\"}], \\\",\\\", \
+\\\"n_Integer\\\"}], \\\"]\\\"}]\\) is Protected.\"",2,1,2,
+   27480227100438723919,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.814918370196083*^9, 3.8149184681611657`*^9, {3.814918526810395*^9, 
+   3.814918550841097*^9}, 3.8149191431403623`*^9, 3.815007367182083*^9, 
+   3.815158046748804*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "SetDelayed","write",
+   "\"Tag \\!\\(\\*RowBox[{\\\"Language\\\"}]\\) in \
+\\!\\(\\*RowBox[{\\\"Language\\\", \\\"[\\\", RowBox[{RowBox[{\\\"auto\\\", \
+\\\":\\\", \\\"\\\\\\\"- Automaton -\\\\\\\"\\\"}], \\\",\\\", \
+\\\"n_Integer\\\"}], \\\"]\\\"}]\\) is Protected.\"",2,1,3,
+   27480227100438723919,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.814918370196083*^9, 3.8149184681611657`*^9, {3.814918526810395*^9, 
+   3.814918550841097*^9}, 3.8149191431403623`*^9, 3.815007367182083*^9, 
+   3.815158046802191*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"SetDelayed\\\", \
+\\\"::\\\", \\\"write\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
+during this calculation.\"",2,1,4,27480227100438723919,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.814918370196083*^9, 3.8149184681611657`*^9, {3.814918526810395*^9, 
+   3.814918550841097*^9}, 3.8149191431403623`*^9, 3.815007367182083*^9, 
+   3.815158046864684*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"A", "=", 
+   RowBox[{"MakeAutomaton", "[", 
+    RowBox[{"DFA", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["\[Sigma]", "0"], ",", 
+       SubscriptBox["\[Sigma]", "1"], ",", 
+       SubscriptBox["\[Sigma]", "2"], ",", 
+       SubscriptBox["\[Sigma]", "3"]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "0"], ",", "a", ",", 
+         SubscriptBox["\[Sigma]", "3"]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "0"], ",", "b", ",", 
+         SubscriptBox["\[Sigma]", "0"]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "0"], ",", "c", ",", 
+         SubscriptBox["\[Sigma]", "1"]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "1"], ",", "a", ",", 
+         SubscriptBox["\[Sigma]", "0"]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "1"], ",", "b", ",", 
+         SubscriptBox["\[Sigma]", "3"]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "1"], ",", "c", ",", 
+         SubscriptBox["\[Sigma]", "2"]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "2"], ",", "a", ",", 
+         SubscriptBox["\[Sigma]", "1"]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "2"], ",", "b", ",", 
+         SubscriptBox["\[Sigma]", "1"]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "2"], ",", "c", ",", 
+         SubscriptBox["\[Sigma]", "3"]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "3"], ",", "a", ",", 
+         SubscriptBox["\[Sigma]", "0"]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "3"], ",", "b", ",", 
+         SubscriptBox["\[Sigma]", "0"]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "3"], ",", "c", ",", 
+         SubscriptBox["\[Sigma]", "3"]}], "}"}]}], "}"}], ",", 
+     SubscriptBox["\[Sigma]", "0"], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["\[Sigma]", "0"], ",", 
+       SubscriptBox["\[Sigma]", "2"]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.8149188875696983`*^9, 3.8149188895769453`*^9}, {
+  3.8149191509615135`*^9, 3.8149193158553104`*^9}, {3.8149197966484346`*^9, 
+  3.814919921720193*^9}, {3.815157876091485*^9, 3.815158042705968*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ShowAutomaton", "[", 
+  RowBox[{"A", ",", 
+   RowBox[{"Colored", "\[Rule]", "True"}], ",", 
+   RowBox[{"Embedding", "\[Rule]", "Grid"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.81491992719399*^9, 3.814919938867076*^9}, {
+  3.814919986196464*^9, 3.814919999835437*^9}, {3.8149200353799777`*^9, 
+  3.814920064106352*^9}, {3.8151580584169865`*^9, 3.8151580613239965`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {Hue[0., 0.8, 0.8], CircleBox[{0.5, 0.5}, 0.075], 
+    CircleBox[{0.5, 0.5}, 0.049999999999999996], InsetBox[
+     SubscriptBox["\[Sigma]", "0"], {0.5, 0.5}], 
+    PolygonBox[{{0.518437581914173, 0.10068797225410375`}, {0.519411428382689,
+      0.07244443697168013}, {0.5433841241956919, 0.08740958039401264}}], 
+    CircleBox[{0.21187617205114084, 0.25}, 0.35511112605663986, {
+     5.759486531581288, 6.8067840827778845`}], 
+    InsetBox["\<\"a\"\>", {0.5669872976638918, 0.2499822444437045}, 
+     ImageScaled[{1, Rational[1, 2]}]], 
+    PolygonBox[{{0.8996987125022858, 0.519885082991392}, {0.9279962609210554, 
+     0.5209871760523245}, {0.9128930461235686, 0.5449425253173329}}], 
+    CircleBox[{0.7515849864582357, 0.2122823903133053}, 0.35555531566051146, {
+     1.0516293590180732`, 2.098826910208624}], 
+    InsetBox["\<\"c\"\>", {0.7500092387886003, 0.5678342142626807}, 
+     ImageScaled[{1, 1}]], 
+    CircleBox[{0.3958982895557499, 0.5137052501831054}, 0.0375, {
+     0.3926990816987246, 5.6286868376817125`}], 
+    PolygonBox[{{0.39853167899054887`, 0.5366334933733868}, {
+     0.43054377202492317`, 0.5280558788967963}, {0.42196615754833267`, 
+     0.5600679719311706}}], 
+    InsetBox["\<\"b\"\>", {0.40079302176400183, 0.5508844324846233}, 
+     ImageScaled[{0, 0}]]}, 
+   {Hue[0.25, 0.8, 0.8], CircleBox[{1., 0.5}, 0.075], InsetBox[
+     SubscriptBox["\[Sigma]", "1"], {1., 0.5}], 
+    PolygonBox[{{1.0210401786956445`, 0.10147862099014696`}, {
+     1.0194114283826892`, 0.07244443697168013}, {1.0453701444773114`, 
+     0.08555098983347234}}], 
+    CircleBox[{0.7118761720511406, 0.288822856765378}, 0.37602866172584365, {
+     5.669954685114889, 6.717252236311485}], 
+    InsetBox["\<\"c\"\>", {1.0863970449433067, 0.255182550473389}, 
+     ImageScaled[{1, 1}]], 
+    PolygonBox[{{0.5879390235146731, 0.45698160410705974`}, {
+     0.5724444369716801, 0.48058857161731094`}, {0.600635963813368, 
+     0.4822037934295537}}], 
+    CircleBox[{0.7422285755114167, 0.7906676747240979}, 0.353519029025782, {
+     4.211427905377178, 5.25852545657443}], 
+    InsetBox["\<\"a\"\>", {0.7502130784973794, 0.43723882531392483}, 
+     ImageScaled[{1, 1}]], 
+    PolygonBox[{{0.5879895028990055, 0.06452493311128885}, {
+     0.5649519052838329, 0.0375}, {0.5998749827013706, 
+     0.031061321778741074`}}], 
+    CircleBox[{0.3917286678081172, 0.5711543372891836}, 0.5610643828555918, {
+     5.0261574224860865`, 6.073354973682684}], 
+    InsetBox["\<\"b\"\>", {0.8085340038888921, 0.195566060683379}, 
+     ImageScaled[{1, 1}]]}, 
+   {Hue[0.5, 0.8, 0.8], CircleBox[{1., 0.}, 0.075], 
+    CircleBox[{1., 0.}, 0.049999999999999996], InsetBox[
+     SubscriptBox["\[Sigma]", "2"], {1., 0.}], 
+    PolygonBox[{{0.977631310812309, 0.4115994130541922}, {1.0024539312116332`,
+      0.4250401559392726}, {1.0016826457961856`, 0.3968227646424199}}], 
+    CircleBox[{1.2968781013060464, 0.22980633958391145}, 0.3532730317820234, {
+     2.556060636164041, 3.603258187360637}], 
+    InsetBox["\<\"b,a\"\>", {0.9442823823384539, 0.2516716991782337}, 
+     ImageScaled[{1, 1}]], 
+    PolygonBox[{{0.5874324817147077, -0.043418137648917665`}, {
+     0.5724444369716801, -0.019411428382689055`}, {
+     0.6007288794290152, -0.01843475551528362}}], 
+    CircleBox[{0.75, 0.28812382794885916}, 0.35511112605663986, {
+     4.188790204786391, 5.235887755982988}], 
+    InsetBox["\<\"c\"\>", {0.7499822444437045, -0.06698729766389178}, 
+     ImageScaled[{Rational[1, 2], 0}]]}, 
+   {Hue[0.75, 0.8, 0.8], CircleBox[{0.5, 0.}, 0.075], InsetBox[
+     SubscriptBox["\[Sigma]", "3"], {0.5, 0.}], 
+    PolygonBox[{{0.45658186235108245`, 0.4125675182852923}, {
+     0.48058857161731094`, 0.4275555630283199}, {0.4815652444847164, 
+     0.39927112057098496`}}], 
+    CircleBox[{0.7881238279488592, 0.25}, 0.35511112605663986, {
+     2.6179938779914944`, 3.665191429188092}], 
+    InsetBox["\<\"b,a\"\>", {0.4330127018922193, 0.25000000000000006}, 
+     ImageScaled[{0, Rational[1, 2]}]], 
+    CircleBox[{0.4257537879754125, -0.07424621202458748}, 0.0375, {
+     1.3089969389957474`, 6.544984694978735}], 
+    PolygonBox[{{0.4048408803819673, -0.025341345134315216`}, {
+     0.43545950216675705`, -0.038023993538747414`}, {
+     0.40916669556885776`, -0.05819917363102685}}], 
+    InsetBox["\<\"c\"\>", {0.399237283680917, -0.04772970773009194}, 
+     ImageScaled[{1, 0}]]}, 
+   {RGBColor[0, 0, 0], LineBox[{{0.5, 0.65}, {0.5, 0.575}}], 
+    PolygonBox[{{0.5, 0.575}, {0.475, 0.6125}, {0.525, 0.6125}}]}},
+  AspectRatio->Automatic,
+  PlotRange->Automatic]], "Output",
+ CellChangeTimes->{3.814919939846492*^9, 3.814920001345476*^9, 
+  3.8149200645700684`*^9, 3.8151580643688345`*^9}]
+}, Open  ]]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"11.0 para Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 259, 4, 45, "Input"],
+Cell[842, 28, 478, 10, 35, "Message"],
+Cell[1323, 40, 575, 12, 35, "Message"],
+Cell[1901, 54, 575, 12, 35, "Message"],
+Cell[2479, 68, 491, 10, 35, "Message"]
+}, Open  ]],
+Cell[2985, 81, 2641, 70, 104, "Input"],
+Cell[CellGroupData[{
+Cell[5651, 155, 394, 7, 68, "Input"],
+Cell[6048, 164, 4689, 84, 584, "Output"]
+}, Open  ]]
+}
+]
+*)
+

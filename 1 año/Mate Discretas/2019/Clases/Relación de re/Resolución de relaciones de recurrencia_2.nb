@@ -1,0 +1,417 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13281,        409]
+NotebookOptionsPosition[     12507,        380]
+NotebookOutlinePosition[     12885,        396]
+CellTagsIndexPosition[     12842,        393]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{"Soluci\[OAcute]n", " ", "del", " ", "ejemplo", " ", "1"}], "*)"}],
+   FontFamily->"Bodoni MT Condensed",
+   FontSize->24,
+   FontWeight->"Bold",
+   FontVariations->{"Underline"->True},
+   FontColor->RGBColor[0.5019607843137255, 0., 0.],
+   Background->RGBColor[1, 1, 0.85]], "\[IndentingNewLine]", 
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{
+    "Con", " ", "el", " ", "comando", " ", "Solve", " ", "podemos", " ", 
+     "resolver", " ", "la", " ", "ecuaci\[OAcute]n", " ", 
+     "caracter\[IAcute]stica", " ", "asociada", " ", "a", " ", "la", " ", 
+     "relaci\[OAcute]n"}], "*)"}],
+   Background->RGBColor[1, 0.9, 0.8]], "\[IndentingNewLine]", 
+  RowBox[{"Solve", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["x", "2"], "-", 
+      RowBox[{"2", "x"}], "-", "3"}], "\[Equal]", "0"}], ",", "x"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.697906931128112*^9, 3.6979069750896263`*^9}, {
+  3.7818835323983603`*^9, 3.781883604080367*^9}, {3.781884555855581*^9, 
+  3.7818845685845747`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"x", "\[Rule]", 
+      RowBox[{"-", "1"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", "\[Rule]", "3"}], "}"}]}], "}"}], "\[IndentingNewLine]", 
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+      "Seg\[UAcute]n", " ", "lo", " ", "que", " ", "estudiamos", " ", "debe", 
+       " ", 
+       RowBox[{"quedar", ":", " ", 
+        SubscriptBox["a", "n"]}]}], "=", 
+      RowBox[{
+       RowBox[{"\[Alpha]", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"-", "1"}], ")"}], "n"]}], "+", 
+       RowBox[{"\[Beta]", 
+        SuperscriptBox[
+         RowBox[{"(", "3", ")"}], "n"]}]}]}], ",", " ", 
+     RowBox[{
+     "donde", " ", "interesa", " ", "encontrar", " ", "los", " ", "valores", 
+      " ", "de", " ", "\[Alpha]", " ", "y", " ", "\[Beta]"}], ",", " ", 
+     RowBox[{
+     "para", " ", "ello", " ", "utilizamos", " ", "las", " ", "condiciones", 
+      " ", "iniciales"}]}], "*)"}],
+   Background->RGBColor[1, 0.9, 0.8]], "\[IndentingNewLine]", 
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Con", " ", 
+       SubscriptBox["a", "1"]}], "=", "3"}], ",", " ", 
+     RowBox[{
+      RowBox[{"tenemos", " ", "3"}], "=", 
+      RowBox[{
+       RowBox[{"-", "\[Alpha]"}], "+", 
+       RowBox[{"3", "\[Beta]"}]}]}], ",", " ", 
+     RowBox[{
+      RowBox[{"luego", " ", "con", " ", 
+       SubscriptBox["a", "2"]}], "=", "21"}], ",", " ", 
+     RowBox[{
+      RowBox[{"tenemos", " ", "21"}], "=", 
+      RowBox[{"\[Alpha]", "+", 
+       RowBox[{"9", "\[Beta]"}]}]}]}], " ", "*)"}],
+   Background->RGBColor[1, 0.9, 0.8]], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{"Queda", " ", "el", " ", "sistema", " ", 
+     TagBox[GridBox[{
+        {"\[Piecewise]", GridBox[{
+           {
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "\[Alpha]"}], "+", 
+              RowBox[{"3", "\[Beta]"}]}], "=", "3"}], 
+            RowBox[{"**", "**", "**"}]},
+           {
+            RowBox[{
+             RowBox[{"\[Alpha]", "+", 
+              RowBox[{"9", "\[Beta]"}]}], "=", "21"}], 
+            RowBox[{"**", "**", "**"}]}
+          },
+          AllowedDimensions->{2, Automatic},
+          Editable->True,
+          
+          GridBoxAlignment->{
+           "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+          
+          GridBoxItemSize->{
+           "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, 
+            "Rows" -> {{1.}}, "RowsIndexed" -> {}},
+          GridBoxSpacings->{"Columns" -> {
+              Offset[0.27999999999999997`], {
+               Offset[0.84]}, 
+              Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+              Offset[0.2], {
+               Offset[0.4]}, 
+              Offset[0.2]}, "RowsIndexed" -> {}},
+          Selectable->True]}
+       },
+       GridBoxAlignment->{
+        "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+          "RowsIndexed" -> {}},
+       GridBoxItemSize->{
+        "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+         "RowsIndexed" -> {}},
+       GridBoxSpacings->{"Columns" -> {
+           Offset[0.27999999999999997`], {
+            Offset[0.35]}, 
+           Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+           Offset[0.2], {
+            Offset[0.4]}, 
+           Offset[0.2]}, "RowsIndexed" -> {}}],
+      "Piecewise",
+      DeleteWithContents->True,
+      Editable->False,
+      SelectWithContents->True,
+      Selectable->False]}], "*)"}],
+   Background->RGBColor[1, 0.9, 0.8]]}]}], "Input",
+ CellChangeTimes->{{3.7818836090294476`*^9, 3.7818836922500877`*^9}, {
+  3.781883730281736*^9, 3.7818838518525143`*^9}, {3.7818838822405524`*^9, 
+  3.7818840130533705`*^9}, {3.7818840457888947`*^9, 3.781884134435444*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"LinearSolve", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", "3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "9"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"3", ",", "21"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.781884143697459*^9, 3.781884223258823*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{"3", ",", "2"}], "}"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"\[Alpha]", "=", "3"}], ",", 
+    RowBox[{"\[Beta]", "=", "2"}]}], "*)"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"La", " ", "relaci\[OAcute]n", " ", "queda", " ", "como", " ", 
+      SubscriptBox["a", "n"]}], "=", 
+     RowBox[{
+      RowBox[{"3", "*", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"-", "1"}], ")"}], "n"]}], "+", 
+      RowBox[{"2", "*", 
+       SuperscriptBox[
+        RowBox[{"(", "3", ")"}], "n"]}]}]}], "*)"}],
+   Background->RGBColor[1, 0.9, 0.8]]}]}], "Input",
+ CellChangeTimes->{{3.7818842569446025`*^9, 3.7818842739924154`*^9}, {
+  3.781884407680162*^9, 3.7818844409146357`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SubscriptBox["a", "n"], "[", "n_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"3", "*", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"-", "1"}], ")"}], "n"]}], "+", 
+     RowBox[{"2", "*", 
+      SuperscriptBox[
+       RowBox[{"(", "3", ")"}], "n"]}]}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.781884449836515*^9, 3.781884518059205*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   SubscriptBox["a", "n"], "[", "4", "]"}]}]], "Input",
+ CellChangeTimes->{{3.781884522272686*^9, 3.7818845419848576`*^9}}],
+
+Cell[BoxData["165"], "Output",
+ CellChangeTimes->{{3.781884532749404*^9, 3.7818845424505224`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{
+    "Todo", " ", "lo", " ", "anterior", " ", "se", " ", "puede", " ", "hacer",
+      " ", "con", " ", "el", " ", "comando", " ", "RSolve"}], "*)"}],
+   FontSize->18,
+   Background->RGBColor[1, 0.9, 0.8]]}]], "Input",
+ CellChangeTimes->{{3.7818847297360787`*^9, 3.781884746519791*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  StyleBox[
+   RowBox[{"RSolve", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"a", "[", "n", "]"}], "\[Equal]", 
+        RowBox[{
+         RowBox[{"2", "*", 
+          RowBox[{"a", "[", 
+           RowBox[{"n", "-", "1"}], "]"}]}], "+", 
+         RowBox[{"3", 
+          RowBox[{"a", "[", 
+           RowBox[{"n", "-", "2"}], "]"}]}]}]}], ",", 
+       RowBox[{
+        RowBox[{"a", "[", "1", "]"}], "\[Equal]", "3"}], ",", 
+       RowBox[{
+        RowBox[{"a", "[", "2", "]"}], "\[Equal]", "21"}]}], "}"}], ",", 
+     RowBox[{"a", "[", "n", "]"}], ",", "n"}], "]"}],
+   FontSize->36]}]], "Input",
+ CellChangeTimes->{{3.697909725544944*^9, 3.6979099413992896`*^9}, {
+  3.697915344897352*^9, 3.6979153909939885`*^9}, {3.7818848029318457`*^9, 
+  3.7818848723207693`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"a", "[", "n", "]"}], "\[Rule]", 
+    RowBox[{
+     RowBox[{"3", " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"-", "1"}], ")"}], "n"]}], "+", 
+     RowBox[{"2", " ", 
+      SuperscriptBox["3", "n"]}]}]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{3.6979153940861654`*^9, 3.7818848770822115`*^9},
+ FontSize->36]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+    "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+      "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", 
+     "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**"}], "*", 
+    "\[IndentingNewLine]", 
+    StyleBox[
+     RowBox[{"(*", 
+      RowBox[{"Ejemplo", " ", "2"}], "*)"}],
+     FontFamily->"Bodoni MT Condensed",
+     FontSize->26,
+     FontWeight->"Bold",
+     FontVariations->{"Underline"->True},
+     FontColor->RGBColor[0.5019607843137255, 0., 0.]], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"FindLinearRecurrence", "[", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4", ",", 
+       RowBox[{"-", "16"}], ",", 
+       RowBox[{"-", "192"}], ",", 
+       RowBox[{"-", "1280"}], ",", 
+       RowBox[{"-", "7168"}]}], "}"}], "]"}]}], "\n", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", 
+     RowBox[{"-", "16"}]}], "}"}], "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+      "Lo", " ", "anterior", " ", "se", " ", "interpreta", " ", "como", " ", 
+       "a_", 
+       RowBox[{"{", "n", "}"}]}], "=", 
+      RowBox[{
+       RowBox[{"8", "a_", 
+        RowBox[{"{", 
+         RowBox[{"n", "-", "1"}], "}"}]}], "-", 
+       RowBox[{"16", "a_", 
+        RowBox[{"{", 
+         RowBox[{"n", "-", "2"}], "}"}]}]}]}], ",", " ", 
+     RowBox[{
+      RowBox[{"con", " ", "a_", 
+       RowBox[{"{", "0", "}"}]}], "=", "3"}], ",", 
+     RowBox[{
+      RowBox[{"a_", 
+       RowBox[{"{", "1", "}"}]}], "=", "4"}]}], "*)"}], "\[IndentingNewLine]",
+    "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Ac\[AAcute]", " ", "podemos", " ", "generar", " ", "elementos", " ", 
+     "de", " ", "una", " ", "relaci\[OAcute]n"}], "*)"}], "\n", 
+   RowBox[{"RecurrenceTable", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"a", "[", "n", "]"}], "\[Equal]", 
+        RowBox[{
+         RowBox[{"8", 
+          RowBox[{"a", "[", 
+           RowBox[{"n", "-", "1"}], "]"}]}], "-", 
+         RowBox[{"16", 
+          RowBox[{"a", "[", 
+           RowBox[{"n", "-", "2"}], "]"}]}]}]}], ",", 
+       RowBox[{
+        RowBox[{"a", "[", "0", "]"}], "\[Equal]", "3"}], ",", 
+       RowBox[{
+        RowBox[{"a", "[", "1", "]"}], "\[Equal]", "4"}]}], "}"}], ",", "a", 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "2", ",", "10"}], "}"}]}], "]"}], "\n", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "16"}], ",", 
+     RowBox[{"-", "192"}], ",", 
+     RowBox[{"-", "1280"}], ",", 
+     RowBox[{"-", "7168"}], ",", 
+     RowBox[{"-", "36864"}], ",", 
+     RowBox[{"-", "180224"}], ",", 
+     RowBox[{"-", "851968"}], ",", 
+     RowBox[{"-", "3932160"}], ",", 
+     RowBox[{"-", "17825792"}]}], "}"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.6979141821818485`*^9, 3.6979153996984863`*^9, 3.7818851867720366`*^9, {
+   3.78188522193036*^9, 3.7818852472374563`*^9}, {3.781885280994973*^9, 
+   3.7818853023192415`*^9}, {3.7833744544211626`*^9, 3.7833744955827985`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.697909783805276*^9, 3.6979097845893207`*^9}}]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1078, 28, 118, "Input"],
+Cell[1639, 50, 3973, 111, 216, "Input"],
+Cell[5615, 163, 427, 13, 75, "Input"],
+Cell[6045, 178, 843, 25, 133, "Input"],
+Cell[6891, 205, 440, 14, 75, "Input"],
+Cell[CellGroupData[{
+Cell[7356, 223, 181, 4, 75, "Input"],
+Cell[7540, 229, 98, 1, 45, "Output"]
+}, Open  ]],
+Cell[7653, 233, 374, 9, 76, "Input"],
+Cell[CellGroupData[{
+Cell[8052, 246, 855, 24, 161, "Input"],
+Cell[8910, 272, 401, 13, 86, "Output"]
+}, Open  ]],
+Cell[9326, 288, 3080, 87, 351, "Input"],
+Cell[12409, 377, 94, 1, 45, "Input"]
+}
+]
+*)
+

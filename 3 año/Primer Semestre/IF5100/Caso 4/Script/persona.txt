@@ -1,0 +1,88 @@
+CREATE TABLE public.bitacoras_persona_junio2021 PARTITION OF public."BitacoraPersona"
+FOR VALUES FROM ('2021-06-01') TO ('2021-06-30');
+
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarPersona() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraPersona" VALUES (NULL,NULL,NULL,NULL,NULL,NULL,NULL,CURRENT_USER,tipo_accion,
+											NOW(),NEW."cedula",NEW."primer_apellido",NEW."segundo_apellido",NEW."id_direccion_fk",NEW."id_telefono_fk",NEW."id_mail_fk",NEW."nombre");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraPersona_IA AFTER INSERT ON public."persona" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarPersona();
+
+-- INSERT
+INSERT INTO "persona" VALUES ('50707245','Carleto','Lopez','Lopez',1,1,1);
+SELECT * FROM "BitacoraPersona";
+
+
+				--- [ELIMINAR]
+
+-- [FUNCTION]
+	CREATE OR REPLACE FUNCTION EliminarPersona() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraPersona" VALUES (NULL,NULL,NULL,NULL,NULL,NULL,NULL,CURRENT_USER,tipo_accion,
+											NOW(),OLD."cedula",OLD."primer_apellido",OLD."segundo_apellido",OLD."id_direccion_fk",OLD."id_telefono_fk",OLD."id_mail_fk",OLD."nombre");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraPersona_DB BEFORE DELETE ON public."persona"
+FOR EACH ROW EXECUTE PROCEDURE EliminarPersona();
+
+-- Eliminar
+DELETE FROM "persona" WHERE "cedula"='504307245';
+SELECT * FROM "BitacoraPersona";
+
+
+				--- [ACTUALIZAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarPersona() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraPersona" VALUES (OLD."cedula",OLD."nombre",OLD."primer_apellido",OLD."segundo_apellido",
+											  OLD."id_direccion_fk",OLD."id_telefono_fk",OLD."id_mail_fk",CURRENT_USER,tipo_accion,
+											NOW(),NEW."cedula",NEW."primer_apellido",NEW."segundo_apellido",NEW."id_direccion_fk",NEW."id_telefono_fk",NEW."id_mail_fk",NEW."nombre");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraPersona_UB BEFORE UPDATE ON public."persona"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarPersona();
+
+-- Actualizar
+UPDATE "persona" SET "nombre" = 'Christian' WHERE "cedula"='50707245';
+SELECT * FROM "BitacoraPersona";
+SELECT * FROM persona;

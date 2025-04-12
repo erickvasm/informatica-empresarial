@@ -1,0 +1,43 @@
+Clase 16: Investario
+
+1. Ejercicio 11
+ 
+¿De donde sale el Ch? R/ Solo se tomar el valor fijo o el porcentaje del precio
+
+Qt
+Cuanto el costo del transporte es por lote se suma al costo de ordenar.
+Cuanto el costo del transporte es por *** se *** al costo de ordenar -- duda
+
+Se multiplica por 5 por que se necesitan 5 contenedores para traer 21,762 ya que cada contenedor tiene una capacidad de 5000.
+No es apto el primer transporte por que no hay una cantidad viable de transporte.
+
+El segundo transporte se debe ajustar con 3 contenedores para poder traer la cantidad de 55078.
+
+El costo de ordenar se realiza la formula y se multiplica por la cantidad de contenedores. 
+El costo unitario variable = el costo de compra
+
+Los calculos se pasan a calcular al descuento 2 ya que la cantidad que estoy comprando es de 55078 lo cual entra en el rango de descuento 2 = 30000
+
+2. Ejercicio 14
+
+Q = se divide la demanda entre las 4 veces que se pide al año
+Para el Q cualculado se realiza con la formula. Es el mismo monto de Q en la siguiente columna por lo que se descarta este escenario.
+
+Costo de compra se desconoce.
+El precio se desconoce.
+Se debe despejar el costo total para hayar x (el cual es el precio).
+
+3. Ejercicio 17
+
+El costo variable es = co
+El precio (C o Cu) es = costo unitario
+
+El Q no da  con el maximo de contenedores por lo que se debe aumentar la cantidad de contenedores para que puedan calzar. 
+
+4. Ejercicio 6
+
+El Cp es = Co
+Se debe sacar la derivada para calcular la pendiente.
+
+Q^4 como ya esta Ch calculado solo se sustituye en la ecuacion.
+Q hay que elebarlo a 1/4 que equivale a la raiz cuadrada

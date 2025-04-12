@@ -1,0 +1,29 @@
+Modelo de  Redes
+￼
+
+	•	Si no trae la ruta, hay que  dibujarla antes.
+
+Flujo Maximo
+	⁃	La diferencia es que en este se colocan los flujo maximos por cada ruta
+
+Pasos
+	1.	Variables
+	1.	Xij= Distancia del nodo i al nodo j				
+	2.	F.O
+	1.	Max Z = Xmax
+	3.	Restriciones (Flujos  maximos) 
+	1.	Se coloca menor igual
+	4.	Balance de nodo
+	1.	Todo igualado a 0
+	2.	Rutas son Ida y vuelta
+	5.	Solver
+
+Ruta mas corta
+Pasos
+	1.	Variables
+	1.	Xij= Distancia del nodo i al nodo j
+	2.	F.O
+	3.	Balance de nodo
+	1.	La primera y la ultima restriccion tiene que ir igualado a 1
+	2.	Solo ida (depende del enunciado)
+	4.	Solver

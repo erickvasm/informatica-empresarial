@@ -1,0 +1,22 @@
+Programación Mixta y Binaria
+
+	•	Mismos pasos que programación lineal
+	•	Siempre se debe igualar a 0 cuando hayan variables al lado izquierdo.
+
+Pasos
+	1.	Variables
+	2.	F.O
+	3.	Restricciones y no negatividad
+	4.	Solver
+
+
+Entera Mixta
+	•	En solver, las restriciones se colocan igual que siermpre. 
+	•	Hay que identificar cuales de las variables son enteras, ya que a la hora de colocar las restriciones en solver. Hay que especificar que son enteras. 
+	•	En el metodo de resolución es: Simplex LP
+
+Entera Binaria
+	•	En solver, una restriccion extra es que todos los valores de las varibles (en la tabla de solver) deben ser binarias
+	•	En la tabla de solver, las variables que dan 1, son los que se llevan a cabo.
+	•	En el metodo de resolución es: Simplex LP
+

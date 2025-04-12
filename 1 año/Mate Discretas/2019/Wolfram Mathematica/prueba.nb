@@ -1,0 +1,231 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8261,        223]
+NotebookOptionsPosition[      7615,        198]
+NotebookOutlinePosition[      7982,        214]
+CellTagsIndexPosition[      7939,        211]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.780162621177347*^9, 3.780162622677001*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Interseccion", "[", 
+     RowBox[{"D_", ",", "R_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"A", "=", "D"}], ",", 
+        RowBox[{"B", "=", "R"}], ",", 
+        RowBox[{"I", "=", 
+         RowBox[{"{", "}"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"bool", "=", "False"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"x", "=", "1"}], ",", 
+         RowBox[{"x", "\[LessEqual]", 
+          RowBox[{"Length", "[", "A", "]"}]}], ",", 
+         RowBox[{"x", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"bool", "=", "False"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"For", "[", 
+           RowBox[{
+            RowBox[{"e", "=", "1"}], ",", 
+            RowBox[{"e", "\[LessEqual]", 
+             RowBox[{"Length", "[", "B", "]"}]}], ",", 
+            RowBox[{"e", "++"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"A", "[", 
+                 RowBox[{"[", "x", "]"}], "]"}], "\[Equal]", 
+                RowBox[{"B", "[", 
+                 RowBox[{"[", "e", "]"}], "]"}]}], ",", 
+               RowBox[{
+                RowBox[{"bool", "=", "True"}], ";"}]}], "]"}], ";"}]}], 
+           "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"bool", "==", "True"}], ",", 
+            RowBox[{"I", "=", 
+             RowBox[{"Append", "[", 
+              RowBox[{"I", ",", 
+               RowBox[{"A", "[", 
+                RowBox[{"[", "x", "]"}], "]"}]}], "]"}]}]}], "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<Interseccion:\>\"", ",", "I"}], "]"}], ";"}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"MyUnion", "[", 
+     RowBox[{"D_", ",", "R_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"A", "=", "D"}], ",", 
+        RowBox[{"B", "=", "R"}], ",", 
+        RowBox[{"U", "=", "D"}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"boolean", "=", "False"}], ";", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"x", "=", "1"}], ",", 
+          RowBox[{"x", "\[LessEqual]", 
+           RowBox[{"Length", "[", "A", "]"}]}], ",", 
+          RowBox[{"x", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"boolean", "=", "False"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"For", "[", 
+            RowBox[{
+             RowBox[{"y", "=", "1"}], ",", 
+             RowBox[{"y", "\[LessEqual]", 
+              RowBox[{"Length", "[", "B", "]"}]}], ",", 
+             RowBox[{"y", "++"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"A", "[", 
+                  RowBox[{"[", "x", "]"}], "]"}], "\[Equal]", 
+                 RowBox[{"B", "[", 
+                  RowBox[{"[", "y", "]"}], "]"}]}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"boolean", "=", "True"}], ";"}]}], 
+               "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+            "]"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"boolean", "\[Equal]", "False"}], ",", ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"U", "=", 
+               RowBox[{"Append", "[", 
+                RowBox[{"U", ",", 
+                 RowBox[{"B", "[", 
+                  RowBox[{"[", "y", "]"}], "]"}]}], "]"}]}], ";"}]}], 
+            "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+         "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", "U", "]"}]}], ";"}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MyUnion", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"112", ",", "23", ",", "22"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"22", ",", "55", ",", "66"}], "}"}]}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.780137299690852*^9, 3.7801374817882404`*^9}, {
+   3.780137525386778*^9, 3.7801375921991568`*^9}, {3.78013762391611*^9, 
+   3.780138220352111*^9}, {3.78013832928858*^9, 3.7801383912761183`*^9}, {
+   3.7801384337684097`*^9, 3.780138539343068*^9}, {3.78013857818196*^9, 
+   3.780138713917286*^9}, {3.780138766856614*^9, 3.780138779213036*^9}, {
+   3.780153822176659*^9, 3.780153837839531*^9}, {3.7801538908997717`*^9, 
+   3.7801540864592133`*^9}, {3.7801543013567457`*^9, 
+   3.7801543333426657`*^9}, {3.780154491360818*^9, 3.7801545834459763`*^9}, {
+   3.780154615860169*^9, 3.780154698630436*^9}, 3.7801548071882353`*^9, {
+   3.7801548372124248`*^9, 3.7801550675976057`*^9}, {3.7801551021747036`*^9, 
+   3.7801551082670107`*^9}, {3.780162631962772*^9, 3.7801627497109194`*^9}, {
+   3.780162812936079*^9, 3.780162914352655*^9}, {3.7801629712468405`*^9, 
+   3.7801630186498394`*^9}, {3.780163051965597*^9, 3.780163173720066*^9}, {
+   3.7801632604020743`*^9, 3.7801632837997866`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"4\\\"}]\\) of \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"22\\\", \\\",\\\", \\\"55\\\", \\\",\\\", \\\"66\\\"}], \
+\\\"}\\\"}]\\) does not exist.\"",2,8,2,16569571384999111448,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.78050020059111*^9, 3.7805002085707865`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"112", ",", "23", ",", "22", ",", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"22", ",", "55", ",", "66"}], "}"}], "\[LeftDoubleBracket]", "4",
+     "\[RightDoubleBracket]"}]}], "}"}]], "Print",
+ CellChangeTimes->{{3.78050020059111*^9, 3.7805002086010246`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.780500141611035*^9, 3.780500143961321*^9}, {
+  3.780500175411103*^9, 3.780500191401264*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7805001870509715`*^9, 3.780500187261818*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7805001801408978`*^9, 3.7805001819107924`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.780500146570916*^9, 3.7805001466708374`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{3.780163242266489*^9, 3.780500212670904*^9}]
+},
+WindowSize->{1520, 805},
+WindowMargins->{{-8, Automatic}, {Automatic, 0}},
+Magnification->1.5,
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 92, 1, 45, "Input"],
+Cell[CellGroupData[{
+Cell[675, 25, 5688, 134, 1003, "Input"],
+Cell[6366, 161, 371, 7, 35, "Message"],
+Cell[6740, 170, 300, 7, 34, "Print"]
+}, Open  ]],
+Cell[7055, 180, 26, 0, 45, "Input"],
+Cell[7084, 182, 141, 2, 45, "Input"],
+Cell[7228, 186, 94, 1, 45, InheritFromParent],
+Cell[7325, 189, 96, 1, 45, "Input"],
+Cell[7424, 192, 94, 1, 45, "Input"],
+Cell[7521, 195, 90, 1, 45, "Input"]
+}
+]
+*)
+

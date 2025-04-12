@@ -1,0 +1,34 @@
+Adaptaciones del Método Simplex
+
+Se usa para:
+	⁃	Min
+	⁃	 Mayor igual
+	⁃	Lado derecho negativo
+
+Para cada uno de estos casos se debe realizar una adaptación.
+
+	⁃	Hay que mencionar que antes de los pasos, hay que averiguar:
+	⁃	Variables
+	⁃	Funcion
+	⁃	Restricciones 
+	⁃	No negatividad
+
+Pasos
+	1.	Adaptar variables
+	1.	Para las restricciones que sean ≤ se debe sumar una variable de holgura S1 (o Xn) e igualar
+	2.	Para las restricciones que sean ≥ se debe restar una variable de holgura S2. Y se debe sumar una variable comodin (artificial) A1 (X') e igualar
+	3.	Para las restricciones = se debe sumar una variable artificial A2 e igualar
+	4.	En la Funcion Z, sumar los 0Sn de cada restriccion. Y cada vez que haya una variable artificila (como en el paso 2  y 3), se sumar un MAn (si es minimixar, si es maximizar es restar)
+	2.	Forma estandar
+	1.	Pasamos el Min Z= x...  a Max -Z= -x...
+	2.	Pasamos el Max Z - = -x... a Max -Z +(o - todo depende del signo de la primera variable) x...
+	3.	Restricciones
+	4.	No negatividad
+	3.	Elaborar Tabla
+	1.	Antes de empezar hacer simplex (G-J) hay que hacer 0 las M en Z de las columnas que hacen la matrix identidad
+	4.	Gaus-Jordan
+	1.	Eliminar las M en la función Z
+	5.	Evaluar tabla optima
+
+
+NOTA. Si en los valores de la solucion Z aparecen negativos, realmente son positivos. 

@@ -1,0 +1,79 @@
+				--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarVegetacion() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraVegetacion" VALUES (NULL,NULL,CURRENT_USER,tipo_accion,NOW(),NEW."id_vegetación",NEW."nombre");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraVegetacion_IA AFTER INSERT ON public."vegetación"
+FOR EACH ROW EXECUTE PROCEDURE InsertarVegetacion();
+
+-- INSERT
+INSERT INTO "vegetación" VALUES (17,'Tundra');
+SELECT * FROM "BitacoraVegetacion";
+
+
+				--- [ELIMINAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION EliminarVegetacion() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraVegetacion" VALUES (NULL,NULL,CURRENT_USER,tipo_accion,NOW(),OLD."id_vegetación",OLD."nombre");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraVegetacion_DB BEFORE DELETE ON public."vegetación"
+FOR EACH ROW EXECUTE PROCEDURE EliminarVegetacion();
+
+-- Eliminar
+DELETE FROM "vegetación" WHERE "id_vegetación"=16;
+SELECT * FROM "BitacoraVegetacion";
+
+
+				--- [ACTUALIZAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarVegetacion() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraVegetacion" VALUES (OLD."id_vegetación",OLD."nombre",CURRENT_USER,tipo_accion,NOW(),NEW."id_vegetación",NEW."nombre");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraVegetacion_UB BEFORE UPDATE ON public."vegetación"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarVegetacion();
+
+-- Actualizar
+UPDATE "vegetación" SET "nombre" = 'tropical' WHERE "id_vegetación"=1;
+SELECT * FROM "BitacoraVegetacion";

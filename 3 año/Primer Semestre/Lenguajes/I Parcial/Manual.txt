@@ -1,0 +1,42 @@
+1. Agrego proyecto WEB
+2. Agrego .Modelo  -> Clase y Clase Enum (Estados) 
+3. Agregar .BS -> Servicio y IServicio 
+4. Agregar .DA -> DbContexto
+5. Agregar Entity a .DA y .UI
+6. Agregar referencia a .DA de .Modelo
+7. Agregar referencias .UI de TODOS
+8. Agregar referencia a .BS de .Model y .DA 
+9. Editar JSON
+
+  "ConnectionStrings": {
+    "DefaultConnection": "Data Source=ERICKVASQUEZ;Initial Catalog=Biblioteca;Integrated Security=True;"
+},
+
+10. Agregar controladores
+11. Interfaz IServicio implementar en Servicios 
+12. Editar Startup -> configureServices y el controller 
+
+services.AddDbContext<DbContexto>(opciones => opciones.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+
+services.AddScoped<GestorDeLibro.BS.IServicioBiblioteca, GestorDeLibro.BS.ServicioBiblioteca>();
+
+12. Agregar el metodo de Obtener por id 
+13. Agregar readonly y constructor en base a la IServicios en controlador Disponible
+14. Agregar atributo ContextoBD y contructor en la clase Servicios
+15. Agregar metodo de Listar en clase Servicio
+16. Agregar una vista (en vista, quitar comentarios a los ids) en metodo ActionResult Index (la vista tiene que devolver lista) 
+17. Correr
+18. Programar el metodo agregar en Servicios 
+19. Agregamos una vista en controlador, ActionResult Create, en el try tambien (no necesita pasar variable a  vista)
+20. Correr para verificar si guarda
+21. Configuar Editar en Servicios
+22. Agregar ActionResult Editar y vista 
+23. Configurar index en ActionLink \n?
+24. Configurar details en controlador
+24. Configuramos el ActionResult en el controlador PrestarLibro 
+25. Configuramos Prestar en Servicios	
+26. Configurar index en controlador Prestar
+27. Configuar Devolver en controlador Prestar
+28. Configurar Devolver en Servicios
+

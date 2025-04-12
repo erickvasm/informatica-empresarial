@@ -1,0 +1,147 @@
+
+-----Procesos tabla Persona
+CREATE OR REPLACE PROCEDURE FuncionInsertarPersona(varchar, varchar,varchar, date, integer, integer, integer)
+AS
+$$
+	INSERT INTO personas("cedula", "nombre","genero","fecha_nacimiento","id_telefono","id_email","id_direccion")
+		VALUES ($1, $2, $3, $4, $5, $6, $7);
+$$
+LANGUAGE SQL;
+
+
+CREATE OR REPLACE PROCEDURE FuncionEliminarPersona(varchar)
+AS
+$$
+	DELETE FROM personas
+		WHERE  cedula = $1;
+$$
+LANGUAGE SQL;
+
+
+CREATE OR REPLACE PROCEDURE FuncionActualizarPersona(varchar, varchar,varchar, date, integer, integer, integer)
+AS
+$$
+
+	UPDATE "personas"
+	SET "nombre" = $2, "genero" = $3, "fecha_nacimiento" = $4, "id_telefono" = $5, "id_email" = $6, "id_direccion" = $7
+	WHERE "cedula"  = $1;
+	
+$$
+LANGUAGE SQL;
+
+
+-----Procesos tabla Practica
+CREATE OR REPLACE PROCEDURE FuncionInsertarPractica(varchar, varchar, integer, varchar)
+AS
+$$
+	INSERT INTO practicas("codigo_practica", "titulo", "id_grado_dificultad", "profesor_aplico")
+		VALUES ($1, $2, $3, $4);
+$$
+LANGUAGE SQL;
+
+CREATE OR REPLACE PROCEDURE FuncionEliminarPractica(integer)
+AS
+$$
+	DELETE FROM practicas
+		WHERE  id_practica = $1;
+$$
+LANGUAGE SQL;
+
+CREATE OR REPLACE PROCEDURE FuncionActualizarPractica(integer,varchar, varchar, integer)
+AS
+$$
+
+	UPDATE "practicas"
+	SET "codigo_practica" = $2, "titulo" = $3, "id_grado_dificultad" = $4
+	WHERE "id_practica"  = $1;
+	
+$$
+LANGUAGE SQL;
+
+-----Procesos tabla grado dificultades
+CREATE OR REPLACE PROCEDURE FuncionInsertarProfesores(varchar, integer, date)
+AS
+$$
+	INSERT INTO profesores("cedula", "id_practica", "fecha_diseno_practica")
+		VALUES ($1, $2, $3);
+$$
+LANGUAGE SQL;
+
+CREATE OR REPLACE PROCEDURE FuncionEliminarProfesores(integer)
+AS
+$$
+	DELETE FROM profesores
+		WHERE  id_profesor = $1;
+$$
+LANGUAGE SQL;
+
+CREATE OR REPLACE PROCEDURE FuncionActualizarProfesores(integer, varchar, integer, date)
+AS
+$$
+
+	UPDATE "profesores"
+	SET "cedula"= $2, "id_practica" = $3, "fecha_diseno_practica" = $4
+	WHERE "id_profesor"  = $1;
+	
+$$
+LANGUAGE SQL;
+
+
+-----Procesos tabla provincia
+CREATE OR REPLACE PROCEDURE FuncionInsertarProvincia(varchar)
+AS
+$$
+	INSERT INTO provincias("nombre")
+		VALUES ($1);
+$$
+LANGUAGE SQL;
+
+CREATE OR REPLACE PROCEDURE FuncionEliminarProvincia(integer)
+AS
+$$
+	DELETE FROM provincias
+		WHERE  id_provincia = $1;
+$$
+LANGUAGE SQL;
+
+
+CREATE OR REPLACE PROCEDURE FuncionActualizarProvincia(integer,varchar)
+AS
+$$
+
+	UPDATE "provincias"
+	SET "nombre" = $2
+	WHERE "id_provincia"  = $1;
+	
+$$
+LANGUAGE SQL;
+
+
+-----Procesos tabla personas telefonos
+CREATE OR REPLACE PROCEDURE FuncionInsertarTelefono(varchar)
+AS
+$$
+	INSERT INTO telefonos("descripcion")
+		VALUES ($1);
+$$
+LANGUAGE SQL;
+
+
+CREATE OR REPLACE PROCEDURE FuncionEliminarTelefono(integer)
+AS
+$$
+	DELETE FROM telefonos
+		WHERE  id_telefono = $1;
+$$
+LANGUAGE SQL;
+
+CREATE OR REPLACE PROCEDURE FuncionActualizarTelefono(integer,varchar)
+AS
+$$
+
+	UPDATE "telefonos"
+	SET "descripcion" = $2
+	WHERE "id_telefono"  = $1;
+	
+$$
+LANGUAGE SQL;

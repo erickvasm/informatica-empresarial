@@ -1,0 +1,160 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5026,        150]
+NotebookOptionsPosition[      4378,        129]
+NotebookOutlinePosition[      4820,        146]
+CellTagsIndexPosition[      4777,        143]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Abierta2n", "[", 
+     RowBox[{"a_", ",", "b_", ",", "F_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"h", "=", "0"}], ",", "aproximacion"}], " ", "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"h", "=", 
+        FractionBox[
+         RowBox[{"b", "-", "a"}], 
+         RowBox[{"2", "+", "2"}]]}], ";", " ", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"dos", " ", "puntos", " ", "mas", " ", "n"}], "+", "2"}], 
+        "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{"Xn", " ", "=", " ", 
+         RowBox[{
+          RowBox[{"b", "-", 
+           RowBox[{
+           "h", "   ", "para", " ", "abiertas", " ", "es", " ", "X0"}]}], " ",
+           "=", " ", 
+          RowBox[{"a", " ", "+", " ", "h"}]}]}], "*)"}], 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"aproximacion", "=", 
+        RowBox[{"N", "[", 
+         RowBox[{
+          RowBox[{
+           FractionBox[
+            RowBox[{"4", "h"}], "2"], "*", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"2", 
+               RowBox[{"F", "[", 
+                RowBox[{"a", "+", "h"}], "]"}]}], ")"}], "-", " ", 
+             RowBox[{"F", "[", 
+              RowBox[{"a", "+", 
+               RowBox[{"2", "*", "h"}]}], "]"}], " ", "+", 
+             RowBox[{"(", 
+              RowBox[{"2", 
+               RowBox[{"F", "[", 
+                RowBox[{"b", "-", "h"}], "]"}]}], ")"}]}], ")"}]}], ",", 
+          "10"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<El valor real de la integral es: \>\"", ",", 
+         RowBox[{"NIntegrate", "[", 
+          RowBox[{
+           RowBox[{"F", "[", "x", "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "0", ",", "2"}], "}"}]}], "]"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<LA APROXIMACI\[CapitalOAcute]N ES: \>\"", ",", "aproximacion"}], 
+        "]"}], ";"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}]}],
+    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"a", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b", "=", "2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"F", "[", "x_", "]"}], ":=", 
+    RowBox[{"Sin", "[", "x", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Abierta2n", "[", 
+   RowBox[{"a", ",", "b", ",", "F"}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8363097930075655`*^9, 3.836309905556788*^9}},
+ CellLabel->"In[36]:=",ExpressionUUID->"9a35cbbd-134c-4bdb-89b1-0daec519c8c1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El valor real de la integral es: \"\>", "\[InvisibleSpace]", 
+   "1.4161468365471437`"}],
+  SequenceForm["El valor real de la integral es: ", 1.4161468365471437`],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.836309870390777*^9, 3.836309908144082*^9}},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[36]:=",ExpressionUUID->"8899cef2-f5fb-47d0-9790-4ff492ffdbe1"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"LA APROXIMACI\[CapitalOAcute]N ES: \"\>", "\[InvisibleSpace]", 
+   "2.11237006560861835577752029108381842194`10."}],
+  SequenceForm[
+  "LA APROXIMACI\[CapitalOAcute]N ES: ", 
+   2.11237006560861835577752029108381842194`10.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.836309870390777*^9, 3.8363099081490793`*^9}},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[36]:=",ExpressionUUID->"9e80e6cc-e3fb-4cd9-88c0-6cf49cb5cec2"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1152., 615.6},
+WindowMargins->{{
+  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
+FrontEndVersion->"12.2 para Microsoft Windows (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"aa7d8b72-9697-442a-8275-4557aac0e891"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 2829, 77, 445, "Input",ExpressionUUID->"9a35cbbd-134c-4bdb-89b1-0daec519c8c1"],
+Cell[CellGroupData[{
+Cell[3434, 103, 425, 9, 21, "Print",ExpressionUUID->"8899cef2-f5fb-47d0-9790-4ff492ffdbe1"],
+Cell[3862, 114, 488, 11, 23, "Print",ExpressionUUID->"9e80e6cc-e3fb-4cd9-88c0-6cf49cb5cec2"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

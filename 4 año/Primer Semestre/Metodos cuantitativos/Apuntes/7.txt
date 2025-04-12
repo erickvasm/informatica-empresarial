@@ -1,0 +1,62 @@
+Modelo de Transporte y Asignacion
+
+	1.	Esquina noroeste
+	2.	Costo mínimo
+	3.	Aproximación Vogel
+	4.	Método MODI
+	5.	Método Hungaro
+
+Esquina noroeste
+Mas facil pero menos completa
+
+	1.	Demanda abastesca la oferta en forma de escalera y así sucecivamente
+	2.	Se agregan columnas o filas necesarias en la demanda o en el origen si es neesario que calce la oferta.
+
+Costo Mínimo
+	1.	Encontrar la celda menos costosa de la matriz (celdas ficticias no cuentan)
+	2.	Se cubre la demanda de la celda seleccionada al maximo por la oferta
+
+Aproximacion Vogel
+	1.	Calcular la diferencia de los dos numeros mas pequeños de la fila y columna
+	2.	En la fila y columna que tiene la mayor diferencia se elige la variable que tiene menor costo (si hay empate se elige cualquiera)
+	3.	Se abastece el maximo de la demanda
+	4.	Repetir hasta abastecer la oferta
+
+Despues de realizar los tres anteriores métodos, se puede realizar el método MODI o Hungaro
+
+MODI
+	1.	Identificar si es una tabla dejenerada
+	2.	Si no es dejenerada
+	1.	Dibujar la tabla Zij (MODI)
+	2.	Calcular las ecuaciones de las celdas
+	3.	Calcular las celdas restantes
+	4.	Restar valores de las celdas de la tabla original(Cij) menos Zij
+	5.	Si hay valores negativos, selecionar la celda con mayor negativo
+	1.	Se realiza una asignación (formar un cuadro) en la tabla con solución inicial del metodo que se haya hecho (ejemplo esquina N.O.)
+	2.	De las celdas que restan, seleciono el mas pequeño y ese sera el valor de la celda de inicio donde se realizo las manecillas del reloj (Nueva solución)
+	3.	Sumar y restar el mas pequeño de los negativos de la manecillas del reloj
+	6.	Calcular costo: suma producto de las celdas Zij y Ci
+	7.	Se repite el paso 2 hasta que en la tabla haya valores positivos.
+	3.	Si es dejenerada
+	1.	Calcular las ecuaciones de las celdas: se debe colocar un valor de la tabla del enunciado en la celda especifica a conveniencia para facilitar el valor que me hace falta.
+	2.	Seguir haciendo los mismo pasos del 2.2 al 2.7.
+
+
+Asignación 
+
+Método Hungaro
+Minimizar
+	1.	Reducción por fila
+	1.	El menor valor de cada fila, lo restamos a todos los valores de la fila
+	2.	Reducción por columna
+	1.	El menor valor de cada columna de la tabla anterior, lo restamos a todos los valores de la columna
+	3.	Debemos cubrir los ceros con la menor cantidad de lineas posibles
+	4.	Si la cantidad de las lineas es menor a la cantidad de filas
+	1.	Restar el más pequeño de los no cubiertos a los no cubiertos por las linea y sumarlo en las intersecciones de las lineas
+	2.	Se repite paso 3 y 4
+	5.	Se hace la asignacion de una a una de las variables del enunciado en las posiciones que tienen valores 0 en la tabla final.
+	1.	Si se repite una asignacion de columna, se debe eliminar del resto de variables 
+
+Maximizar
+	⁃	Buscamos el valor más grande de la tabla y lo restamos a toda la tabla.
+	⁃	Luego, hacemos los mismos pasos

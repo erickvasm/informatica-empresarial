@@ -1,0 +1,89 @@
+CREATE TABLE public.bitacoras_zonas_junio2021 PARTITION OF public."BitacoraItinerario_Zonas"
+FOR VALUES FROM ('2021-06-01') TO ('2021-06-30');
+
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarBarrio() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraBarrio" VALUES (NULL,CURRENT_USER,tipo_accion,
+											NOW(),NEW."id_barrio",NEW."nombre",NULL);
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraBarrio_IA AFTER INSERT ON public."barrio" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarBarrio();
+
+-- INSERT
+INSERT INTO "barrio" VALUES (20,'San Marco');
+SELECT * FROM "BitacoraBarrio";
+
+
+				--- [ELIMINAR]
+
+-- [FUNCTION]
+	CREATE OR REPLACE FUNCTION EliminarBarrio() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraBarrio" VALUES (NULL,CURRENT_USER,tipo_accion,
+											NOW(),OLD."id_barrio",OLD."nombre",NULL);
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraBarrio_DB BEFORE DELETE ON public."barrio"
+FOR EACH ROW EXECUTE PROCEDURE EliminarBarrio();
+
+-- Eliminar
+DELETE FROM "barrio" WHERE "id_barrio"=2
+SELECT * FROM "BitacoraBarrio";
+
+
+
+				--- [ACTUALIZAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarBarrio() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraBarrio" VALUES (OLD."id_barrio",CURRENT_USER,tipo_accion,
+											NOW(),NEW."id_barrio",OLD."nombre",NEW."nombre");
+		RETURN NULL;
+		
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraBarrio_UB BEFORE UPDATE ON public."barrio"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarBarrio();
+
+-- Actualizar
+UPDATE "barrio" SET nombre = 'Flores' WHERE id_barrio = 20;
+SELECT * FROM "BitacoraBarrio";
+SELECT * FROM barrio

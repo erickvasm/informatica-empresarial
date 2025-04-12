@@ -1,0 +1,4 @@
+Crear pivote: para hacer uno un numero X --> 1/X * fila del numero X
+Crer un pivote: para hacer uno un numero X/Y --> Y/X * fila del numero X/Y
+hacer 0 un numero -X --> X *  fila pivote + fila del numero -X
+hacer 0 un numero X --> -X * fila pivote + fila del numero X

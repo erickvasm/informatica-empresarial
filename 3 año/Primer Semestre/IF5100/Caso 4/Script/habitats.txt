@@ -1,0 +1,90 @@
+CREATE TABLE public.bitacoras_habitats_junio2021 PARTITION OF public."BitacoraHabitats"
+FOR VALUES FROM ('2021-06-01') TO ('2021-06-30');
+
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarHabitats() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraHabitats" VALUES (NULL,NULL,NULL,NULL,NULL,CURRENT_USER,tipo_accion,
+											NOW(),NEW."id_habitats",NEW."nombre",NEW."id_clima_fk",NEW."id_vegetación_fk",
+											NEW."id_continentes_fk");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraHabitats_IA AFTER INSERT ON public."habitats" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarHabitats();
+
+-- INSERT
+INSERT INTO "habitats" VALUES (16,'Prado',1,1,1);
+SELECT * FROM "BitacoraGuias";
+
+
+				--- [ELIMINAR]
+
+-- [FUNCTION]
+	CREATE OR REPLACE FUNCTION EliminarHabitats() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraHabitats" VALUES (NULL,NULL,NULL,NULL,NULL,CURRENT_USER,tipo_accion,
+											NOW(),OLD."id_habitats",OLD."nombre",OLD."id_clima_fk",OLD."id_vegetación_fk",
+											OLD."id_continentes_fk");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraHabitats_DB BEFORE DELETE ON public."habitats"
+FOR EACH ROW EXECUTE PROCEDURE EliminarHabitats();
+
+-- Eliminar
+DELETE FROM "habitats" WHERE "id_habitats"=1
+SELECT * FROM "BitacoraHabitats";
+
+
+				--- [ACTUALIZAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarHabitats() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraHabitats" VALUES (OLD."id_habitats",OLD."nombre",OLD."id_clima_fk",OLD."id_vegetación_fk",
+											OLD."id_continentes_fk",CURRENT_USER,tipo_accion,
+											NOW(),NEW."id_habitats",NEW."nombre",NEW."id_clima_fk",NEW."id_vegetación_fk",
+											NEW."id_continentes_fk");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraHabitats_UB BEFORE UPDATE ON public."habitats"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarHabitats();
+
+-- Actualizar
+UPDATE "habitats" SET "nombre" = 'Desertico' WHERE "id_habitats"=1;
+SELECT * FROM "BitacoraHabitats";

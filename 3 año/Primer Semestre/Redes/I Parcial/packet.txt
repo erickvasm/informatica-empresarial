@@ -1,0 +1,22 @@
+
+1. Configurar ip4 en pcs
+
+
+1. enable
+2. configure terminal   : conf  t
+3. Cambiar nombre  : hostname SA
+4. end
+5. guardar configuracion : copy running-config startup-config 
+
+
+
+1. enable
+2. configure terminal
+3. Cambiar nombre  : hostname RA
+4. Interface g0/0   : int g/0
+5. ip address 192.168.2.1 255.255.255.0
+6. no shutdown
+
+
+
+1. ping 192.168.1.1

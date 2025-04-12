@@ -1,0 +1,157 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5734,        149]
+NotebookOptionsPosition[      5274,        129]
+NotebookOutlinePosition[      5652,        145]
+CellTagsIndexPosition[      5609,        142]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Difer", "[", 
+    RowBox[{"A_", ",", "B_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Dif", "=", 
+        RowBox[{"{", "}"}]}], ",", "i"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"i", "=", "1"}], ",", 
+        RowBox[{"i", "\[LessEqual]", " ", 
+         RowBox[{"Length", "[", "A", "]"}]}], ",", 
+        RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"If", "[", " ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"MemberQ", "[", 
+             RowBox[{"B", ",", 
+              RowBox[{"A", "[", 
+               RowBox[{"[", "i", "]"}], "]"}]}], "]"}], "==", "False"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Dif", "=", 
+             RowBox[{"Append", "[", 
+              RowBox[{"Dif", ",", 
+               RowBox[{"A", "[", 
+                RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}], ";"}]}], 
+          "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}],
+       ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{
+       "\"\<La diferencia del conjunto A=\>\"", ",", " ", "A", ",", " ", 
+        "\"\<, con el conjunto B=\>\"", ",", "B", ",", " ", 
+        "\"\<da como el resultado el conjunto, A-B=\>\"", ",", "Dif"}], "]"}],
+       ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.8063647805696545`*^9, 3.806364792126122*^9}, {
+   3.8063655316086917`*^9, 3.8063656153692846`*^9}, {3.806365649019295*^9, 
+   3.8063657934273086`*^9}, {3.806365943817751*^9, 3.8063659969509544`*^9}, 
+   3.8063664083379245`*^9, {3.806366505452104*^9, 3.806366673983629*^9}, {
+   3.8064078965138187`*^9, 3.8064079024858823`*^9}, {3.807042558366742*^9, 
+   3.807042623362492*^9}, {3.8070426813495855`*^9, 3.8070427154133596`*^9}, {
+   3.8070427740516677`*^9, 3.807042944260149*^9}, {3.8070433157396574`*^9, 
+   3.8070433795955877`*^9}, {3.8070434693909025`*^9, 3.807043469921314*^9}, 
+   3.807043521569417*^9, {3.8070437477313375`*^9, 3.8070437675565834`*^9}, {
+   3.807043821258564*^9, 3.8070438303078685`*^9}, {3.8070439660370846`*^9, 
+   3.807043980682305*^9}, {3.8070442248121815`*^9, 3.8070442272051487`*^9}, {
+   3.8070444078988576`*^9, 3.807044512998396*^9}, {3.8070445666091833`*^9, 
+   3.8070445833221593`*^9}, {3.8070446909905195`*^9, 3.807044694847649*^9}, {
+   3.8070450248644524`*^9, 3.807045033063361*^9}, {3.8070450730473833`*^9, 
+   3.8070452273692083`*^9}, {3.8070453594914722`*^9, 
+   3.8070453637517743`*^9}, {3.807045401976345*^9, 3.8070454063297915`*^9}, {
+   3.8070455984395857`*^9, 3.807045667200768*^9}, {3.8070457947812867`*^9, 
+   3.807045813881717*^9}, {3.8070459074592357`*^9, 3.807045983331458*^9}, {
+   3.8070460550382013`*^9, 3.807046058259533*^9}, {3.8070507192223806`*^9, 
+   3.8070507284948254`*^9}, {3.8070560236190147`*^9, 3.807056023898838*^9}, {
+   3.8070564538840094`*^9, 3.8070564608551426`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"A", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2"}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.806365800459637*^9, 3.8063658098492384`*^9}, {
+  3.8063664363697815`*^9, 3.806366436783536*^9}, {3.806366693846964*^9, 
+  3.8063666955362234`*^9}, {3.807045237736738*^9, 3.807045239096274*^9}, {
+  3.8070460756979976`*^9, 3.807046075921853*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"B", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.8063658126883073`*^9, 3.8063658193713827`*^9}, {
+  3.8064078643240232`*^9, 3.806407865203767*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Difer", "[", 
+  RowBox[{"B", ",", "A"}], "]"}]], "Input",
+ CellChangeTimes->{{3.8070507335957212`*^9, 3.807050734349442*^9}, {
+  3.807056504315178*^9, 3.807056507360431*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"La diferencia del conjunto A=\"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3"}], "}"}], 
+   "\[InvisibleSpace]", "\<\", con el conjunto B=\"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2"}], "}"}], 
+   "\[InvisibleSpace]", "\<\"da como el resultado el conjunto, A-B=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"{", "3", "}"}]}],
+  SequenceForm[
+  "La diferencia del conjunto A=", {1, 2, 3}, ", con el conjunto B=", {1, 2}, 
+   "da como el resultado el conjunto, A-B=", {3}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8070460288063374`*^9, {3.807046064748637*^9, 3.8070460782499084`*^9}, 
+   3.80705073899897*^9, {3.80705647324627*^9, 3.8070565089382277`*^9}}]
+}, Open  ]]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>2. Inherited,
+FrontEndVersion->"11.0 para Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3063, 61, 539, "Input"],
+Cell[3624, 83, 383, 8, 61, "Input"],
+Cell[4010, 93, 247, 6, 61, "Input"],
+Cell[CellGroupData[{
+Cell[4282, 103, 198, 4, 61, "Input"],
+Cell[4483, 109, 775, 17, 80, "Print"]
+}, Open  ]]
+}
+]
+*)
+

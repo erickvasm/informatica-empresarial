@@ -1,0 +1,93 @@
+CREATE TABLE public.bitacoras_itineraio_junio2021 PARTITION OF public."BitacoraItinerario"
+FOR VALUES FROM ('2021-06-01') TO ('2021-06-30');
+
+
+--- [INSERTAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION InsertarItinerario() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'INSERT';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraItinerario" VALUES (NULL,NULL,NULL,NULL,
+											NULL,CURRENT_USER,tipo_accion,
+											NOW(),NEW."codigo_itinerario",NEW."duración",NEW.longitud,NEW."maximo_visitantes",
+											NEW."numero_especies");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraItinerario_IA AFTER INSERT ON public."itinerario" 
+FOR EACH ROW EXECUTE PROCEDURE InsertarItinerario();
+
+-- INSERT
+INSERT INTO "itinerario" VALUES (17,'200','200',10,10);
+SELECT * FROM "BitacoraItinerario";
+
+
+				--- [ELIMINAR]
+
+-- [FUNCTION]
+	CREATE OR REPLACE FUNCTION EliminarItinerario() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraItinerario" VALUES (NULL,NULL,NULL,NULL,
+											NULL,CURRENT_USER,tipo_accion,
+											NOW(),OLD."codigo_itinerario",OLD."duración",
+												 OLD.longitud,OLD."maximo_visitantes",
+											OLD."numero_especies");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraItinerario_DB BEFORE DELETE ON public."itinerario"
+FOR EACH ROW EXECUTE PROCEDURE EliminarItinerario();
+
+-- Eliminar
+DELETE FROM "itinerario" WHERE "codigo_itinerario"=1
+SELECT * FROM "BitacoraItinerario";
+
+
+				--- [ACTUALIZAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION ActualizarItinerario() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'UPDATE';
+		
+	BEGIN
+	
+		INSERT INTO "BitacoraItinerario" VALUES (OLD."codigo_itinerario",OLD."duración",OLD.longitud,OLD."maximo_visitantes",
+											OLD."numero_especies",CURRENT_USER,tipo_accion,
+											NOW(),NEW."codigo_itinerario",NEW."duración",NEW.longitud,NEW."maximo_visitantes",
+											NEW."numero_especies");
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER BitacoraItinerario_UB BEFORE UPDATE ON public."itinerario"
+FOR EACH ROW EXECUTE PROCEDURE ActualizarItinerario();
+
+-- Actualizar
+UPDATE "itinerario" SET "duración" = '100' WHERE "codigo_itinerario"=1;
+SELECT * FROM "BitacoraHabitats";

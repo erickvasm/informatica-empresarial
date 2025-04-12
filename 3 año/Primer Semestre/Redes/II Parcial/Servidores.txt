@@ -1,0 +1,80 @@
+DHCP (Servidores)
+
+INTERFACES DE LOS ROUTERS
+ena
+conf t
+int g0/0
+ip address 192.168.1.1 255.255.255.0
+no shut
+
+int g0/1
+ip address 192.168.2.1 255.255.255.0
+no shut
+
+int s0/1/0
+ip address 192.168.3.1 255.255.255.0
+no shut
+exit
+
+DHCP
+Colocar 
+ip 192.168.2.2
+mask 255.255.255.0
+D Gatway 192.168.2.1
+DNS 192.168.2.2
+
+Ahora en services: DHCP
+Lo activamos.
+Name LAN1
+D Gateway 192.168.1.1
+DNS 192.168.2.2
+Start 192.168.1.11
+Mask 255.255.255.0
+Agregamos.
+
+EN EL ROUTER
+conf t
+int g0/0
+ip helper-address 192.168.2.2
+
+- Colocar en las PCs (DHCP) en modo DHCP no estatico
+
+EN EL SIGUIENTE ROUTER PARA CONFIGURAR EL SIGUIENTE SERVER
+conf t
+ip dhcp pool LAN5
+network 192.168.5.0 255.255.255.0
+default-router 192.168.5.1
+dns-server 192.168.2.2
+exit 
+
+EN CONFIG
+ip dhcp excluded-address 192.168.5.1 <origen> 192.168.5.10
+exit 
+
+- Colocar en la PC (DHCP) en modo DHCP no estatico
+
+EN LOS SERVIDORES
+Colocar
+ip 192.168.4.2
+Mask 255.255.255.0
+D Gateway 192.168.4.1
+DNS 192.168.2.2
+
+AHORA VAMOS HACER ENRUTAMIENTO 
+En conf
+ip route 192.168.4.0 255.255.255.0 192.168.3.2
+ip route 192.168.5.0 255.255.255.0 192.168.3.2
+exit 
+
+AHORA CON EL ROUTER B	
+Lo mismo que lo anterior
+
+AHORA EN EL SERVIDOR WEB
+Habilitamos HTTP
+
+EN EL DHCP 
+Nos posicionamos en DNS y lo habilitamos
+creamos un registro de tipo A 
+Name: www.servidorweb.com
+Address: <la del server web> 192.168.4.2
+Agregamos

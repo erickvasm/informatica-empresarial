@@ -1,0 +1,234 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7913,        226]
+NotebookOptionsPosition[      7072,        195]
+NotebookOutlinePosition[      7451,        211]
+CellTagsIndexPosition[      7408,        208]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"NewtonRapson", "[", 
+    RowBox[{"Po_", ",", "Tol_", ",", "n_", ",", "F_"}], "]"}], ":=", 
+   "\[IndentingNewLine]", "\t", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"i", "=", "1"}], ",", "Y", ",", 
+       RowBox[{"t", "=", "Po"}]}], "}"}], ",", "\[IndentingNewLine]", "\t\t", 
+     RowBox[{
+      RowBox[{"While", "[", 
+       RowBox[{
+        RowBox[{"i", "\[LessEqual]", "n"}], ",", "\[IndentingNewLine]", 
+        "\t\t\t", 
+        RowBox[{
+         RowBox[{"Y", "=", 
+          RowBox[{"(", 
+           RowBox[{"t", "-", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"F", "[", "t", "]"}], "/", 
+              RowBox[{
+               RowBox[{"F", "'"}], "[", "t", "]"}]}], ")"}]}], ")"}]}], ";", 
+         "\[IndentingNewLine]", "\t\t\t\t", 
+         RowBox[{"Print", "[", 
+          RowBox[{
+          "\"\<En la iteracion \>\"", ",", "i", " ", ",", 
+           "\"\< el valor de X es \>\"", ",", 
+           RowBox[{"N", "[", 
+            RowBox[{"Y", ",", "15"}], "]"}]}], "]"}], ";", 
+         "\[IndentingNewLine]", "\t\t\t\t", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Abs", "[", 
+             RowBox[{"Y", "-", "t"}], "]"}], "<", "Tol"}], ",", 
+           RowBox[{"N", "[", 
+            RowBox[{
+             RowBox[{"Return", "[", "Y", "]"}], ",", "30"}], "]"}]}], "]"}], 
+         ";", "\[IndentingNewLine]", "\t\t\t\t", 
+         RowBox[{
+          RowBox[{
+          "Print", "[", "\"\<Numero maximo de iteraciones excedido\>\"", 
+           "]"}], "\[IndentingNewLine]", "\t\t\t", 
+          RowBox[{"i", "++"}]}], ";", "\[IndentingNewLine]", "\t\t\t", 
+         RowBox[{"t", "=", "Y"}], ";"}]}], "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", "\t\t", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"N", "[", 
+        RowBox[{"Y", ",", "30"}], "]"}], "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "\t", "]"}]}], ";"}]], "Input",
+ FontSize->18],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    StyleBox[
+     RowBox[{"F", "[", "x_", "]"}],
+     FontSize->24], 
+    StyleBox[":=",
+     FontSize->24], 
+    RowBox[{
+     RowBox[{"100", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"0.5", "*", "Pi"}], "-", 
+        RowBox[{"ArcSin", "[", "x", "]"}], "-", 
+        RowBox[{"x", "*", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"1", "-", 
+            SuperscriptBox["x", "2"]}], ")"}], 
+          FractionBox["1", "2"]]}]}], ")"}]}], "-", "12.4"}]}], 
+   ";"}]}]], "Input",
+ CellChangeTimes->{{3.73176321459698*^9, 3.731763216304077*^9}, {
+   3.7317653176452675`*^9, 3.731765351519205*^9}, {3.762597726627589*^9, 
+   3.7625977481192484`*^9}, 3.7626011612432947`*^9, 3.828171119503476*^9, {
+   3.828174137083645*^9, 3.8281742457379165`*^9}, 3.8281776677702513`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"N", "[", 
+   RowBox[{
+    RowBox[{"NewtonRapson", "[", 
+     RowBox[{"0.5", ",", "0.00001", ",", "20", ",", "F"}], "]"}], ",", "20"}],
+    "]"}]}]], "Input",
+ CellChangeTimes->{{3.7317632487149315`*^9, 3.7317632517871065`*^9}, {
+  3.731763796308252*^9, 3.731763797454317*^9}, {3.73176388422628*^9, 
+  3.7317638845813007`*^9}, {3.7317641297633247`*^9, 3.731764130806384*^9}, {
+  3.7317653636719*^9, 3.731765373239447*^9}, {3.731765973796797*^9, 
+  3.7317659822512803`*^9}, {3.7625977665576887`*^9, 3.7625977708052435`*^9}, {
+  3.762601166943022*^9, 3.762601168049415*^9}, {3.7626012385694447`*^9, 
+  3.762601244310156*^9}, {3.8281711552765627`*^9, 3.8281711585716515`*^9}, {
+  3.8281712036705933`*^9, 3.8281712039724555`*^9}, {3.828171243976596*^9, 
+  3.8281712941580467`*^9}, {3.828171408829666*^9, 3.828171419789339*^9}, {
+  3.82817447850011*^9, 3.828174498541377*^9}, {3.8281746854773726`*^9, 
+  3.8281746858428955`*^9}, {3.8281776728030224`*^9, 3.828177685089255*^9}},
+ FontSize->18],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"En la iteracion \"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\" el valor de X es \"\>", "\[InvisibleSpace]", 
+   "0.7830083546985589`"}],
+  SequenceForm[
+  "En la iteracion ", 1, " el valor de X es ", 0.7830083546985589],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.828177695085433*^9}],
+
+Cell[BoxData["\<\"Numero maximo de iteraciones excedido\"\>"], "Print",
+ CellChangeTimes->{3.828177695092433*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"En la iteracion \"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\" el valor de X es \"\>", "\[InvisibleSpace]", 
+   "0.83145496973407`"}],
+  SequenceForm["En la iteracion ", 2, " el valor de X es ", 0.83145496973407],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8281776951054316`*^9}],
+
+Cell[BoxData["\<\"Numero maximo de iteraciones excedido\"\>"], "Print",
+ CellChangeTimes->{3.8281776951184263`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"En la iteracion \"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\" el valor de X es \"\>", "\[InvisibleSpace]", 
+   "0.834267398404183`"}],
+  SequenceForm["En la iteracion ", 3, " el valor de X es ", 0.834267398404183],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.82817769512916*^9}],
+
+Cell[BoxData["\<\"Numero maximo de iteraciones excedido\"\>"], "Print",
+ CellChangeTimes->{3.828177695141158*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"En la iteracion \"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\" el valor de X es \"\>", "\[InvisibleSpace]", 
+   "0.8342781723024463`"}],
+  SequenceForm[
+  "En la iteracion ", 4, " el valor de X es ", 0.8342781723024463],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8281776951541543`*^9}],
+
+Cell[BoxData["\<\"Numero maximo de iteraciones excedido\"\>"], "Print",
+ CellChangeTimes->{3.82817769516715*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"En la iteracion \"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\" el valor de X es \"\>", "\[InvisibleSpace]", 
+   "0.8342781724617293`"}],
+  SequenceForm[
+  "En la iteracion ", 5, " el valor de X es ", 0.8342781724617293],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.828177695178149*^9}]
+}, Open  ]],
+
+Cell[BoxData["0.8342781724617293`"], "Output",
+ CellChangeTimes->{{3.8281776872348166`*^9, 3.8281776951931467`*^9}}]
+}, Open  ]],
+
+Cell[BoxData["]"], "Input",
+ CellChangeTimes->{3.7317659835893574`*^9}]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"11.0 para Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2065, 54, 733, "Input"],
+Cell[2626, 76, 873, 25, 122, "Input"],
+Cell[CellGroupData[{
+Cell[3524, 105, 1044, 18, 125, "Input"],
+Cell[CellGroupData[{
+Cell[4593, 127, 358, 8, 34, "Print"],
+Cell[4954, 137, 113, 1, 34, "Print"],
+Cell[5070, 140, 353, 7, 34, "Print"],
+Cell[5426, 149, 115, 1, 34, "Print"],
+Cell[5544, 152, 352, 7, 34, "Print"],
+Cell[5899, 161, 113, 1, 34, "Print"],
+Cell[6015, 164, 360, 8, 34, "Print"],
+Cell[6378, 174, 112, 1, 34, "Print"],
+Cell[6493, 177, 358, 8, 34, "Print"]
+}, Open  ]],
+Cell[6866, 188, 116, 1, 78, "Output"]
+}, Open  ]],
+Cell[6997, 192, 71, 1, 45, "Input"]
+}
+]
+*)
+

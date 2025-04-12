@@ -1,0 +1,146 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4946,        138]
+NotebookOptionsPosition[      4488,        118]
+NotebookOutlinePosition[      4865,        134]
+CellTagsIndexPosition[      4822,        131]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Quiz1G2", "[", 
+    RowBox[{"A_", ",", "n_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"B", "=", 
+        RowBox[{"{", "}"}]}], ",", 
+       RowBox[{"i", "=", "1"}], ",", "x", ",", 
+       RowBox[{"m", "=", "0"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"m", "=", 
+       RowBox[{"Length", "[", "A", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"While", "[", " ", 
+       RowBox[{
+        RowBox[{"i", "\[LessEqual]", "m"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"x", "=", 
+          RowBox[{"Mod", "[", 
+           RowBox[{
+            RowBox[{"A", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", "n"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"x", "\[Equal]", "0"}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"B", "=", 
+             RowBox[{"Append", "[", 
+              RowBox[{"B", ",", 
+               RowBox[{"A", "[", 
+                RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}], ";"}]}], 
+          "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"i", "++"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{
+       "\"\<Los elementos de \>\"", ",", "A", ",", "\"\< divisibles por \>\"",
+         ",", "n", ",", " ", "\"\< son: \>\"", ",", "B"}], "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.774915698563547*^9, 3.774915844086587*^9}, {
+  3.7749158783983803`*^9, 3.77491588508552*^9}, {3.7749159658711886`*^9, 
+  3.774915976234703*^9}, {3.7749160709014845`*^9, 3.7749161082507076`*^9}, {
+  3.774916174507045*^9, 3.7749161938790035`*^9}, {3.7749163009146442`*^9, 
+  3.7749163228867874`*^9}, {3.7749164916049795`*^9, 3.774916493117016*^9}, {
+  3.774916525780684*^9, 3.774916537320058*^9}, {3.774916638042636*^9, 
+  3.77491664261001*^9}, {3.774916701232567*^9, 3.774916703423328*^9}, {
+  3.774916742979079*^9, 3.7749167521280417`*^9}, {3.7749168195603795`*^9, 
+  3.77491693066304*^9}, {3.774916965229147*^9, 3.7749169660476723`*^9}, {
+  3.774917027822137*^9, 3.7749170608411055`*^9}, {3.7749642096567335`*^9, 
+  3.7749642722177343`*^9}, {3.776165638141917*^9, 3.7761657597013865`*^9}, {
+  3.77616580177332*^9, 3.776165982319086*^9}, {3.7761660881145744`*^9, 
+  3.7761661118539963`*^9}}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.7761660411484213`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"A", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "2", ",", "3", ",", "4", ",", "6", ",", "123", ",", "22134", 
+     ",", "66", ",", "121"}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7761660428224506`*^9, 3.776166052485924*^9}, {
+  3.7761662092522545`*^9, 3.776166237021405*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"Quiz1G2", "[", 
+   RowBox[{"A", ",", "11"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7761660641212816`*^9, 3.7761660695292063`*^9}, {
+  3.7761662402985315`*^9, 3.776166240632309*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Los elementos de \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "2", ",", "3", ",", "4", ",", "6", ",", "123", ",", "22134", 
+     ",", "66", ",", "121"}], "}"}], 
+   "\[InvisibleSpace]", "\<\" divisibles por \"\>", "\[InvisibleSpace]", "11",
+    "\[InvisibleSpace]", "\<\" son: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"66", ",", "121"}], "}"}]}],
+  SequenceForm[
+  "Los elementos de ", {1, 2, 3, 4, 6, 123, 22134, 66, 121}, 
+   " divisibles por ", 11, " son: ", {66, 121}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7761660705016184`*^9, 3.776166123361385*^9, 
+  3.776166249399309*^9}]
+}, Open  ]]
+},
+WindowSize->{1264, 637},
+WindowMargins->{{-8, Automatic}, {Automatic, 0}},
+Magnification:>2. Inherited,
+FrontEndVersion->"11.0 para Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2536, 55, 722, "Input"],
+Cell[3097, 77, 89, 1, 101, "Input"],
+Cell[3189, 80, 325, 8, 61, "Input"],
+Cell[CellGroupData[{
+Cell[3539, 92, 242, 5, 101, "Input"],
+Cell[3784, 99, 688, 16, 44, "Print"]
+}, Open  ]]
+}
+]
+*)
+

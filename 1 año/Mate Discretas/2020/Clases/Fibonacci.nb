@@ -1,0 +1,134 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3960,        126]
+NotebookOptionsPosition[      3363,        100]
+NotebookOutlinePosition[      3742,        116]
+CellTagsIndexPosition[      3699,        113]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Fibo", "[", "Num_", "]"}], ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"num", " ", "=", " ", "Num"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"num", "\[Equal]", "1"}], ",", 
+       RowBox[{"Return", "[", "1", "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"num", "\[Equal]", "2"}], ",", 
+          RowBox[{"Return", "[", "1", "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"Return", "[", 
+           RowBox[{
+            RowBox[{"Fibo", "[", 
+             RowBox[{"num", "-", "1"}], "]"}], "+", 
+            RowBox[{"Fibo", "[", 
+             RowBox[{"num", "-", "2"}], "]"}]}], "]"}]}], 
+         "\[IndentingNewLine]", "]"}], " ", ";"}]}], 
+      RowBox[{"(*", " ", 
+       RowBox[{"Cierre", " ", "del", " ", 
+        RowBox[{"If", "[", 
+         RowBox[{"num", "\[Equal]", "1"}], "]"}]}], " ", "*)"}], 
+      "\[IndentingNewLine]", "]"}], ";"}]}], " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Cierre", " ", "del", " ", 
+     RowBox[{"If", "[", 
+      RowBox[{"num", "\[Equal]", "2"}], "]"}]}], " ", "*)"}], 
+   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<La suma es: \>\"", ",", 
+    RowBox[{"Fibo", "[", "Num", "]"}]}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8100370012771015`*^9, 3.810037001488987*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"La suma es: \"\>", "\[InvisibleSpace]", "Null"}],
+  SequenceForm["La suma es: ", Null],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8100370345289826`*^9, 3.810040729592865*^9, 
+  3.8100461919456635`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"Fibo", "[", "10", "]"}]}]], "Input",
+ CellChangeTimes->{{3.8097128850929775`*^9, 3.8097129037031813`*^9}, {
+   3.8100367102385707`*^9, 3.810036710472436*^9}, {3.8100367417650557`*^9, 
+   3.8100367719034395`*^9}, {3.810036972728959*^9, 3.8100369751219215`*^9}, {
+   3.8100370390479393`*^9, 3.8100370392728105`*^9}, {3.8100374047027187`*^9, 
+   3.810037405877968*^9}, 3.81004069470909*^9, {3.81004073593128*^9, 
+   3.810040737844691*^9}, 3.810046187880294*^9}],
+
+Cell[BoxData["55"], "Output",
+ CellChangeTimes->{{3.8100461891442323`*^9, 3.810046194037114*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Fibonacci", "[", "29", "]"}]], "Input",
+ CellChangeTimes->{{3.810036795387493*^9, 3.81003680563944*^9}}],
+
+Cell[BoxData["514229"], "Output",
+ CellChangeTimes->{3.810036807369506*^9, 3.8100374212728577`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8097128925832787`*^9, 3.80971289390335*^9}}]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"11.0 para Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 1489, 38, 371, "Input"],
+Cell[2072, 62, 259, 6, 34, "Print"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2368, 73, 516, 8, 75, "Input"],
+Cell[2887, 83, 97, 1, 78, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3021, 89, 128, 2, 68, "Input"],
+Cell[3152, 93, 99, 1, 45, "Output"]
+}, Open  ]],
+Cell[3266, 97, 93, 1, 45, "Input"]
+}
+]
+*)
+

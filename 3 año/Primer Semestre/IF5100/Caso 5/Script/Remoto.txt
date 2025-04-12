@@ -1,0 +1,49 @@
+------------------
+--EXTENCION
+-------------------
+
+CREATE EXTENSION dblink;
+
+------------------------
+--DE TRIBUNAL A CONTROL
+-----------------------
+Select * from dblink(
+ 'dbname=ControlDeEvaluaciones port=5432 host=192.168.56.140 user=postgres password=linux',
+ 'select id_profesor,cedula, fechadisenopractica from profesores')
+as (id_profesor integer,cedula varchar, fechadisenopractica date);
+
+------[<<VISTA Profesores&Dblink(Personas)>>]		
+CREATE VIEW "AlumnosFiltroPrimerApellido"
+AS
+	SELECT * FROM dblink('dbname=tribunal port=5432 host=192.168.56.141 user=postgres password=linux',
+		'SELECT * FROM personas') 
+			AS a (	
+					cedula character(9),
+					codelec character(6),
+					sexo character(1),
+					fechacaduc date,
+					junta character(5),
+					nombre character(30),
+					"1apellido" character(26),
+					"2apellido" character(26)
+				 ) 
+				 
+			INNER JOIN 
+			
+				(
+					SELECT 
+					id_alumno,
+					numeromatricula,
+					numerogrupo,
+				  	cedula AS cedula_alumno,
+				  	id_personareferencia,
+					id_controlescrito,
+					id_practica 
+					FROM alumnos 
+				)
+							
+			AS b ON b.cedula_alumno=a.cedula WHERE a."1apellido" LIKE 'CORT%';
+
+
+----[<<<<<<<<<SELECT A LA VISTA>>>>>>>>>]
+SELECT * FROM "AlumnosFiltroPrimerApellido";

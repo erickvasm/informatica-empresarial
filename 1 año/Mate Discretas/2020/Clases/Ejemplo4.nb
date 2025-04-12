@@ -1,0 +1,282 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10136,        274]
+NotebookOptionsPosition[      9634,        252]
+NotebookOutlinePosition[     10013,        268]
+CellTagsIndexPosition[      9970,        265]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Ejemplo4", "[", 
+    RowBox[{"Maq_", ",", "\[Alpha]_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"EA", "=", 
+        SubscriptBox["\[Sigma]", "0"]}], ",", 
+       RowBox[{"DS", "=", 
+        RowBox[{"{", "}"}]}], ",", " ", 
+       RowBox[{"dimensiones", "=", 
+        RowBox[{"Dimensions", "[", "Maq", "]"}]}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"i", "=", "1"}], ",", 
+        RowBox[{"i", "\[LessEqual]", 
+         RowBox[{"Length", "[", "\[Alpha]", "]"}]}], ",", 
+        RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"DE", "=", 
+          RowBox[{"\[Alpha]", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"For", "[", 
+          RowBox[{
+           RowBox[{"j", "=", "1"}], ",", 
+           RowBox[{"j", "\[LessEqual]", 
+            RowBox[{"dimensiones", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+           RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"fila", "=", 
+             RowBox[{"Maq", "[", 
+              RowBox[{"[", "j", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"EA", "\[Equal]", 
+                 RowBox[{"fila", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}]}], ")"}], " ", "&&", " ", 
+               RowBox[{"(", 
+                RowBox[{"DE", "==", 
+                 RowBox[{"fila", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"DS", "=", 
+                RowBox[{"Append", "[", 
+                 RowBox[{"DS", ",", 
+                  RowBox[{"fila", "[", 
+                   RowBox[{"[", "4", "]"}], "]"}]}], "]"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"EA", "=", 
+                RowBox[{"fila", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+               RowBox[{"Break", "[", "]"}]}]}], "\[IndentingNewLine]", "]"}], 
+            ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", "DS", "]"}], ";"}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.814899215610841*^9, 3.814899307153347*^9}, {
+   3.814900101113284*^9, 3.8149001316623497`*^9}, {3.814900342760079*^9, 
+   3.814900454601634*^9}, {3.8149042046679497`*^9, 3.8149043528840976`*^9}, {
+   3.8149064340361204`*^9, 3.814906535704129*^9}, {3.8149065722933283`*^9, 
+   3.8149065784862137`*^9}, {3.8149067242855697`*^9, 
+   3.8149067740686646`*^9}, {3.8149072995865955`*^9, 
+   3.8149073154802036`*^9}, {3.8149090036234455`*^9, 
+   3.8149090562159123`*^9}, {3.814909127779595*^9, 3.814909132608424*^9}, 
+   3.814909172794056*^9, {3.8149093200426645`*^9, 3.814909320418528*^9}, {
+   3.814909617629992*^9, 3.8149096683835506`*^9}, {3.8149097642677507`*^9, 
+   3.814909765486314*^9}, {3.8149097954878964`*^9, 3.814909853112421*^9}, {
+   3.8149099164576674`*^9, 3.8149099170489655`*^9}, {3.8149101261711617`*^9, 
+   3.8149101614434876`*^9}, {3.8149102132120934`*^9, 3.814910222762805*^9}, {
+   3.8149106884008064`*^9, 3.81491068899508*^9}, {3.814910722980142*^9, 
+   3.8149107487215567`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Maq", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "0"], ",", "a", ",", 
+         SubscriptBox["\[Sigma]", "1"], ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "0"], ",", "b", ",", 
+         SubscriptBox["\[Sigma]", "0"], ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "0"], ",", "c", ",", 
+         SubscriptBox["\[Sigma]", "2"], ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "1"], ",", "a", ",", 
+         SubscriptBox["\[Sigma]", "0"], ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "1"], ",", "b", ",", 
+         SubscriptBox["\[Sigma]", "2"], ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "1"], ",", "c", ",", 
+         SubscriptBox["\[Sigma]", "3"], ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "2"], ",", "a", ",", 
+         SubscriptBox["\[Sigma]", "3"], ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "2"], ",", "b", ",", 
+         SubscriptBox["\[Sigma]", "2"], ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "2"], ",", "c", ",", 
+         SubscriptBox["\[Sigma]", "1"], ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "3"], ",", "a", ",", 
+         SubscriptBox["\[Sigma]", "1"], ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "3"], ",", "b", ",", 
+         SubscriptBox["\[Sigma]", "3"], ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SubscriptBox["\[Sigma]", "3"], ",", "c", ",", 
+         SubscriptBox["\[Sigma]", "o"], ",", "2"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"MatrixForm", "[", "Maq", "]"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\[Alpha]", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "a", ",", "a", ",", "a", ",", "a", ",", "a", ",", "b", ",", "b", ",", 
+       "a", ",", "c", ",", "c", ",", "b", ",", "b", ",", "b", ",", "a", ",", 
+       "c", ",", "c", ",", "b", ",", "b", ",", "a", ",", "a", ",", "c", ",", 
+       "c", ",", "a", ",", "a", ",", "b", ",", "b", ",", "b", ",", "a", ",", 
+       "c", ",", "c", ",", "c", ",", "a", ",", "c", ",", "b", ",", "c", ",", 
+       "a"}], "}"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.8149066458380847`*^9, 3.8149066541871624`*^9}, {
+   3.814906703942129*^9, 3.8149067054532557`*^9}, {3.8149067988963327`*^9, 
+   3.814907021849117*^9}, {3.814907112048705*^9, 3.814907253020769*^9}, {
+   3.8149960362820997`*^9, 3.814996045952456*^9}, 3.814996603019453*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      SubscriptBox["\[Sigma]", "0"], "a", 
+      SubscriptBox["\[Sigma]", "1"], "1"},
+     {
+      SubscriptBox["\[Sigma]", "0"], "b", 
+      SubscriptBox["\[Sigma]", "0"], "1"},
+     {
+      SubscriptBox["\[Sigma]", "0"], "c", 
+      SubscriptBox["\[Sigma]", "2"], "2"},
+     {
+      SubscriptBox["\[Sigma]", "1"], "a", 
+      SubscriptBox["\[Sigma]", "0"], "2"},
+     {
+      SubscriptBox["\[Sigma]", "1"], "b", 
+      SubscriptBox["\[Sigma]", "2"], "0"},
+     {
+      SubscriptBox["\[Sigma]", "1"], "c", 
+      SubscriptBox["\[Sigma]", "3"], "0"},
+     {
+      SubscriptBox["\[Sigma]", "2"], "a", 
+      SubscriptBox["\[Sigma]", "3"], "1"},
+     {
+      SubscriptBox["\[Sigma]", "2"], "b", 
+      SubscriptBox["\[Sigma]", "2"], "0"},
+     {
+      SubscriptBox["\[Sigma]", "2"], "c", 
+      SubscriptBox["\[Sigma]", "1"], "1"},
+     {
+      SubscriptBox["\[Sigma]", "3"], "a", 
+      SubscriptBox["\[Sigma]", "1"], "2"},
+     {
+      SubscriptBox["\[Sigma]", "3"], "b", 
+      SubscriptBox["\[Sigma]", "3"], "2"},
+     {
+      SubscriptBox["\[Sigma]", "3"], "c", 
+      SubscriptBox["\[Sigma]", "o"], "2"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.8149960500579133`*^9, 3.8149966032378435`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"Ejemplo4", "[", 
+   RowBox[{"Maq", ",", "\[Alpha]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.8149072600215397`*^9, 3.8149072668502502`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "1", ",", "2", ",", "1", ",", "0", ",", "0", ",", "1", 
+   ",", "2"}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.814909061116657*^9, 3.8149091440776963`*^9, 3.814909423479883*^9, {
+   3.814909747169019*^9, 3.8149097701880264`*^9}, {3.8149098004398365`*^9, 
+   3.8149098574257402`*^9}, 3.81490994336294*^9, 3.814910139951543*^9, 
+   3.814910228143708*^9, 3.814910739850296*^9, 3.814996606748823*^9}]
+}, Open  ]]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"11.0 para Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3628, 81, 656, "Input"],
+Cell[CellGroupData[{
+Cell[4211, 105, 2970, 70, 216, "Input"],
+Cell[7184, 177, 1735, 52, 347, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8956, 234, 200, 4, 75, "Input"],
+Cell[9159, 240, 459, 9, 34, "Print"]
+}, Open  ]]
+}
+]
+*)
+

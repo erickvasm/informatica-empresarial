@@ -1,0 +1,149 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4744,        141]
+NotebookOptionsPosition[      4110,        115]
+NotebookOutlinePosition[      4476,        131]
+CellTagsIndexPosition[      4433,        128]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Ejercicio", " ", "1"}], ",", " ", 
+    RowBox[{"practica", " ", "2"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"multiplicacion", "[", 
+     RowBox[{"a_", ",", "b_"}], "]"}], ":=", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"b", "\[Equal]", "0"}], ",", 
+      RowBox[{"Return", "[", "0", "]"}], ",", 
+      RowBox[{"Return", "[", 
+       RowBox[{"a", "+", 
+        RowBox[{"multiplicacion", "[", 
+         RowBox[{"a", ",", 
+          RowBox[{"b", "-", "1"}]}], "]"}]}], "]"}]}], "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"multiplicacion", "[", 
+    RowBox[{"5", ",", "10"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.7807921315324697`*^9, 3.780792484782385*^9}, {
+  3.780864978963401*^9, 3.78086508172311*^9}, {3.7808672157987375`*^9, 
+  3.7808672402174273`*^9}}],
+
+Cell[BoxData["50"], "Output",
+ CellChangeTimes->{
+  3.7808650863770633`*^9, {3.7808672186152043`*^9, 3.780867242455439*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SumaDigitos", "[", "x_", "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"x", "==", "0"}], ",", 
+    RowBox[{"Return", "[", "0", "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Return", "[", 
+     RowBox[{
+      RowBox[{"SumaDigitos", "[", 
+       RowBox[{"x", "/", "10"}], "]"}], "+", 
+      RowBox[{"x", "%10"}]}], "]"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"SumaDigitos", "[", "11", "]"}]}], "Input",
+ CellChangeTimes->{{3.780865305573435*^9, 3.7808654376721015`*^9}, {
+   3.780865840428991*^9, 3.780865881907086*^9}, {3.7808661514674864`*^9, 
+   3.7808662012730184`*^9}, {3.7809463195983*^9, 3.7809463331830034`*^9}, {
+   3.780946368474572*^9, 3.7809464260655646`*^9}, {3.7809465506687717`*^9, 
+   3.7809465572651267`*^9}, 3.7809466151662545`*^9, 3.780946669889886*^9, {
+   3.78094670480849*^9, 3.780946716058429*^9}, {3.7809468014141006`*^9, 
+   3.7809468139485765`*^9}, {3.780946846118561*^9, 3.78094689124583*^9}, {
+   3.780946924324356*^9, 3.7809469903238287`*^9}, {3.780948773737558*^9, 
+   3.780948792176242*^9}, {3.780949092028268*^9, 3.7809491539905376`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "$RecursionLimit","reclim2",
+   "\"Recursion depth of \\!\\(\\*RowBox[{\\\"1024\\\"}]\\) exceeded during \
+evaluation of \\!\\(\\*RowBox[{FractionBox[\\\"11\\\", \
+RowBox[{\\\"10000000000000000000000000000\\\", \
+RowBox[{\\\"\[LeftSkeleton]\\\", \\\"965\\\", \\\"\[RightSkeleton]\\\"}], \
+\\\"00000000000000000000000000000\\\"}]], \\\"\[Equal]\\\", \
+\\\"0\\\"}]\\).\"",2,14,41,16572513709553470769,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{{3.78094878773512*^9, 3.780948795626013*^9}, {
+  3.780949115123462*^9, 3.780949156061964*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Hold", "[", 
+  RowBox[{"Return", "[", 
+   RowBox[{
+    RowBox[{"SumaDigitos", "[", 
+     FractionBox["11", "10"], "]"}], "+", 
+    RowBox[{"11", " ", "%10"}]}], "]"}], "]"}]], "Output",
+ CellChangeTimes->{
+  3.7809487956290045`*^9, {3.7809491157338285`*^9, 3.7809491560928802`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7808659386781397`*^9, 3.780865947951419*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.780865952166777*^9, 3.7808659523441744`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7807921402144814`*^9, 3.7807921410662055`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7808657407149134`*^9, 3.780865749129837*^9}, 
+   3.7808657808457584`*^9}]
+},
+WindowSize->{766, 812},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+Magnification->1.5,
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 875, 24, 162, "Input"],
+Cell[1458, 48, 124, 2, 45, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1619, 55, 1151, 21, 133, "Input"],
+Cell[2773, 78, 594, 11, 94, "Message"],
+Cell[3370, 91, 306, 8, 96, "Output"]
+}, Open  ]],
+Cell[3691, 102, 94, 1, 45, "Input"],
+Cell[3788, 105, 94, 1, 45, "Input"],
+Cell[3885, 108, 96, 1, 45, "Input"],
+Cell[3984, 111, 122, 2, 45, "Input"]
+}
+]
+*)
+

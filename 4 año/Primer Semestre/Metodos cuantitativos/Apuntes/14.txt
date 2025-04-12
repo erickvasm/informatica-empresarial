@@ -1,0 +1,20 @@
+Arboles
+
+VME: Valor monetario esperado (maximo sin información adicional)
+	•	Es el valor de los primeros nodos
+
+VEciP: (Pago - Probabilidad) + (Pago - Probabilidad)
+
+VEIP: Valor esperado de información perfecta (maximo a pagar por un estudio)
+	•	VEciP - VME
+
+POE = VEIP
+
+VEIM: Valor esperado de Informacion muestral (precio maximo a pagar por estudio)
+	•	Valor con información - Valor sin información
+
+Eficiencia del estudio: VEIM / VEIP
+
+
+Analisis Bayesiano
+	•	Son con los calulos a posteriori

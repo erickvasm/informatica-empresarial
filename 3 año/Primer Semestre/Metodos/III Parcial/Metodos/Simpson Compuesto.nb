@@ -1,0 +1,183 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6217,        175]
+NotebookOptionsPosition[      5576,        155]
+NotebookOutlinePosition[      6009,        171]
+CellTagsIndexPosition[      5966,        168]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"SimpsonCompuesto", "[", 
+     RowBox[{"F_", ",", "A_", ",", "B_", ",", "Nn_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"a", "=", "A"}], ",", 
+        RowBox[{"b", "=", "B"}], ",", 
+        RowBox[{"h", "=", "0"}], ",", 
+        RowBox[{"n", "=", "Nn"}], ",", 
+        RowBox[{"resultado", "=", "0"}], ",", 
+        RowBox[{"valoresPares", "=", "0"}], ",", 
+        RowBox[{"valoresImpares", "=", "0"}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"h", "=", 
+        FractionBox[
+         RowBox[{"b", "-", "a"}], "n"]}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", 
+         RowBox[{"i", "<", "n"}], ",", 
+         RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Mod", "[", 
+              RowBox[{"i", ",", "2"}], "]"}], "==", "0"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"valoresPares", "+=", 
+              RowBox[{"2", "*", 
+               RowBox[{"F", "[", 
+                RowBox[{"a", "+", 
+                 RowBox[{"(", 
+                  RowBox[{"h", "*", "i"}], ")"}]}], "]"}]}]}], ";"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"valoresImpares", "+=", 
+              RowBox[{"4", "*", 
+               RowBox[{"F", "[", 
+                RowBox[{"a", "+", 
+                 RowBox[{"(", 
+                  RowBox[{"h", "*", "i"}], ")"}]}], "]"}]}]}], ";"}]}], 
+           "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"resultado", "=", 
+        RowBox[{
+         FractionBox["h", "3"], "*", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"F", "[", "a", "]"}], "+", "valoresPares", "+", 
+           "valoresImpares", "+", 
+           RowBox[{"F", "[", "b", "]"}]}], ")"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<El valor con el metodo es: \>\"", ",", 
+         RowBox[{"N", "[", "resultado", "]"}]}], "]"}], ";"}]}], 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Fx", " ", "[", "x_", "]"}], ":=", 
+   RowBox[{
+    SuperscriptBox["x", "2"], "*", 
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"-", 
+      SuperscriptBox["x", "2"]}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"a", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b", "=", "2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n", "=", "8"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SimpsonCompuesto", "[", 
+    RowBox[{"Fx", ",", "a", ",", "b", ",", "n"}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<El valor real es: \>\"", ",", 
+    RowBox[{"NIntegrate", "[", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["x", "2"], "-", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"-", "x"}]]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "1", ",", "3"}], "}"}]}], "]"}]}], "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.708389008119723*^9, 3.708389017551262*^9}, {
+  3.7083890602547045`*^9, 3.708389127022524*^9}, {3.708428645529812*^9, 
+  3.708428648850546*^9}, {3.8358130679150066`*^9, 3.8358131010179057`*^9}, {
+  3.8358131842828245`*^9, 3.8358131997878733`*^9}},
+ CellLabel->"In[25]:=",ExpressionUUID->"1774421b-8154-4f2e-abd2-4193a6496ebe"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El valor con el metodo es: \"\>", "\[InvisibleSpace]", 
+   "0.4227161879339765`"}],
+  SequenceForm["El valor con el metodo es: ", 0.4227161879339765],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.7083890715113487`*^9, 3.708389081798937*^9}, {
+   3.708389116028895*^9, 3.7083891326128435`*^9}, {3.835813074352265*^9, 
+   3.835813102513463*^9}, 3.8358131537095575`*^9, 3.835813201076021*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[25]:=",ExpressionUUID->"bb44730a-0b42-4089-a62f-8ce01ced45d2"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El valor real es: \"\>", "\[InvisibleSpace]", 
+   "8.348574293863098`"}],
+  SequenceForm["El valor real es: ", 8.348574293863098],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.7083890715113487`*^9, 3.708389081798937*^9}, {
+   3.708389116028895*^9, 3.7083891326128435`*^9}, {3.835813074352265*^9, 
+   3.835813102513463*^9}, 3.8358131537095575`*^9, 3.835813201079901*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[25]:=",ExpressionUUID->"03e64fd2-6ed2-48e6-91b1-1cd51d4a8d01"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{783.5999999999999, 582.},
+WindowMargins->{{9, Automatic}, {-49.19999999999993, Automatic}},
+FrontEndVersion->"12.2 para Microsoft Windows (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"eb3f08e4-7862-47d3-887f-b7a02b5999b1"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 3836, 101, 622, "Input",ExpressionUUID->"1774421b-8154-4f2e-abd2-4193a6496ebe"],
+Cell[CellGroupData[{
+Cell[4441, 127, 562, 11, 21, "Print",ExpressionUUID->"bb44730a-0b42-4089-a62f-8ce01ced45d2"],
+Cell[5006, 140, 542, 11, 21, "Print",ExpressionUUID->"03e64fd2-6ed2-48e6-91b1-1cd51d4a8d01"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

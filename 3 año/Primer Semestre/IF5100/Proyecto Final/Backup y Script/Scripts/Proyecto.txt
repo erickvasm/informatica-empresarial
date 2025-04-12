@@ -1,0 +1,236 @@
+
+-- -----------------------------------------------------
+-- Table Paises
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS PAISES (
+  id_pais INT NOT NULL,
+  nombre VARCHAR(20) NULL,
+  PRIMARY KEY (id_pais))
+
+
+-- -----------------------------------------------------
+-- Table Provincias
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS PROVINCIAS (
+  id_provincia INT NOT NULL,
+  nombre VARCHAR(20) NULL,
+  PRIMARY KEY (id_provincia))
+
+
+
+-- -----------------------------------------------------
+-- Table Cantones
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS CANTONES (
+  id_canton INT NOT NULL,
+  nombre VARCHAR(20) NULL,
+  PRIMARY KEY (id_canton))
+
+
+-- -----------------------------------------------------
+-- Table Distritos
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS DISTRITOS (
+  id_distrito INT NOT NULL,
+  nombre VARCHAR(20) NULL,
+  PRIMARY KEY (id_distrito))
+
+-- -----------------------------------------------------
+-- Table Barrios
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS BARRIOS (
+  id_barrio INT NOT NULL,
+  nombre VARCHAR(20) NULL,
+  PRIMARY KEY (id_barrio))
+
+
+-- -----------------------------------------------------
+-- Table Direcciones
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS DIRECCIONES (
+  id_direccion INT NOT NULL,
+  id_pais INT NULL,
+  id_provincia INT NULL,
+  id_canton INT NULL,
+  id_distrito INT NULL,
+  id_barrio INT NULL,
+  PRIMARY KEY (id_direccion),
+  CONSTRAINT id_pais
+    FOREIGN KEY (id_pais)
+    REFERENCES PAISES (id_pais)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT id_provincia
+    FOREIGN KEY (id_Provincia)
+    REFERENCES PROVINCIAS (id_provincia)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT id_canton
+    FOREIGN KEY (id_canton)
+    REFERENCES CANTONES (id_canton)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT id_distrito
+    FOREIGN KEY (id_distrito)
+    REFERENCES DISTRITOS (id_distrito)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT id_barrio
+    FOREIGN KEY (id_barrio)
+    REFERENCES BARRIOS (id_barrio)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+
+
+-- -----------------------------------------------------
+-- Table Telefonos
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS TELEFONOS (
+  id_telefono INT NOT NULL,
+  descripcion VARCHAR(10) NULL,
+  PRIMARY KEY (id_telefono))
+
+
+-- -----------------------------------------------------
+-- Table Emails
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS EMAILS (
+  id_emails INT NOT NULL,
+  descripcion VARCHAR(10) NULL,
+  PRIMARY KEY (id_emails))
+
+-- -----------------------------------------------------
+-- Table Personas
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS PERSONAS (
+  cedula VARCHAR(9) NOT NULL,
+  nombre VARCHAR(100) NULL,
+  genero CHAR(1) NULL,
+  fecha_nacimiento DATE NULL,
+  id_telefono INT NULL,
+  id_email INT NULL,
+  id_direccion INT NULL,
+  PRIMARY KEY (cedula),
+  CONSTRAINT id_direccion
+    FOREIGN KEY (id_direccion)
+    REFERENCES DIRECCIONES (id_direccion)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT id_telefono
+    FOREIGN KEY (id_telefono)
+    REFERENCES TELEFONOS (id_telefono)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT id_emails
+    FOREIGN KEY (id_email)
+    REFERENCES EMAILS (id_emails)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+
+
+
+-- -----------------------------------------------------
+-- Table PersonasDeReferencia
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS PERSONAS_REFERENCIAS (
+  id_persona_referencia INT NOT NULL,
+  cedula VARCHAR(9) NULL,
+  parentesco VARCHAR(20) NULL,
+  PRIMARY KEY (id_persona_referencia),
+  CONSTRAINT cedula
+    FOREIGN KEY (cedula)
+    REFERENCES PERSONAS (cedula)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+
+
+-- -----------------------------------------------------
+-- Table ControlesEscritos
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS CONTROLES_ESCRITOS (
+  id_control_escrito INT NOT NULL,
+  numero_control INT NULL,
+  numero_preguntas INT NULL,
+  fechaRealizacion DATE NULL,
+  nota INT NULL,
+  PRIMARY KEY (id_control_escrito))
+
+
+-- -----------------------------------------------------
+-- Table GradoDeDificultades
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS GRADO_DIFICULTADES (
+  id_grado_dificultad INT NOT NULL,
+  dificultad VARCHAR(10) NULL,
+  PRIMARY KEY (id_grado_dificultad))
+
+-- -----------------------------------------------------
+-- Table Profesores
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS PROFESORES (
+  id_profesor INT NOT NULL,
+  cedula VARCHAR(9) NULL,
+  id_practica INT NULL,
+  fecha_diseno_practica DATE NULL,
+  PRIMARY KEY (id_profesor),
+  CONSTRAINT id_practica
+    FOREIGN KEY (id_practica)
+    REFERENCES PRACTICAS (id_practica)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT cedula
+    FOREIGN KEY (cedula)
+    REFERENCES PERSONAS (cedula)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+
+
+-- -----------------------------------------------------
+-- Table Practicas
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS PRACTICAS (
+  id_practica INT NOT NULL,
+  codigo_practica VARCHAR(10) NULL,
+  titulo VARCHAR(20) NULL,
+  id_grado_dificultad INT NULL,
+  profesor_aplico varchar(100) NULL,
+  PRIMARY KEY (id_practica),
+  CONSTRAINT id_grado_dificultad
+    FOREIGN KEY (id_grado_dificultad)
+    REFERENCES GRADO_DIFICULTADES (id_grado_dificultad)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+
+
+-- -----------------------------------------------------
+-- Table Alumnos
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS ALUMNOS (
+  id_alumno INT NOT NULL,
+  numero_matricula INT NULL,
+  numero_grupo INT NULL,
+  cedula VARCHAR(9) NULL,
+  id_persona_referencia INT NULL,
+  id_control_escrito INT NULL,
+  id_practica INT NULL,
+  PRIMARY KEY (id_alumno),
+  CONSTRAINT id_persona_referencia
+    FOREIGN KEY (id_persona_referencia)
+    REFERENCES PERSONAS_REFERENCIAS (id_persona_referencia)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT cedula
+    FOREIGN KEY (cedula)
+    REFERENCES PERSONAS (cedula)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT id_control_escrito
+    FOREIGN KEY (id_control_escrito)
+    REFERENCES GRADO_DIFICULTADES (id_grado_dificultad)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT id_practica
+    FOREIGN KEY (id_practica)
+    REFERENCES PRACTICAS (id_practica)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)

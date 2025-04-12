@@ -1,0 +1,204 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7627,        194]
+NotebookOptionsPosition[      6978,        168]
+NotebookOutlinePosition[      7356,        184]
+CellTagsIndexPosition[      7313,        181]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Conjuntos", "[", "n_", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"A", "=", 
+        RowBox[{"{", "}"}]}], ",", 
+       RowBox[{"i", "=", "1"}], ",", "x"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"While", "[", " ", 
+       RowBox[{
+        RowBox[{"i", "\[LessEqual]", "n"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"x", "=", 
+          RowBox[{
+           RowBox[{"2", "*", "i"}], "-", "2"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"A", "=", 
+          RowBox[{"Append", "[", 
+           RowBox[{"A", ",", "x"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", 
+          RowBox[{
+          "\"\<En la iteraci\[OAcute]n \>\"", ",", "i", ",", 
+           "\"\< el conjunto es: \>\"", ",", "A"}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"i", "++"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.774915698563547*^9, 3.774915844086587*^9}, {
+  3.7749158783983803`*^9, 3.77491588508552*^9}, {3.7749159658711886`*^9, 
+  3.774915976234703*^9}, {3.7749160709014845`*^9, 3.7749161082507076`*^9}, {
+  3.774916174507045*^9, 3.7749161938790035`*^9}, {3.7749163009146442`*^9, 
+  3.7749163228867874`*^9}, {3.7749164916049795`*^9, 3.774916493117016*^9}, {
+  3.774916525780684*^9, 3.774916537320058*^9}, {3.774916638042636*^9, 
+  3.77491664261001*^9}, {3.774916701232567*^9, 3.774916703423328*^9}, {
+  3.774916742979079*^9, 3.7749167521280417`*^9}, {3.7749168195603795`*^9, 
+  3.77491693066304*^9}, {3.774916965229147*^9, 3.7749169660476723`*^9}, {
+  3.774917027822137*^9, 3.7749170608411055`*^9}, {3.7749642096567335`*^9, 
+  3.7749642722177343`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Conjuntos", "[", "7", "]"}]], "Input",
+ CellChangeTimes->{{3.774916466180688*^9, 3.7749164730944223`*^9}, {
+  3.775303191409154*^9, 3.775303191879904*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"En la iteraci\[OAcute]n \"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\" el conjunto es: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "0", "}"}]}],
+  SequenceForm["En la iteraci\[OAcute]n ", 1, " el conjunto es: ", {0}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7749166610071507`*^9, 3.7749167110829515`*^9, 3.774916760747346*^9, 
+   3.7749168394968953`*^9, 3.774916881918719*^9, 3.7749170759967985`*^9, {
+   3.7749642659523478`*^9, 3.7749642765422573`*^9}, 3.7753031940566564`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"En la iteraci\[OAcute]n \"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\" el conjunto es: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2"}], "}"}]}],
+  SequenceForm["En la iteraci\[OAcute]n ", 2, " el conjunto es: ", {0, 2}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7749166610071507`*^9, 3.7749167110829515`*^9, 3.774916760747346*^9, 
+   3.7749168394968953`*^9, 3.774916881918719*^9, 3.7749170759967985`*^9, {
+   3.7749642659523478`*^9, 3.7749642765422573`*^9}, 3.7753031940606384`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"En la iteraci\[OAcute]n \"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\" el conjunto es: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "4"}], "}"}]}],
+  SequenceForm["En la iteraci\[OAcute]n ", 3, " el conjunto es: ", {0, 2, 4}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7749166610071507`*^9, 3.7749167110829515`*^9, 3.774916760747346*^9, 
+   3.7749168394968953`*^9, 3.774916881918719*^9, 3.7749170759967985`*^9, {
+   3.7749642659523478`*^9, 3.7749642765422573`*^9}, 3.775303194066634*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"En la iteraci\[OAcute]n \"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\" el conjunto es: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "4", ",", "6"}], "}"}]}],
+  SequenceForm[
+  "En la iteraci\[OAcute]n ", 4, " el conjunto es: ", {0, 2, 4, 6}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7749166610071507`*^9, 3.7749167110829515`*^9, 3.774916760747346*^9, 
+   3.7749168394968953`*^9, 3.774916881918719*^9, 3.7749170759967985`*^9, {
+   3.7749642659523478`*^9, 3.7749642765422573`*^9}, 3.7753031940696325`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"En la iteraci\[OAcute]n \"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\" el conjunto es: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "4", ",", "6", ",", "8"}], "}"}]}],
+  SequenceForm[
+  "En la iteraci\[OAcute]n ", 5, " el conjunto es: ", {0, 2, 4, 6, 8}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7749166610071507`*^9, 3.7749167110829515`*^9, 3.774916760747346*^9, 
+   3.7749168394968953`*^9, 3.774916881918719*^9, 3.7749170759967985`*^9, {
+   3.7749642659523478`*^9, 3.7749642765422573`*^9}, 3.7753031940716314`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"En la iteraci\[OAcute]n \"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\" el conjunto es: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "2", ",", "4", ",", "6", ",", "8", ",", "10"}], "}"}]}],
+  SequenceForm[
+  "En la iteraci\[OAcute]n ", 6, " el conjunto es: ", {0, 2, 4, 6, 8, 10}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7749166610071507`*^9, 3.7749167110829515`*^9, 3.774916760747346*^9, 
+   3.7749168394968953`*^9, 3.774916881918719*^9, 3.7749170759967985`*^9, {
+   3.7749642659523478`*^9, 3.7749642765422573`*^9}, 3.77530319407465*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"En la iteraci\[OAcute]n \"\>", "\[InvisibleSpace]", "7", 
+   "\[InvisibleSpace]", "\<\" el conjunto es: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{
+    "0", ",", "2", ",", "4", ",", "6", ",", "8", ",", "10", ",", "12"}], 
+    "}"}]}],
+  SequenceForm[
+  "En la iteraci\[OAcute]n ", 7, " el conjunto es: ", {0, 2, 4, 6, 8, 10, 12}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.7749166610071507`*^9, 3.7749167110829515`*^9, 3.774916760747346*^9, 
+   3.7749168394968953`*^9, 3.774916881918719*^9, 3.7749170759967985`*^9, {
+   3.7749642659523478`*^9, 3.7749642765422573`*^9}, 3.7753031940776477`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1280, 637},
+WindowMargins->{{Automatic, 81}, {71, Automatic}},
+Magnification:>2. Inherited,
+FrontEndVersion->"11.0 para Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1846, 39, 506, "Input"],
+Cell[CellGroupData[{
+Cell[2429, 63, 179, 3, 61, "Input"],
+Cell[CellGroupData[{
+Cell[2633, 70, 559, 10, 44, "Print"],
+Cell[3195, 82, 587, 11, 44, "Print"],
+Cell[3785, 95, 598, 11, 44, "Print"],
+Cell[4386, 108, 616, 12, 44, "Print"],
+Cell[5005, 122, 629, 12, 44, "Print"],
+Cell[5637, 136, 641, 12, 44, "Print"],
+Cell[6281, 150, 669, 14, 44, "Print"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

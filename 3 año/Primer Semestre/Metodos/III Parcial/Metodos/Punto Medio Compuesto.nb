@@ -1,0 +1,153 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5038,        143]
+NotebookOptionsPosition[      4617,        128]
+NotebookOutlinePosition[      5084,        145]
+CellTagsIndexPosition[      5041,        142]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"PuntoMedioCompuesto", "[", 
+     RowBox[{"Gx_", ",", "a_", ",", "b_", ",", "n_"}], "]"}], ":=", 
+    "\[IndentingNewLine]", "\t", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"h", "=", "0"}], ",", 
+        RowBox[{"resultado", "=", "0"}], ",", " ", 
+        RowBox[{"Xi", "=", "0"}], ",", " ", 
+        RowBox[{"Xa", "=", "0"}], ",", 
+        RowBox[{"Xb", "=", "0"}], ",", " ", 
+        RowBox[{"listaDeXi", "=", 
+         RowBox[{"Range", "[", "n", "]"}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"h", "=", 
+        FractionBox[
+         RowBox[{"b", "-", "a"}], "n"]}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Xa", " ", "=", " ", "a"}], ";", " ", 
+       RowBox[{"Xb", "=", 
+        RowBox[{"a", "+", "h"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", 
+         RowBox[{"i", "\[LessEqual]", " ", "n"}], ",", 
+         RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Xi", "=", 
+           FractionBox[
+            RowBox[{"Xa", "+", " ", "Xb"}], "2"]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"listaDeXi", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "=", "Xi"}], ";", 
+          "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"Xa", "=", "Xb"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Xb", "=", 
+           RowBox[{"Xa", "+", "h"}]}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+       ";", "\[IndentingNewLine]", "\t", "\[IndentingNewLine]", 
+       RowBox[{"resultado", "=", " ", 
+        RowBox[{"N", "[", 
+         RowBox[{
+          RowBox[{"h", "*", 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"i", "=", "1"}], "n"], 
+            RowBox[{"Gx", "[", 
+             RowBox[{"listaDeXi", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "]"}]}]}], ",", "10"}], "]"}]}],
+        ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<El resultado de la aproximaci\[OAcute]n usando punto medio \
+compuesto es de: \>\"", ",", "resultado"}], "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<El valor real de la integral es de: \>\"", ",", 
+         RowBox[{"N", "[", 
+          RowBox[{
+           RowBox[{
+            SubsuperscriptBox["\[Integral]", "2", "10"], 
+            RowBox[{
+             SqrtBox[
+              RowBox[{
+               SuperscriptBox["x", 
+                RowBox[{"3", " "}]], "+", "1"}]], 
+             RowBox[{"\[DifferentialD]", "x"}]}]}], ",", "10"}], "]"}]}], 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<Error = \>\"", ",", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"N", "[", 
+            RowBox[{
+             RowBox[{
+              SubsuperscriptBox["\[Integral]", "2", "10"], 
+              RowBox[{
+               SqrtBox[
+                RowBox[{
+                 SuperscriptBox["x", 
+                  RowBox[{"3", " "}]], "+", "1"}]], 
+               RowBox[{"\[DifferentialD]", "x"}]}]}], ",", "10"}], "]"}], "-",
+            "resultado"}], ")"}]}], "]"}], ";"}]}], "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Gx", "[", "x_", "]"}], ":=", 
+   SqrtBox[
+    RowBox[{
+     SuperscriptBox["x", "3"], "+", "1"}]]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"a", "=", "2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b", "=", "10"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n", "=", "4"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"PuntoMedioCompuesto", "[", 
+   RowBox[{"Gx", ",", "a", ",", "b", ",", "n"}], "]"}], ";"}]}], "Input",Expre\
+ssionUUID->"5166e14f-9cfd-4090-906e-b118ffca15f9"]
+},
+WindowSize->{480., 589.1999999999999},
+WindowMargins->{{13.2, Automatic}, {Automatic, 5.3999999999999995`}},
+Magnification:>0.9 Inherited,
+FrontEndVersion->"12.2 para Microsoft Windows (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"abeaa2a0-f373-4b48-8582-b94583d0397d"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 4055, 106, 800, "Input",ExpressionUUID->"5166e14f-9cfd-4090-906e-b118ffca15f9"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

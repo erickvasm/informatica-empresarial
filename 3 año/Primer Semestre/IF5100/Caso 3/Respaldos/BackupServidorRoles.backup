@@ -1,0 +1,3927 @@
+--
+-- PostgreSQL database cluster dump
+--
+
+-- Started on 2021-06-08 00:45:36
+
+SET default_transaction_read_only = off;
+
+SET client_encoding = 'LATIN1';
+SET standard_conforming_strings = on;
+
+--
+-- Roles
+--
+
+CREATE ROLE "Acceso_total";
+ALTER ROLE "Acceso_total" WITH NOSUPERUSER INHERIT NOCREATEROLE NOCREATEDB NOLOGIN NOREPLICATION NOBYPASSRLS;
+COMMENT ON ROLE "Acceso_total" IS 'podrá hacer select, insert, delete y update en cada tabla.';
+CREATE ROLE "Solo_escritura";
+ALTER ROLE "Solo_escritura" WITH NOSUPERUSER INHERIT NOCREATEROLE NOCREATEDB NOLOGIN NOREPLICATION NOBYPASSRLS;
+COMMENT ON ROLE "Solo_escritura" IS 'solo podrá hacer insert en cada tabla.';
+CREATE ROLE "Solo_lectura";
+ALTER ROLE "Solo_lectura" WITH NOSUPERUSER INHERIT NOCREATEROLE NOCREATEDB NOLOGIN NOREPLICATION NOBYPASSRLS;
+COMMENT ON ROLE "Solo_lectura" IS 'solo podrá hacer select en cada tabla.';
+CREATE ROLE a_cortes;
+ALTER ROLE a_cortes WITH NOSUPERUSER INHERIT NOCREATEROLE NOCREATEDB LOGIN NOREPLICATION NOBYPASSRLS PASSWORD 'md5604a5725f3da3637b8a03b7c229a3add' VALID UNTIL '2021-12-31 06:29:29+00';
+CREATE ROLE k_moraga;
+ALTER ROLE k_moraga WITH NOSUPERUSER INHERIT NOCREATEROLE NOCREATEDB LOGIN NOREPLICATION NOBYPASSRLS PASSWORD 'md5881bca03555e34ccfdc7865e9936b5e7' VALID UNTIL '2021-12-31 06:26:56+00';
+CREATE ROLE m_cortes;
+ALTER ROLE m_cortes WITH NOSUPERUSER INHERIT NOCREATEROLE NOCREATEDB LOGIN NOREPLICATION NOBYPASSRLS PASSWORD 'md5a192604834fa6d6ac1b6907f2310d3fc' VALID UNTIL '2021-12-31 06:28:41+00';
+CREATE ROLE postgres;
+ALTER ROLE postgres WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS PASSWORD 'md565ca73cc760d03ee8da716ed7e0b580b';
+
+
+--
+-- Role memberships
+--
+
+GRANT "Acceso_total" TO k_moraga GRANTED BY postgres;
+GRANT "Solo_escritura" TO a_cortes GRANTED BY postgres;
+GRANT "Solo_lectura" TO m_cortes GRANTED BY postgres;
+
+
+
+
+--
+-- Databases
+--
+
+--
+-- Database "template1" dump
+--
+
+\connect template1
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.2 (Debian 13.2-1.pgdg100+1)
+-- Dumped by pg_dump version 13.2
+
+-- Started on 2021-06-08 00:45:37
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'LATIN1';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+-- Completed on 2021-06-08 00:45:38
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- Database "Pruebas" dump
+--
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.2 (Debian 13.2-1.pgdg100+1)
+-- Dumped by pg_dump version 13.2
+
+-- Started on 2021-06-08 00:45:38
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'LATIN1';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 2949 (class 1262 OID 16962)
+-- Name: Pruebas; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE "Pruebas" WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.utf8';
+
+
+ALTER DATABASE "Pruebas" OWNER TO postgres;
+
+\connect "Pruebas"
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'LATIN1';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 202 (class 1255 OID 16987)
+-- Name: eliminarprovincia(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarprovincia(integer)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM "Provincia"
+		WHERE 	"Id_Provincia" = $1;
+	
+$_$;
+
+
+ALTER PROCEDURE public.eliminarprovincia(integer) OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 201 (class 1259 OID 16976)
+-- Name: Canton; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Canton" (
+    "Id_Canton" integer NOT NULL,
+    "Id_Provincia" integer NOT NULL,
+    "Nombre_Canton" character(25)
+);
+
+
+ALTER TABLE public."Canton" OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 16971)
+-- Name: Provincia; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Provincia" (
+    "Id_Provincia" integer NOT NULL,
+    "Nombre_Provincia" character(25)
+);
+
+
+ALTER TABLE public."Provincia" OWNER TO postgres;
+
+--
+-- TOC entry 2943 (class 0 OID 16976)
+-- Dependencies: 201
+-- Data for Name: Canton; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Canton" ("Id_Canton", "Id_Provincia", "Nombre_Canton") FROM stdin;
+\.
+
+
+--
+-- TOC entry 2942 (class 0 OID 16971)
+-- Dependencies: 200
+-- Data for Name: Provincia; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Provincia" ("Id_Provincia", "Nombre_Provincia") FROM stdin;
+\.
+
+
+--
+-- TOC entry 2809 (class 2606 OID 16980)
+-- Name: Canton Canton_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Canton"
+    ADD CONSTRAINT "Canton_pkey" PRIMARY KEY ("Id_Canton", "Id_Provincia");
+
+
+--
+-- TOC entry 2807 (class 2606 OID 16975)
+-- Name: Provincia Provincia_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Provincia"
+    ADD CONSTRAINT "Provincia_pkey" PRIMARY KEY ("Id_Provincia");
+
+
+--
+-- TOC entry 2810 (class 1259 OID 16986)
+-- Name: fki_CantonProvincia_FK; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "fki_CantonProvincia_FK" ON public."Canton" USING btree ("Id_Provincia");
+
+
+--
+-- TOC entry 2811 (class 2606 OID 16981)
+-- Name: Canton CantonProvincia_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Canton"
+    ADD CONSTRAINT "CantonProvincia_FK" FOREIGN KEY ("Id_Provincia") REFERENCES public."Provincia"("Id_Provincia") ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+-- Completed on 2021-06-08 00:45:40
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- Database "Renta_Vehiculos" dump
+--
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.2 (Debian 13.2-1.pgdg100+1)
+-- Dumped by pg_dump version 13.2
+
+-- Started on 2021-06-08 00:45:40
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'LATIN1';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 3091 (class 1262 OID 17207)
+-- Name: Renta_Vehiculos; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE "Renta_Vehiculos" WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.utf8';
+
+
+ALTER DATABASE "Renta_Vehiculos" OWNER TO postgres;
+
+\connect "Renta_Vehiculos"
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'LATIN1';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 214 (class 1255 OID 17208)
+-- Name: actuaizarmarca(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.actuaizarmarca(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+		UPDATE marca
+		SET marca = $2
+		WHERE id_marca = $1;
+$_$;
+
+
+ALTER PROCEDURE public.actuaizarmarca(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1255 OID 17209)
+-- Name: actualizarcanton(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.actualizarcanton(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	UPDATE canton
+	SET nombre = $2
+		WHERE id_canton = $1;
+$_$;
+
+
+ALTER PROCEDURE public.actualizarcanton(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 216 (class 1255 OID 17210)
+-- Name: actualizarcolor(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.actualizarcolor(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	UPDATE color
+	SET color = $2
+		WHERE id_color = $1;
+$_$;
+
+
+ALTER PROCEDURE public.actualizarcolor(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 217 (class 1255 OID 17211)
+-- Name: actualizardireccion(integer, integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.actualizardireccion(integer, integer)
+    LANGUAGE sql
+    AS $_$
+		UPDATE direccion
+		SET id_direccion = $2
+		WHERE id_direccion =$1;
+$_$;
+
+
+ALTER PROCEDURE public.actualizardireccion(integer, integer) OWNER TO postgres;
+
+--
+-- TOC entry 218 (class 1255 OID 17212)
+-- Name: actualizardistrito(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.actualizardistrito(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+		UPDATE distrito
+		SET nombre = $2
+		WHERE id_distrito = $1;
+$_$;
+
+
+ALTER PROCEDURE public.actualizardistrito(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1255 OID 17213)
+-- Name: actualizarinventariovehiculos(character, integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.actualizarinventariovehiculos(character, integer)
+    LANGUAGE sql
+    AS $_$
+		UPDATE inventario_vehiculos
+		SET id_marca_fk = $2
+		WHERE placa = $1;
+$_$;
+
+
+ALTER PROCEDURE public.actualizarinventariovehiculos(character, integer) OWNER TO postgres;
+
+--
+-- TOC entry 220 (class 1255 OID 17214)
+-- Name: actualizarliente(character varying, integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.actualizarliente(character varying, integer)
+    LANGUAGE sql
+    AS $_$
+		UPDATE cliente
+		SET edad = $2
+		WHERE cedula = $1;
+$_$;
+
+
+ALTER PROCEDURE public.actualizarliente(character varying, integer) OWNER TO postgres;
+
+--
+-- TOC entry 221 (class 1255 OID 17215)
+-- Name: actualizarmetodopago(integer, character); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.actualizarmetodopago(integer, character)
+    LANGUAGE sql
+    AS $_$
+		UPDATE metodo_pago
+		SET metodo = $2
+		WHERE id_metodo_pago = $1;
+$_$;
+
+
+ALTER PROCEDURE public.actualizarmetodopago(integer, character) OWNER TO postgres;
+
+--
+-- TOC entry 222 (class 1255 OID 17216)
+-- Name: actualizarmodelo(integer, character); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.actualizarmodelo(integer, character)
+    LANGUAGE sql
+    AS $_$
+		UPDATE modelo
+		SET year_a = $2
+		WHERE id_modelo = $1;
+$_$;
+
+
+ALTER PROCEDURE public.actualizarmodelo(integer, character) OWNER TO postgres;
+
+--
+-- TOC entry 223 (class 1255 OID 17217)
+-- Name: actualizarpais(integer, character); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.actualizarpais(integer, character)
+    LANGUAGE sql
+    AS $_$
+		UPDATE pais
+		SET nombre = $2
+		WHERE id_pais = $1;
+$_$;
+
+
+ALTER PROCEDURE public.actualizarpais(integer, character) OWNER TO postgres;
+
+--
+-- TOC entry 224 (class 1255 OID 17218)
+-- Name: actualizarrentas(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.actualizarrentas(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+		UPDATE rentas
+		SET placa_fk = $2
+		WHERE id_rentas = $1;
+$_$;
+
+
+ALTER PROCEDURE public.actualizarrentas(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 225 (class 1255 OID 17219)
+-- Name: actualizartipolicencia(integer, character); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.actualizartipolicencia(integer, character)
+    LANGUAGE sql
+    AS $_$
+		UPDATE tipo_licencia
+		SET tipo = $2
+		WHERE id_tipo_licencia = $1;
+$_$;
+
+
+ALTER PROCEDURE public.actualizartipolicencia(integer, character) OWNER TO postgres;
+
+--
+-- TOC entry 226 (class 1255 OID 17220)
+-- Name: actulizarbarrio(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.actulizarbarrio(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+		UPDATE barrio
+		SET nombre = $2
+		WHERE id_barrio = $1;
+$_$;
+
+
+ALTER PROCEDURE public.actulizarbarrio(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 227 (class 1255 OID 17221)
+-- Name: actulizarprovincia(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.actulizarprovincia(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	UPDATE provincia
+	SET nombre = $2
+		WHERE id_provincia = $1;
+$_$;
+
+
+ALTER PROCEDURE public.actulizarprovincia(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 228 (class 1255 OID 17222)
+-- Name: eliminainventariovehiculos(character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminainventariovehiculos(character varying)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM inventario_vehiculos
+		WHERE placa = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminainventariovehiculos(character varying) OWNER TO postgres;
+
+--
+-- TOC entry 229 (class 1255 OID 17223)
+-- Name: eliminarbarrio(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarbarrio(integer)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM barrio
+		WHERE id_barrio = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarbarrio(integer) OWNER TO postgres;
+
+--
+-- TOC entry 230 (class 1255 OID 17224)
+-- Name: eliminarbarrio(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarbarrio(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM barrio
+		WHERE id_barrio = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarbarrio(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 231 (class 1255 OID 17225)
+-- Name: eliminarcanton(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarcanton(integer)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM canton
+		WHERE id_canton = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarcanton(integer) OWNER TO postgres;
+
+--
+-- TOC entry 232 (class 1255 OID 17226)
+-- Name: eliminarcliente(character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarcliente(character varying)
+    LANGUAGE sql
+    AS $_$
+		DELETE FROM cliente
+		WHERE cedula = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarcliente(character varying) OWNER TO postgres;
+
+--
+-- TOC entry 233 (class 1255 OID 17227)
+-- Name: eliminarcliente(character varying, character varying, integer, integer, character varying, integer, integer, date, integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarcliente(character varying, character varying, integer, integer, character varying, integer, integer, date, integer)
+    LANGUAGE sql
+    AS $_$
+		DELETE FROM cliente
+		WHERE cedula = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarcliente(character varying, character varying, integer, integer, character varying, integer, integer, date, integer) OWNER TO postgres;
+
+--
+-- TOC entry 234 (class 1255 OID 17228)
+-- Name: eliminarcolor(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarcolor(integer)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM color
+		WHERE id_color = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarcolor(integer) OWNER TO postgres;
+
+--
+-- TOC entry 235 (class 1255 OID 17229)
+-- Name: eliminardireccion(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminardireccion(integer)
+    LANGUAGE sql
+    AS $_$
+		DELETE FROM direccion
+		WHERE id_direccion =$1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminardireccion(integer) OWNER TO postgres;
+
+--
+-- TOC entry 236 (class 1255 OID 17230)
+-- Name: eliminardistrito(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminardistrito(integer)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM distrito
+		WHERE id_distrito = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminardistrito(integer) OWNER TO postgres;
+
+--
+-- TOC entry 237 (class 1255 OID 17231)
+-- Name: eliminarinsertarcliente(character varying, character varying, integer, integer, character varying, integer, integer, date, integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarinsertarcliente(character varying, character varying, integer, integer, character varying, integer, integer, date, integer)
+    LANGUAGE sql
+    AS $_$
+		DELETE FROM cliente
+		WHERE cedula = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarinsertarcliente(character varying, character varying, integer, integer, character varying, integer, integer, date, integer) OWNER TO postgres;
+
+--
+-- TOC entry 238 (class 1255 OID 17232)
+-- Name: eliminarmarca(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarmarca(integer)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM marca
+		WHERE id_marca = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarmarca(integer) OWNER TO postgres;
+
+--
+-- TOC entry 239 (class 1255 OID 17233)
+-- Name: eliminarmetodopago(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarmetodopago(integer)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM metodo_pago
+		WHERE id_metodo_pago = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarmetodopago(integer) OWNER TO postgres;
+
+--
+-- TOC entry 240 (class 1255 OID 17234)
+-- Name: eliminarmetodopago(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarmetodopago(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM metodo_pago
+		WHERE id_metodo_pago = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarmetodopago(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 241 (class 1255 OID 17235)
+-- Name: eliminarmodelo(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarmodelo(integer)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM modelo
+		WHERE id_modelo = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarmodelo(integer) OWNER TO postgres;
+
+--
+-- TOC entry 242 (class 1255 OID 17236)
+-- Name: eliminarpais(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarpais(integer)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM pais
+		WHERE id_pais = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarpais(integer) OWNER TO postgres;
+
+--
+-- TOC entry 243 (class 1255 OID 17237)
+-- Name: eliminarpais(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarpais(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM pais
+		WHERE id_pais = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarpais(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 244 (class 1255 OID 17238)
+-- Name: eliminarprovincia(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarprovincia(integer)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM provincia
+		WHERE id_provincia = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarprovincia(integer) OWNER TO postgres;
+
+--
+-- TOC entry 245 (class 1255 OID 17239)
+-- Name: eliminarrentas(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarrentas(integer)
+    LANGUAGE sql
+    AS $$
+	DELETE FROM rentas
+		WHERE id_rentas = 1;
+$$;
+
+
+ALTER PROCEDURE public.eliminarrentas(integer) OWNER TO postgres;
+
+--
+-- TOC entry 246 (class 1255 OID 17240)
+-- Name: eliminartipolicencia(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminartipolicencia(integer)
+    LANGUAGE sql
+    AS $_$
+		DELETE FROM tipo_licencia
+		WHERE id_tipo_licencia = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminartipolicencia(integer) OWNER TO postgres;
+
+--
+-- TOC entry 247 (class 1255 OID 17241)
+-- Name: insertarbarrio(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarbarrio(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO barrio("id_barrio","nombre")
+		VALUES ($1, $2);
+$_$;
+
+
+ALTER PROCEDURE public.insertarbarrio(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 248 (class 1255 OID 17242)
+-- Name: insertarcanton(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarcanton(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO Canton("id_canton","nombre")
+		VALUES ($1, $2);
+$_$;
+
+
+ALTER PROCEDURE public.insertarcanton(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 249 (class 1255 OID 17243)
+-- Name: insertarcliente(character varying, character varying, integer, integer, character varying, integer, integer, date, integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarcliente(character varying, character varying, integer, integer, character varying, integer, integer, date, integer)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO cliente("cedula","nombre","id_direccion_fk","telefono","mail","edad","id_tipo_licencia_fk","vencimiento_licencia","id_metodo_pago_fk")
+		VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9);
+$_$;
+
+
+ALTER PROCEDURE public.insertarcliente(character varying, character varying, integer, integer, character varying, integer, integer, date, integer) OWNER TO postgres;
+
+--
+-- TOC entry 250 (class 1255 OID 17244)
+-- Name: insertarcolor(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarcolor(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO Color("id_color","color")
+		VALUES ($1, $2);
+$_$;
+
+
+ALTER PROCEDURE public.insertarcolor(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 251 (class 1255 OID 17245)
+-- Name: insertardireccion(integer, integer, integer, integer, integer, integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertardireccion(integer, integer, integer, integer, integer, integer)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO direccion("id_direccion","id_pais_fk","id_provincia_fk","id_canton_fk","id_distrito_fk","id_barrio_fk")
+		VALUES ($1, $2,$3,$4,$5,$6);
+$_$;
+
+
+ALTER PROCEDURE public.insertardireccion(integer, integer, integer, integer, integer, integer) OWNER TO postgres;
+
+--
+-- TOC entry 252 (class 1255 OID 17246)
+-- Name: insertardistrito(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertardistrito(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO distrito("id_distrito","nombre")
+		VALUES ($1, $2);
+$_$;
+
+
+ALTER PROCEDURE public.insertardistrito(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 253 (class 1255 OID 17247)
+-- Name: insertarinventariovehiculos(character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarinventariovehiculos(character varying)
+    LANGUAGE sql
+    AS $$
+	DELETE FROM inventario_vehiculos
+		WHERE placa = '500B500';
+$$;
+
+
+ALTER PROCEDURE public.insertarinventariovehiculos(character varying) OWNER TO postgres;
+
+--
+-- TOC entry 254 (class 1255 OID 17248)
+-- Name: insertarinventariovehiculos(character varying, integer, integer, integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarinventariovehiculos(character varying, integer, integer, integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO inventario_vehiculos("placa","id_marca_fk","id_modelo_fk","id_color","estado")
+		VALUES ($1, $2,$3,$4,$5);
+$_$;
+
+
+ALTER PROCEDURE public.insertarinventariovehiculos(character varying, integer, integer, integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 255 (class 1255 OID 17249)
+-- Name: insertarmarca(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarmarca(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO Marca("id_marca","marca")
+		VALUES ($1, $2);
+$_$;
+
+
+ALTER PROCEDURE public.insertarmarca(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 256 (class 1255 OID 17250)
+-- Name: insertarmetodopago(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarmetodopago(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO metodo_pago("id_metodo_pago","metodo")
+		VALUES ($1, $2);
+$_$;
+
+
+ALTER PROCEDURE public.insertarmetodopago(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 257 (class 1255 OID 17251)
+-- Name: insertarmodelo(integer, character varying, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarmodelo(integer, character varying, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO modelo("id_modelo","modelo","year_a")
+		VALUES ($1, $2,$3);
+$_$;
+
+
+ALTER PROCEDURE public.insertarmodelo(integer, character varying, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 263 (class 1255 OID 17252)
+-- Name: insertarpais(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarpais(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO pais("id_pais","nombre")
+		VALUES ($1, $2);
+$_$;
+
+
+ALTER PROCEDURE public.insertarpais(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 270 (class 1255 OID 17253)
+-- Name: insertarprovincia(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarprovincia(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO provincia("id_provincia","nombre")
+		VALUES ($1, $2);
+$_$;
+
+
+ALTER PROCEDURE public.insertarprovincia(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 271 (class 1255 OID 17254)
+-- Name: insertarrentas(integer, character varying, character varying, integer, character varying, character varying, character varying, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarrentas(integer, character varying, character varying, integer, character varying, character varying, character varying, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO rentas("id_rentas","placa_fk","cedula","cantidad_dias","kilometraje_salida","kilometraje_entrada","estado","costo_por_dia")
+		VALUES ($1, $2,$3,$4,$5,$6,$7,$8);
+$_$;
+
+
+ALTER PROCEDURE public.insertarrentas(integer, character varying, character varying, integer, character varying, character varying, character varying, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 272 (class 1255 OID 17255)
+-- Name: insertartipolicencia(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertartipolicencia(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO tipo_licencia("id_tipo_licencia","tipo")
+		VALUES ($1, $2);
+$_$;
+
+
+ALTER PROCEDURE public.insertartipolicencia(integer, character varying) OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 200 (class 1259 OID 17256)
+-- Name: barrio; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.barrio (
+    id_barrio integer NOT NULL,
+    nombre character varying(20)
+);
+
+
+ALTER TABLE public.barrio OWNER TO postgres;
+
+--
+-- TOC entry 201 (class 1259 OID 17259)
+-- Name: canton; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.canton (
+    id_canton integer NOT NULL,
+    nombre character varying(20)
+);
+
+
+ALTER TABLE public.canton OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 17262)
+-- Name: cliente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.cliente (
+    cedula character varying(9) NOT NULL,
+    nombre character varying(20),
+    id_direccion_fk integer,
+    telefono integer,
+    mail character varying(45),
+    edad integer,
+    id_tipo_licencia_fk integer,
+    vencimiento_licencia date,
+    id_metodo_pago_fk integer
+);
+
+
+ALTER TABLE public.cliente OWNER TO postgres;
+
+--
+-- TOC entry 203 (class 1259 OID 17265)
+-- Name: color; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.color (
+    id_color integer NOT NULL,
+    color character varying(20)
+);
+
+
+ALTER TABLE public.color OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 17268)
+-- Name: direccion; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.direccion (
+    id_direccion integer NOT NULL,
+    id_pais_fk integer,
+    id_provincia_fk integer,
+    id_canton_fk integer,
+    id_distrito_fk integer,
+    id_barrio_fk integer
+);
+
+
+ALTER TABLE public.direccion OWNER TO postgres;
+
+--
+-- TOC entry 205 (class 1259 OID 17271)
+-- Name: distrito; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.distrito (
+    id_distrito integer NOT NULL,
+    nombre character varying(20)
+);
+
+
+ALTER TABLE public.distrito OWNER TO postgres;
+
+--
+-- TOC entry 206 (class 1259 OID 17274)
+-- Name: inventario_vehiculos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.inventario_vehiculos (
+    placa character varying(20) NOT NULL,
+    id_marca_fk integer,
+    id_modelo_fk integer,
+    id_color integer,
+    estado character varying(200)
+);
+
+
+ALTER TABLE public.inventario_vehiculos OWNER TO postgres;
+
+--
+-- TOC entry 207 (class 1259 OID 17277)
+-- Name: marca; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.marca (
+    id_marca integer NOT NULL,
+    marca character varying(20)
+);
+
+
+ALTER TABLE public.marca OWNER TO postgres;
+
+--
+-- TOC entry 208 (class 1259 OID 17280)
+-- Name: metodo_pago; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.metodo_pago (
+    id_metodo_pago integer NOT NULL,
+    metodo character varying(20)
+);
+
+
+ALTER TABLE public.metodo_pago OWNER TO postgres;
+
+--
+-- TOC entry 209 (class 1259 OID 17283)
+-- Name: modelo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.modelo (
+    id_modelo integer NOT NULL,
+    modelo character varying(20),
+    year_a character varying(20)
+);
+
+
+ALTER TABLE public.modelo OWNER TO postgres;
+
+--
+-- TOC entry 210 (class 1259 OID 17286)
+-- Name: pais; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.pais (
+    id_pais integer NOT NULL,
+    nombre character varying(20)
+);
+
+
+ALTER TABLE public.pais OWNER TO postgres;
+
+--
+-- TOC entry 211 (class 1259 OID 17289)
+-- Name: provincia; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.provincia (
+    id_provincia integer NOT NULL,
+    nombre character varying(20)
+);
+
+
+ALTER TABLE public.provincia OWNER TO postgres;
+
+--
+-- TOC entry 212 (class 1259 OID 17292)
+-- Name: rentas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.rentas (
+    id_rentas integer NOT NULL,
+    placa_fk character varying(20),
+    cedula character varying(9),
+    cantidad_dias integer,
+    kilometraje_salida character varying(20),
+    kilometraje_entrada character varying(20),
+    estado character varying(200),
+    costo_por_dia character varying(20)
+);
+
+
+ALTER TABLE public.rentas OWNER TO postgres;
+
+--
+-- TOC entry 213 (class 1259 OID 17295)
+-- Name: tipo_licencia; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tipo_licencia (
+    id_tipo_licencia integer NOT NULL,
+    tipo character varying(2)
+);
+
+
+ALTER TABLE public.tipo_licencia OWNER TO postgres;
+
+--
+-- TOC entry 3072 (class 0 OID 17256)
+-- Dependencies: 200
+-- Data for Name: barrio; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.barrio (id_barrio, nombre) FROM stdin;
+3	Santa Cecilia
+2	Lupes
+1	mar
+5	carazo
+7	San Juez
+\.
+
+
+--
+-- TOC entry 3073 (class 0 OID 17259)
+-- Dependencies: 201
+-- Data for Name: canton; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.canton (id_canton, nombre) FROM stdin;
+3	La Cruz
+2	Santa Cruz
+\.
+
+
+--
+-- TOC entry 3074 (class 0 OID 17262)
+-- Dependencies: 202
+-- Data for Name: cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.cliente (cedula, nombre, id_direccion_fk, telefono, mail, edad, id_tipo_licencia_fk, vencimiento_licencia, id_metodo_pago_fk) FROM stdin;
+503482094	Juan	1	875575777	juan@gmail.com	25	1	2021-08-11	1
+\.
+
+
+--
+-- TOC entry 3075 (class 0 OID 17265)
+-- Dependencies: 203
+-- Data for Name: color; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.color (id_color, color) FROM stdin;
+1	Azul
+2	negro
+\.
+
+
+--
+-- TOC entry 3076 (class 0 OID 17268)
+-- Dependencies: 204
+-- Data for Name: direccion; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.direccion (id_direccion, id_pais_fk, id_provincia_fk, id_canton_fk, id_distrito_fk, id_barrio_fk) FROM stdin;
+1	2	2	2	2	2
+\.
+
+
+--
+-- TOC entry 3077 (class 0 OID 17271)
+-- Dependencies: 205
+-- Data for Name: distrito; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.distrito (id_distrito, nombre) FROM stdin;
+2	San Carlos
+1	San Gorge
+\.
+
+
+--
+-- TOC entry 3078 (class 0 OID 17274)
+-- Dependencies: 206
+-- Data for Name: inventario_vehiculos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.inventario_vehiculos (placa, id_marca_fk, id_modelo_fk, id_color, estado) FROM stdin;
+A900200	2	2	2	ESTADO_2
+500B500	2	1	1	ESTADO_1
+\.
+
+
+--
+-- TOC entry 3079 (class 0 OID 17277)
+-- Dependencies: 207
+-- Data for Name: marca; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.marca (id_marca, marca) FROM stdin;
+2	suzuki
+1	FORD
+\.
+
+
+--
+-- TOC entry 3080 (class 0 OID 17280)
+-- Dependencies: 208
+-- Data for Name: metodo_pago; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.metodo_pago (id_metodo_pago, metodo) FROM stdin;
+1	efectivo
+\.
+
+
+--
+-- TOC entry 3081 (class 0 OID 17283)
+-- Dependencies: 209
+-- Data for Name: modelo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.modelo (id_modelo, modelo, year_a) FROM stdin;
+2	modelo_2	2020
+1	modelo_1	2009
+\.
+
+
+--
+-- TOC entry 3082 (class 0 OID 17286)
+-- Dependencies: 210
+-- Data for Name: pais; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.pais (id_pais, nombre) FROM stdin;
+2	Panama
+1	España
+\.
+
+
+--
+-- TOC entry 3083 (class 0 OID 17289)
+-- Dependencies: 211
+-- Data for Name: provincia; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.provincia (id_provincia, nombre) FROM stdin;
+3	Heredia
+2	Puntarenas
+\.
+
+
+--
+-- TOC entry 3084 (class 0 OID 17292)
+-- Dependencies: 212
+-- Data for Name: rentas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.rentas (id_rentas, placa_fk, cedula, cantidad_dias, kilometraje_salida, kilometraje_entrada, estado, costo_por_dia) FROM stdin;
+1	500B500	503482094	10	10 KM	50 km	estado_2	15000
+\.
+
+
+--
+-- TOC entry 3085 (class 0 OID 17295)
+-- Dependencies: 213
+-- Data for Name: tipo_licencia; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tipo_licencia (id_tipo_licencia, tipo) FROM stdin;
+2	B2
+3	B2
+1	A2
+\.
+
+
+--
+-- TOC entry 2902 (class 2606 OID 17299)
+-- Name: barrio barrio_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.barrio
+    ADD CONSTRAINT barrio_pkey PRIMARY KEY (id_barrio);
+
+
+--
+-- TOC entry 2904 (class 2606 OID 17301)
+-- Name: canton canton_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.canton
+    ADD CONSTRAINT canton_pkey PRIMARY KEY (id_canton);
+
+
+--
+-- TOC entry 2906 (class 2606 OID 17303)
+-- Name: cliente cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente
+    ADD CONSTRAINT cliente_pkey PRIMARY KEY (cedula);
+
+
+--
+-- TOC entry 2908 (class 2606 OID 17305)
+-- Name: color color_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.color
+    ADD CONSTRAINT color_pkey PRIMARY KEY (id_color);
+
+
+--
+-- TOC entry 2910 (class 2606 OID 17307)
+-- Name: direccion direccion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.direccion
+    ADD CONSTRAINT direccion_pkey PRIMARY KEY (id_direccion);
+
+
+--
+-- TOC entry 2912 (class 2606 OID 17309)
+-- Name: distrito distrito_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.distrito
+    ADD CONSTRAINT distrito_pkey PRIMARY KEY (id_distrito);
+
+
+--
+-- TOC entry 2914 (class 2606 OID 17311)
+-- Name: inventario_vehiculos inventario_vehiculos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.inventario_vehiculos
+    ADD CONSTRAINT inventario_vehiculos_pkey PRIMARY KEY (placa);
+
+
+--
+-- TOC entry 2916 (class 2606 OID 17313)
+-- Name: marca marca_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.marca
+    ADD CONSTRAINT marca_pkey PRIMARY KEY (id_marca);
+
+
+--
+-- TOC entry 2918 (class 2606 OID 17315)
+-- Name: metodo_pago metodo_pago_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.metodo_pago
+    ADD CONSTRAINT metodo_pago_pkey PRIMARY KEY (id_metodo_pago);
+
+
+--
+-- TOC entry 2920 (class 2606 OID 17317)
+-- Name: modelo modelo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.modelo
+    ADD CONSTRAINT modelo_pkey PRIMARY KEY (id_modelo);
+
+
+--
+-- TOC entry 2922 (class 2606 OID 17319)
+-- Name: pais pais_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pais
+    ADD CONSTRAINT pais_pkey PRIMARY KEY (id_pais);
+
+
+--
+-- TOC entry 2924 (class 2606 OID 17321)
+-- Name: provincia provincia_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.provincia
+    ADD CONSTRAINT provincia_pkey PRIMARY KEY (id_provincia);
+
+
+--
+-- TOC entry 2926 (class 2606 OID 17323)
+-- Name: rentas rentas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.rentas
+    ADD CONSTRAINT rentas_pkey PRIMARY KEY (id_rentas);
+
+
+--
+-- TOC entry 2928 (class 2606 OID 17325)
+-- Name: tipo_licencia tipo_licencia_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tipo_licencia
+    ADD CONSTRAINT tipo_licencia_pkey PRIMARY KEY (id_tipo_licencia);
+
+
+--
+-- TOC entry 2940 (class 2606 OID 17326)
+-- Name: rentas cedula_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.rentas
+    ADD CONSTRAINT cedula_fk FOREIGN KEY (cedula) REFERENCES public.cliente(cedula) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2932 (class 2606 OID 17331)
+-- Name: direccion id_barrio; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.direccion
+    ADD CONSTRAINT id_barrio FOREIGN KEY (id_barrio_fk) REFERENCES public.barrio(id_barrio) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2933 (class 2606 OID 17336)
+-- Name: direccion id_canton; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.direccion
+    ADD CONSTRAINT id_canton FOREIGN KEY (id_canton_fk) REFERENCES public.canton(id_canton) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2937 (class 2606 OID 17341)
+-- Name: inventario_vehiculos id_color; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.inventario_vehiculos
+    ADD CONSTRAINT id_color FOREIGN KEY (id_color) REFERENCES public.color(id_color) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2929 (class 2606 OID 17346)
+-- Name: cliente id_direccion; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente
+    ADD CONSTRAINT id_direccion FOREIGN KEY (id_direccion_fk) REFERENCES public.direccion(id_direccion) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2934 (class 2606 OID 17351)
+-- Name: direccion id_distrito; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.direccion
+    ADD CONSTRAINT id_distrito FOREIGN KEY (id_distrito_fk) REFERENCES public.distrito(id_distrito) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2938 (class 2606 OID 17356)
+-- Name: inventario_vehiculos id_marca_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.inventario_vehiculos
+    ADD CONSTRAINT id_marca_fk FOREIGN KEY (id_marca_fk) REFERENCES public.marca(id_marca) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2930 (class 2606 OID 17361)
+-- Name: cliente id_metodo_pago; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente
+    ADD CONSTRAINT id_metodo_pago FOREIGN KEY (id_metodo_pago_fk) REFERENCES public.metodo_pago(id_metodo_pago) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2939 (class 2606 OID 17366)
+-- Name: inventario_vehiculos id_modelo; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.inventario_vehiculos
+    ADD CONSTRAINT id_modelo FOREIGN KEY (id_modelo_fk) REFERENCES public.modelo(id_modelo) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2935 (class 2606 OID 17371)
+-- Name: direccion id_pais; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.direccion
+    ADD CONSTRAINT id_pais FOREIGN KEY (id_pais_fk) REFERENCES public.pais(id_pais) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2936 (class 2606 OID 17376)
+-- Name: direccion id_provincia; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.direccion
+    ADD CONSTRAINT id_provincia FOREIGN KEY (id_provincia_fk) REFERENCES public.provincia(id_provincia) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2931 (class 2606 OID 17381)
+-- Name: cliente id_tipo_licencia; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente
+    ADD CONSTRAINT id_tipo_licencia FOREIGN KEY (id_tipo_licencia_fk) REFERENCES public.tipo_licencia(id_tipo_licencia) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2941 (class 2606 OID 17386)
+-- Name: rentas placa_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.rentas
+    ADD CONSTRAINT placa_fk FOREIGN KEY (placa_fk) REFERENCES public.inventario_vehiculos(placa) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 3092 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: TABLE barrio; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.barrio TO "Acceso_total";
+GRANT SELECT ON TABLE public.barrio TO "Solo_lectura";
+GRANT INSERT ON TABLE public.barrio TO "Solo_escritura";
+
+
+--
+-- TOC entry 3093 (class 0 OID 0)
+-- Dependencies: 201
+-- Name: TABLE canton; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.canton TO "Acceso_total";
+GRANT SELECT ON TABLE public.canton TO "Solo_lectura";
+GRANT INSERT ON TABLE public.canton TO "Solo_escritura";
+
+
+--
+-- TOC entry 3094 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: TABLE cliente; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.cliente TO "Acceso_total";
+GRANT SELECT ON TABLE public.cliente TO "Solo_lectura";
+GRANT INSERT ON TABLE public.cliente TO "Solo_escritura";
+
+
+--
+-- TOC entry 3095 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: TABLE color; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.color TO "Acceso_total";
+GRANT SELECT ON TABLE public.color TO "Solo_lectura";
+GRANT INSERT ON TABLE public.color TO "Solo_escritura";
+
+
+--
+-- TOC entry 3096 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: TABLE direccion; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.direccion TO "Acceso_total";
+GRANT SELECT ON TABLE public.direccion TO "Solo_lectura";
+GRANT INSERT ON TABLE public.direccion TO "Solo_escritura";
+
+
+--
+-- TOC entry 3097 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: TABLE distrito; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.distrito TO "Acceso_total";
+GRANT SELECT ON TABLE public.distrito TO "Solo_lectura";
+GRANT INSERT ON TABLE public.distrito TO "Solo_escritura";
+
+
+--
+-- TOC entry 3098 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: TABLE inventario_vehiculos; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.inventario_vehiculos TO "Acceso_total";
+GRANT SELECT ON TABLE public.inventario_vehiculos TO "Solo_lectura";
+GRANT INSERT ON TABLE public.inventario_vehiculos TO "Solo_escritura";
+
+
+--
+-- TOC entry 3099 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: TABLE marca; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.marca TO "Acceso_total";
+GRANT SELECT ON TABLE public.marca TO "Solo_lectura";
+GRANT INSERT ON TABLE public.marca TO "Solo_escritura";
+
+
+--
+-- TOC entry 3100 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: TABLE metodo_pago; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.metodo_pago TO "Acceso_total";
+GRANT SELECT ON TABLE public.metodo_pago TO "Solo_lectura";
+GRANT INSERT ON TABLE public.metodo_pago TO "Solo_escritura";
+
+
+--
+-- TOC entry 3101 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: TABLE modelo; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.modelo TO "Acceso_total";
+GRANT SELECT ON TABLE public.modelo TO "Solo_lectura";
+GRANT INSERT ON TABLE public.modelo TO "Solo_escritura";
+
+
+--
+-- TOC entry 3102 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: TABLE pais; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.pais TO "Acceso_total";
+GRANT SELECT ON TABLE public.pais TO "Solo_lectura";
+GRANT INSERT ON TABLE public.pais TO "Solo_escritura";
+
+
+--
+-- TOC entry 3103 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: TABLE provincia; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.provincia TO "Acceso_total";
+GRANT SELECT ON TABLE public.provincia TO "Solo_lectura";
+GRANT INSERT ON TABLE public.provincia TO "Solo_escritura";
+
+
+--
+-- TOC entry 3104 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: TABLE rentas; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.rentas TO "Acceso_total";
+GRANT SELECT ON TABLE public.rentas TO "Solo_lectura";
+GRANT INSERT ON TABLE public.rentas TO "Solo_escritura";
+
+
+--
+-- TOC entry 3105 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: TABLE tipo_licencia; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.tipo_licencia TO "Acceso_total";
+GRANT SELECT ON TABLE public.tipo_licencia TO "Solo_lectura";
+GRANT INSERT ON TABLE public.tipo_licencia TO "Solo_escritura";
+
+
+-- Completed on 2021-06-08 00:45:42
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- Database "Zoologico" dump
+--
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.2 (Debian 13.2-1.pgdg100+1)
+-- Dumped by pg_dump version 13.2
+
+-- Started on 2021-06-08 00:45:42
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'LATIN1';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 3089 (class 1262 OID 16752)
+-- Name: Zoologico; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE "Zoologico" WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.utf8';
+
+
+ALTER DATABASE "Zoologico" OWNER TO postgres;
+
+\connect "Zoologico"
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'LATIN1';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 200 (class 1259 OID 16753)
+-- Name: barrio; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.barrio (
+    id_barrio integer NOT NULL,
+    nombre character varying(20)
+);
+
+
+ALTER TABLE public.barrio OWNER TO postgres;
+
+--
+-- TOC entry 201 (class 1259 OID 16756)
+-- Name: canton; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.canton (
+    id_canton integer NOT NULL,
+    nombre character varying(20)
+);
+
+
+ALTER TABLE public.canton OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 16759)
+-- Name: clima; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.clima (
+    id_clima integer NOT NULL,
+    nombre character varying(20)
+);
+
+
+ALTER TABLE public.clima OWNER TO postgres;
+
+--
+-- TOC entry 203 (class 1259 OID 16762)
+-- Name: continentes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.continentes (
+    id_continentes integer NOT NULL,
+    nombre character varying(20)
+);
+
+
+ALTER TABLE public.continentes OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 16765)
+-- Name: cuidadores; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.cuidadores (
+    id_cuidadores integer NOT NULL,
+    cedula_fk integer,
+    fecha_ingreso date
+);
+
+
+ALTER TABLE public.cuidadores OWNER TO postgres;
+
+--
+-- TOC entry 205 (class 1259 OID 16768)
+-- Name: direccion; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.direccion (
+    id_direccion integer NOT NULL,
+    id_pais_fk integer,
+    id_provincia_fk integer,
+    id_canton_fk integer,
+    id_distrito_fk integer,
+    id_barrio_fk integer
+);
+
+
+ALTER TABLE public.direccion OWNER TO postgres;
+
+--
+-- TOC entry 206 (class 1259 OID 16771)
+-- Name: distrito; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.distrito (
+    id_distrito integer NOT NULL,
+    nombre character varying(20)
+);
+
+
+ALTER TABLE public.distrito OWNER TO postgres;
+
+--
+-- TOC entry 207 (class 1259 OID 16774)
+-- Name: email; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.email (
+    id_email integer NOT NULL,
+    descripcion character varying(50)
+);
+
+
+ALTER TABLE public.email OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 16938)
+-- Name: especies; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.especies (
+    id_especies integer NOT NULL,
+    nombre character varying(20),
+    nombre_cientifico character varying(45),
+    descripcion character varying(50)
+);
+
+
+ALTER TABLE public.especies OWNER TO postgres;
+
+--
+-- TOC entry 208 (class 1259 OID 16780)
+-- Name: guias; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.guias (
+    id_guia integer NOT NULL,
+    cedula_fk integer,
+    fecha_ingres date
+);
+
+
+ALTER TABLE public.guias OWNER TO postgres;
+
+--
+-- TOC entry 209 (class 1259 OID 16783)
+-- Name: habitats; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.habitats (
+    id_habitats integer NOT NULL,
+    nombre character varying(20),
+    id_clima_fk integer,
+    "id_vegetación_fk" integer,
+    id_continentes_fk integer
+);
+
+
+ALTER TABLE public.habitats OWNER TO postgres;
+
+--
+-- TOC entry 210 (class 1259 OID 16786)
+-- Name: itinerario; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.itinerario (
+    codigo_itinerario integer NOT NULL,
+    "duración" character varying(10),
+    longitud character varying(10),
+    maximo_visitantes integer,
+    numero_especies integer
+);
+
+
+ALTER TABLE public.itinerario OWNER TO postgres;
+
+--
+-- TOC entry 211 (class 1259 OID 16789)
+-- Name: itinerario_guia; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.itinerario_guia (
+    id_itinerario_guia integer NOT NULL,
+    codigo_itinerario_fk integer NOT NULL,
+    id_guia_fk integer,
+    horas character varying(10)
+);
+
+
+ALTER TABLE public.itinerario_guia OWNER TO postgres;
+
+--
+-- TOC entry 212 (class 1259 OID 16792)
+-- Name: itinerario_zonas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.itinerario_zonas (
+    id_itinerario_zonas integer NOT NULL,
+    id_zonas_fk integer,
+    codigo_itinerario_fk integer
+);
+
+
+ALTER TABLE public.itinerario_zonas OWNER TO postgres;
+
+--
+-- TOC entry 213 (class 1259 OID 16795)
+-- Name: pais; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.pais (
+    id_pais integer NOT NULL,
+    nombre character varying(20)
+);
+
+
+ALTER TABLE public.pais OWNER TO postgres;
+
+--
+-- TOC entry 214 (class 1259 OID 16798)
+-- Name: persona; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.persona (
+    cedula integer NOT NULL,
+    nombre character varying(20),
+    primer_apellido character varying(20),
+    segundo_apellido character varying(20),
+    id_direccion_fk integer,
+    id_telefono_fk integer,
+    id_mail_fk integer
+);
+
+
+ALTER TABLE public.persona OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1259 OID 16801)
+-- Name: provincia; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.provincia (
+    id_provincia integer NOT NULL,
+    nombre character varying(45)
+);
+
+
+ALTER TABLE public.provincia OWNER TO postgres;
+
+--
+-- TOC entry 216 (class 1259 OID 16804)
+-- Name: telefono; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.telefono (
+    id_telefono integer NOT NULL,
+    descripcion character varying(50)
+);
+
+
+ALTER TABLE public.telefono OWNER TO postgres;
+
+--
+-- TOC entry 217 (class 1259 OID 16807)
+-- Name: vegetación; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."vegetación" (
+    "id_vegetación" integer NOT NULL,
+    nombre character varying(20)
+);
+
+
+ALTER TABLE public."vegetación" OWNER TO postgres;
+
+--
+-- TOC entry 218 (class 1259 OID 16810)
+-- Name: zonas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.zonas (
+    id_zonas integer NOT NULL,
+    nombre character varying(20),
+    "extención" character varying(10)
+);
+
+
+ALTER TABLE public.zonas OWNER TO postgres;
+
+--
+-- TOC entry 3064 (class 0 OID 16753)
+-- Dependencies: 200
+-- Data for Name: barrio; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.barrio (id_barrio, nombre) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3065 (class 0 OID 16756)
+-- Dependencies: 201
+-- Data for Name: canton; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.canton (id_canton, nombre) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3066 (class 0 OID 16759)
+-- Dependencies: 202
+-- Data for Name: clima; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.clima (id_clima, nombre) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3067 (class 0 OID 16762)
+-- Dependencies: 203
+-- Data for Name: continentes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.continentes (id_continentes, nombre) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3068 (class 0 OID 16765)
+-- Dependencies: 204
+-- Data for Name: cuidadores; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.cuidadores (id_cuidadores, cedula_fk, fecha_ingreso) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3069 (class 0 OID 16768)
+-- Dependencies: 205
+-- Data for Name: direccion; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.direccion (id_direccion, id_pais_fk, id_provincia_fk, id_canton_fk, id_distrito_fk, id_barrio_fk) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3070 (class 0 OID 16771)
+-- Dependencies: 206
+-- Data for Name: distrito; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.distrito (id_distrito, nombre) FROM stdin;
+1	Mifflin
+2	Coleman
+3	Mifflin
+4	Butternut
+5	Graedel
+6	Mesta
+7	Bunker Hill
+8	Algoma
+9	1st
+10	Farwell
+11	Coolidge
+12	Division
+13	Reinke
+14	Linden
+15	Stuart
+\.
+
+
+--
+-- TOC entry 3071 (class 0 OID 16774)
+-- Dependencies: 207
+-- Data for Name: email; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.email (id_email, descripcion) FROM stdin;
+1	tveare0@google.co.uk
+2	scordelette1@reference.com
+3	bpendlington2@wikispaces.com
+4	jwaterstone3@army.mil
+5	sbrastead4@google.ru
+6	estarsmore5@java.com
+7	dadami6@patch.com
+8	jsegrave7@alibaba.com
+9	cmercer8@archive.org
+10	hkingscote9@php.net
+11	cwaslina@dion.ne.jp
+12	asloranceb@trellian.com
+13	pshakesbyc@bloglines.com
+14	jockendond@angelfire.com
+15	abraunrothe@miibeian.gov.cn
+\.
+
+
+--
+-- TOC entry 3083 (class 0 OID 16938)
+-- Dependencies: 219
+-- Data for Name: especies; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.especies (id_especies, nombre, nombre_cientifico, descripcion) FROM stdin;
+1	Gull, kelp	Larus dominicanus	Mucho pelo, grande
+2	Colobus	Colobus guerza	Negro, mamifero
+3	Snake, western	Salvadora hexalepis	Serpiente acuatica
+4	Wild boar	Sus scrofa	Criatura herbivora
+5	Heron, grey	Ardea cinerea	Criatura peluda
+6	Stanley bustard	Neotis denhami	Animal de gran tamaño
+7	Marabou stork	Leptoptilos crumeniferus	Posee plumas rojas
+8	Turtle	turtles	Posee un caparazon
+9	Smith's bush	Paraxerus cepapi	Cola enrollada
+10	Mule deer	Odocoileus hemionus	Animal de patas cortas
+11	Downy woodpecker	Picoides pubescens	Ave negra con ciertas plumas rojas
+12	Lynx, african	Felis caracal	Felino montañero
+13	Viper, egyptian	Naja haje	Criatura adaptada al clima arido
+14	rhinoceros	Ceratotherium simum	Posee un cuerno
+15	Ant	Hormiga	Pequeña, construyen colmenas
+\.
+
+
+--
+-- TOC entry 3072 (class 0 OID 16780)
+-- Dependencies: 208
+-- Data for Name: guias; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.guias (id_guia, cedula_fk, fecha_ingres) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3073 (class 0 OID 16783)
+-- Dependencies: 209
+-- Data for Name: habitats; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.habitats (id_habitats, nombre, id_clima_fk, "id_vegetación_fk", id_continentes_fk) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3074 (class 0 OID 16786)
+-- Dependencies: 210
+-- Data for Name: itinerario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.itinerario (codigo_itinerario, "duración", longitud, maximo_visitantes, numero_especies) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3075 (class 0 OID 16789)
+-- Dependencies: 211
+-- Data for Name: itinerario_guia; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.itinerario_guia (id_itinerario_guia, codigo_itinerario_fk, id_guia_fk, horas) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3076 (class 0 OID 16792)
+-- Dependencies: 212
+-- Data for Name: itinerario_zonas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.itinerario_zonas (id_itinerario_zonas, id_zonas_fk, codigo_itinerario_fk) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3077 (class 0 OID 16795)
+-- Dependencies: 213
+-- Data for Name: pais; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.pais (id_pais, nombre) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3078 (class 0 OID 16798)
+-- Dependencies: 214
+-- Data for Name: persona; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.persona (cedula, nombre, primer_apellido, segundo_apellido, id_direccion_fk, id_telefono_fk, id_mail_fk) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3079 (class 0 OID 16801)
+-- Dependencies: 215
+-- Data for Name: provincia; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.provincia (id_provincia, nombre) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3080 (class 0 OID 16804)
+-- Dependencies: 216
+-- Data for Name: telefono; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.telefono (id_telefono, descripcion) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3081 (class 0 OID 16807)
+-- Dependencies: 217
+-- Data for Name: vegetación; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."vegetación" ("id_vegetación", nombre) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3082 (class 0 OID 16810)
+-- Dependencies: 218
+-- Data for Name: zonas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.zonas (id_zonas, nombre, "extención") FROM stdin;
+\.
+
+
+--
+-- TOC entry 2878 (class 2606 OID 16814)
+-- Name: barrio barrio_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.barrio
+    ADD CONSTRAINT barrio_pkey PRIMARY KEY (id_barrio);
+
+
+--
+-- TOC entry 2880 (class 2606 OID 16816)
+-- Name: canton canton_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.canton
+    ADD CONSTRAINT canton_pkey PRIMARY KEY (id_canton);
+
+
+--
+-- TOC entry 2882 (class 2606 OID 16818)
+-- Name: clima clima_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.clima
+    ADD CONSTRAINT clima_pkey PRIMARY KEY (id_clima);
+
+
+--
+-- TOC entry 2884 (class 2606 OID 16820)
+-- Name: continentes continentes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.continentes
+    ADD CONSTRAINT continentes_pkey PRIMARY KEY (id_continentes);
+
+
+--
+-- TOC entry 2886 (class 2606 OID 16822)
+-- Name: cuidadores cuidadores_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cuidadores
+    ADD CONSTRAINT cuidadores_pkey PRIMARY KEY (id_cuidadores);
+
+
+--
+-- TOC entry 2888 (class 2606 OID 16824)
+-- Name: direccion direccion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.direccion
+    ADD CONSTRAINT direccion_pkey PRIMARY KEY (id_direccion);
+
+
+--
+-- TOC entry 2890 (class 2606 OID 16826)
+-- Name: distrito distrito_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.distrito
+    ADD CONSTRAINT distrito_pkey PRIMARY KEY (id_distrito);
+
+
+--
+-- TOC entry 2892 (class 2606 OID 16828)
+-- Name: email email_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.email
+    ADD CONSTRAINT email_pkey PRIMARY KEY (id_email);
+
+
+--
+-- TOC entry 2916 (class 2606 OID 16942)
+-- Name: especies especies_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.especies
+    ADD CONSTRAINT especies_pkey PRIMARY KEY (id_especies);
+
+
+--
+-- TOC entry 2894 (class 2606 OID 16832)
+-- Name: guias guias_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.guias
+    ADD CONSTRAINT guias_pkey PRIMARY KEY (id_guia);
+
+
+--
+-- TOC entry 2896 (class 2606 OID 16834)
+-- Name: habitats habitats_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.habitats
+    ADD CONSTRAINT habitats_pkey PRIMARY KEY (id_habitats);
+
+
+--
+-- TOC entry 2900 (class 2606 OID 16836)
+-- Name: itinerario_guia itinerario_guia_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.itinerario_guia
+    ADD CONSTRAINT itinerario_guia_pkey PRIMARY KEY (id_itinerario_guia);
+
+
+--
+-- TOC entry 2898 (class 2606 OID 16838)
+-- Name: itinerario itinerario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.itinerario
+    ADD CONSTRAINT itinerario_pkey PRIMARY KEY (codigo_itinerario);
+
+
+--
+-- TOC entry 2902 (class 2606 OID 16840)
+-- Name: itinerario_zonas itinerario_zonas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.itinerario_zonas
+    ADD CONSTRAINT itinerario_zonas_pkey PRIMARY KEY (id_itinerario_zonas);
+
+
+--
+-- TOC entry 2904 (class 2606 OID 16842)
+-- Name: pais pais_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pais
+    ADD CONSTRAINT pais_pkey PRIMARY KEY (id_pais);
+
+
+--
+-- TOC entry 2906 (class 2606 OID 16844)
+-- Name: persona persona_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.persona
+    ADD CONSTRAINT persona_pkey PRIMARY KEY (cedula);
+
+
+--
+-- TOC entry 2908 (class 2606 OID 16846)
+-- Name: provincia provincia_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.provincia
+    ADD CONSTRAINT provincia_pkey PRIMARY KEY (id_provincia);
+
+
+--
+-- TOC entry 2910 (class 2606 OID 16848)
+-- Name: telefono telefono_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.telefono
+    ADD CONSTRAINT telefono_pkey PRIMARY KEY (id_telefono);
+
+
+--
+-- TOC entry 2912 (class 2606 OID 16850)
+-- Name: vegetación vegetación_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."vegetación"
+    ADD CONSTRAINT "vegetación_pkey" PRIMARY KEY ("id_vegetación");
+
+
+--
+-- TOC entry 2914 (class 2606 OID 16852)
+-- Name: zonas zonas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.zonas
+    ADD CONSTRAINT zonas_pkey PRIMARY KEY (id_zonas);
+
+
+--
+-- TOC entry 2923 (class 2606 OID 16853)
+-- Name: guias cedula; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.guias
+    ADD CONSTRAINT cedula FOREIGN KEY (cedula_fk) REFERENCES public.persona(cedula) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2917 (class 2606 OID 16858)
+-- Name: cuidadores cedula; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cuidadores
+    ADD CONSTRAINT cedula FOREIGN KEY (cedula_fk) REFERENCES public.persona(cedula) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2929 (class 2606 OID 16863)
+-- Name: itinerario_zonas código_itinerario; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.itinerario_zonas
+    ADD CONSTRAINT "código_itinerario" FOREIGN KEY (codigo_itinerario_fk) REFERENCES public.itinerario(codigo_itinerario) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2927 (class 2606 OID 16868)
+-- Name: itinerario_guia código_itinerario; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.itinerario_guia
+    ADD CONSTRAINT "código_itinerario" FOREIGN KEY (codigo_itinerario_fk) REFERENCES public.itinerario(codigo_itinerario) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2918 (class 2606 OID 16873)
+-- Name: direccion id_barrio; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.direccion
+    ADD CONSTRAINT id_barrio FOREIGN KEY (id_barrio_fk) REFERENCES public.barrio(id_barrio) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2919 (class 2606 OID 16878)
+-- Name: direccion id_canton; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.direccion
+    ADD CONSTRAINT id_canton FOREIGN KEY (id_canton_fk) REFERENCES public.canton(id_canton) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2924 (class 2606 OID 16883)
+-- Name: habitats id_clima; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.habitats
+    ADD CONSTRAINT id_clima FOREIGN KEY (id_clima_fk) REFERENCES public.clima(id_clima) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2925 (class 2606 OID 16888)
+-- Name: habitats id_continente; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.habitats
+    ADD CONSTRAINT id_continente FOREIGN KEY (id_continentes_fk) REFERENCES public.continentes(id_continentes) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2931 (class 2606 OID 16893)
+-- Name: persona id_direccion; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.persona
+    ADD CONSTRAINT id_direccion FOREIGN KEY (id_direccion_fk) REFERENCES public.direccion(id_direccion) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2920 (class 2606 OID 16898)
+-- Name: direccion id_distrito; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.direccion
+    ADD CONSTRAINT id_distrito FOREIGN KEY (id_distrito_fk) REFERENCES public.distrito(id_distrito) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2932 (class 2606 OID 16903)
+-- Name: persona id_email; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.persona
+    ADD CONSTRAINT id_email FOREIGN KEY (id_mail_fk) REFERENCES public.email(id_email) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2928 (class 2606 OID 16908)
+-- Name: itinerario_guia id_guia; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.itinerario_guia
+    ADD CONSTRAINT id_guia FOREIGN KEY (id_guia_fk) REFERENCES public.guias(id_guia) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2921 (class 2606 OID 16913)
+-- Name: direccion id_pais; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.direccion
+    ADD CONSTRAINT id_pais FOREIGN KEY (id_pais_fk) REFERENCES public.pais(id_pais) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2922 (class 2606 OID 16918)
+-- Name: direccion id_provincia; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.direccion
+    ADD CONSTRAINT id_provincia FOREIGN KEY (id_provincia_fk) REFERENCES public.provincia(id_provincia) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2933 (class 2606 OID 16923)
+-- Name: persona id_telefono; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.persona
+    ADD CONSTRAINT id_telefono FOREIGN KEY (id_telefono_fk) REFERENCES public.telefono(id_telefono) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2926 (class 2606 OID 16928)
+-- Name: habitats id_vegetación; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.habitats
+    ADD CONSTRAINT "id_vegetación" FOREIGN KEY ("id_vegetación_fk") REFERENCES public."vegetación"("id_vegetación") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2930 (class 2606 OID 16933)
+-- Name: itinerario_zonas id_zonas; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.itinerario_zonas
+    ADD CONSTRAINT id_zonas FOREIGN KEY (id_zonas_fk) REFERENCES public.zonas(id_zonas) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+-- Completed on 2021-06-08 00:45:44
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- Database "caso2" dump
+--
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.2 (Debian 13.2-1.pgdg100+1)
+-- Dumped by pg_dump version 13.2
+
+-- Started on 2021-06-08 00:45:44
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'LATIN1';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 3080 (class 1262 OID 16988)
+-- Name: caso2; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE caso2 WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.utf8';
+
+
+ALTER DATABASE caso2 OWNER TO postgres;
+
+\connect caso2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'LATIN1';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 214 (class 1255 OID 16989)
+-- Name: actualizarasignacionjefe(character varying, integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.actualizarasignacionjefe(character varying, integer)
+    LANGUAGE sql
+    AS $_$
+
+	UPDATE "asignacion_Jefes"
+	SET "id_jefe" = $2
+	WHERE "cedula_Empleado"= $1;
+	
+$_$;
+
+
+ALTER PROCEDURE public.actualizarasignacionjefe(character varying, integer) OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1255 OID 16990)
+-- Name: actualizarpersona(character varying, character varying, character varying, character varying, character varying, double precision, integer, integer, integer, integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.actualizarpersona(character varying, character varying, character varying, character varying, character varying, double precision, integer, integer, integer, integer, character varying)
+    LANGUAGE sql
+    AS $_$
+
+	UPDATE persona
+	SET "nombre" = $2, "2doNombre" = $3, "1erApellido" = $4, "2doApellido" = $5, "salario_Mensual" = $6,
+	"id_provincia" = $7, "id_canton" = $8, "id_distrito" = $8, "id_barrio" = $9, "senas_Exactas" = $10 
+	WHERE cedula = $1;
+	
+$_$;
+
+
+ALTER PROCEDURE public.actualizarpersona(character varying, character varying, character varying, character varying, character varying, double precision, integer, integer, integer, integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 216 (class 1255 OID 16991)
+-- Name: eliminarasignacionjefes(character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarasignacionjefes(character varying)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM "asignacion_Jefes"
+		WHERE 	"cedula_Empleado" = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarasignacionjefes(character varying) OWNER TO postgres;
+
+--
+-- TOC entry 217 (class 1255 OID 16992)
+-- Name: eliminarbarrio(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarbarrio(integer)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM barrio
+		WHERE 	Id_Barrio = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarbarrio(integer) OWNER TO postgres;
+
+--
+-- TOC entry 218 (class 1255 OID 16993)
+-- Name: eliminarcanton(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarcanton(integer)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM canton
+		WHERE 	id_canton = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarcanton(integer) OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1255 OID 16994)
+-- Name: eliminardistrito(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminardistrito(integer)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM distrito
+		WHERE 	id_distrito = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminardistrito(integer) OWNER TO postgres;
+
+--
+-- TOC entry 220 (class 1255 OID 16995)
+-- Name: eliminarjefe(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarjefe(integer)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM jefes
+		WHERE 	"id_jefe" = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarjefe(integer) OWNER TO postgres;
+
+--
+-- TOC entry 221 (class 1255 OID 16996)
+-- Name: eliminarpago(character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarpago(character varying)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM pagos
+		WHERE 	cedula = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarpago(character varying) OWNER TO postgres;
+
+--
+-- TOC entry 222 (class 1255 OID 16997)
+-- Name: eliminarpersona(character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarpersona(character varying)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM persona
+		WHERE 	Cedula = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarpersona(character varying) OWNER TO postgres;
+
+--
+-- TOC entry 223 (class 1255 OID 16998)
+-- Name: eliminarprofesion(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarprofesion(integer)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM profesiones
+		WHERE 	id_profesion = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarprofesion(integer) OWNER TO postgres;
+
+--
+-- TOC entry 224 (class 1255 OID 16999)
+-- Name: eliminarprovincia(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminarprovincia(integer)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM provincia
+		WHERE 	id_provincia = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminarprovincia(integer) OWNER TO postgres;
+
+--
+-- TOC entry 225 (class 1255 OID 17000)
+-- Name: eliminartelefono(character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminartelefono(character varying)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM telefonos
+		WHERE 	cedula = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminartelefono(character varying) OWNER TO postgres;
+
+--
+-- TOC entry 226 (class 1255 OID 17001)
+-- Name: eliminartipotelefono(integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.eliminartipotelefono(integer)
+    LANGUAGE sql
+    AS $_$
+	DELETE FROM tipo_telefono
+		WHERE 	id_tipo_telefono = $1;
+$_$;
+
+
+ALTER PROCEDURE public.eliminartipotelefono(integer) OWNER TO postgres;
+
+--
+-- TOC entry 227 (class 1255 OID 17002)
+-- Name: insertarasignacionjefes(character varying, integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarasignacionjefes(character varying, integer)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO "asignacion_Jefes"("cedula_Empleado","id_jefe")
+		VALUES ($1, $2);
+$_$;
+
+
+ALTER PROCEDURE public.insertarasignacionjefes(character varying, integer) OWNER TO postgres;
+
+--
+-- TOC entry 228 (class 1255 OID 17003)
+-- Name: insertarbarrio(integer, integer, integer, integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarbarrio(integer, integer, integer, integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO barrio("id_barrio","id_distrito","id_canton","id_provincia","nombre_barrio")
+		VALUES ($1, $2,$3,$4,$5);
+$_$;
+
+
+ALTER PROCEDURE public.insertarbarrio(integer, integer, integer, integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 229 (class 1255 OID 17004)
+-- Name: insertarcanton(integer, integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarcanton(integer, integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO canton("id_canton","id_provincia","nombre_canton")
+		VALUES ($1, $2,$3);
+$_$;
+
+
+ALTER PROCEDURE public.insertarcanton(integer, integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 230 (class 1255 OID 17005)
+-- Name: insertardistrito(integer, integer, integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertardistrito(integer, integer, integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO distrito("id_distrito","id_canton","id_provincia","nombre_distrito")
+		VALUES ($1, $2,$3,$4);
+$_$;
+
+
+ALTER PROCEDURE public.insertardistrito(integer, integer, integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 231 (class 1255 OID 17006)
+-- Name: insertarjefes(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarjefes(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO jefes("id_jefe","cedula_jefe")
+		VALUES ($1, $2);
+$_$;
+
+
+ALTER PROCEDURE public.insertarjefes(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 232 (class 1255 OID 17007)
+-- Name: insertarpagos(character varying, integer, double precision, double precision, double precision, date); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarpagos(character varying, integer, double precision, double precision, double precision, date)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO pagos("cedula","id_pago","pago_Mensual","deduccion_CCSS","horas_Laboradas","fecha_Pago_Mensual")
+		VALUES ($1, $2,$3,$4,$5,$6);
+$_$;
+
+
+ALTER PROCEDURE public.insertarpagos(character varying, integer, double precision, double precision, double precision, date) OWNER TO postgres;
+
+--
+-- TOC entry 233 (class 1255 OID 17008)
+-- Name: insertarpersona(character varying, character varying, character varying, character varying, double precision, double precision, integer, integer, integer, integer, integer, integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarpersona(character varying, character varying, character varying, character varying, double precision, double precision, integer, integer, integer, integer, integer, integer)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO persona("cedula","nombre","2doNombre","1erApellido","2doApellido","salario_Mensual","senas_Exactas","id_provincia","id_canton","id_distrito","id_barrio","id_profesion")
+		VALUES ($1, $2,$3,$4,$5,$6,$7, $8,$9,$10,$11,$12);
+$_$;
+
+
+ALTER PROCEDURE public.insertarpersona(character varying, character varying, character varying, character varying, double precision, double precision, integer, integer, integer, integer, integer, integer) OWNER TO postgres;
+
+--
+-- TOC entry 234 (class 1255 OID 17009)
+-- Name: insertarpersona(character varying, character varying, character varying, character varying, character varying, double precision, character varying, integer, integer, integer, integer, integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarpersona(character varying, character varying, character varying, character varying, character varying, double precision, character varying, integer, integer, integer, integer, integer)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO persona ("cedula","nombre","2doNombre","1erApellido","2doApellido","salario_Mensual","senas_Exactas","id_provincia","id_canton","id_distrito","id_barrio","id_profesion")
+		VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12);
+$_$;
+
+
+ALTER PROCEDURE public.insertarpersona(character varying, character varying, character varying, character varying, character varying, double precision, character varying, integer, integer, integer, integer, integer) OWNER TO postgres;
+
+--
+-- TOC entry 235 (class 1255 OID 17010)
+-- Name: insertarpersona(character varying, character varying, character varying, character varying, character varying, double precision, double precision, integer, integer, integer, integer, integer, integer); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarpersona(character varying, character varying, character varying, character varying, character varying, double precision, double precision, integer, integer, integer, integer, integer, integer)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO persona("cedula","nombre","2doNombre","1erApellido","2doApellido","salario_Mensual","senas_Exactas","id_provincia","id_canton","id_distrito","id_barrio","id_profesion")
+		VALUES ($1, $2,$3,$4,$5,$6,$7, $8,$9,$10,$11,$12);
+$_$;
+
+
+ALTER PROCEDURE public.insertarpersona(character varying, character varying, character varying, character varying, character varying, double precision, double precision, integer, integer, integer, integer, integer, integer) OWNER TO postgres;
+
+--
+-- TOC entry 236 (class 1255 OID 17011)
+-- Name: insertarprofesion(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarprofesion(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO profesiones("id_profesion","nombre_profesion")
+		VALUES ($1, $2);
+$_$;
+
+
+ALTER PROCEDURE public.insertarprofesion(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 237 (class 1255 OID 17012)
+-- Name: insertarprovincia(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertarprovincia(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO provincia("id_provincia","nombre_provincia")
+		VALUES ($1, $2);
+$_$;
+
+
+ALTER PROCEDURE public.insertarprovincia(integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 238 (class 1255 OID 17013)
+-- Name: insertartelefonos(character varying, integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertartelefonos(character varying, integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO telefonos("cedula","id_tipo_telefono","numero")
+		VALUES ($1, $2,$3);
+$_$;
+
+
+ALTER PROCEDURE public.insertartelefonos(character varying, integer, character varying) OWNER TO postgres;
+
+--
+-- TOC entry 239 (class 1255 OID 17014)
+-- Name: insertartipotelefonos(integer, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+--
+
+CREATE PROCEDURE public.insertartipotelefonos(integer, character varying)
+    LANGUAGE sql
+    AS $_$
+	INSERT INTO tipo_telefono("id_tipo_telefono","tipo_telefono")
+		VALUES ($1, $2);
+$_$;
+
+
+ALTER PROCEDURE public.insertartipotelefonos(integer, character varying) OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 204 (class 1259 OID 17027)
+-- Name: jefes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.jefes (
+    id_jefe integer NOT NULL,
+    cedula_jefe character(9)
+);
+
+
+ALTER TABLE public.jefes OWNER TO postgres;
+
+--
+-- TOC entry 206 (class 1259 OID 17033)
+-- Name: persona; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.persona (
+    cedula character(9) NOT NULL,
+    nombre character(25),
+    "2doNombre" character(25),
+    "salario_Mensual" double precision,
+    "senas_Exactas" character(150),
+    id_provincia integer,
+    id_barrio integer,
+    id_canton integer,
+    id_distrito integer,
+    id_profesion integer,
+    "1erApellido" character(25),
+    "2doApellido" character(25)
+);
+
+
+ALTER TABLE public.persona OWNER TO postgres;
+
+--
+-- TOC entry 212 (class 1259 OID 17190)
+-- Name: Solo_Jefes; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW public."Solo_Jefes" AS
+ SELECT jefes.id_jefe AS "ID Jefe",
+    persona.cedula AS "Cedula",
+    persona.nombre AS "Nombre",
+    persona."1erApellido" AS "Primer Apellido"
+   FROM (public.jefes
+     JOIN public.persona ON ((persona.cedula = jefes.cedula_jefe)));
+
+
+ALTER TABLE public."Solo_Jefes" OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 17015)
+-- Name: asignacion_Jefes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."asignacion_Jefes" (
+    "cedula_Empleado" character(9) NOT NULL,
+    id_jefe integer
+);
+
+
+ALTER TABLE public."asignacion_Jefes" OWNER TO postgres;
+
+--
+-- TOC entry 213 (class 1259 OID 17202)
+-- Name: Subalternos; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW public."Subalternos" AS
+ SELECT a."cedula_Empleado" AS "Cedula",
+    p.nombre AS "Nom_Subalterno",
+    p."1erApellido" AS "1er_Ap_Subalterno",
+    a.id_jefe AS "Id_Jefe",
+    r.cedula_jefe AS "Ced_Jefe",
+    j.nombre AS "Nom_Jefe",
+    j."1erApellido" AS "1er_Ap_Jefe"
+   FROM (((public."asignacion_Jefes" a
+     JOIN public.persona p ON ((a."cedula_Empleado" = p.cedula)))
+     JOIN public.jefes r ON ((a.id_jefe = r.id_jefe)))
+     JOIN public.persona j ON ((r.cedula_jefe = j.cedula)));
+
+
+ALTER TABLE public."Subalternos" OWNER TO postgres;
+
+--
+-- TOC entry 201 (class 1259 OID 17018)
+-- Name: barrio; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.barrio (
+    id_barrio integer NOT NULL,
+    id_provincia integer,
+    id_distrito integer,
+    id_canton integer,
+    nombre_barrio character(25)
+);
+
+
+ALTER TABLE public.barrio OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 17021)
+-- Name: canton; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.canton (
+    id_canton integer NOT NULL,
+    id_provincia integer,
+    nombre_canton character(25)
+);
+
+
+ALTER TABLE public.canton OWNER TO postgres;
+
+--
+-- TOC entry 203 (class 1259 OID 17024)
+-- Name: distrito; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.distrito (
+    id_distrito integer NOT NULL,
+    id_provincia integer,
+    id_canton integer,
+    nombre_distrito character(25)
+);
+
+
+ALTER TABLE public.distrito OWNER TO postgres;
+
+--
+-- TOC entry 208 (class 1259 OID 17039)
+-- Name: provincia; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.provincia (
+    id_provincia integer NOT NULL,
+    nombre_provincia character(25)
+);
+
+
+ALTER TABLE public.provincia OWNER TO postgres;
+
+--
+-- TOC entry 211 (class 1259 OID 17185)
+-- Name: Total_Persona; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW public."Total_Persona" AS
+ SELECT persona.cedula AS "Cedula",
+    persona.nombre AS "Nombre",
+    persona."1erApellido",
+    persona."senas_Exactas" AS "Senas Exactas",
+    provincia.nombre_provincia,
+    canton.nombre_canton AS "Nombre Canton",
+    distrito.nombre_distrito AS "Nombre distrito",
+    barrio.nombre_barrio AS "Nombre Barrio"
+   FROM ((((public.persona
+     JOIN public.provincia ON ((persona.id_provincia = provincia.id_provincia)))
+     JOIN public.canton ON ((persona.id_canton = canton.id_canton)))
+     JOIN public.distrito ON ((persona.id_distrito = distrito.id_distrito)))
+     JOIN public.barrio ON ((persona.id_barrio = barrio.id_barrio)));
+
+
+ALTER TABLE public."Total_Persona" OWNER TO postgres;
+
+--
+-- TOC entry 205 (class 1259 OID 17030)
+-- Name: pagos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.pagos (
+    cedula character(9) NOT NULL,
+    id_pago integer NOT NULL,
+    "pago_Mensual" double precision,
+    "deduccion_CCSS" double precision,
+    "horas_Laboradas" double precision,
+    "fecha_Pago_Mensual" date
+);
+
+
+ALTER TABLE public.pagos OWNER TO postgres;
+
+--
+-- TOC entry 207 (class 1259 OID 17036)
+-- Name: profesiones; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.profesiones (
+    id_profesion integer NOT NULL,
+    nombre_profesion character(30)
+);
+
+
+ALTER TABLE public.profesiones OWNER TO postgres;
+
+--
+-- TOC entry 209 (class 1259 OID 17042)
+-- Name: telefonos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.telefonos (
+    cedula character(9) NOT NULL,
+    id_tipo_telefono integer,
+    numero character(12)
+);
+
+
+ALTER TABLE public.telefonos OWNER TO postgres;
+
+--
+-- TOC entry 210 (class 1259 OID 17045)
+-- Name: tipo_telefono; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tipo_telefono (
+    id_tipo_telefono integer NOT NULL,
+    tipo_telefono character(25)
+);
+
+
+ALTER TABLE public.tipo_telefono OWNER TO postgres;
+
+--
+-- TOC entry 3064 (class 0 OID 17015)
+-- Dependencies: 200
+-- Data for Name: asignacion_Jefes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."asignacion_Jefes" ("cedula_Empleado", id_jefe) FROM stdin;
+504390958	2
+10234045 	1
+10234058 	3
+10234012 	4
+\.
+
+
+--
+-- TOC entry 3065 (class 0 OID 17018)
+-- Dependencies: 201
+-- Data for Name: barrio; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.barrio (id_barrio, id_provincia, id_distrito, id_canton, nombre_barrio) FROM stdin;
+2	2	2	2	Ponsoña                  
+3	3	3	3	Fatima                   
+\.
+
+
+--
+-- TOC entry 3066 (class 0 OID 17021)
+-- Dependencies: 202
+-- Data for Name: canton; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.canton (id_canton, id_provincia, nombre_canton) FROM stdin;
+2	2	Guatuso                  
+3	3	Belen                    
+\.
+
+
+--
+-- TOC entry 3067 (class 0 OID 17024)
+-- Dependencies: 203
+-- Data for Name: distrito; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.distrito (id_distrito, id_provincia, id_canton, nombre_distrito) FROM stdin;
+2	2	2	Katira                   
+3	3	3	Guadalupe                
+\.
+
+
+--
+-- TOC entry 3068 (class 0 OID 17027)
+-- Dependencies: 204
+-- Data for Name: jefes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.jefes (id_jefe, cedula_jefe) FROM stdin;
+1	104250254
+2	504390974
+3	20234012 
+4	70234012 
+\.
+
+
+--
+-- TOC entry 3069 (class 0 OID 17030)
+-- Dependencies: 205
+-- Data for Name: pagos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.pagos (cedula, id_pago, "pago_Mensual", "deduccion_CCSS", "horas_Laboradas", "fecha_Pago_Mensual") FROM stdin;
+508340211	1	750000	50000	74	2021-10-02
+504250254	2	650000	50000	74	2021-10-01
+\.
+
+
+--
+-- TOC entry 3070 (class 0 OID 17033)
+-- Dependencies: 206
+-- Data for Name: persona; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.persona (cedula, nombre, "2doNombre", "salario_Mensual", "senas_Exactas", id_provincia, id_barrio, id_canton, id_distrito, id_profesion, "1erApellido", "2doApellido") FROM stdin;
+508340211	Jose                     	Moises                   	650000	150 mts sur de La Cruz                                                                                                                                	2	2	2	2	2	Segura                   	Rojas                    
+504250254	Carlos                   	Alfredo                  	850000	2                                                                                                                                                     	2	2	2	2	2	Martinez                 	Aguirre                  
+104250254	Rachel                   	Maria                    	850000	500 mts sur de San Perez                                                                                                                              	2	2	2	2	2	Rojas                    	Lopez                    
+504390958	Erick                    	Jose                     	850000	100 mts sur de Zeledon                                                                                                                                	3	3	3	3	3	Perez                    	Lopez                    
+504390974	Miguel                   	Jose                     	500000	570 mts norte de Zeledon                                                                                                                              	3	3	3	3	3	Lopez                    	Lopez                    
+10234058 	Richard                  	Kun                      	1050000	tercera casa de residencial perez                                                                                                                     	2	2	2	2	2	Aguero                   	Messi                    
+10234045 	Messi                    	Leo                      	2050000	primera casa de residencial perez                                                                                                                     	2	2	2	2	2	Aguero                   	Lopez                    
+10234012 	Cristiano                	JR                       	5050000	cuata casa de residencial madrid                                                                                                                      	2	2	2	2	2	Ronaldo                  	Nazario                  
+20234012 	James                    	Elvis                    	50000	750 mts sur del puente hispano                                                                                                                        	3	3	3	3	3	Rodriguez                	Lopez                    
+70234012 	Andrea                   	Elizabeth                	70000	750 mts sur del casa de arreglo                                                                                                                       	3	3	3	3	3	Jara                     	Ortiz                    
+\.
+
+
+--
+-- TOC entry 3071 (class 0 OID 17036)
+-- Dependencies: 207
+-- Data for Name: profesiones; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.profesiones (id_profesion, nombre_profesion) FROM stdin;
+2	Gerente                       
+3	Redes                         
+\.
+
+
+--
+-- TOC entry 3072 (class 0 OID 17039)
+-- Dependencies: 208
+-- Data for Name: provincia; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.provincia (id_provincia, nombre_provincia) FROM stdin;
+2	Alajuela                 
+3	Heredia                  
+\.
+
+
+--
+-- TOC entry 3073 (class 0 OID 17042)
+-- Dependencies: 209
+-- Data for Name: telefonos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.telefonos (cedula, id_tipo_telefono, numero) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3074 (class 0 OID 17045)
+-- Dependencies: 210
+-- Data for Name: tipo_telefono; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tipo_telefono (id_tipo_telefono, tipo_telefono) FROM stdin;
+2	Personal                 
+\.
+
+
+--
+-- TOC entry 2880 (class 2606 OID 17049)
+-- Name: asignacion_Jefes asignacion_Jefes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."asignacion_Jefes"
+    ADD CONSTRAINT "asignacion_Jefes_pkey" PRIMARY KEY ("cedula_Empleado");
+
+
+--
+-- TOC entry 2883 (class 2606 OID 17051)
+-- Name: barrio barrio_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.barrio
+    ADD CONSTRAINT barrio_pkey PRIMARY KEY (id_barrio);
+
+
+--
+-- TOC entry 2888 (class 2606 OID 17053)
+-- Name: canton canton_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.canton
+    ADD CONSTRAINT canton_pkey PRIMARY KEY (id_canton);
+
+
+--
+-- TOC entry 2890 (class 2606 OID 17055)
+-- Name: distrito distrito_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.distrito
+    ADD CONSTRAINT distrito_pkey PRIMARY KEY (id_distrito);
+
+
+--
+-- TOC entry 2895 (class 2606 OID 17057)
+-- Name: jefes jefes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.jefes
+    ADD CONSTRAINT jefes_pkey PRIMARY KEY (id_jefe);
+
+
+--
+-- TOC entry 2898 (class 2606 OID 17059)
+-- Name: pagos pagos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pagos
+    ADD CONSTRAINT pagos_pkey PRIMARY KEY (cedula, id_pago);
+
+
+--
+-- TOC entry 2903 (class 2606 OID 17061)
+-- Name: persona persona_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.persona
+    ADD CONSTRAINT persona_pkey PRIMARY KEY (cedula);
+
+
+--
+-- TOC entry 2905 (class 2606 OID 17063)
+-- Name: profesiones profesiones_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.profesiones
+    ADD CONSTRAINT profesiones_pkey PRIMARY KEY (id_profesion);
+
+
+--
+-- TOC entry 2907 (class 2606 OID 17065)
+-- Name: provincia provincia_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.provincia
+    ADD CONSTRAINT provincia_pkey PRIMARY KEY (id_provincia);
+
+
+--
+-- TOC entry 2910 (class 2606 OID 17067)
+-- Name: telefonos telefonos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.telefonos
+    ADD CONSTRAINT telefonos_pkey PRIMARY KEY (cedula);
+
+
+--
+-- TOC entry 2912 (class 2606 OID 17069)
+-- Name: tipo_telefono tipo_telefono_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tipo_telefono
+    ADD CONSTRAINT tipo_telefono_pkey PRIMARY KEY (id_tipo_telefono);
+
+
+--
+-- TOC entry 2891 (class 1259 OID 17070)
+-- Name: fki_canton_fk; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_canton_fk ON public.distrito USING btree (id_canton);
+
+
+--
+-- TOC entry 2893 (class 1259 OID 17071)
+-- Name: fki_cedula_fk; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_cedula_fk ON public.jefes USING btree (cedula_jefe);
+
+
+--
+-- TOC entry 2884 (class 1259 OID 17072)
+-- Name: fki_distrito_fk; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_distrito_fk ON public.barrio USING btree (id_distrito);
+
+
+--
+-- TOC entry 2881 (class 1259 OID 17073)
+-- Name: fki_id_Jefes_fk; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "fki_id_Jefes_fk" ON public."asignacion_Jefes" USING btree (id_jefe);
+
+
+--
+-- TOC entry 2899 (class 1259 OID 17074)
+-- Name: fki_id_barrio_fk; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_id_barrio_fk ON public.persona USING btree (id_barrio);
+
+
+--
+-- TOC entry 2885 (class 1259 OID 17075)
+-- Name: fki_id_canton_fk; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_id_canton_fk ON public.barrio USING btree (id_canton);
+
+
+--
+-- TOC entry 2896 (class 1259 OID 17076)
+-- Name: fki_id_cedula_fk; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_id_cedula_fk ON public.pagos USING btree (cedula);
+
+
+--
+-- TOC entry 2900 (class 1259 OID 17077)
+-- Name: fki_id_distrito_fk; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_id_distrito_fk ON public.persona USING btree (id_distrito);
+
+
+--
+-- TOC entry 2901 (class 1259 OID 17078)
+-- Name: fki_id_profesion_fk; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_id_profesion_fk ON public.persona USING btree (id_profesion);
+
+
+--
+-- TOC entry 2886 (class 1259 OID 17079)
+-- Name: fki_id_provincia_fk; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_id_provincia_fk ON public.barrio USING btree (id_provincia);
+
+
+--
+-- TOC entry 2908 (class 1259 OID 17080)
+-- Name: fki_id_tipo_telefono_fk; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_id_tipo_telefono_fk ON public.telefonos USING btree (id_tipo_telefono);
+
+
+--
+-- TOC entry 2892 (class 1259 OID 17081)
+-- Name: fki_provincia_fk; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_provincia_fk ON public.distrito USING btree (id_provincia);
+
+
+--
+-- TOC entry 2920 (class 2606 OID 17082)
+-- Name: distrito canton_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.distrito
+    ADD CONSTRAINT canton_fk FOREIGN KEY (id_canton) REFERENCES public.canton(id_canton) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 2915 (class 2606 OID 17087)
+-- Name: barrio canton_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.barrio
+    ADD CONSTRAINT canton_fk FOREIGN KEY (id_canton) REFERENCES public.canton(id_canton) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 2913 (class 2606 OID 17092)
+-- Name: asignacion_Jefes cedula_empleado_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."asignacion_Jefes"
+    ADD CONSTRAINT cedula_empleado_fk FOREIGN KEY ("cedula_Empleado") REFERENCES public.persona(cedula) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 2929 (class 2606 OID 17097)
+-- Name: telefonos cedula_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.telefonos
+    ADD CONSTRAINT cedula_fk FOREIGN KEY (cedula) REFERENCES public.persona(cedula) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 2922 (class 2606 OID 17102)
+-- Name: jefes cedula_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.jefes
+    ADD CONSTRAINT cedula_fk FOREIGN KEY (cedula_jefe) REFERENCES public.persona(cedula) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 2923 (class 2606 OID 17107)
+-- Name: pagos cedula_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pagos
+    ADD CONSTRAINT cedula_fk FOREIGN KEY (cedula) REFERENCES public.persona(cedula) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 2916 (class 2606 OID 17112)
+-- Name: barrio distrito_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.barrio
+    ADD CONSTRAINT distrito_fk FOREIGN KEY (id_distrito) REFERENCES public.distrito(id_distrito) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 2914 (class 2606 OID 17117)
+-- Name: asignacion_Jefes id_Jefes_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."asignacion_Jefes"
+    ADD CONSTRAINT "id_Jefes_fk" FOREIGN KEY (id_jefe) REFERENCES public.jefes(id_jefe) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 2924 (class 2606 OID 17122)
+-- Name: persona id_barrio_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.persona
+    ADD CONSTRAINT id_barrio_fk FOREIGN KEY (id_barrio) REFERENCES public.barrio(id_barrio) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 2917 (class 2606 OID 17127)
+-- Name: barrio id_canton_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.barrio
+    ADD CONSTRAINT id_canton_fk FOREIGN KEY (id_canton) REFERENCES public.canton(id_canton) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 2925 (class 2606 OID 17132)
+-- Name: persona id_canton_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.persona
+    ADD CONSTRAINT id_canton_fk FOREIGN KEY (id_canton) REFERENCES public.canton(id_canton) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 2926 (class 2606 OID 17137)
+-- Name: persona id_distrito_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.persona
+    ADD CONSTRAINT id_distrito_fk FOREIGN KEY (id_distrito) REFERENCES public.distrito(id_distrito) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 2927 (class 2606 OID 17142)
+-- Name: persona id_profesion_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.persona
+    ADD CONSTRAINT id_profesion_fk FOREIGN KEY (id_profesion) REFERENCES public.profesiones(id_profesion) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 2918 (class 2606 OID 17147)
+-- Name: barrio id_provincia_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.barrio
+    ADD CONSTRAINT id_provincia_fk FOREIGN KEY (id_provincia) REFERENCES public.provincia(id_provincia) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 2928 (class 2606 OID 17152)
+-- Name: persona id_provincia_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.persona
+    ADD CONSTRAINT id_provincia_fk FOREIGN KEY (id_provincia) REFERENCES public.provincia(id_provincia) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 2930 (class 2606 OID 17157)
+-- Name: telefonos id_tipo_telefono_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.telefonos
+    ADD CONSTRAINT id_tipo_telefono_fk FOREIGN KEY (id_tipo_telefono) REFERENCES public.tipo_telefono(id_tipo_telefono) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 2921 (class 2606 OID 17162)
+-- Name: distrito provincia_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.distrito
+    ADD CONSTRAINT provincia_fk FOREIGN KEY (id_provincia) REFERENCES public.provincia(id_provincia) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+--
+-- TOC entry 2919 (class 2606 OID 17167)
+-- Name: canton provincia_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.canton
+    ADD CONSTRAINT provincia_fk FOREIGN KEY (id_provincia) REFERENCES public.provincia(id_provincia) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+-- Completed on 2021-06-08 00:45:46
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- Database "postgres" dump
+--
+
+\connect postgres
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.2 (Debian 13.2-1.pgdg100+1)
+-- Dumped by pg_dump version 13.2
+
+-- Started on 2021-06-08 00:45:46
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'LATIN1';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+-- Completed on 2021-06-08 00:45:47
+
+--
+-- PostgreSQL database dump complete
+--
+
+-- Completed on 2021-06-08 00:45:47
+
+--
+-- PostgreSQL database cluster dump complete
+--
+

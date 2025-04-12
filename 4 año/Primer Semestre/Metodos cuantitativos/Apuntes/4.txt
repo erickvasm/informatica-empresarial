@@ -1,0 +1,25 @@
+Simplex
+
+	⁃	Hay que mencionar que antes de los pasos, hay que averiguar:
+	⁃	Variables
+	⁃	Funcion
+	⁃	Restricciones 
+	⁃	No negatividad
+
+Pasos
+
+	1.	Forma estandar
+	1.	Sumar una tercera variable a cada una de las restricciones e igualar a 0
+	2.	Igualar la funcion a 0 y sumar las variables extras.
+	2.	Elaborar la tabla inicial, determinar que variable sale y cual entra  
+	1.	Se escoge el numero mas negativo en la función Z para que la variable en la columna en la que esta , va entrar a la base (variables basicas)
+	2.	Para saber la variable que sale, dividimos los numeros del lado derecho entre los numeros correspondientes de la columna que entra. De los resultados de la división, se escoge el más pequeño para que la variable de la fila del número, salga. 
+	3.	Elaborar Gauss-Jordan
+	1.	La celda pivote sera donde se interceca la columna y la fila que entra y sale
+	4.	Ver si es la tabla obtima
+	1.	No debe contener negativos en la función Z
+	2.	Si hay, volver a repetir el proceso
+
+NOTA: para verificar que vamos por buen camino, podemos sustituir los valores del lado derecho de las variables en las funcion Z y las restricciones, lo cual nos debería dar el resultado que esta igualado. 
+
+Normalmente son preguntas cortas

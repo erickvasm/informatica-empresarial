@@ -1,0 +1,325 @@
+-----------------------------------------------[PROCEDIMIENTOS DE INSERTAR]
+
+
+--[INSERTAR ALUMNOS]
+CREATE OR REPLACE PROCEDURE "ProcedimientoInsertarAlumno"(integer,integer,varchar,integer,integer,integer)
+AS
+$$
+	INSERT INTO public.alumnos(
+								numero_matricula, 
+								numero_grupo, 
+								cedula, 
+								id_persona_referencia, 
+								id_control_escrito, 
+								id_practica
+								) VALUES
+
+								($1, $2, $3, $4, $5, $6);
+$$
+LANGUAGE SQL;
+
+CALL "ProcedimientoInsertarAlumno"(1,1,'208210061',1,1,1);
+
+SELECT * FROM alumnos;
+
+
+
+
+
+
+--[INSERTAR BARRIOS]
+CREATE OR REPLACE PROCEDURE "ProcedimientoInsertarBarrio"(varchar)
+AS
+$$
+	INSERT INTO public.barrios(nombre) VALUES ($1);
+$$
+LANGUAGE SQL;
+
+CALL "ProcedimientoInsertarBarrio"('Haran juez');
+
+SELECT * FROM barrios;
+
+
+
+
+
+
+
+
+--[INSERTAR CANTONES]
+CREATE OR REPLACE PROCEDURE "ProcedimientoInsertarCanton"(varchar)
+AS
+$$
+	INSERT INTO public.cantones(nombre)
+	VALUES ($1);
+$$
+LANGUAGE SQL;
+
+CALL "ProcedimientoInsertarCanton"('Haran juez');
+
+SELECT * FROM cantones;
+
+
+
+
+
+
+
+--[INSERTAR CONTROL ESCRITO]
+CREATE OR REPLACE PROCEDURE "ProcedimientoInsertarControlEscrito"(integer,integer,date,integer)
+AS
+$$
+	INSERT INTO public.controles_escritos(
+								numero_control, 
+								numero_preguntas, 
+								fecharealizacion, 
+								nota
+								) VALUES
+
+								($1, $2, $3, $4);
+$$
+LANGUAGE SQL;
+
+CALL "ProcedimientoInsertarControlEscrito"(1,1,'2021-02-01',1);
+
+SELECT * FROM controles_escritos;
+
+
+
+
+
+
+
+--[INSERTAR DIRECCION]
+CREATE OR REPLACE PROCEDURE "ProcedimientoInsertarDireccion"(integer,integer,integer,integer,integer)
+AS
+$$
+	INSERT INTO public.direcciones( 
+								id_pais, 
+								id_provincia, 
+								id_canton,
+								id_distrito,
+								id_barrio
+								) VALUES
+
+								($1, $2, $3, $4,$5);
+$$
+LANGUAGE SQL;
+
+CALL "ProcedimientoInsertarDireccion"(1,1,1,3,1);
+
+SELECT * FROM direcciones;
+
+
+
+
+
+
+-----------------------------------------------[PROCEDIMIENTOS DE ELIMINACION]
+
+--[ELIMINAR ALUMNO]
+SELECT * FROM alumnos;
+
+CREATE OR REPLACE PROCEDURE "ProcedimientoEliminarAlumno"(integer)
+AS
+$$
+	DELETE FROM alumnos WHERE id_alumno = $1;
+$$
+LANGUAGE SQL;
+
+CALL "ProcedimientoEliminarAlumno"(1);
+
+SELECT * FROM alumnos;
+
+
+
+
+
+--[ELIMINAR BARRIO]
+SELECT * FROM barrios;
+
+CREATE OR REPLACE PROCEDURE "ProcedimientoEliminarBarrio"(integer)
+AS
+$$
+	DELETE FROM barrios WHERE id_barrio = $1;
+$$
+LANGUAGE SQL;
+
+CALL "ProcedimientoEliminarBarrio"(3);
+
+SELECT * FROM barrios;
+
+
+
+
+
+
+
+
+
+--[ELIMINAR CANTON]
+SELECT * FROM cantones;
+
+CREATE OR REPLACE PROCEDURE "ProcedimientoEliminarCanton"(integer)
+AS
+$$
+	DELETE FROM cantones WHERE id_canton = $1;
+$$
+LANGUAGE SQL;
+
+CALL "ProcedimientoEliminarCanton"(2);
+
+SELECT * FROM cantones;
+
+
+
+
+--[ELIMINAR CONTROL ESCRITO]
+SELECT * FROM controles_escritos;
+
+CREATE OR REPLACE PROCEDURE "ProcedimientoEliminarControlEscrito"(integer)
+AS
+$$
+	DELETE FROM public.controles_escritos
+	WHERE id_control_escrito=$1;
+
+$$
+LANGUAGE SQL;
+
+CALL "ProcedimientoEliminarControlEscrito"(1);
+
+SELECT * FROM controles_escritos;
+
+
+
+
+
+--[ELIMINAR DIRECCION]
+SELECT * FROM direcciones;
+
+CREATE OR REPLACE PROCEDURE "ProcedimientoEliminarDireccion"(integer)
+AS
+$$
+	DELETE FROM public.direcciones
+	WHERE id_direccion=$1;
+
+$$
+LANGUAGE SQL;
+
+CALL "ProcedimientoEliminarDireccion"(1);
+
+SELECT * FROM direcciones;
+
+
+
+
+
+-----------------------------------------------[PROCEDIMIENTOS DE ACTUALIZACION]
+
+
+--[ACTUALIZAR ALUMNO]
+CREATE OR REPLACE PROCEDURE "ProcedimientoActualizarAlumno"(integer,integer,integer,varchar,integer,integer,integer)
+AS
+$$
+
+	UPDATE public.alumnos
+	SET numero_matricula=$2, numero_grupo=$3, cedula=$4, id_persona_referencia=$5, id_control_escrito=$6, id_practica=$7
+	WHERE id_alumno=$1;
+	
+$$
+LANGUAGE SQL;
+
+SELECT * FROM alumnos;
+
+CALL "ProcedimientoActualizarAlumno"(5,1,1,'208210061',1,1,1);
+
+
+
+
+
+
+--[ACTUALIZAR BARRIO]
+CREATE OR REPLACE PROCEDURE "ProcedimientoActualizarBarrio"(integer,varchar)
+AS
+$$
+
+	UPDATE public.barrios
+	SET nombre=$2
+	WHERE id_barrio=$1;
+	
+$$
+LANGUAGE SQL;
+
+SELECT * FROM barrios;
+
+CALL "ProcedimientoActualizarBarrio"(5,'Cambronero');
+
+
+
+
+
+
+
+
+--[ACTUALIZAR CANTON]
+CREATE OR REPLACE PROCEDURE "ProcedimientoActualizarCanton"(integer,varchar)
+AS
+$$
+	UPDATE public.cantones
+	SET nombre=$2
+	WHERE id_canton=$1;
+	
+$$
+LANGUAGE SQL;
+
+SELECT * FROM cantones;
+
+CALL "ProcedimientoActualizarCanton"(1,'Cambridge');
+
+
+
+
+
+
+
+--[ACTUALIZAR CONTROL ESCRITO]
+CREATE OR REPLACE PROCEDURE "ProcedimientoActualizarControlEscrito"(integer,integer,integer,date,integer)
+AS
+$$
+	UPDATE public.controles_escritos
+	SET numero_control=$2, numero_preguntas=$3, fecharealizacion=$4, nota=$5
+	WHERE id_control_escrito=$1;
+	
+$$
+LANGUAGE SQL;
+
+SELECT * FROM controles_escritos;
+
+CALL "ProcedimientoActualizarControlEscrito"(1,1,1,'2022-07-12',1);
+
+
+
+
+
+
+
+
+--[ACTUALIZAR DIRECCION]
+CREATE OR REPLACE PROCEDURE "ProcedimientoActualizarDireccion"(integer,integer,integer,integer,integer,integer)
+AS
+$$
+	UPDATE public.direcciones
+	SET id_pais=$2, id_provincia=$3, id_canton=$4, id_distrito=$5, id_barrio=$6
+	WHERE id_direccion=$1;
+	
+$$
+LANGUAGE SQL;
+
+SELECT * FROM direcciones;
+
+CALL "ProcedimientoActualizarDireccion"(1,1,1,1,3,1);
+
+
+
+
+

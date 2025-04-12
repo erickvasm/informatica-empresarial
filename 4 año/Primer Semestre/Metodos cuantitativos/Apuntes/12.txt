@@ -1,0 +1,35 @@
+Cadena de Markov
+
+Probalidada de transición
+Pasos
+	1.	Crear matriz de Transición
+	2.	Calcular posición actual ( p(0) )
+	1.	Vector
+	3.	Calcular probabilidad de pn ...
+	1.	Una forma, es con: 
+	•	p1=p0*T 
+	•	p2=p1*T 
+	•	p3=p2*T
+	2.	La otra forma es mas directa:  p3= p0*T^3
+	1.	En Excel no se puede elevar una matrix, por lo que primero se debe calcular T^2 y T^3
+	2.	O simplemente hacerlo en matrix calulator desde el paso 3 o bien, desde el paso 3.2
+
+
+Condición de equilibrio
+Pasos
+	1.	Multiplicar (X Y Z ...) * Matriz de Transición 
+	1.	Igualar a 0 para poder ingresar los datos a mtatrix calculator
+	1.	Hay que restar la Xn con la Xn del otro lado
+	2.	Se resuelve en la opcion de sistemas de ecuaciones y por Gauss
+	2.	Se optienen valores X Y Z...
+
+Estados absorventes y matriz fundamental
+Pasos
+	1.	Crear matriz de transición
+	2.	Identificar Matriz, I, 0, A & B
+	1.	A la hora de calcular I - B, si no tienen la mismo numero de filas y columnas, a I se le agrega la fila y columna, respectando que siga siendo identidad
+	3.	Calcular Matriz F y FA
+	4.	Calcular p0
+	1.		1.	Multiplcar p0 * FA, eso daa el p0 final (probabilidades)la 
+
+NOTA. Colcar los estados absorverntes juntos (1 o 0). Abajo de  la matriz de Identidad esta la Matriz A

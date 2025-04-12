@@ -1,0 +1,436 @@
+--- [ELIMINAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION EliminarAlumno() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoraalumnos" VALUES (OLD."id_alumno",OLD."numero_matricula",OLD."numero_grupo",OLD."cedula",OLD."id_persona_referencia",
+											  OLD."id_control_escrito",OLD."id_practica",NULL,NULL,NULL,NULL,NULL,NULL,NULL,
+											  CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacorasalumnos_DB AFTER DELETE ON public."alumnos"
+FOR EACH ROW EXECUTE PROCEDURE EliminarAlumno();
+
+-- Eliminar
+DELETE FROM "alumnos" WHERE "id_alumno"=1;
+SELECT * FROM "bitacoraalumnos";
+
+///////////////////////////////////////////////////////////////////////////
+
+--- [ELIMINAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION EliminarDireccion() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoradirecciones" VALUES (OLD."id_direccion",OLD."id_pais",OLD."id_provincia",OLD."id_canton",OLD."id_distrito",
+											  OLD."id_barrio",NULL,NULL,NULL,NULL,NULL,NULL,
+											  CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoradirecciones_DB AFTER DELETE ON public."direcciones"
+FOR EACH ROW EXECUTE PROCEDURE EliminarDireccion();
+
+-- Eliminar
+DELETE FROM "direcciones" WHERE "id_direccion"=1;
+SELECT * FROM "bitacoradirecciones";
+
+//////////////////////////////////////////////////////////////////////////////
+
+--- [ELIMINAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION EliminarPais() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacorapaises" VALUES (OLD."id_pais",OLD."nombre",NULL,NULL,
+											  CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacorapaises_DB AFTER DELETE ON public."paises"
+FOR EACH ROW EXECUTE PROCEDURE EliminarPais();
+
+-- Eliminar
+DELETE FROM "paises" WHERE "id_pais"=1;
+SELECT * FROM "bitacorapaises";
+
+//////////////////////////////////////////////////////////////////////
+
+--- [ELIMINAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION EliminarProvincia() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoraprovincias" VALUES (OLD."id_provincia",OLD."nombre",NULL,NULL,
+											  CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoraprovincias_DB AFTER DELETE ON public."provincias"
+FOR EACH ROW EXECUTE PROCEDURE EliminarProvincia();
+
+-- Eliminar
+DELETE FROM "provincias" WHERE "id_provincia"=1;
+SELECT * FROM "bitacoraprovincias";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+--- [ELIMINAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION EliminarCanton() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoracantones" VALUES (OLD."id_canton",OLD."nombre",NULL,NULL,
+											  CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoracantones_DB AFTER DELETE ON public."cantones"
+FOR EACH ROW EXECUTE PROCEDURE EliminarCanton();
+
+-- Eliminar
+DELETE FROM "cantones" WHERE "id_canton"=1;
+SELECT * FROM "bitacoracantones";
+
+//////////////////////////////////////////////////////////////////////////////
+
+--- [ELIMINAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION EliminarDistrito() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoradistritos" VALUES (OLD."id_distrito",OLD."nombre",NULL,NULL,
+											  CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoradistritos_DB AFTER DELETE ON public."distritos"
+FOR EACH ROW EXECUTE PROCEDURE EliminarDistrito();
+
+-- Eliminar
+DELETE FROM "distritos" WHERE "id_distrito"=1;
+SELECT * FROM "bitacoradistritos";
+
+///////////////////////////////////////////////////////////////////////////
+
+--- [ELIMINAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION EliminarBarrio() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacorabarrios" VALUES (OLD."id_barrio",OLD."nombre",NULL,NULL,
+											  CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacorabarrios_DB AFTER DELETE ON public."barrios"
+FOR EACH ROW EXECUTE PROCEDURE EliminarBarrio();
+
+-- Eliminar
+DELETE FROM "barrios" WHERE "id_barrio"=1;
+SELECT * FROM "bitacorabarrios";
+
+///////////////////////////////////////////////////////////////////////////
+
+--- [ELIMINAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION EliminarProfesor() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoraprofesores" VALUES (OLD."id_profesor",OLD."cedula",OLD."id_practica",OLD."fecha_diseno_practica",NULL,NULL,NULL,NULL,
+											  CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoraprofesores_DB AFTER DELETE ON public."profesores"
+FOR EACH ROW EXECUTE PROCEDURE EliminarProfesor();
+
+-- Eliminar
+DELETE FROM "profesores" WHERE "id_profesor"=1;
+SELECT * FROM "bitacoraprofesores";
+
+//////////////////////////////////////////////////////////////////////////////
+
+--- [ELIMINAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION EliminarTelefono() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoratelefonos" VALUES (OLD."id_telefono",OLD."descripcion",NULL,NULL,
+											  CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoratelefonos_DB AFTER DELETE ON public."telefonos"
+FOR EACH ROW EXECUTE PROCEDURE EliminarTelefono();
+
+-- Eliminar
+DELETE FROM "telefonos" WHERE "id_telefono"=1;
+SELECT * FROM "bitacoratelefonos";
+
+//////////////////////////////////////////////////////////////////
+
+--- [ELIMINAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION EliminarEmail() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoraemails" VALUES (OLD."id_emails",OLD."descripcion",NULL,NULL,
+											  CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoraemails_DB AFTER DELETE ON public."emails"
+FOR EACH ROW EXECUTE PROCEDURE EliminarEmail();
+
+-- Eliminar
+DELETE FROM "emails" WHERE "id_emails"=1;
+SELECT * FROM "bitacoraemails";
+
+////////////////////////////////////////////////////////////////////////////
+
+--- [ELIMINAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION EliminarPersonaReferencia() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacorapersonas_referencias" VALUES (OLD."id_persona_referencia",OLD."cedula",OLD."parentesco",NULL,NULL,NULL,
+											  CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacorapersonas_referencias_DB AFTER DELETE ON public."personas_referencias"
+FOR EACH ROW EXECUTE PROCEDURE EliminarPersonaReferencia();
+
+-- Eliminar
+DELETE FROM "personas_referencias" WHERE "id_persona_referencia"=1;
+SELECT * FROM "bitacorapersonas_referencias";
+
+//////////////////////////////////////////////////////////////////////////////////
+
+--- [ELIMINAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION EliminarControlesEscritos() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoracontroles_escritos" VALUES (OLD."id_control_escrito",OLD."numero_control",OLD."numero_preguntas",
+														 OLD."fecharealizacion",OLD."nota",NULL,NULL,NULL,NULL,NULL,CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoracontroles_escritos_DB AFTER DELETE ON public."controles_escritos"
+FOR EACH ROW EXECUTE PROCEDURE EliminarControlesEscritos();
+
+-- Eliminar
+DELETE FROM "controles_escritos" WHERE "id_control_escrito"=1;
+SELECT * FROM "bitacoracontroles_escritos";
+
+//////////////////////////////////////////////////////////////////////////////
+
+--- [ELIMINAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION EliminarPracticas() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacorapracticas" VALUES (OLD."id_practica",OLD."codigo_practica",OLD."titulo",OLD."id_grado_dificultad",OLD."profesor_aplico",
+											   NULL,NULL,NULL,NULL,NULL,CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacorapracticas_DB AFTER DELETE ON public."practicas"
+FOR EACH ROW EXECUTE PROCEDURE EliminarPracticas();
+
+-- Eliminar
+DELETE FROM "practicas" WHERE "id_practica"=1;
+SELECT * FROM "bitacorapracticas";
+
+//////////////////////////////////////////////////////////////////////////////
+
+--- [ELIMINAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION EliminarGradoDificultad() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacoragrado_dificultades" VALUES (OLD."id_grado_dificultad",OLD."dificultad",
+											   NULL,NULL,CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacoragrado_dificultad_DB AFTER DELETE ON public."grado_dificultades"
+FOR EACH ROW EXECUTE PROCEDURE EliminarGradoDificultad();
+
+-- Eliminar
+DELETE FROM "grado_dificultades" WHERE "id_grado_dificultad"=1;
+SELECT * FROM "bitacoragrado_dificultades";
+
+///////////////////////////////////////////////////////////////////////
+
+--- [ELIMINAR]
+
+-- [FUNCTION]
+CREATE OR REPLACE FUNCTION EliminarPersona() RETURNS TRIGGER LANGUAGE 'plpgsql'
+AS
+$$
+	DECLARE
+		
+		tipo_accion character(30) := 'DELETE';
+		
+	BEGIN
+	
+		INSERT INTO "bitacorapersonas" VALUES (OLD."cedula",OLD."nombre",OLD."genero",OLD."fecha_nacimiento",OLD."id_telefono",OLD."id_email",
+											   OLD."id_direccion"
+											   ,NULL,NULL,NULL,NULL,NULL,NULL,NULL,CURRENT_USER,tipo_accion,NOW());
+		RETURN NULL;
+		
+	END
+$$
+
+-- [ TRIGGER ]
+CREATE TRIGGER bitacorapersonas_DB AFTER DELETE ON public."personas"
+FOR EACH ROW EXECUTE PROCEDURE EliminarPersona();
+
+-- Eliminar
+DELETE FROM "personas" WHERE "cedula"='504340211';
+SELECT * FROM "bitacorapersonas";
+

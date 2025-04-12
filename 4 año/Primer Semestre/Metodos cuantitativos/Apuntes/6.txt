@@ -1,0 +1,33 @@
+Programación por Metas y No Lineal
+
+	⁃	Para hacer solver, no deben haber restricciones con variables en lado izquierdo.
+
+Metas
+	⁃	Los valores que que estan arriba de la tabla de solver si es mayor a 0 es que se pasa 
+
+No Lineal
+	⁃	En el ejemplo de programacion no lineal, no se realiza como siempre lo hacemos. En F.O multiplicamos por las variables. 
+	⁃	En solver, las celdas que cambian son las variables, nada mas que las variables se colocan primero. 
+	⁃	En solver colocamos la opcion de no lineal 
+
+
+Metas
+Hay que identificar cuando es n o p
+	n = no importa que se pase
+	p = no se tiene que pasar
+
+	1.	Variables
+	2.	Función
+	3.	Restricciones y no negatividad 
+	4.	Solver
+	1.	Varibales y coenficientes al principio se colocan en cero
+
+No Lineal
+	1.	Variables
+	2.	Función
+	3.	Restriciones y no negatividad 
+	4.	Solver pero es distinto
+	1.	Primero se coloca las variables: al principio se coloca 0
+	2.	F.O es la multiplicacion o igualdad de las variables de arriba
+	3.	Coeficientes (variables de la función)
+	4.	Restriciones

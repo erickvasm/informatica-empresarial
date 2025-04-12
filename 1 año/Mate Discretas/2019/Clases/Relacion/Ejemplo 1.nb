@@ -1,0 +1,1043 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     35686,       1035]
+NotebookOptionsPosition[     32965,        946]
+NotebookOutlinePosition[     33341,        962]
+CellTagsIndexPosition[     33298,        959]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"<<", "Combinatorica`"}]], "Input",
+ CellChangeTimes->{{3.7814481046473913`*^9, 3.781448132109743*^9}, {
+  3.7814482086462*^9, 3.7814482090790825`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","compat",
+   "\"Combinatorica Graph and Permutations functionality has been superseded \
+by preloaded functionality. The package now being loaded may conflict with \
+this. Please see the Compatibility Guide for details.\"",2,8,2,
+   22360791822957330724,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.7814481563976808`*^9, 3.781448210095084*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+  "Combinatoria", " ", "es", " ", "un", " ", "paquete", " ", "que", " ", "ya",
+    " ", "posee", " ", "Mathematica", " ", "el", " ", "cual", " ", "posee", 
+   " ", "algunos", " ", "comandos", " ", "para", " ", "estructuras", " ", 
+   RowBox[{"discretas", "."}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.781448213687654*^9, 3.781448263492716*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Ejemplo", ":", " ", 
+      RowBox[{
+      "dar", " ", "el", " ", "gr\[AAcute]fico", " ", "de", " ", "una", " ", 
+       "relaci\[OAcute]n", " ", "donde", " ", "mcd", 
+       RowBox[{"(", 
+        RowBox[{"a", ",", "b"}], ")"}]}]}], "=", "1"}], " ", "*)"}],
+   FontSize->24,
+   Background->GrayLevel[0]], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "Vamos", " ", "a", " ", "construir", " ", "una", " ", "funci\[OAcute]n"}],
+     ",", " ", 
+    RowBox[{
+    "en", " ", "este", " ", "caso", " ", "recursiva", " ", "para", " ", 
+     "calcular", " ", "el", " ", 
+     RowBox[{"m\[AAcute]x", ".", " ", "com\[UAcute]n"}], " ", "div", " ", 
+     "entre", " ", "a", " ", "y", " ", "b"}], ",", " ", 
+    RowBox[{
+    "luego", " ", "la", " ", "llamaremos", " ", "en", " ", "otra", " ", 
+     "funci\[OAcute]n", " ", "que", " ", "ser\[AAcute]", " ", "la", " ", 
+     "principal"}]}], "*)"}]}]], "Input",
+ CellChangeTimes->{{3.7814483097072697`*^9, 3.781448428969365*^9}, 
+   3.7825040183265076`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Ejemplo", " ", "2"}], ",", " ", 
+     RowBox[{
+     "solo", " ", "se", " ", "puede", " ", "ingresar", " ", "parejas"}]}], 
+    "*)"}], "Text"], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"MCD", "[", 
+     RowBox[{"a_", ",", "b_"}], "]"}], ":=", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"a", "\[Equal]", "0"}], ",", 
+      RowBox[{"Return", "[", "b", "]"}], ",", 
+      RowBox[{"MCD", "[", 
+       RowBox[{
+        RowBox[{"Mod", "[", 
+         RowBox[{"b", ",", "a"}], "]"}], ",", "a"}], "]"}]}], "]"}]}], 
+   ";"}]}]], "Input",
+ CellChangeTimes->{{3.781448432022767*^9, 3.7814485596207056`*^9}, {
+  3.782503769695187*^9, 3.782503796815258*^9}, {3.782503911396328*^9, 
+  3.7825039143019114`*^9}, {3.782503957399654*^9, 3.782503985372717*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MCD", "[", 
+  RowBox[{"5", ",", "12"}], "]"}]], "Input",
+ CellChangeTimes->{{3.781448563811536*^9, 3.7814485888358965`*^9}, {
+  3.781448654830386*^9, 3.7814486615950584`*^9}}],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{{3.78144857116409*^9, 3.781448589299201*^9}, {
+  3.781448655600152*^9, 3.7814486621392255`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Se", " ", "puede", " ", "ingresar", " ", "todas", " ", "las", " ", 
+    "listas"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Relacion", "[", 
+     RowBox[{"A_", ",", "B_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"R", "=", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{"ProdCart", "=", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{"i", "=", "0"}], ",", 
+        RowBox[{"L", "=", "0"}], ",", 
+        RowBox[{"Pos", "=", "0"}]}], "}"}], ",", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"ProdCart", "=", 
+        RowBox[{"CartesianProduct", "[", 
+         RowBox[{"A", ",", "B"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Todas", " ", "los", " ", "posibles", " ", "pares", " ", "ordenados", 
+         " ", "se", " ", "asignan", " ", "a", " ", "ProdCart"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"L", "=", 
+        RowBox[{"Length", "[", "ProdCart", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", 
+         RowBox[{"i", "\[LessEqual]", "L"}], ",", 
+         RowBox[{"i", "++"}], ",", "        ", 
+         RowBox[{"(*", 
+          RowBox[{"Recorre", " ", "toda", " ", "la", " ", "lista"}], "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Pos", "=", 
+           RowBox[{"ProdCart", "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], ";", "        ", 
+          RowBox[{"(*", 
+           RowBox[{"Pos", "=", " ", 
+            RowBox[{
+            "almacena", " ", "el", " ", "elemento", " ", "que", " ", "esta", 
+             " ", "en", " ", "la", " ", "posicion", " ", "i"}]}], "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"MCD", "[", 
+              RowBox[{
+               RowBox[{"Pos", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], ",", 
+               RowBox[{"Pos", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "\[Equal]", "1"}], 
+            ",", 
+            RowBox[{"R", "=", 
+             RowBox[{"Append", "[", 
+              RowBox[{"R", ",", "Pos"}], "]"}]}]}], "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"Ejm", ":", " ", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"1", ",", "2"}], ")"}], " ", "1"}]}], "=", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Pos", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], " ", "y", " ", "2"}], "=", 
+          RowBox[{"Post", "[", 
+           RowBox[{"[", "2", "]"}], "]"}]}]}], " ", "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<El gr\[AAcute]fico de la relaci\[OAcute]n corresponde a: \>\"", 
+         "R"}], "]"}], ";"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     "]"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.7814486832070456`*^9, 3.7814488750765123`*^9}, {
+   3.781448967921083*^9, 3.781449091951331*^9}, {3.7814491828368735`*^9, 
+   3.7814492309975853`*^9}, {3.7814492644383163`*^9, 
+   3.7814493773033056`*^9}, {3.7825039921200504`*^9, 3.782504007725729*^9}, {
+   3.7825040665777593`*^9, 3.7825042116069713`*^9}, {3.7825043152223783`*^9, 
+   3.782504389247923*^9}, 3.7825044562383366`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"A", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "3", ",", "5", ",", "7"}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.781449411490244*^9, 3.781449423960312*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"B", "=", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "4", ",", "6", ",", "8"}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7814494274862647`*^9, 3.7814494390494614`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"Relacion", "[", 
+   RowBox[{"A", ",", "B"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.781449453085847*^9, 3.7814494585697565`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El gr\[AAcute]fico de la relaci\[OAcute]n corresponde a: \"\>",
+    "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "6"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "8"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "8"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "6"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "8"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"7", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"7", ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"7", ",", "6"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"7", ",", "8"}], "}"}]}], "}"}]}],
+  SequenceForm[
+  "El gr\[AAcute]fico de la relaci\[OAcute]n corresponde a: ", {{1, 2}, {1, 
+   4}, {1, 6}, {1, 8}, {3, 2}, {3, 4}, {3, 8}, {5, 2}, {5, 4}, {5, 6}, {5, 
+   8}, {7, 2}, {7, 4}, {7, 6}, {7, 8}}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7814494592500887`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Ejemplo", " ", "donde", " ", "a"}], "=", 
+     RowBox[{"b", "-", "1"}]}], "*)"}],
+   FontSize->24,
+   FontColor->RGBColor[1, 0.5, 0],
+   Background->GrayLevel[0]]}]], "Input",
+ CellChangeTimes->{{3.781456522352562*^9, 3.7814565384433804`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Relacion1", "[", 
+     RowBox[{"A_", ",", "B_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"R", "=", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{"ProdCart", "=", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{"i", "=", "0"}], ",", 
+        RowBox[{"L", "=", "0"}], ",", 
+        RowBox[{"Pos", "=", "0"}]}], "}"}], ",", "\[IndentingNewLine]", "  ", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"ProdCart", "=", 
+        RowBox[{"CartesianProduct", "[", 
+         RowBox[{"A", ",", "B"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Todas", " ", "los", " ", "posibles", " ", "pares", " ", "ordenados", 
+         " ", "se", " ", "asignan", " ", "a", " ", "ProdCart"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"L", "=", 
+        RowBox[{"Length", "[", "ProdCart", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", 
+         RowBox[{"i", "\[LessEqual]", "L"}], ",", 
+         RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Pos", "=", 
+           RowBox[{"ProdCart", "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Pos", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "==", 
+             RowBox[{
+              RowBox[{"Pos", "[", 
+               RowBox[{"[", "2", "]"}], "]"}], "-", "1"}]}], ",", 
+            RowBox[{"R", "=", 
+             RowBox[{"Append", "[", 
+              RowBox[{"R", ",", "Pos"}], "]"}]}]}], "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<El gr\[AAcute]fico de la relaci\[OAcute]n corresponde a: \>\"", 
+         ",", "R"}], "]"}], ";"}]}], "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "]"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{
+  3.7814563429392776`*^9, {3.781456373918891*^9, 3.7814564252934036`*^9}, 
+   3.7825046911024*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"A1", "=", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "5", ",", "6"}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7814564406167393`*^9, 3.7814564543870754`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"B1", "=", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "7"}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7814564570406017`*^9, 3.781456471307089*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Relacion1", "[", 
+  RowBox[{"A1", ",", "B1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7814564747532396`*^9, 3.7814565102205496`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El gr\[AAcute]fico de la relaci\[OAcute]n corresponde a: \"\>",
+    "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"3", ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"6", ",", "7"}], "}"}]}], "}"}]}],
+  SequenceForm[
+  "El gr\[AAcute]fico de la relaci\[OAcute]n corresponde a: ", {{3, 4}, {6, 
+   7}}],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.7814564819865904`*^9, 3.781456510472739*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Ejemplo", " ", "donde", " ", "a"}], "=", 
+     RowBox[{">", "b"}]}], "*)"}],
+   FontSize->24,
+   Background->GrayLevel[0]]}]], "Input",
+ CellChangeTimes->{{3.781455009828256*^9, 3.7814550306279974`*^9}, 
+   3.782507755057207*^9}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Relacion2", "[", "A_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"R", "=", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{"ProdCart", "=", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{"i", "=", "0"}], ",", 
+        RowBox[{"L", "=", "0"}], ",", 
+        RowBox[{"Pos", "=", "0"}]}], "}"}], ",", "\[IndentingNewLine]", "  ", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"ProdCart", "=", 
+        RowBox[{"CartesianProduct", "[", 
+         RowBox[{"A", ",", "A"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Todas", " ", "los", " ", "posibles", " ", "pares", " ", "ordenados", 
+         " ", "se", " ", "asignan", " ", "a", " ", "ProdCart"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"L", "=", 
+        RowBox[{"Length", "[", "ProdCart", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", 
+         RowBox[{"i", "\[LessEqual]", "L"}], ",", 
+         RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Pos", "=", 
+           RowBox[{"ProdCart", "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Pos", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], ">=", 
+             RowBox[{"Pos", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+            RowBox[{"R", "=", 
+             RowBox[{"Append", "[", 
+              RowBox[{"R", ",", "Pos"}], "]"}]}]}], "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<La cardinalidad de la relaci\[OAcute]n es: \>\"", ",", 
+         RowBox[{"Length", "[", "R", "]"}], ",", 
+         "\"\<, y el gr\[AAcute]fico de la relaci\[OAcute]n corresponde a: \>\
+\"", ",", "R"}], "]"}], ";"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]",
+      "]"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.7814550526158314`*^9, 3.7814550691130342`*^9}, {
+  3.7814551669189095`*^9, 3.7814552334719653`*^9}, {3.781455299658723*^9, 
+  3.7814553244962273`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"H", "=", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "2", ",", "3", ",", "5"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.7814552415300565`*^9, 3.781455255531646*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "3", ",", "5"}], "}"}]], "Output",
+ CellChangeTimes->{{3.781455249512858*^9, 3.7814552561807947`*^9}, 
+   3.781455346314905*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Relacion2", "[", "H", "]"}]], "Input",
+ CellChangeTimes->{{3.781455259813875*^9, 3.7814552739719877`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"La cardinalidad de la relaci\[OAcute]n es: \"\>", 
+   "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\", y el gr\[AAcute]fico de la relaci\[OAcute]n \
+corresponde a: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "5"}], "}"}]}], "}"}]}],
+  SequenceForm[
+  "La cardinalidad de la relaci\[OAcute]n es: ", 10, 
+   ", y el gr\[AAcute]fico de la relaci\[OAcute]n corresponde a: ", {{1, 1}, {
+   2, 1}, {2, 2}, {3, 1}, {3, 2}, {3, 3}, {5, 1}, {5, 2}, {5, 3}, {5, 5}}],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.781455267832283*^9, 3.7814552745674973`*^9}, {
+  3.7814553434726515`*^9, 3.781455360620776*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "Tenemos", " ", "que", " ", "dar", " ", "un", " ", "conjunto", " ", "A"}],
+     ",", " ", 
+    RowBox[{"con", " ", "muchos", " ", "elementos"}], ",", " ", 
+    RowBox[{
+    "mejor", " ", "se", " ", "crea", " ", "una", " ", "funci\[OAcute]n", " ", 
+     "para", " ", "generar", " ", "el", " ", "conjunto"}]}], 
+   "*)"}]}]], "Input",
+ CellChangeTimes->{{3.781455444272229*^9, 3.7814554860155783`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Conjunto", "[", "n_", "]"}], ":=", " ", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"A", "=", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{"i", "=", "0"}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+       "n", " ", "es", " ", "el", " ", "n\[UAcute]mero", " ", "de", " ", 
+        "elementos", " ", "que", " ", "queremos", " ", "en", " ", "el", " ", 
+        "conjunto"}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", 
+         RowBox[{"i", "\[LessEqual]", "n"}], ",", 
+         RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"A", "=", 
+           RowBox[{"Append", "[", 
+            RowBox[{"A", ",", "i"}], "]"}]}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Return", "[", "A", "]"}], ";"}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.781455487503564*^9, 3.7814556744911475`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Conjunto", "[", "50", "]"}]], "Input",
+ CellChangeTimes->{{3.781455612499683*^9, 3.7814556470806756`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", 
+   ",", "9", ",", "10", ",", "11", ",", "12", ",", "13", ",", "14", ",", "15",
+    ",", "16", ",", "17", ",", "18", ",", "19", ",", "20", ",", "21", ",", 
+   "22", ",", "23", ",", "24", ",", "25", ",", "26", ",", "27", ",", "28", 
+   ",", "29", ",", "30", ",", "31", ",", "32", ",", "33", ",", "34", ",", 
+   "35", ",", "36", ",", "37", ",", "38", ",", "39", ",", "40", ",", "41", 
+   ",", "42", ",", "43", ",", "44", ",", "45", ",", "46", ",", "47", ",", 
+   "48", ",", "49", ",", "50"}], "}"}]], "Output",
+ CellChangeTimes->{3.781455647897115*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"Relacion2", "[", 
+   RowBox[{"Conjunto", "[", "10", "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.781455684519876*^9, 3.7814556969447193`*^9}, {
+  3.781455733895129*^9, 3.781455747167342*^9}, {3.78250711955404*^9, 
+  3.782507122334631*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7825077595717554`*^9, 3.7825077595717554`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.78250712781466*^9, 3.7825071278459053`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7825070275996323`*^9, 3.7825070276776667`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Ejemplo", " ", "donde", " ", "a"}], "=", 
+     RowBox[{
+      RowBox[{"b", "+", 
+       RowBox[{"1", " ", "or", " ", "2", "a"}]}], "=", "b"}]}], "*)"}],
+   FontSize->24,
+   Background->GrayLevel[0]]}]], "Input",
+ CellChangeTimes->{{3.7814572221689982`*^9, 3.7814572514217916`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Relacion3", "[", "A_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"R", "=", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{"ProdCart", "=", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{"i", "=", "0"}], ",", 
+        RowBox[{"L", "=", "0"}], ",", 
+        RowBox[{"Pos", "=", "0"}]}], "}"}], ",", "\[IndentingNewLine]", "  ", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"ProdCart", "=", 
+        RowBox[{"CartesianProduct", "[", 
+         RowBox[{"A", ",", "A"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+        "Todas", " ", "los", " ", "posibles", " ", "pares", " ", "ordenados", 
+         " ", "se", " ", "asignan", " ", "a", " ", "ProdCart"}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"L", "=", 
+        RowBox[{"Length", "[", "ProdCart", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", 
+         RowBox[{"i", "\[LessEqual]", "L"}], ",", 
+         RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Pos", "=", 
+           RowBox[{"ProdCart", "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"Pos", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "==", 
+               RowBox[{
+                RowBox[{"Pos", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "+", "1"}]}], " ", ")"}], "||", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"2", "*", 
+                RowBox[{"Pos", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}]}], "\[Equal]", 
+               RowBox[{"Pos", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], ",", 
+            RowBox[{"R", "=", 
+             RowBox[{"Append", "[", 
+              RowBox[{"R", ",", "Pos"}], "]"}]}]}], "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<El gr\[AAcute]fico de la relaci\[OAcute]n corresponde a: \>\"", 
+         ",", "R"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], 
+   ";"}]}]], "Input",
+ CellChangeTimes->{{3.781457271279744*^9, 3.781457397783523*^9}, 
+   3.7814574638277655`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"A2", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.781457403995021*^9, 3.781457426851635*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\t", "\[IndentingNewLine]", 
+  RowBox[{"Relacion3", "[", "A2", "]"}]}]], "Input",
+ CellChangeTimes->{{3.781457434601752*^9, 3.781457443731959*^9}, 
+   3.7825081689335175`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El gr\[AAcute]fico de la relaci\[OAcute]n corresponde a: \"\>",
+    "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"4", ",", "3"}], "}"}]}], "}"}]}],
+  SequenceForm[
+  "El gr\[AAcute]fico de la relaci\[OAcute]n corresponde a: ", {{1, 2}, {2, 
+   1}, {2, 4}, {3, 2}, {4, 3}}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7814574445104637`*^9, 3.7814574766268215`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Ejemplo", " ", 
+      SuperscriptBox["b", "3"]}], "=", 
+     RowBox[{">", "a"}]}], "*)"}],
+   FontSize->24,
+   Background->GrayLevel[0]]}]], "Input",
+ CellChangeTimes->{{3.781459805453891*^9, 3.7814598444617815`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Primero", " ", "se", " ", "hace", " ", "una", " ", "rutina", " ", "que", 
+    " ", "muestre", " ", "todos", " ", "los", " ", "elementos", " ", "de", 
+    " ", "la", " ", "relaci\[OAcute]n"}], "*)"}]}]], "Input",
+ CellChangeTimes->{
+  3.781459862573948*^9, {3.7814599104591317`*^9, 3.7814599348377094`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Relacion4", "[", "A_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"R", "=", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{"ProdCart", "=", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{"i", "=", "0"}], ",", 
+        RowBox[{"L", "=", "0"}], ",", 
+        RowBox[{"Pos", "=", "0"}]}], "}"}], ",", "\[IndentingNewLine]", "  ", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"ProdCart", "=", 
+        RowBox[{"CartesianProduct", "[", 
+         RowBox[{"A", ",", "A"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"L", "=", 
+        RowBox[{"Length", "[", "ProdCart", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", 
+         RowBox[{"i", "\[LessEqual]", "L"}], ",", 
+         RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Pos", "=", 
+           RowBox[{"ProdCart", "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{"Pos", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], ")"}], "3"], "==", 
+             RowBox[{"Pos", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+            RowBox[{"R", "=", 
+             RowBox[{"Append", "[", 
+              RowBox[{"R", ",", "Pos"}], "]"}]}]}], "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<El gr\[AAcute]fico de la relaci\[OAcute]n corresponde a: \>\"", 
+         ",", "R"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], 
+   ";"}]}]], "Input",
+ CellChangeTimes->{{3.781459959214637*^9, 3.781460021392583*^9}, {
+  3.781460105111253*^9, 3.7814601318957844`*^9}, {3.781460202997847*^9, 
+  3.7814602036088247`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"A4", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "5", ",", "8", ",", "13"}], "}"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.7814600459788156`*^9, 3.7814600733868804`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Relacion4", "[", "A4", "]"}]], "Input",
+ CellChangeTimes->{{3.7814600758936872`*^9, 3.7814600908195314`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El gr\[AAcute]fico de la relaci\[OAcute]n corresponde a: \"\>",
+    "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"8", ",", "2"}], "}"}]}], "}"}]}],
+  SequenceForm[
+  "El gr\[AAcute]fico de la relaci\[OAcute]n corresponde a: ", {{1, 1}, {8, 
+   2}}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.781460093278965*^9, 3.781460141303521*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{"Debemos", " ", "generar", " ", "el", " ", "conjunto"}], "*)"}],
+   FontColor->RGBColor[1, 0.5, 0.5],
+   Background->RGBColor[0.88, 1, 0.88]]}]], "Input",
+ CellChangeTimes->{{3.7814601937675457`*^9, 3.781460231820751*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Conjunto2", "[", "n_", "]"}], ":=", " ", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"A", "=", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{"i", "=", "0"}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+       "n", " ", "es", " ", "el", " ", "n\[UAcute]mero", " ", "de", " ", 
+        "elementos", " ", "que", " ", "queremos", " ", "en", " ", "el", " ", 
+        "conjunto"}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", 
+         RowBox[{"i", "\[LessEqual]", "n"}], ",", 
+         RowBox[{"i", "+=", "2"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"A", "=", 
+           RowBox[{"Append", "[", 
+            RowBox[{"A", ",", "i"}], "]"}]}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Return", "[", "A", "]"}], ";"}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.7814602620708237`*^9, 3.7814602849332867`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Conjunto2", "[", "99", "]"}]], "Input",
+ CellChangeTimes->{{3.781460331158469*^9, 3.781460373445279*^9}, {
+  3.7814604647494574`*^9, 3.781460466130597*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "3", ",", "5", ",", "7", ",", "9", ",", "11", ",", "13", ",", 
+   "15", ",", "17", ",", "19", ",", "21", ",", "23", ",", "25", ",", "27", 
+   ",", "29", ",", "31", ",", "33", ",", "35", ",", "37", ",", "39", ",", 
+   "41", ",", "43", ",", "45", ",", "47", ",", "49", ",", "51", ",", "53", 
+   ",", "55", ",", "57", ",", "59", ",", "61", ",", "63", ",", "65", ",", 
+   "67", ",", "69", ",", "71", ",", "73", ",", "75", ",", "77", ",", "79", 
+   ",", "81", ",", "83", ",", "85", ",", "87", ",", "89", ",", "91", ",", 
+   "93", ",", "95", ",", "97", ",", "99"}], "}"}]], "Output",
+ CellChangeTimes->{{3.781460339863554*^9, 3.781460374020687*^9}, 
+   3.78146046667754*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"Relacion4", "[", 
+   RowBox[{"Conjunto2", "[", "99", "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7814603826293926`*^9, 3.7814604007721*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"El gr\[AAcute]fico de la relaci\[OAcute]n corresponde a: \"\>",
+    "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"27", ",", "3"}], "}"}]}], "}"}]}],
+  SequenceForm[
+  "El gr\[AAcute]fico de la relaci\[OAcute]n corresponde a: ", {{1, 1}, {27, 
+   3}}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7814604013484664`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{"(*", 
+   RowBox[{"Queremos", " ", "determinar", " ", "si", " ", "63", "R97"}], 
+   "*)"}],
+  FontSize->36]], "Input",
+ CellChangeTimes->{{3.7814607418863072`*^9, 3.7814607786539183`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"{", "lista", "}"}], ",", "elemento"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"MemberQ", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"27", ",", "3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"63", ",", "97"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7814607807345552`*^9, 3.781460782776106*^9}, {
+  3.7814608174314747`*^9, 3.781460822441271*^9}, {3.781460868776909*^9, 
+  3.7814608800278378`*^9}, {3.7814609184525375`*^9, 3.7814609977739305`*^9}, {
+  3.781461049068186*^9, 3.7814611041118298`*^9}, {3.7825083882027297`*^9, 
+  3.782508413754719*^9}}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{
+  3.781461022035306*^9, {3.781461069139451*^9, 3.7814611047478285`*^9}}]
+}, Open  ]]
+},
+WindowSize->{766, 812},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 175, 3, 45, "Input"],
+Cell[758, 27, 411, 8, 94, "Message"]
+}, Open  ]],
+Cell[1184, 38, 388, 7, 104, "Input"],
+Cell[1575, 47, 1141, 28, 340, "Input"],
+Cell[2719, 77, 851, 24, 75, "Input"],
+Cell[CellGroupData[{
+Cell[3595, 105, 199, 4, 45, "Input"],
+Cell[3797, 111, 144, 2, 45, "Output"]
+}, Open  ]],
+Cell[3956, 116, 3547, 89, 539, "Input"],
+Cell[7506, 207, 202, 5, 45, "Input"],
+Cell[7711, 214, 206, 5, 45, "Input"],
+Cell[CellGroupData[{
+Cell[7942, 223, 189, 4, 75, "Input"],
+Cell[8134, 229, 1402, 41, 91, "Print"]
+}, Open  ]],
+Cell[9551, 273, 347, 10, 85, "Input"],
+Cell[9901, 285, 2249, 58, 481, "Input"],
+Cell[12153, 345, 197, 5, 45, "Input"],
+Cell[12353, 352, 185, 5, 45, "Input"],
+Cell[CellGroupData[{
+Cell[12563, 361, 157, 3, 45, "Input"],
+Cell[12723, 366, 499, 14, 34, "Print"]
+}, Open  ]],
+Cell[13237, 383, 333, 10, 85, "Input"],
+Cell[13573, 395, 2348, 57, 510, "Input"],
+Cell[CellGroupData[{
+Cell[15946, 456, 184, 4, 45, "Input"],
+Cell[16133, 462, 187, 4, 45, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16357, 471, 130, 2, 45, "Input"],
+Cell[16490, 475, 1290, 34, 91, "Print"]
+}, Open  ]],
+Cell[17795, 512, 493, 12, 104, "Input"],
+Cell[18291, 526, 1170, 30, 278, "Input"],
+Cell[CellGroupData[{
+Cell[19486, 560, 130, 2, 45, "Input"],
+Cell[19619, 564, 667, 11, 133, "Output"]
+}, Open  ]],
+Cell[20301, 578, 300, 6, 75, "Input"],
+Cell[20604, 586, 96, 1, 45, InheritFromParent],
+Cell[20703, 589, 93, 1, 45, InheritFromParent],
+Cell[20799, 592, 96, 1, 45, InheritFromParent],
+Cell[20898, 595, 385, 11, 125, "Input"],
+Cell[21286, 608, 2531, 65, 481, "Input"],
+Cell[23820, 675, 203, 5, 45, "Input"],
+Cell[CellGroupData[{
+Cell[24048, 684, 199, 4, 75, "Input"],
+Cell[24250, 690, 712, 20, 63, "Print"]
+}, Open  ]],
+Cell[24977, 713, 321, 10, 93, "Input"],
+Cell[25301, 725, 386, 8, 104, "Input"],
+Cell[25690, 735, 2061, 53, 422, "Input"],
+Cell[27754, 790, 221, 6, 45, "Input"],
+Cell[CellGroupData[{
+Cell[28000, 800, 133, 2, 45, "Input"],
+Cell[28136, 804, 495, 14, 34, "Print"]
+}, Open  ]],
+Cell[28646, 821, 311, 7, 75, "Input"],
+Cell[28960, 830, 1178, 30, 278, "Input"],
+Cell[CellGroupData[{
+Cell[30163, 864, 180, 3, 45, "Input"],
+Cell[30346, 869, 720, 12, 133, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31103, 886, 202, 4, 75, "Input"],
+Cell[31308, 892, 477, 14, 34, "Print"]
+}, Open  ]],
+Cell[31800, 909, 223, 6, 247, "Input"],
+Cell[CellGroupData[{
+Cell[32048, 919, 773, 20, 104, "Input"],
+Cell[32824, 941, 125, 2, 45, "Output"]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,236 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9613,        228]
+NotebookOptionsPosition[      8581,        202]
+NotebookOutlinePosition[      8999,        218]
+CellTagsIndexPosition[      8956,        215]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["M\[EAcute]todo Lagrange con preimagen y imagen", "Section",
+ CellChangeTimes->{{3.8317874650363827`*^9, 3.8317875010879707`*^9}, {
+  3.8317876147867756`*^9, 3.8317876284228406`*^9}, {3.8321771593237267`*^9, 
+  3.832177162007923*^9}},ExpressionUUID->"e6519e98-b968-4fa3-a404-\
+1360931d565e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Lagrange", "[", 
+    RowBox[{"preimagen_", ",", "imagen_"}], "]"}], ":=", " ", 
+   RowBox[{"Module", "[", " ", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"x", "=", "preimagen"}], ",", 
+       RowBox[{"y", "=", "imagen"}], ",", " ", 
+       RowBox[{"longitudDePreimagen", "=", "0"}], " ", ",", 
+       RowBox[{"iteracion", "=", "1"}], ",", 
+       RowBox[{"contador", "=", "1"}], ",", " ", 
+       RowBox[{"numero", "=", "\"\<\>\""}], ",", " ", 
+       RowBox[{"denominador", "=", "1"}], ",", " ", "A"}], "}"}], ",", " ", 
+     "\[IndentingNewLine]", "\n", "\t", 
+     RowBox[{
+      RowBox[{"longitudDePreimagen", "=", 
+       RowBox[{"Length", "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "\t", 
+      RowBox[{"Print", "[", "\"\<El Polinomio de Lagrange es: \>\"", "]"}], 
+      ";", "\n", "\t", "\[IndentingNewLine]", "\t", 
+      RowBox[{
+       RowBox[{"While", "[", 
+        RowBox[{
+         RowBox[{"iteracion", "\[LessEqual]", "longitudDePreimagen"}], ",", 
+         "\n", "\t", "\n", "\t\t", 
+         RowBox[{
+          RowBox[{"numero", "=", "\"\<\>\""}], ";", "\[IndentingNewLine]", 
+          "\t\t", 
+          RowBox[{"denominador", "=", "1"}], ";", "\[IndentingNewLine]", 
+          "\t\t", 
+          RowBox[{"contador", "=", "1"}], ";", "\n", "\t\t", 
+          "\[IndentingNewLine]", "\t\t", 
+          RowBox[{
+           RowBox[{"While", "[", 
+            RowBox[{
+             RowBox[{"contador", "\[LessEqual]", "longitudDePreimagen"}], ",",
+              "\n", "\t\t", "\[IndentingNewLine]", "\t\t\t", 
+             RowBox[{
+              RowBox[{"If", " ", "[", 
+               RowBox[{
+                RowBox[{"iteracion", "\[NotEqual]", "contador"}], ",", 
+                "\[IndentingNewLine]", "\t\t\t\t", 
+                RowBox[{
+                 RowBox[{"numero", "=", 
+                  RowBox[{
+                   RowBox[{"ToString", "[", 
+                    StyleBox["numero", "TI"], "]"}], "<>", "\"\<(x-\>\"", "<>", 
+                   RowBox[{"ToString", "[", 
+                    SubscriptBox["x", 
+                    RowBox[{
+                    "\[LeftDoubleBracket]", "contador", 
+                    "\[RightDoubleBracket]"}]], "]"}], "<>", "\"\<)\>\""}]}], 
+                 ";", "\[IndentingNewLine]", "\t\t\t\t", 
+                 RowBox[{"denominador", "=", 
+                  RowBox[{"denominador", "*", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    SubscriptBox["x", 
+                    RowBox[{
+                    "\[LeftDoubleBracket]", "iteracion", 
+                    "\[RightDoubleBracket]"}]], "-", 
+                    SubscriptBox["x", 
+                    RowBox[{
+                    "\[LeftDoubleBracket]", "contador", 
+                    "\[RightDoubleBracket]"}]]}], ")"}]}]}], ";"}]}], 
+               "\[IndentingNewLine]", "\t\t\t", "]"}], ";", "\n", "\t\t\t", 
+              "\[IndentingNewLine]", "\t\t\t", 
+              RowBox[{"contador", "=", 
+               RowBox[{"contador", "+", "1"}]}], ";"}]}], 
+            "\[IndentingNewLine]", "\t\t", "]"}], ";;", "\[IndentingNewLine]",
+            "\[IndentingNewLine]", "\t\t", 
+           RowBox[{"Print", "[", 
+            RowBox[{"Simplify", "[", 
+             RowBox[{"ToString", "[", 
+              FractionBox[
+               RowBox[{
+                RowBox[{"ToString", "[", 
+                 SubscriptBox["imagen", 
+                  RowBox[{
+                  "\[LeftDoubleBracket]", "iteracion", 
+                   "\[RightDoubleBracket]"}]], "]"}], "<>", "numero"}], 
+               RowBox[{"ToString", "[", "denominador", "]"}]], "]"}], "]"}], 
+            "]"}]}], ";", "\n", "\t\t", "\[IndentingNewLine]", "\t\t", 
+          RowBox[{"iteracion", "=", 
+           RowBox[{"iteracion", "+", "1"}]}], ";"}]}], "\[IndentingNewLine]", 
+        "\t", "]"}], ";;"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.831787523418374*^9, 3.831787597522217*^9}, {
+  3.8317876967041597`*^9, 3.8317876989150286`*^9}, {3.8317877309886675`*^9, 
+  3.8317877319661236`*^9}, {3.831787947693692*^9, 3.8317879896206613`*^9}, {
+  3.831788042883421*^9, 3.831788043922432*^9}, {3.8317880745462456`*^9, 
+  3.8317882788303976`*^9}, {3.831788341806001*^9, 3.831788356268325*^9}, {
+  3.831788413231024*^9, 3.831788448006377*^9}, {3.8317885176955633`*^9, 
+  3.8317885306959047`*^9}, {3.8317886042902308`*^9, 3.8317886608166957`*^9}, {
+  3.831788828778554*^9, 3.831788841578231*^9}, {3.8317889632644386`*^9, 
+  3.831788982479689*^9}, {3.831789057860927*^9, 3.831789058462699*^9}, {
+  3.8317891118183117`*^9, 3.831789227395794*^9}},
+ CellLabel->"In[62]:=",ExpressionUUID->"8061e97d-eb22-4e4b-b681-fbd30624a3e0"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Preimagen", "=", 
+   RowBox[{"{", 
+    RowBox[{"1960", ",", "1970", ",", "1980"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Imagen", "=", 
+   RowBox[{"{", 
+    RowBox[{"179323", ",", "203302", ",", "226542"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Lagrange", "[", 
+   RowBox[{"Preimagen", ",", "Imagen"}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8317877219497776`*^9, 3.83178773617916*^9}, {
+  3.8317886815583997`*^9, 3.8317887240793085`*^9}},
+ CellLabel->"In[63]:=",ExpressionUUID->"d56c75e6-7cd6-476e-a511-3d30632aa0a6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"El Polinomio de Lagrange es: \"\>"], "Print",
+ CellChangeTimes->{
+  3.8317881742812843`*^9, 3.8317882314516473`*^9, 3.8317882861992517`*^9, 
+   3.831788454526509*^9, 3.831788535868202*^9, 3.8317886666993237`*^9, 
+   3.8317887295095716`*^9, 3.831788845806551*^9, 3.8317889868121386`*^9, 
+   3.8317890629603877`*^9, {3.831789156621084*^9, 3.8317891808987217`*^9}, 
+   3.8317892345285554`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[63]:=",ExpressionUUID->"03bf02df-d51c-4d5b-b9de-52d56b35c2d8"],
+
+Cell[BoxData["\<\"179323(x-1970)(x-1980)\\n----------------------\\n         \
+200\"\>"], "Print",
+ CellChangeTimes->{
+  3.8317881742812843`*^9, 3.8317882314516473`*^9, 3.8317882861992517`*^9, 
+   3.831788454526509*^9, 3.831788535868202*^9, 3.8317886666993237`*^9, 
+   3.8317887295095716`*^9, 3.831788845806551*^9, 3.8317889868121386`*^9, 
+   3.8317890629603877`*^9, {3.831789156621084*^9, 3.8317891808987217`*^9}, 
+   3.8317892345322037`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[63]:=",ExpressionUUID->"071e2ec4-a59c-408b-93ca-8f3022654bc0"],
+
+Cell[BoxData["\<\"203302(x-1960)(x-1980)\\n----------------------\\n         \
+-100\"\>"], "Print",
+ CellChangeTimes->{
+  3.8317881742812843`*^9, 3.8317882314516473`*^9, 3.8317882861992517`*^9, 
+   3.831788454526509*^9, 3.831788535868202*^9, 3.8317886666993237`*^9, 
+   3.8317887295095716`*^9, 3.831788845806551*^9, 3.8317889868121386`*^9, 
+   3.8317890629603877`*^9, {3.831789156621084*^9, 3.8317891808987217`*^9}, 
+   3.8317892345363874`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[63]:=",ExpressionUUID->"c6624185-9a5e-4c8a-a88a-01831f31e43e"],
+
+Cell[BoxData["\<\"226542(x-1960)(x-1970)\\n----------------------\\n         \
+200\"\>"], "Print",
+ CellChangeTimes->{
+  3.8317881742812843`*^9, 3.8317882314516473`*^9, 3.8317882861992517`*^9, 
+   3.831788454526509*^9, 3.831788535868202*^9, 3.8317886666993237`*^9, 
+   3.8317887295095716`*^9, 3.831788845806551*^9, 3.8317889868121386`*^9, 
+   3.8317890629603877`*^9, {3.831789156621084*^9, 3.8317891808987217`*^9}, 
+   3.831789234537695*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[63]:=",ExpressionUUID->"1dbe9f49-cfb7-4ad9-9645-e377f38fc155"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1141.2, 610.1999999999999},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.2 para Microsoft Windows (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"652c1ba0-9198-4802-abda-66ec943ebfb6"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 296, 4, 67, "Section",ExpressionUUID->"e6519e98-b968-4fa3-a404-1360931d565e"],
+Cell[879, 28, 4785, 100, 565, "Code",ExpressionUUID->"8061e97d-eb22-4e4b-b681-fbd30624a3e0"],
+Cell[CellGroupData[{
+Cell[5689, 132, 614, 16, 68, "Input",ExpressionUUID->"d56c75e6-7cd6-476e-a511-3d30632aa0a6"],
+Cell[CellGroupData[{
+Cell[6328, 152, 525, 9, 21, "Print",ExpressionUUID->"03bf02df-d51c-4d5b-b9de-52d56b35c2d8"],
+Cell[6856, 163, 560, 10, 57, "Print",ExpressionUUID->"071e2ec4-a59c-408b-93ca-8f3022654bc0"],
+Cell[7419, 175, 561, 10, 57, "Print",ExpressionUUID->"c6624185-9a5e-4c8a-a88a-01831f31e43e"],
+Cell[7983, 187, 558, 10, 57, "Print",ExpressionUUID->"1dbe9f49-cfb7-4ad9-9645-e377f38fc155"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
